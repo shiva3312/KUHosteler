@@ -26,6 +26,7 @@ app.set('view engine', 'jade');
 
 //middleware
 
+app.use(expressValidator());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(bodyParser.json());
@@ -35,7 +36,7 @@ app.use(cookieParser());
 
 //user middleware
 
-// app.use('/', require('./routes/index'));
+
 app.use('/auth', require('./routes/auth'))
 // app.use('/manager', require('./routes/user/manager'));
 // app.use('/student', require('./routes/user/student'));
