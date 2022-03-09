@@ -1,0 +1,444 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20220308.201026.20080.0.001.json",
+    "dumpEventTime": "2022-03-08T20:10:26Z",
+    "dumpEventTimeStamp": "1646750426244",
+    "processId": 20080,
+    "cwd": "C:\\Users\\Shivam Chaurasiya\\Desktop\\KUHosteler\\server",
+    "commandLine": [
+      "C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\atom\\app-1.59.0\\resources\\app\\apm\\bin\\\\node.exe",
+      "C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\atom\\app-1.59.0\\resources\\app\\apm\\bin\\/../lib/cli.js",
+      "outdated",
+      "--json",
+      "--compatible",
+      "1.59.0",
+      "--no-color"
+    ],
+    "nodejsVersion": "v12.14.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.14.1",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.14.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.22557",
+    "osVersion": "Windows 10 Home Single Language",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1800,
+        "user": 4308171,
+        "nice": 0,
+        "sys": 6410515,
+        "idle": 132741250,
+        "irq": 3071312
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1800,
+        "user": 3324468,
+        "nice": 0,
+        "sys": 1618171,
+        "idle": 138516968,
+        "irq": 54921
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1800,
+        "user": 6174578,
+        "nice": 0,
+        "sys": 3299812,
+        "idle": 133985203,
+        "irq": 92671
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1800,
+        "user": 3952859,
+        "nice": 0,
+        "sys": 1659812,
+        "idle": 137846937,
+        "irq": 46421
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1800,
+        "user": 5093546,
+        "nice": 0,
+        "sys": 2741968,
+        "idle": 135624093,
+        "irq": 82140
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1800,
+        "user": 3899375,
+        "nice": 0,
+        "sys": 1833109,
+        "idle": 137727125,
+        "irq": 53093
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1800,
+        "user": 5290359,
+        "nice": 0,
+        "sys": 2539906,
+        "idle": 135629343,
+        "irq": 75062
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1800,
+        "user": 4912796,
+        "nice": 0,
+        "sys": 1973031,
+        "idle": 136573781,
+        "irq": 46156
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "30:d1:6b:e5:33:65",
+        "address": "fe80::bdd1:76e9:7f77:378e",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 12
+      },
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "30:d1:6b:e5:33:65",
+        "address": "192.168.31.134",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "LAPTOP-5Q40PNTL"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff7a2371759",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2375b7c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2374b38",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a246433b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2c68c5e",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2c50ca1",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2b1e56c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2b26671",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2b1bcd3",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2b1a4a4",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a2b3b775",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a28a7a49",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a309463d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff7a3095571",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000002f6b9759dfb",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 10309632,
+    "totalCommittedMemory": 10309632,
+    "usedMemory": 8976288,
+    "availableMemory": 2190421984,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 2097152,
+        "capacity": 2094976,
+        "used": 2094976,
+        "available": 0
+      },
+      "old_space": {
+        "memorySize": 5877760,
+        "committedMemory": 5877760,
+        "capacity": 5639888,
+        "used": 5048184,
+        "available": 591704
+      },
+      "code_space": {
+        "memorySize": 425984,
+        "committedMemory": 425984,
+        "capacity": 265952,
+        "used": 265952,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 790528,
+        "committedMemory": 790528,
+        "capacity": 739104,
+        "used": 739040,
+        "available": 64
+      },
+      "large_object_space": {
+        "memorySize": 806912,
+        "committedMemory": 806912,
+        "capacity": 792288,
+        "used": 792288,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3552,
+        "used": 3552,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 2094976,
+        "used": 0,
+        "available": 2094976
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 0.515,
+    "kernelCpuSeconds": 0.359,
+    "cpuConsumptionPercent": 5.14118,
+    "maxRss": 34156544,
+    "pageFaults": {
+      "IORequired": 11334,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 351,
+      "writes": 97
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\Users\\Shivam Chaurasiya\\Desktop\\KUHosteler\\server",
+    "ACLOCAL_PATH": "C:\\Program Files\\Git\\mingw64\\share\\aclocal;C:\\Program Files\\Git\\usr\\share\\aclocal",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "apm_git_path": "C:\\Program Files\\Git\\cmd\\",
+    "APPDATA": "C:\\Users\\Shivam Chaurasiya\\AppData\\Roaming",
+    "ATOM_HOME": "C:\\Users\\Shivam Chaurasiya\\.atom",
+    "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_21340_OOEPWNMOWAARYTMN",
+    "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "LAPTOP-5Q40PNTL",
+    "COMSPEC": "C:\\WINDOWS\\system32\\cmd.exe",
+    "CONFIG_SITE": "C:/Program Files/Git/etc/config.site",
+    "DISPLAY": "needs-to-be-defined",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "EXEPATH": "C:\\Program Files\\Git",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+    "HOME": "C:\\Users\\Shivam Chaurasiya",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\Shivam Chaurasiya",
+    "HOSTNAME": "LAPTOP-5Q40PNTL",
+    "INFOPATH": "C:\\Program Files\\Git\\usr\\local\\info;C:\\Program Files\\Git\\usr\\share\\info;C:\\Program Files\\Git\\usr\\info;C:\\Program Files\\Git\\share\\info",
+    "IntelliJ IDEA Community Edition": "C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2021.2.2\\bin;",
+    "LC_CTYPE": "en_US.UTF-8",
+    "LOCALAPPDATA": "C:\\Users\\Shivam Chaurasiya\\AppData\\Local",
+    "LOGONSERVER": "\\\\LAPTOP-5Q40PNTL",
+    "MANPATH": "C:\\Program Files\\Git\\mingw64\\local\\man;C:\\Program Files\\Git\\mingw64\\share\\man;C:\\Program Files\\Git\\usr\\local\\man;C:\\Program Files\\Git\\usr\\share\\man;C:\\Program Files\\Git\\usr\\man;C:\\Program Files\\Git\\share\\man",
+    "MINGW_CHOST": "x86_64-w64-mingw32",
+    "MINGW_PACKAGE_PREFIX": "mingw-w64-x86_64",
+    "MINGW_PREFIX": "C:/Program Files/Git/mingw64",
+    "MSYSTEM": "MINGW64",
+    "MSYSTEM_CARCH": "x86_64",
+    "MSYSTEM_CHOST": "x86_64-w64-mingw32",
+    "MSYSTEM_PREFIX": "C:/Program Files/Git/mingw64",
+    "NODE_ENV": "production",
+    "NODE_PATH": "C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\atom\\app-1.59.0\\resources\\app.asar\\exports",
+    "NUMBER_OF_PROCESSORS": "8",
+    "NVM_CD_FLAGS": "",
+    "NVM_DIR": "C:/Users/Shivam Chaurasiya/.nvm",
+    "NVM_RC_VERSION": "",
+    "OLDPWD": "C:/Users/Shivam Chaurasiya",
+    "OneDrive": "C:\\Users\\Shivam Chaurasiya\\OneDrive",
+    "ORIGINAL_PATH": "C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\Shivam Chaurasiya\\bin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\dotnet;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs;C:\\Program Files\\Java\\jdk1.8.0_321\\bin;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\MinGW\\bin;C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2021.2.2\\bin;C:\\Users\\Shivam Chaurasiya\\.jdks\\openjdk-17\\bin;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\atom\\bin;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\Programs\\Hyper\\resources\\bin;C:\\Users\\Shivam Chaurasiya\\AppData\\Roaming\\npm;C:\\Program Files\\heroku\\bin;C:\\ProgramData\\Shivam Chaurasiya\\gitkraken\\bin",
+    "ORIGINAL_TEMP": "C:/Users/SHIVAM~1/AppData/Local/Temp",
+    "ORIGINAL_TMP": "C:/Users/SHIVAM~1/AppData/Local/Temp",
+    "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+    "OS": "Windows_NT",
+    "PATH": "C:\\Users\\Shivam Chaurasiya\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\local\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\Shivam Chaurasiya\\bin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\dotnet;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs;C:\\Program Files\\Java\\jdk1.8.0_321\\bin;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\MinGW\\bin;C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2021.2.2\\bin;C:\\Users\\Shivam Chaurasiya\\.jdks\\openjdk-17\\bin;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\atom\\bin;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\Programs\\Hyper\\resources\\bin;C:\\Users\\Shivam Chaurasiya\\AppData\\Roaming\\npm;C:\\Program Files\\heroku\\bin;C:\\ProgramData\\Shivam Chaurasiya\\gitkraken\\bin;C:\\Program Files\\Git\\usr\\bin\\vendor_perl;C:\\Program Files\\Git\\usr\\bin\\core_perl",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+    "PKG_CONFIG_PATH": "C:\\Program Files\\Git\\mingw64\\lib\\pkgconfig;C:\\Program Files\\Git\\mingw64\\share\\pkgconfig",
+    "PLINK_PROTOCOL": "ssh",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 142 Stepping 10, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "8e0a",
+    "ProgramData": "C:\\ProgramData",
+    "PROGRAMFILES": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSARGS": ".",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "PWD": "C:/Users/Shivam Chaurasiya/Desktop/boiling-garden-77802",
+    "SESSIONNAME": "Console",
+    "SHELL": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
+    "SHLVL": "3",
+    "SSH_ASKPASS": "C:/Program Files/Git/mingw64/bin/git-askpass.exe",
+    "SYSTEMDRIVE": "C:",
+    "SYSTEMROOT": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\SHIVAM~1\\AppData\\Local\\Temp",
+    "TERM": "xterm",
+    "TERM_PROGRAM": "mintty",
+    "TERM_PROGRAM_VERSION": "3.5.0",
+    "TMP": "C:\\Users\\SHIVAM~1\\AppData\\Local\\Temp",
+    "TMPDIR": "C:\\Users\\SHIVAM~1\\AppData\\Local\\Temp",
+    "USERDOMAIN": "LAPTOP-5Q40PNTL",
+    "USERDOMAIN_ROAMINGPROFILE": "LAPTOP-5Q40PNTL",
+    "USERNAME": "Shivam Chaurasiya",
+    "USERPROFILE": "C:\\Users\\Shivam Chaurasiya",
+    "WINDIR": "C:\\WINDOWS",
+    "ZES_ENABLE_SYSMAN": "1",
+    "_": "C:/WINDOWS/system32/cmd.exe"
+  },
+  "sharedObjects": [
+    "C:\\Users\\Shivam Chaurasiya\\AppData\\Local\\atom\\app-1.59.0\\resources\\app\\apm\\bin\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\OLEAUT32.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\SYSTEM32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\powrprof.dll",
+    "C:\\WINDOWS\\SYSTEM32\\UMPDC.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\SYSTEM32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\System32\\bcryptprimitives.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll",
+    "C:\\WINDOWS\\system32\\nlansp_c.dll"
+  ]
+}

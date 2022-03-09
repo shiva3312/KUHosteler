@@ -9,7 +9,6 @@ require('dotenv').config();
 var path = require('path');
 var createError = require('http-errors');
 
-
 var app = express();
 
 // db
@@ -39,12 +38,12 @@ app.use(cookieParser());
 
 app.use('/auth', require('./routes/auth'))
 // app.use('/manager', require('./routes/user/manager'));
-// app.use('/student', require('./routes/user/student'));
+app.use('/student', require('./routes/user/student'));
 // app.use('/staff', require('./routes/user/staff'));
 // app.use('/developer', require('./routes/user/developer'));
 // app.use('/annonymous',  require('./routes/annonymous'));
 // app.use('/social',  require('./routes/social'));
-//
+
 
 
 // catch 404 and forward to error handler

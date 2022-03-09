@@ -8,7 +8,7 @@ const { ObjectId } = mongoose.Schema;
 const userSchema = new mongoose.Schema({
 
 //Basic info
-  name : { type: String, require : [true , 'Title is required'] },
+  name : { type: String, require : [true , 'Name is required'] },
   email :{ type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true } ,
   hashed_password : String,
   salt:String,
@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema({
 
 //active Guest list
   active_guest_list: [{
-      date: Date,
+      date: String,
       guestHolderId: {type: ObjectId , ref:'user'},
       mealStatus : Boolean, // activated(0) or Listed(1)
       mealTime:String, // moring & Night | night |mor | OFF
@@ -64,7 +64,7 @@ const userSchema = new mongoose.Schema({
 
 
 //payment records
-  payRecord: [ { date : Date, due: Number , paid:Number }],
+  payRecord: [ { auditDate : Date, auditAmount:Number, totalFine :Number,due: Number , paid:Number }],
   //committee member
     committeeMember: [{ membeberId:ObjectId, tag:String }],
   //staff
@@ -73,8 +73,10 @@ const userSchema = new mongoose.Schema({
     notice: [{ title: String , text: String, description:String , date : {type:Date , default:Date.now}}],
   //students
     student :[{studentId: ObjectId }],
+
   //mess
-    messStatus:{ type :Boolean, default:true},
+   //use binary concept (00 to 11) right bit for forced off / left bit for student messStatus
+    messStatus:{ type :Number, default:1},
     morBoundTime: { type :Date},
     nigBoundTime:{ type :Date},
 
@@ -103,15 +105,16 @@ const userSchema = new mongoose.Schema({
     }],
 
   //helpdesk
-      helpSection:{
+      helpSection:[{
       tag: String,   // provost / vc / stewrd .... etc
+      name:String,
+      description:String,
+      about:String,
       conatct : {
         phNo:String,
         email:String,
-        },
-      name:String,
-      about:String,
-    },
+        }
+    }],
 
   //default menu for mess
      other:[{ type:Array,  default:[] }],
