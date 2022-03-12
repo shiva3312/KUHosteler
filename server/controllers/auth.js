@@ -2,22 +2,36 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken'); // to generate signed token
 const expressJwt = require('express-jwt'); // for authorization check
 const { errorHandler } = require('../helpers/dbErrorHandler');
-
+const boundTime = require('../models/boundTime');
 
 // using promise
 exports.signup = (req, res) => {
     // console.log("req.body", req.body);
     const user = new User(req.body);
-    console.log(req.body);
+
     user.save((err, user) => {
         if (err) {
           console.log(err);
             return res.status(400).json({
                 // error: errorHandler(err)
                 error: 'Email is taken'
-
             });
         }
+
+        //setting bound time in bound time databases
+        if(user.profileType == 1){
+        const newMnagerInboudDB = new boundTime({
+          _id : user._id,
+          morBoundTime: '06:00',
+          nigBoundTime: "06:00",
+          hostelName: user.hostelName,
+          guestMorMealCharge:user.guestMorMealCharge,
+          guestNigMealCharge: user.guestNigMealCharge,
+          grandCharge: user.grandCharge,
+          lock:true
+        })
+        newMnagerInboudDB.save();
+      }
         user.salt = undefined;
         user.hashed_password = undefined;
         res.json({user});

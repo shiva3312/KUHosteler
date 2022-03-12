@@ -1,0 +1,44 @@
+{
+  "boundTIme": [
+    {
+      "_id": "1",
+      "morBoundTime": "06:00",
+      "nigBoundTime": "06:00"
+    },
+    {
+      "_id": "2",
+      "morBoundTime": "06:00",
+      "nigBoundTime": "06:00"
+    },
+    {
+      "_id": "3",
+      "morBoundTime": "06:00",
+      "nigBoundTime": "06:00"
+    },
+    {
+      "managerId": "34",
+      "morBoundTime": "dkfj",
+      "nigBoundTime": "jldf"
+    },
+    {
+      "managerId": "34",
+      "morBoundTime": "dkfj",
+      "nigBoundTime": "jldf"
+    },
+    {
+      "managerId": "34",
+      "morBoundTime": "dkfj",
+      "nigBoundTime": "jldf"
+    },
+    {
+      "managerId": "34",
+      "morBoundTime": "dkfj",
+      "nigBoundTime": "jldf"
+    },
+    {
+      "managerId": "34",
+      "morBoundTime": "dkfj",
+      "nigBoundTime": "jldf"
+    }
+  ]
+}

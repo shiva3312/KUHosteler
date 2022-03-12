@@ -14,12 +14,12 @@ const userSchema = new mongoose.Schema({
   salt:String,
   hostelName:{type: String, required: true },
   department: String,
-  joiningDate: Date,
+  joiningDate: String,
   tag: String,  //diff type of tag ( maintanance , mess-prefect... etc)
   roomNo: Number,
   gender: String,
   religion:String,
-  dob: Date,
+  dob: String,
   university:String,
 
   //contact
@@ -30,26 +30,31 @@ const userSchema = new mongoose.Schema({
   image:String,
   bio: String,
   hostelId:String,
-  membership:  { type :Number, default:0}, // notMember(0)| officalGuest(1) | member(2) | WasMember(3)
+  membership:  { type :Number, default:0}, // notMember(0)| officalGuest(1) | member(2) | WasMember(3) | rejected Request(4)
 
-  //other info
+  //other
   notification: { type :Number, default:0},
   salary:{ type :Number, default:0},
-  profileType: Number ,  // 0 student , 1 manager , 2 staff , 3 developer
+  profileType: Number ,  // 0 student , 1 manager , 2 emplyee , 3 developer
+  abouthostel :{},
 
 //Meal
   mealPreference :[{day:String, morning: [{choice:String }], night:[{choice:String }]}],
+
+//each day activity of student
   activity: [{
-      date: Date,
-      fine: [{ reason : String, charge:  { type :Number, default:0}}],
-      mealTime: String,  //moring & Night | night |mor | OFF
-      guests: [{
-      guestId:String,
-      name: String,
-      morCharge:  { type :Number, default:0},
-      nigCharge:  { type :Number, default:0}
-    }]
-  }],
+  date: String,
+  fine: [{ reason : String, charge: Number}],
+  mess_status: String,
+  morning_charge: Number,
+  night_charge: Number,
+  this_day_guest: [{
+    guestId:String,
+    name: String,
+    morning_charge: Number,
+    night_charge: Number
+  }]
+}],
 
 //active Guest list
   active_guest_list: [{
@@ -64,7 +69,7 @@ const userSchema = new mongoose.Schema({
 
 
 //payment records
-  payRecord: [ { auditDate : Date, auditAmount:Number, totalFine :Number,due: Number , paid:Number }],
+  payRecord: [ { auditDate : String, auditAmount:Number, totalFine :Number,due: Number , paid:Number }],
   //committee member
     committeeMember: [{ membeberId:ObjectId, tag:String }],
   //staff
@@ -72,17 +77,17 @@ const userSchema = new mongoose.Schema({
   //notice  / fest
     notice: [{ title: String , text: String, description:String , date : {type:Date , default:Date.now}}],
   //students
-    student :[{studentId: ObjectId }],
+    student :[{studentId: String }],
 
   //mess
    //use binary concept (00 to 11) right bit for forced off / left bit for student messStatus
     messStatus:{ type :Number, default:1},
-    morBoundTime: { type :Date},
-    nigBoundTime:{ type :Date},
+    morBoundTime: String,
+    nigBoundTime: String,
 
   //Records
     mealInfoList:[{
-      auditedDate: { type :Date, default:Date.now },
+      auditedDate: String,
       perheadCharge:{ type :Number, default:0},
       totalMeal:{ type :Number, default:0},
       mealCountList :{
