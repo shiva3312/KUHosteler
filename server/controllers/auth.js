@@ -111,29 +111,21 @@ exports.isAuth = (req, res, next) => {
     next();
 };
 
-exports.isAdmin = (req, res, next) => {
-    if (req.profile.role === 0) {
+exports.isManager = (req, res, next) => {
+    if (req.profile.profileType != 1) {
         return res.status(403).json({
-            error: 'Admin resourse! Access denied'
+            error: 'Manager resourse! Access denied'
         });
     }
     next();
 };
 
 
-exports.isStaff = (req, res, next) => {
-    if (req.profile.role === 2) {
-        return res.status(403).json({
-            error: 'Admin resourse! Access denied'
-        });
-    }
-    next();
-};
 
 exports.isDev = (req, res, next) => {
-    if (req.profile.role === 3) {
+    if (req.profile.profileType != 3) {
         return res.status(403).json({
-            error: 'Admin resourse! Access denied'
+            error: 'Devloper resourse! Access denied'
         });
     }
     next();

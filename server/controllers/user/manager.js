@@ -29,7 +29,6 @@ await  User.findById(id).exec((err, user) => {
 exports.dashboard = (req , res)=>{
   User.find({profileType: 0, hostelName: req.profile.hostelName },(err, Allstudents)=>{
       if(err || !Allstudents){
-        console.log(err);
         res.json({error: "Somthing went worng"});
       }else{
         return  res.json({
@@ -131,7 +130,7 @@ exports.sethelpSection = (req, res)=>{
   };
 
     User.findOne({ _id:req.profile._id}, (err, user)=>{
-    console.log(req.profile._id);
+
     if(err || !user) {
       return res.json({error : "somthing went wrong"});
     } else {

@@ -4,6 +4,7 @@ const router = express.Router();
 const {
     isAuth,
     signout,
+    isManager,
     requireSignin
 } = require("../../controllers/auth");
 
@@ -42,36 +43,36 @@ const {
     theme
   } = require("../../controllers/user/manager");
 
-router.get("/dashboard/:userId", dashboard );
-router.get("/todaymealList/:userId", allstudents );  //check student meal status and its guest on front-end side
-router.get("/allstudents/:userId", allstudents );
-router.get("/allemployee/:userId", allemployee);
-router.get("/studpayRecord/:stuId/:userId", studpayRecord);
-router.get("/gethelpSection/:userId", gethelpSection);
-router.get("/notice/:userId",notice);
-router.get("/abouthostel/:userId",abouthostel);
-router.get("/getcost/:userId" , getcost);
-router.get("studentprofile/:stuId/:userId" , getStudentprofile);
+router.get("/dashboard/:userId",requireSignin,isAuth,isManager, dashboard );
+router.get("/todaymealList/:userId",requireSignin,isAuth,isManager,  allstudents );  //check student meal status and its guest on front-end side
+router.get("/allstudents/:userId",requireSignin,isAuth,isManager,  allstudents );
+router.get("/allemployee/:userId",requireSignin,isAuth,isManager,  allemployee);
+router.get("/studpayRecord/:stuId/:userId",requireSignin,isAuth,isManager,  studpayRecord);
+router.get("/gethelpSection/:userId",requireSignin,isAuth,isManager,  gethelpSection);
+router.get("/notice/:userId",requireSignin,isAuth,isManager, notice);
+router.get("/abouthostel/:userId",requireSignin,isAuth,isManager, abouthostel);
+router.get("/getcost/:userId" ,requireSignin,isAuth,isManager,  getcost);
+router.get("studentprofile/:stuId/:userId" ,requireSignin,isAuth,isManager,  getStudentprofile);
 
-// router.post("/msgToManger/:userId", msgToManger);
-// router.post("/socialpost/:userId",socialpost);
-// router.post("/annonymouspost/:userId",annonymouspost);
-router.post("/sethelpSection/:userId", sethelpSection);
+// router.post("/msgToManger/:userId",requireSignin,isAuth,isManager,  msgToManger);
+// router.post("/socialpost/:userId",requireSignin,isAuth,isManager, socialpost);
+// router.post("/annonymouspost/:userId",requireSignin,isAuth,isManager, annonymouspost);
+router.post("/sethelpSection/:userId",requireSignin,isAuth,isManager,  sethelpSection);
 
 
 
-// router.put("/editProfile/:userId", editProfile);
-router.put("/meal/activateAcoount/:stuId/:userId", activateAcoount);
-router.put("/meal/deactivateAccount/:stuId/:userId", deactivateAccount);
-router.put("/meal/rejectAccountCreation/:stuId/:userId", rejectAccountCreation);
-router.put("/meal/warmember/:stuId/:userId", wasmember);
-router.put("/meal/officialguest/:stuId/:userId",officialguest );
-router.put("/meal/messActivity/:userId", setmessActivity);
-router.put("/fchangeMealStatus/stu/:stuId/:userId", fchangeMealStatus)
-router.put("/setcost/:userId" , setcost)
-router.put("/setboundtime/:userId" , setboundtime)
-router.put("/setstudetnHostelId/:stuid/:userId", setstudetnHostelId);
-router.put("/setting/theme/:userId", theme);
+// router.put("/editProfile/:userId",requireSignin,isAuth,isManager,  editProfile);
+router.put("/meal/activateAcoount/:stuId/:userId",requireSignin,isAuth,isManager,  activateAcoount);
+router.put("/meal/deactivateAccount/:stuId/:userId",requireSignin,isAuth,isManager,  deactivateAccount);
+router.put("/meal/rejectAccountCreation/:stuId/:userId",requireSignin,isAuth,isManager,  rejectAccountCreation);
+router.put("/meal/warmember/:stuId/:userId",requireSignin,isAuth,isManager,  wasmember);
+router.put("/meal/officialguest/:stuId/:userId",requireSignin,isAuth,isManager, officialguest );
+router.put("/meal/messActivity/:userId",requireSignin,isAuth,isManager,  setmessActivity);
+router.put("/fchangeMealStatus/stu/:stuId/:userId",requireSignin,isAuth,isManager,  fchangeMealStatus)
+router.put("/setcost/:userId" ,requireSignin,isAuth,isManager,  setcost)
+router.put("/setboundtime/:userId" ,requireSignin,isAuth,isManager,  setboundtime)
+router.put("/setstudetnHostelId/:stuid/:userId",requireSignin,isAuth,isManager,  setstudetnHostelId);
+router.put("/setting/theme/:userId",requireSignin,isAuth,isManager,  theme);
 
 router.param('userId', userById);
 
