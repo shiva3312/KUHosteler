@@ -9,6 +9,8 @@ exports.signup = (req, res) => {
     // console.log("req.body", req.body);
     const user = new User(req.body);
 
+    console.log(req.body);
+
     user.save((err, user) => {
         if (err) {
           console.log(err);
@@ -39,7 +41,7 @@ exports.signup = (req, res) => {
 
 };
 
-// using async/await
+// // using async/await
 // exports.signup = async (req, res) => {
 //     try {
 //         const user = await new User(req.body);
@@ -52,6 +54,24 @@ exports.signup = (req, res) => {
 //                     error: 'Email is taken'
 //                 });
 //             }
+
+//             //  setting bound time in bound time databases
+//              if(user.profileType == 1){
+//             const newMnagerInboudDB = new boundTime({
+//             _id : user._id,
+//              morBoundTime: '06:00',
+//              nigBoundTime: "06:00",
+//              hostelName: user.hostelName,
+//             guestMorMealCharge:user.guestMorMealCharge,
+//             guestNigMealCharge: user.guestNigMealCharge,
+//             grandCharge: user.grandCharge,
+//             lock:true
+//               })
+//         newMnagerInboudDB.save();
+//       }
+//         user.salt = undefined;
+//         user.hashed_password = undefined;
+
 //             res.status(200).json({ user });
 //         });
 //     } catch (err) {
