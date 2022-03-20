@@ -38,13 +38,11 @@ app.use(cookieParser());
 app.use(cors());
 
 //user middleware
-
-
 app.use('/auth', require('./routes/auth'))
 app.use('/manager', require('./routes/user/manager'));
 app.use('/student', require('./routes/user/student'));
 // app.use('/staff', require('./routes/user/staff'));
-// app.use('/developer', require('./routes/user/developer'));
+// app.use('/admin', require('./routes/user/developer'));
 // app.use('/annonymous',  require('./routes/annonymous'));
 // app.use('/social',  require('./routes/social'));
 

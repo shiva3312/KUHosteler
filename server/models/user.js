@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
   //other
   notification: { type :Number, default:0},
   salary:{ type :Number, default:0},
-  profileType: { type :Number, default:0} ,  // 0 student , 1 manager , 2 employee , 3 developer
+  profileType: { type :Number, default:0} ,  // 0 student , 1 manager , 2 employee , 3 admin
   abouthostel :{},
 
 //Meal
