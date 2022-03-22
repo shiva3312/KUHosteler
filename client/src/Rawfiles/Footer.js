@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
-   
-        <footer >
+    <div>
+        <footer>
         <div  className="containr-fluid ">
-        <div  className="card bg-dark mt-2 ">
+    <div  className="card bg-dark mt-2 ">
         <div  className="row ">
             <div  className="col-md-4 col-sm-4 col-xs-4 ">
                  <div  className="footer-text pull-left">
@@ -23,20 +22,20 @@ export default function Footer() {
             <div  className="col-md-2 col-sm-2 col-xs-2 ">
                 <h5  className="heading text-white pt-3 ">About </h5>
                 <ul  className="heading card-text">
-                    <li ><Link to="" className="text-white text-decoration-none">About Us</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Contact Us</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Contribute</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Support Us</Link> </li>        
+                    <li ><a href="" className="text-white text-decoration-none">About Us</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">Contact Us</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">Contribute</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">Support Us</a> </li>        
                 </ul>
                    
             </div>
             <div  className="col-md-2 col-sm-2 col-xs-2">
                 <h5  className="heading text-white pt-3">Report </h5>
                 <ul  className="heading card-text">
-                    <li ><Link to="" className="text-white text-decoration-none">Suggest Feature</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Report Bug</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">FAQ</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Get Started</Link> </li>        
+                    <li ><a href="" className="text-white text-decoration-none">Report Bug</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">Suggest Feature</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">FAQ</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">Get Started</a> </li>        
                 </ul>
                        
                   
@@ -45,10 +44,10 @@ export default function Footer() {
             <div  className="col-md-2 col-sm-2 col-xs-2">
                 <h5  className="heading text-white pt-3"> App</h5>
                 <ul  className="heading  card-text">
-                    <li ><Link to="" className="text-white text-decoration-none">About App</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Help Desk</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Blog</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Menu</Link> </li>        
+                    <li ><a href="" className="text-white text-decoration-none">About App</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">Help Desk</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">Blog</a> </li>
+                    <li ><a href="" className="text-white text-decoration-none">Menu</a> </li>        
                 </ul>
                        
             </div>
@@ -71,6 +70,6 @@ export default function Footer() {
     </div>
 </div>
 </footer>
-
+</div>
   )
 }

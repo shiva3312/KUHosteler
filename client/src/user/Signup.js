@@ -41,7 +41,7 @@ const Signup = () => {
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: false });
-        signup({ fname,lname, email,gender, password,address,selfPhNo,profileType,hostelName,dob}).then(data => {
+ signup({ fname,lname, email,gender, password,address,selfPhNo,profileType,hostelName,dob}).then(data => {       
             if (data.error) {
                 setValues({ ...values, error: data.error, success: false });
             } else {

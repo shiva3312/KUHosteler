@@ -48,10 +48,10 @@ const Routes = () => {
                 <ManagerRoute path="/manager/studentprofile/:stuId/:userId" exact component={ManStuProfile} />
                 {/*student GetRoute */}
                 <PrivateRoute path="/student/home" exact component={StuHome} />
-                <PrivateRoute path="/student/mealRecord" exact component={StuBasicInfo} />
-                <PrivateRoute path="/student/paymentRecord" exact component={StuGuest} />
-                <PrivateRoute path="/student/helpdesk" exact component={StuMeal} />
-                <PrivateRoute path="/student/notice" exact component={StuRecords} />
+                <PrivateRoute path="/student/basicInfo" exact component={StuBasicInfo} />
+                <PrivateRoute path="/student/guest" exact component={StuGuest} />
+                <PrivateRoute path="/student/meal" exact component={StuMeal} />
+                <PrivateRoute path="/student/records" exact component={StuRecords} />
                 <PrivateRoute path="/student/addguest/:userId" exact component={StuHome} />          
                
             </Switch>
