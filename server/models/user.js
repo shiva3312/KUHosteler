@@ -8,34 +8,36 @@ const { ObjectId } = mongoose.Schema;
 const userSchema = new mongoose.Schema({
 
 //Basic info
-  name : { type: String, require : [true , 'Name is required'] },
+  fname : { type: String, require : [true , 'First Name is required'] },
+  lname : { type: String, require : [true , 'Last Name is required'] },
+  
   email :{ type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true } ,
   hashed_password : String,
   salt:String,
-  hostelName:{type: String, required: true },
-  department: String,
-  joiningDate: String,
+  hostelName:{ type :String, default:null},
+  department: { type :String, default:null},
+  passoutYear: { type :String, default:null},
   tag: String,  //diff type of tag ( maintanance , mess-prefect... etc)
-  roomNo: Number,
-  gender: String,
-  religion:String,
-  dob: String,
-  university:String,
+  roomNo: { type :Number, default:0},
+  gender: { type :String, default:null},
+  religion:{ type :String, default:null},
+  dob: { type :String, default:null},
+  university:{ type :String, default:null},
 
   //contact
-  guardian :String,
-  gPhNo :String,
+  guardian :{ type :String, default:null},
+  gPhNo :{ type :String, default:null},
   selfPhNo:String,
-  address: String,
-  image:String,
-  bio: String,
-  hostelId:String,
+  address: { type :String, default:null},
+  photo: { type: String },
+  bio: { type :String, default:null},
+  hostelId:{ type :String, default:null},
   membership:  { type :Number, default:0}, // notMember(0)| officalGuest(1) | member(2) | WasMember(3) | rejected Request(4)
 
   //other
   notification: { type :Number, default:0},
   salary:{ type :Number, default:0},
-  profileType: Number ,  // 0 student , 1 manager , 2 emplyee , 3 developer
+  profileType: { type :Number, default:0} ,  // 0 student , 1 manager , 2 employee , 3 admin
   abouthostel :{},
 
 //Meal
@@ -125,7 +127,7 @@ const userSchema = new mongoose.Schema({
      other:[{ type:Array,  default:[] }],
 
 //setting
-  appMode : Boolean, // dark or light
+  appMode : { type :Boolean, default:false}, // dark or light
   font:String,
 
 } ,  { timestamps: true } );

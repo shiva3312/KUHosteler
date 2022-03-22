@@ -73,13 +73,13 @@ const Signup = () => {
       <div className="col-12 col-md-7">
       <div className="card-body p-5 text-center " >
       <div className="mb-md-5 mt-md-4 pb-2">
-      <h2 className="fw-bold mb-2 text-uppercase text-white">Register as  </h2>
+      <h2 className="fw-bold mb-2 text-uppercase text-white">Register as {profileType == 0 ? "Student": ( profileType == 1 ? "Manager" :"Employee" ) }  </h2>
       <p className="text-white-50 mb-5">Please fill up the following details</p>
 
       <div className="col form-outline text-start form-white mb-4">
               <label className="form-label text-white" htmlFor="profileType">Profile Type</label>
               <select className="form-select" name="profileType" onChange={handleChange('profileType')} value={profileType}>
-                <option defaultValue="0" >Student</option>
+                <option value="0" >Student</option>
                 <option value="2" >Employee</option>
                 <option value="1">Manager</option>
               </select>
@@ -92,8 +92,7 @@ const Signup = () => {
           <div className="form-outline text-start form-white mb-4" >
             <label  className="form-label text-white" htmlFor="password" >Password</label>
             <input type="password" className="form-control" name="password" required="" onChange={handleChange('password')} value={password}/>
-          </div>
-  
+          </div>  
   
           <div className="row">
             <div className="col  form-outline text-start form-white mb-4" >
@@ -106,11 +105,10 @@ const Signup = () => {
             </div>
           </div>  
 
-          <div className="row">           
-          
+          <div className="row">         
             <div className="col form-outline text-start form-white mb-4">
-            <label className="form-label text-white" htmlFor="dob">Date Of Beath</label>
-            <input type="date" className="form-control" name="dob" required="" onChange={handleChange('dob')} value={dob} />        
+              <label className="form-label text-white" htmlFor="dob">Date Of Beath</label>
+              <input type="date" className="form-control" name="dob" required="" onChange={handleChange('dob')} value={dob} />        
             </div>
 
             <div className="col form-outline text-start form-white mb-4">
@@ -120,9 +118,7 @@ const Signup = () => {
                 <option value="Female" >Female</option>
                 <option value="Other">Other</option>
               </select>
-            </div>
-
-           
+            </div>           
 
           </div>
 
@@ -148,20 +144,17 @@ const Signup = () => {
           <div className="col form-outline text-start form-white mb-4">
             <label  className="form-label text-white" htmlFor="address">Address</label>
             <input type="text" className="form-control" name="address" required="" onChange={handleChange('address')} value={address} />        
-          </div> 
-        
+          </div>        
            
-    <div className="row">           
-    <div className="col ">
-        <Link to="/" ><button className="btn btn-outline-light btn-lg px-4 " type="submit" >Back to Home</button></Link>
-    </div>
-    <div className=" col ">
-    <button col className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Register</button>
-    </div>
-    </div>
-  
+          <div className="row">           
+              <div className="col ">
+                  <Link to="/" ><button className="btn btn-outline-light btn-lg px-4 " type="submit" >Back to Home</button></Link>
+              </div>
+              <div className="col">
+                  <button col className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Register</button>
+              </div>
+          </div>
   </div>
-   
    </div>
     </div>
     </div>
@@ -186,7 +179,8 @@ const Signup = () => {
         <div >
             {showSuccess()}
             {showError()}
-            {signUpForm(profileType)}
+            {signUpForm()}
+            {JSON.stringify(values)}
            
            
         </div>

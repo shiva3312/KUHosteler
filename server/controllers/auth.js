@@ -1,3 +1,6 @@
+const formidable = require('formidable');
+const _ = require('lodash');
+const fs = require('fs');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken'); // to generate signed token
 const expressJwt = require('express-jwt'); // for authorization check
@@ -6,40 +9,39 @@ const boundTime = require('../models/boundTime');
 
 // using promise
 exports.signup = (req, res) => {
-    // console.log("req.body", req.body);
-    const user = new User(req.body);
 
+        // console.log("req.body", req.body);
+    const user = new User(req.body);
     user.save((err, user) => {
         if (err) {
-          console.log(err);
             return res.status(400).json({
                 // error: errorHandler(err)
                 error: 'Email is taken'
             });
         }
-
-        //setting bound time in bound time databases
+       
+           //setting bound time in bound time databases
         if(user.profileType == 1){
-        const newMnagerInboudDB = new boundTime({
-          _id : user._id,
-          morBoundTime: '06:00',
-          nigBoundTime: "06:00",
-          hostelName: user.hostelName,
-          guestMorMealCharge:user.guestMorMealCharge,
-          guestNigMealCharge: user.guestNigMealCharge,
-          grandCharge: user.grandCharge,
-          lock:true
-        })
-        newMnagerInboudDB.save();
-      }
-        user.salt = undefined;
-        user.hashed_password = undefined;
-        res.json({user});
+            const newMnagerInboudDB = new boundTime({
+              _id : user._id,
+              morBoundTime: '06:00',
+              nigBoundTime: "06:00",
+              hostelName: user.hostelName,
+              guestMorMealCharge:user.guestMorMealCharge,
+              guestNigMealCharge: user.guestNigMealCharge,
+              grandCharge: user.grandCharge,
+              lock:true
+            })
+            newMnagerInboudDB.save();
+          }
+            user.salt = undefined;
+            user.hashed_password = undefined;
+            res.json({user});
     });
 
 };
 
-// using async/await
+// // using async/await
 // exports.signup = async (req, res) => {
 //     try {
 //         const user = await new User(req.body);
@@ -52,6 +54,24 @@ exports.signup = (req, res) => {
 //                     error: 'Email is taken'
 //                 });
 //             }
+
+//             //  setting bound time in bound time databases
+//              if(user.profileType == 1){
+//             const newMnagerInboudDB = new boundTime({
+//             _id : user._id,
+//              morBoundTime: '06:00',
+//              nigBoundTime: "06:00",
+//              hostelName: user.hostelName,
+//             guestMorMealCharge:user.guestMorMealCharge,
+//             guestNigMealCharge: user.guestNigMealCharge,
+//             grandCharge: user.grandCharge,
+//             lock:true
+//               })
+//         newMnagerInboudDB.save();
+//       }
+//         user.salt = undefined;
+//         user.hashed_password = undefined;
+
 //             res.status(200).json({ user });
 //         });
 //     } catch (err) {
@@ -80,8 +100,8 @@ exports.signin = (req, res) => {
         // persist the token as 't' in cookie with expiry date
         res.cookie('t', token, { expire: new Date() + 9999 });
         // return response with user and token to frontend client
-        const { _id, name, email, role } = user;
-        return res.json({ token, user: { _id, email, name, role } });
+     
+        return res.json({ token, user });
     });
 };
 

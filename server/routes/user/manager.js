@@ -53,10 +53,10 @@ router.get("/todaymealList/:userId",  allstudents );  //check student meal statu
 router.get("/allstudents/:userId", allstudents );
 router.get("/allemployee/:userId", allemployee);
 router.get("/studpayRecord/:stuId/:userId",studpayRecord);
-router.get("/gethelpSection/:userId" ,gethelpSection);
+router.get("/helpSection/:userId" ,gethelpSection);
 router.get("/notice/:userId", notice);
 router.get("/abouthostel/:userId",abouthostel);
-router.get("/getcost/:userId" ,getcost);
+router.get("/cost/:userId" ,getcost);
 router.get("studentprofile/:stuId/:userId",getStudentprofile);
 
 // router.post("/msgToManger/:userId",msgToManger);
@@ -76,7 +76,7 @@ router.put("/meal/messActivity/:userId",setmessActivity);
 router.put("/fchangeMealStatus/stu/:stuId/:userId",fchangeMealStatus)
 router.put("/setcost/:userId" ,setcost)
 router.put("/setboundtime/:userId" ,setboundtime)
-router.put("/setstudetnHostelId/:stuid/:userId",setstudetnHostelId);
+router.put("/setstudetnHostelId/:stuId/:userId",setstudetnHostelId);
 router.put("/setting/theme/:userId",theme);
 
 router.param('userId', userById);

@@ -1,7 +1,6 @@
 import { API } from '../config';
 
 export const signup = user => {
-    console.log(user);
     return fetch(`${API}/auth/signup`, {
         method: 'POST',
         headers: {
@@ -46,7 +45,7 @@ export const signout = next => {
     if (typeof window !== 'undefined') {
         localStorage.removeItem('jwt');
         next();
-        return fetch(`${API}/signout`, {
+        return fetch(`${API}/auth/signout`, {
             method: 'GET'
         })
             .then(response => {

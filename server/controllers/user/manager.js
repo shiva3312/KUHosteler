@@ -44,8 +44,8 @@ exports.allstudents = (req, res)=>{
     if(err || !users){
       return res.json({error: "Somthing went wrong"});
     } else {
-      return res.josn({ users: users});
-    }
+      return res.json({ students: users});
+    }1
   })
 }
 
