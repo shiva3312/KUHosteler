@@ -146,6 +146,7 @@ const Signup = () => {
             <input type="text" className="form-control" name="address" required="" onChange={handleChange('address')} value={address} />        
           </div>        
            
+
           <div className="row">           
               <div className="col ">
                   <Link to="/" ><button className="btn btn-outline-light btn-lg px-4 " type="submit" >Back to Home</button></Link>
@@ -154,6 +155,7 @@ const Signup = () => {
                   <button col className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Register</button>
               </div>
           </div>
+
   </div>
    </div>
     </div>
@@ -180,6 +182,7 @@ const Signup = () => {
             {showSuccess()}
             {showError()}
             {signUpForm()}
+
             {JSON.stringify(values)}
            
            

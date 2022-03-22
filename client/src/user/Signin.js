@@ -100,7 +100,10 @@ const Signin = () => {
 
     const redirectUser = () => {
         if (redirectToReferrer) {
+<<<<<<< HEAD
           
+=======
+>>>>>>> aac5a02d7eafc4dabc7ceb1860d75526d4d1d406
             if (user && user.profileType === 1){
                 return <Redirect to="/manager/dashboard" />;
             }else  if(user && user.profileType === 0){

@@ -29,7 +29,8 @@ const userSchema = new mongoose.Schema({
   gPhNo :{ type :String, default:null},
   selfPhNo:String,
   address: { type :String, default:null},
-  photo: { type: String },
+
+  image:String,
   bio: { type :String, default:null},
   hostelId:{ type :String, default:null},
   membership:  { type :Number, default:0}, // notMember(0)| officalGuest(1) | member(2) | WasMember(3) | rejected Request(4)
