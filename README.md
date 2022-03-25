@@ -65,28 +65,30 @@ An resoponsive WebApp which solve Hostel management problem and connect people
 
 
  ## `Client`
-    1. Instal react dependencies :
-      - Go to client file and run command ```npm i`` to intall the all require packages .
+ 
+   1. Instal react dependencies :
+       - Go to client file and run command ```npm i`` to intall the all require packages .
     
-    2. Run  :
-      - Run the client using command ```npm start```
-      - App will be run on ```http://localhost:3000```
+   2. Run  :
+       - Run the client using command ```npm start```
+       - App will be run on ```http://localhost:3000```
       
-         it will take few minutes in compilation and running the program .   
+         it will take few minutes in compilation and running the program .
 
          when you get msg like ..
-         Starting the development server...
-         Compiled successfully!
-         ...
-         some other info.....
-         ...
-         runtime modules 28.1 KiB 13 modules
-         webpack 5.69.1 compiled successfully in 60540 ms
+         ```
+            Starting the development server...
+            Compiled successfully!
+              ...
+               some other info.....
+               ...
+            runtime modules 28.1 KiB 13 modules
+            webpack 5.69.1 compiled successfully in 60540 ms
+          
+         ```
 
-         it means everything is perfectly runnting.
+        it means everything is perfectly running.
 
 
 
-         
-
-                                       happy coding ...
+         happy coding ...
