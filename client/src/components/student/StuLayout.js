@@ -10,9 +10,14 @@ const StuLayout = ({
     className,
     children,
    history
-}) => (
+}) => {
 
-    <>
+ const {user} = isAuthenticated();
+
+
+return(
+
+    <>   
 
     <div className="gradient">
     <nav className="navbar navbar-light ">
@@ -36,8 +41,8 @@ const StuLayout = ({
             </div>
             <div className=" bg-white pt-1 d-flex ">
                 <div className="media-body mb-1 text-dark">
-                    <h4 className="media mt-0 mb-0">Jukta Maitra</h4>
-                    <p className="small mb-4">Department of Engineering & Technological Studies</p>
+                    <h4 className="media mt-0 mb-0">{user.fname}  {user.lname}</h4>
+                    <p className="small mb-4">{user.department}</p>
                 </div>
             </div>
             <nav className=" col-8 navbar navbar-expand-lg p-1 navbar-light bg-white ">
@@ -48,8 +53,11 @@ const StuLayout = ({
 
                     <div className="collapse navbar-collapse ps-4" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto ">
-                       <li className="nav-item ps-2">
-                                <Link className="nav-link fw-bold" to="/student/home">My Profile</Link>
+                            <li className="nav-item ps-2">
+                                <Link className="nav-link fw-bold" to="/student/home">Home</Link>
+                            </li>
+                            <li className="nav-item ps-2">
+                                <Link className="nav-link fw-bold" to="/student/basicInfo">My Profile</Link>
                             </li>
                             <li className="nav-item ps-3  ">
                                 <Link className="nav-link fw-bold" to="/student/meal">Meal</Link>
@@ -81,6 +89,6 @@ const StuLayout = ({
     
 
     </>
-);
+)};
 
 export default StuLayout;

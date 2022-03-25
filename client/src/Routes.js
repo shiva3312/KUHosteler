@@ -52,7 +52,7 @@ const Routes = () => {
                 <PrivateRoute path="/student/guest" exact component={StuGuest} />
                 <PrivateRoute path="/student/meal" exact component={StuMeal} />
                 <PrivateRoute path="/student/records" exact component={StuRecords} />
-                <PrivateRoute path="/student/addguest/:userId" exact component={StuHome} />          
+                     
                
             </Switch>
         </BrowserRouter>

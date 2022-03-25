@@ -72,7 +72,7 @@ const userSchema = new mongoose.Schema({
 
 
 //payment records
-  payRecord: [ { auditDate : String, auditAmount:Number, totalFine :Number,due: Number , paid:Number }],
+  payRecord: [{  auditDate : String, auditAmount:Number, totalFine :Number,due: Number , paid:Number }],
   //committee member
     committeeMember: [{ membeberId:ObjectId, tag:String }],
   //staff
@@ -125,7 +125,7 @@ const userSchema = new mongoose.Schema({
     }],
 
   //default menu for mess
-     other:[{ type:Array,  default:[] }],
+  other:[{ type:Array,  default:[] }],
 
 //setting
   appMode : { type :Boolean, default:false}, // dark or light
