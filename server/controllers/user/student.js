@@ -1,4 +1,4 @@
-const User = require("../../models/user.js");
+const Student = require("../../models/user.js");
 /// indian date-time system
 var d = new Date();
 var utc = d.getTime() + (d.getTimezoneOffset() * 60000);

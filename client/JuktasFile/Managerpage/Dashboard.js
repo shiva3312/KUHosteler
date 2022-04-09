@@ -22,7 +22,7 @@ export default function Dashboard() {
                 </tr>
             </thead>
             <tbody   >              
-             <tr   ><td   colSpan="8"  className="text-center  text">No Request</td>
+             <tr ><td   colSpan="8"  className="text-center  text">No Request</td>
               
             </tr>
           </tbody>
