@@ -1,7 +1,6 @@
 .profile-head {
     transform: translateY(5rem)
 }
-
 .cover {
     background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg");
     background-size:cover;
@@ -24,8 +23,6 @@ body {
 .media-body{
     padding-left: 17rem;
 }
-
-
 .bg{
     background: linear-gradient(to right,rgb(73, 16, 204),purple);
 }
@@ -40,28 +37,25 @@ body {
     
 }
 .home-div{
-    border-style:ridge;
-   
+    border-style:ridge;  
 }
-
 @media only screen and (max-width: 450px) {
     .home-div {
         border: none;
-        font-size: smaller;
-      /* background-color: lightblue; */
+        font-size: smaller; 
     }
-   
-    
   }
- 
-  @media only screen and (max-width: 550px) {
+
+  @media only screen and (max-width: 574px) {
       .media-body{
           margin-top: 20px;
        padding-top: 56px;
-       padding-left: 120px;
-       padding-right: 120px;
-       
-        
+       padding-left: 90px;
+       padding-right: 90px; 
+      }
+      .social
+      {
+         text-align: center;
       }
       .img
       {
@@ -80,27 +74,24 @@ body {
     }
      
     hr {
-        border-width: 3px
+        border-width: 3px;
     }
     
     .card {
-        padding: 2% 7%
+        padding: 2% 7%;
+        position: relative;
+        width:100%;
     }
-    
     .social>i {
         padding: 1%;
         font-size: 15px
     }
-    
-   
-    
     .policy>div {
-        padding: 4px
+        padding: 4px;
     }
     
     .heading {
-        font-family: 'Titillium Web', sans-serif;
-        color: white
+       color: white
     }
     
     .divider {
@@ -115,14 +106,34 @@ body {
     
     ul>li {
         padding: 4px;
-        font-size: small;
-      
-    }
+        }
     
     ul>li:hover {
         font-size: small;
-        
-        cursor: pointer
+     cursor: pointer
     }
 
+    @media (max-width: 550px) {
+        .text1 {
+            display: none;
+            
+        }
+       
+        .ku{
+            text-align: center;
+        }
+      
+    }
+    
+    @media (min-width: 551px) {
+       .icon {
+            display: none;
+        }
+    }  
+   
+    .text1{
+        font-weight:600;   
+    }
+   
   
+   

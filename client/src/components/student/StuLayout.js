@@ -45,38 +45,44 @@ return(
                     <p className="small mb-4">{user.department}</p>
                 </div>
             </div>
-            <nav className=" col-8 navbar navbar-expand-lg p-1 navbar-light bg-white ">
-                <div className="container-fluid">
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse ps-4" id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-auto ">
-                            <li className="nav-item ps-2">
-                                <Link className="nav-link fw-bold" to="/student/home">Home</Link>
-                            </li>
-                            <li className="nav-item ps-2">
-                                <Link className="nav-link fw-bold" to="/student/basicInfo">My Profile</Link>
-                            </li>
-                            <li className="nav-item ps-3  ">
-                                <Link className="nav-link fw-bold" to="/student/meal">Meal</Link>
-                            </li>
-                            <li className="nav-item ps-3 ">
-                                <Link className="nav-link fw-bold" to="/student/guest/">Guest</Link>
-                            </li>
-                            <li className="nav-item ps-3 ">
-                                <Link className="nav-link fw-bold" to="/student/records">Payment</Link>
-                            </li>
-                            {/* <li className="nav-item ps-3">
+            <nav className="nav justify-content-center p-2 navbar-light  fs-6">
+               
+                  
+                                <Link className="navbar-brand fs-6 pe-1 ps-1 text-secondary" to="/student/home"><span className="text1">Home</span>
+                                 <span className="icon">
+                                <i  className=" fa fa-home fa-md pe-1 ps-1  text-secondary"></i>
+                                  </span></Link>
+                        
+                               <Link className="navbar-brand fs-6 pe-1 ps-1 text-secondary" to="/student/basicInfo">  
+                               <span className="text1 ">My Profile</span>
+                              <span className="icon ">
+                                <i  className=" fa fa-user-circle fa-md pe-1 ps-1  text-secondary"></i>
+                            </span></Link>
+                         
+                                <Link className="navbar-brand fs-6 pe-1 ps-1 text-secondary" to="/student/meal">
+                                    <span className="text1">Meal</span>
+                                    <span className="icon">
+                                 <i  className=" fa fa-glass fa-md pe-1 ps-1  text-secondary"></i>
+                             </span></Link>
+                         
+                               <Link className="navbar-brand fs-6 pe-1 ps-1 text-secondary" to="/student/guest/"><span className="text1">Add Guest</span>
+                                <span className="icon">
+                                 <i  className=" fa fa-user-plus fa-md pe-1 ps-1  text-secondary"></i>
+                                </span></Link>
+                           
+                              <Link className="navbar-brand fs-6 pe-1 ps-1 text-secondary" to="/student/records"><span className="text1">Payment</span>
+                              <span className="icon">
+                                <i  className=" fa fa-money fa-md pe-1 ps-1  text-secondary"></i>
+                            </span></Link>
+                           {/* <li className="nav-item ps-3">
                                 <Link className="nav-link fw-bold" to="#">Settings</Link>
                             </li>
                             <li className="nav-item ps-3">
                                 <Link className="nav-link fw-bold" to="#">Blog</Link>
                             </li> */}
-                        </ul>
-                    </div>                    
-                </div>
+                      
+                                     
+                
             </nav>
         </div>
     </div>
