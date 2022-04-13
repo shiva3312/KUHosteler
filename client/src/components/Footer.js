@@ -8,10 +8,10 @@ export default function Footer() {
         <div  className="containr-fluid ">
         <div  className="card bg-dark mt-2 ">
         <div  className="row ">
-            <div  className="col-md-4 col-sm-4 col-xs-4 ">
+            <div  className="ku col-md-4 col-sm-4 col-xs-4 ">
                  <div  className="footer-text pull-left">
-                    <div  className="d-flex">
-                        <h1  className="font-weight-bold mr-2  text-white" >KuHosteler</h1>
+                    <div  className="">
+                        <h1  className="head font-weight-bold mr-2  text-white" >KuHosteler</h1>
                      
                     </div>
                     <p  className="card-text text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi non pariatur numquam animi nam at impedit odit nisi.</p>
@@ -21,11 +21,10 @@ export default function Footer() {
             <div  className="col-md-2 col-sm-2 col-xs-2"></div>
             
             <div  className="col-md-2 col-sm-2 col-xs-2 ">
-                <h5  className="heading text-white pt-3 ">About </h5>
+                <h5  className="heading text-white pt-3 text-decoration-underline">About </h5>
                 <ul  className="heading card-text">
                     <li ><Link to="" className="text-white text-decoration-none">About Us</Link> </li>
                     <li ><Link to="" className="text-white text-decoration-none">Contact Us</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Contribute</Link> </li>
                     <li ><Link to="" className="text-white text-decoration-none">Support Us</Link> </li>        
                 </ul>
                    
@@ -36,8 +35,7 @@ export default function Footer() {
                     <li ><Link to="" className="text-white text-decoration-none">Suggest Feature</Link> </li>
                     <li ><Link to="" className="text-white text-decoration-none">Report Bug</Link> </li>
                     <li ><Link to="" className="text-white text-decoration-none">FAQ</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Get Started</Link> </li>        
-                </ul>
+               </ul>
                        
                   
                
@@ -47,8 +45,6 @@ export default function Footer() {
                 <ul  className="heading  card-text">
                     <li ><Link to="" className="text-white text-decoration-none">About App</Link> </li>
                     <li ><Link to="" className="text-white text-decoration-none">Help Desk</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Blog</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Menu</Link> </li>        
                 </ul>
                        
             </div>
