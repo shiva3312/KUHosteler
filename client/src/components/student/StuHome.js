@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+import {read} from './stuApi';
 import StuLayout from "./StuLayout";
 import { isAuthenticated } from "../../auth";
-import { Pie, defaults } from 'react-chartjs-2'
+import { Pie } from 'react-chartjs-2'
 import { Chart as ChartJS } from "chart.js/auto";
-import { Link } from "react-router-dom";
+
 import Footer from "../Footer"
 
 const UserDashboard = ({history}) => {  
     
-    const {  user } = isAuthenticated();
+    const {  user , token} = isAuthenticated();
+    const [ studData , setStuData] = useState( user);
+
+    // useEffect(()=>{
+    //   read( user._id, token).then((data)=>{
+    //     setStuData(data)
+    //     })
+    //   });
+
     const mealCount= {
         on : 0,
         off:0,
@@ -17,7 +26,8 @@ const UserDashboard = ({history}) => {
     };
 
     const calculateMealCount = ()=>{
-        user.activity.forEach((record)=>{           
+     
+      studData.activity.forEach((record)=>{           
             if(record.mess_status.toLowerCase() === "on")
             (mealCount.on++);
             else if(record.mess_status.toLowerCase() === "morning")
@@ -30,6 +40,7 @@ const UserDashboard = ({history}) => {
     }
 
     const showPieChart =()=>{
+
       calculateMealCount();
         return (
             <div  className="card mb-5">
@@ -81,16 +92,21 @@ const UserDashboard = ({history}) => {
           )
     }
 
+    
+
     const userInfo = () => {
+     
         return (
 
             <div  className="card mb-5">
                 <h3 className="card-header">User Information</h3>
                 <ul className="list-group">                    
-                    <li className="list-group-item">{user.fname} {user.lname}</li>
-                    <li className="list-group-item">{user.email}</li>
+                    <li className="list-group-item">{studData.fname} {user.lname}</li>
+                    
+                    <li className="list-group-item">{studData.messStatus}</li>
+                    <li className="list-group-item">{studData.email}</li>
                     <li className="list-group-item">
-                        {user.profileType === 1 ? "Admin" : "Registered User"}2
+                        {studData.profileType === 1 ? "Admin" : "Registered User"}2
                     </li>
                 </ul>
             </div>

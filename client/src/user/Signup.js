@@ -183,7 +183,7 @@ const Signup = () => {
             {showError()}
             {signUpForm()}
 
-            {JSON.stringify(values)}
+          
            
            
         </div>
