@@ -49,7 +49,7 @@ router.put("/meal/messActivity/:userId", messActivity);
 router.put("/setting/theme/:userId", theme);
 router.put("/updateguest/:userId" ,updateguest)
 
-router.delete("/removeguest/:userId" , removeguest);
+router.post("/removeguest/:userId" , removeguest);
 
 router.param('userId',userById);
 

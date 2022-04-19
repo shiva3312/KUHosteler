@@ -106,6 +106,7 @@ exports.setdob= (req,res)=>{
 }
 
 exports.addguest = (req, res)=>{
+
 const name = (req.body.name).toLowerCase();
 const startDate = new Date(req.body.startDate);
 const endDate = new Date(req.body.endDate);
@@ -128,10 +129,11 @@ let startTOendDate = (startDate <= endDate);
 let afterToday = ((currentDate < startDate) && (currentDate < endDate));
 
 //creating a new guest from start date to end date
-console.log( "1 :" + validationUnder30day + " 2:"+startTOendDate +"  3:"+ afterToday );
+
 if(!(validationUnder30day && startTOendDate  && afterToday )) {
     res.json({error : "Invalid Date"});
 } else {
+
   User.findOne({profileType:1, hostelName: req.profile.hostelName}, function(err, manager){
     if(err){
       console.log(err);
@@ -159,7 +161,7 @@ if(!(validationUnder30day && startTOendDate  && afterToday )) {
             nigCharge: manager.guestNigMealCharge,
           }
         } else if (i.getDate() == endDate.getDate() && i.getMonth() == endDate.getMonth() && i.getFullYear() == endDate.getFullYear()) {
-          console.log("In end  " + i);
+        
           newGuest = {
             date: pushDate,
             name: name,
@@ -170,7 +172,7 @@ if(!(validationUnder30day && startTOendDate  && afterToday )) {
             nigCharge: manager.guestNigMealCharge,
           }
         } else {
-          console.log("in other date " + i);
+        
           newGuest = {
             date: pushDate,
             guestHolderId: req.profile.id,
@@ -209,8 +211,7 @@ if(!(validationUnder30day && startTOendDate  && afterToday )) {
 
 exports.updateguest = (req, res)=>{
   const guestId = req.body.record;
-  console.log(guestId);
-    var  messTime = (req.body.messactivity).toLowerCase(); // req.body.messActivity : (N) / (M) / (M/N)
+      var  messTime = (req.body.messactivity).toLowerCase(); // req.body.messActivity : (N) / (M) / (M/N)
      User.findOneAndUpdate({_id:req.profile._id  ,active_guest_list: {$elemMatch: {_id: guestId}}}, {
        $set: {
          "active_guest_list.$.mealTime": messTime,
@@ -225,14 +226,15 @@ exports.updateguest = (req, res)=>{
 
 
 exports.removeguest = (req, res)=>{
-  const guestId = req.body.record;
-  User.findOneAndUpdate(req.profile._id , {$pull: {active_guest_list:{_id : guestId}}}, function(err , guestFound){
+  const guestId = req.body.guestId;
+  User.findOneAndUpdate({_id :req.profile._id }, {$pull: {active_guest_list:{_id : guestId}}}, function(err , guestFound){
     if(err || !guestFound ){
        return res.json({
          error: "Somthing went wrong"
        })
     }else{
-        return res.json({info :"Record Deleted successfully"});
+        return res.json({info :"Record Deleted successfully" , 
+      guest : guestFound});
     }
 })
 }

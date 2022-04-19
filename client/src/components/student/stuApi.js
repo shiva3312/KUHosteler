@@ -33,18 +33,35 @@ export const messActivity = (userId, token) => {
         .catch(err => console.log(err));
 };
 
-export const addGuest = (userId, token) => {
-    
+export const addGuest = (userId, token, values) => {
+    console.log(values);
         return fetch(`${API}/student/addguest/${userId}`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
-            }
+            },
+            body: JSON.stringify(values)
         })
             .then(response => {
                 return response.json();
             })
             .catch(err => console.log(err));
     };
+
+    export const deleteGuest = (userId, token, guestId) => {
+            return fetch(`${API}/student/removeguest/${userId}`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(guestId)
+            })
+                .then(response => {
+                    return response.json();
+                })
+                .catch(err => console.log(err));
+        };
