@@ -113,7 +113,8 @@ exports.signout = (req, res) => {
 
 exports.requireSignin = expressJwt({
     secret: process.env.JWT_SECRETE,
-    userProperty: 'auth',
+    userProperty: 'auth'
+   
 
 
 });
@@ -126,7 +127,6 @@ exports.isAuth = (req, res, next) => {
         });
     }
     console.log("isAuth passed");
-
     next();
 };
 

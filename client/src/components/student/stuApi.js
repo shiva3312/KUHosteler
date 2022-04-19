@@ -19,7 +19,6 @@ export const read = (userId, token) => {
 
 
 export const messActivity = (userId, token) => {
-console.log("api" , `${API}`);
     return fetch(`${API}/student/meal/messActivity/${userId}`, {
         method: "PUT",
         headers: {
@@ -35,7 +34,7 @@ console.log("api" , `${API}`);
 };
 
 export const addGuest = (userId, token) => {
-    console.log("api" , `${API}`);
+    
         return fetch(`${API}/student/addguest/${userId}`, {
             method: "POST",
             headers: {

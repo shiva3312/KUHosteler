@@ -11,12 +11,12 @@ const UserDashboard = ({history}) => {
     
     const {  user , token} = isAuthenticated();
     const [ studData , setStuData] = useState( user);
-
-    // useEffect(()=>{
-    //   read( user._id, token).then((data)=>{
-    //     setStuData(data)
-    //     })
-    //   });
+     
+    useEffect(()=>{
+      read( user._id, token).then((data)=>{
+        setStuData(data)
+        })
+      },[]);
 
     const mealCount= {
         on : 0,

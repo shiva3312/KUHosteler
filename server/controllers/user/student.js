@@ -1,4 +1,4 @@
-const Student = require("../../models/user.js");
+const User = require("../../models/user.js");
 /// indian date-time system
 var d = new Date();
 var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
@@ -30,11 +30,13 @@ exports.read = (req, res) => {
 };
 
 exports.messActivity =  (req, res) =>{
+
     User.findById(req.profile._id, (err, user) =>{
       if(err|| !user){
         return res.status(400).json({ error: "User Not Found"})
       } else {
         if(user.messStatus == 0 ){
+        
           return res.json({
             status: "Button is disabled",
             info : "Manager has turn off your Meal "})
@@ -44,7 +46,7 @@ exports.messActivity =  (req, res) =>{
         }
          user.save((err)=>{
           if(err)  return res.status(501).json({ error: "Mess Status has not changed"})
-          else {  return res.status(501).json({ error: "sucessfully changed"})}
+          else {  return res.status(200).json({ info: "sucessfully changed"})}
         });
       }
     })
