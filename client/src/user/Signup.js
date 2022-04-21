@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect , Link } from "react-router-dom";
 import '../css/global.css';
+import { signin, authenticate, isAuthenticated } from "../auth";
 import { signup } from '../auth';
 
 const Signup = () => {
@@ -16,7 +17,8 @@ const Signup = () => {
         address:'',
         dob:'',
         error: '',
-        success: false
+        success: false,
+        redirectToReferrer: false
     });
 
     const { 
@@ -31,7 +33,8 @@ const Signup = () => {
       address,
       dob,
       error,
-      success
+      success,
+      redirectToReferrer
       } = values;
 
     const handleChange = name => event => {
@@ -58,7 +61,9 @@ const Signup = () => {
                     address:'',
                     dob:'',
                     error: '',
-                    success: true
+                    success: true,
+                    redirectToReferrer: true
+
                 });
             }
         });
@@ -177,11 +182,18 @@ const Signup = () => {
         </div>
     );
 
+    const redirectUser = () => {
+      if (redirectToReferrer) {         
+              return <Redirect to="/auth/signin" />;
+      }
+  };
+
     return (
         <div >
             {showSuccess()}
             {showError()}
             {signUpForm()}
+            {redirectUser()}
 
           
            

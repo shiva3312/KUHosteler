@@ -52,6 +52,23 @@ exports.messActivity =  (req, res) =>{
     })
 };
 
+exports.resendreq= (req,res)=>{
+  User.findById(req.profile._id, (err, user)=>{
+    if(err || !user ) {
+      return res.json({error : "user not found"});
+    }
+    else {
+      user.membership = 5;
+      user.save();
+      return res.json({
+        info : "Request Send successfully"
+      })
+    }
+  })
+}
+
+
+
 exports.helpdesk = (req, res)=>{
   User.findOne({hostelName: req.profile.hostelName, profileType : 1 }, (err , manager)=>{
     if(err || !manager) {
@@ -199,8 +216,10 @@ if(!(validationUnder30day && startTOendDate  && afterToday )) {
             }
             else   return res.json({info : "Record successfully saved"});
           });
-        else
+        else if(req.profile.membership ==  3)
         return res.json({error :"You are no longer member of This Hostel"});
+        else 
+        return res.json({error :"Your membership is not activated"});
         }
       });
     }

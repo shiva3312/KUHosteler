@@ -100,9 +100,11 @@ const Signin = () => {
 
     const redirectUser = () => {
         if (redirectToReferrer) {
-            if (user && user.profileType === 1){
+            if(user && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
+                return <Redirect to="/user/info" />;
+            }else if (user && user.profileType === 1){
                 return <Redirect to="/manager/dashboard" />;
-            }else  if(user && user.profileType === 0){
+            }else  if(user && user.profileType === 0  && user.membership == 1){
                 return <Redirect to="/student/home" />;
             }
             // else if(user && user.profileType === 2){
@@ -111,7 +113,7 @@ const Signin = () => {
             //     return <Redirect to="/satff/home" />;
             // }
         }
-        if (isAuthenticated()) {
+        if (isAuthenticated()){
             console.log(isAuthenticated());
             return <Redirect to="/" />;
         }

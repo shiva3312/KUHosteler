@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signup from './user/Signup';
 import Signin from './user/Signin';
+import InfoPage from './user/InfoPage';
 import Landing from './components/Landing';
 import ManagerRoute from './auth/ManagerRoute';
 import PrivateRoute from './auth/PrivateRoute'
@@ -35,6 +36,7 @@ const Routes = () => {
                 <Route path="/" exact component={Landing} />
                 <Route path="/auth/signin" exact component={Signin} />
                 <Route path="/auth/signup" exact component={Signup} />
+                <Route path="/user/info" exact component={InfoPage} />
 
                 {/*manager GetRoute */}
                 <ManagerRoute path="/manager/dashboard" exact component={ManDashboard} />

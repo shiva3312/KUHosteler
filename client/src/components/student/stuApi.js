@@ -65,3 +65,18 @@ export const addGuest = (userId, token, values) => {
                 })
                 .catch(err => console.log(err));
         };
+
+        export const resendreq = (userId, token) => {
+            return fetch(`${API}/student/resendreq/${userId}`, {
+                method: "PUT",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+            })
+                .then(response => {
+                    return response.json();
+                })
+                .catch(err => console.log(err));
+        };

@@ -11,6 +11,7 @@ const {
     userById,
     read,
     messActivity,
+    resendreq,
     helpdesk,
     //editProfile,
     //abouthostel,
@@ -44,10 +45,11 @@ router.post("/addguest/:userId", addguest)
 
 // router.put("/editProfile/:userId",requireSignin,isAuth, editProfile);
 router.put("/meal/messActivity/:userId", messActivity);
-
+router.put("/resendreq/:userId", resendreq);
 
 router.put("/setting/theme/:userId", theme);
 router.put("/updateguest/:userId" ,updateguest)
+
 
 router.post("/removeguest/:userId" , removeguest);
 
