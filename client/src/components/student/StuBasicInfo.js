@@ -8,11 +8,10 @@ import Footer from "../Footer"
 const AdminDashboard = ({history}) => {  
     
     const {  user } = isAuthenticated();
-    console.log(user);
     const basicInfo = () => {
         return (
             <div  className="card mb-5 shadow-sm m-3">
-                <h3 className="card-header gradiant text-light text-center">Basic Info</h3>
+                <h3 className="card-header gradiant text-dark text-center">Basic Info</h3>
                 <ul className="list-group">
                 
                     <li className="list-group-item">{user.email}</li>
@@ -35,7 +34,7 @@ const AdminDashboard = ({history}) => {
     const constactInfo = () => {
         return (
             <div  className="card mb-5 shadow-sm m-3">
-                <h3 className="card-header gradiant text-light text-center">Contact Info</h3>
+                <h3 className="card-header gradiant text-dark text-center">Contact Info</h3>
                 <ul className="list-group">
                     <li className="list-group-item">{user.selfPhNo} </li>
                     <li className="list-group-item">{user.gPhNo}</li> 
@@ -47,8 +46,6 @@ const AdminDashboard = ({history}) => {
             </div>
         );
     };
-
-   
 
 
     return (

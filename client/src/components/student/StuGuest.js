@@ -1,7 +1,6 @@
 import React, { useState , useEffect } from "react";
 import StuLayout from "./StuLayout";
 import { isAuthenticated } from "../../auth";
-import { Link } from "react-router-dom";
 import Footer from "../Footer"
 import { addGuest ,read , deleteGuest } from "./stuApi";
 
@@ -74,57 +73,62 @@ const AddGuest = ({history}) => {
     useEffect(()=>{
         read(user._id, token).then((data) =>{
             setStuDate(data);
-        })
-    },[values , guest])
+        })        
+    },[values , guest]);
 
+    stuData.active_guest_list.sort(function(a,b){
+        return new Date(a.date) - new Date(b.date);
+      });
 
     const getAllGuest =() =>{
         
        return (
         
         <div  className="card mb-5 shadow-sm m-3">
-              <div id="guestlist" class="container align-middle lower-part mt-5 pt-5 mb-5 pb-5 ">
+              <div id="guestlist" className="container align-middle lower-part mt-5 pt-5 mb-5 pb-5 ">
 
-        <div class="row bg-dark">
-            <h3 class="display-6 text-light text-center text-middle p-3 "> Active Guest List</h3>
+        <div className="row bg-dark">
+            <h3 className="display-6 text-light text-center text-middle p-3 "> Active Guest List</h3>
         </div>
 
-        <div class="row">
-        <table class="table table-hover  " id="tableLevel-1">
+        <div className="row">
+        <table className="table table-hover  " id="tableLevel-1">
         <thead>
-          <tr class="bg-dark">
-            <th class="text-center align-middle text-light h4 p-4">SL</th>
-            <th class="text-center align-middle text-light h4">Date</th>
-            <th class="text-center align-middle text-light h4">Name </th>
-            <th class="text-center align-middle text-light h4">Meal Time </th>
-            <th class="text-center align-middle text-light h4" >Meal status</th>
-            <th class="text-center align-middle text-light h4" colSpan={2} >Activity</th>
+          <tr className="bg-dark">
+            <th className="text-center align-middle text-light h4 p-4">SL</th>
+            <th className="text-center align-middle text-light h4">Date</th>
+            <th className="text-center align-middle text-light h4">Name </th>
+            <th className="text-center align-middle text-light h4">Meal Time </th>
+            <th className="text-center align-middle text-light h4" >Meal status</th>
+            <th className="text-center align-middle text-light h4" colSpan={1} >Activity</th>
           </tr>
         </thead>
 
         <tbody>
-         {   stuData.active_guest_list.map((guest , i)=>(       
-            <tr class="" key={i}>
-            <td class="text-center align-middle  ">{i+1}</td>
-            <td class="text-center align-middle  ">{(guest.date).slice(0,15)}</td>
-            <td class="text-center align-middle  ">{guest.name} </td>
-            <td class="text-center align-middle  ">{guest.mealTime}</td>
-            {guest.mealStatus == false ?  <td class="text-center align-middle " >Listed</td> :
-            <td class="text-center align-middle " >Activated</td>
+        {  
+        stuData.active_guest_list.map((guest , i)=>(       
+        <tr className="table-warning" key={i}>
+            <td className="text-center align-middle  ">{i+1}</td>
+            <td className="text-center align-middle  ">{(guest.date).slice(0,15)}</td>
+            <td className="text-center align-middle  ">{guest.name.charAt(0).toUpperCase() + guest.name.slice(1)} </td>
+            {guest.mealTime=== 'on' ?<td className="text-center align-middle  ">Mor / Nig</td>:
+            <td className="text-center align-middle  ">{guest.mealTime}</td>}
+            {guest.mealStatus === false ?  <td className="text-center align-middle text-primary" >Listed</td> :
+            <td className="text-center align-middle text-success " >Activated</td>
          }
-            <td class="align-center align-middle  " >
+            <td className="align-center align-middle" >
                 <table  >
                     <tbody>
-                        <tr >
-                            <th> <button type="submit" className="btn btn-primary " >Edit</button></th>
-                            <th> <button type="submit" className="btn btn-danger " onClick={()=>deleteguest(guest._id)}>Delete</button></th>
+                        <tr className="" >
+                            {/* <th> <button type="submit" className="btn btn-primary " >Edit</button></th> */}
+                            <th> <button type="submit" className="btn btn-danger  " onClick={()=>deleteguest(guest._id)}>Delete</button></th>
                         </tr>
                     </tbody>
                 </table>
             </td>
-           </tr>
-             ))
-         }
+        </tr>
+        ))
+        }
 
         </tbody>
 
@@ -160,7 +164,7 @@ const AddGuest = ({history}) => {
                     <tr><td colSpan="2" className="lead"> From </td></tr>
                     <tr><td>
                             <select className="form-select"  onChange={handleChange('startoption')} value={startoption}>
-                                <option defaultValue="on">On</option>
+                                <option defaultValue="on">Morning/Night</option>
                                 <option value="morning">Only Morning</option>
                                 <option value="night">Only Night</option>
                             </select>

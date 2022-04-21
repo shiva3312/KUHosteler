@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema({
   religion:{ type :String, default:null},
   dob: { type :String, default:null},
   university:{ type :String, default:null},
+  session:String,  // Ex 2018-22 
 
   //contact
   guardian :{ type :String, default:null},
@@ -72,7 +73,13 @@ const userSchema = new mongoose.Schema({
 
 
 //payment records
-  payRecord: [{  auditDate : String, auditAmount:Number, totalFine :Number,due: Number , paid:Number }],
+  paymentRecord: [{  auditDate : String,
+                 auditAmount:{type:Number , default:0},
+                 totalFine :{type:Number , default:0},
+                 fineReason : String,
+                 paid:{type:Number , default:0}
+                }],
+
   //committee member
     committeeMember: [{ membeberId:ObjectId, tag:String }],
   //staff

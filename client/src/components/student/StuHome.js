@@ -97,16 +97,17 @@ const UserDashboard = ({history}) => {
     const userInfo = () => {
      
         return (
-
             <div  className="card mb-5">
                 <h3 className="card-header">User Information</h3>
                 <ul className="list-group">                    
                     <li className="list-group-item">{studData.fname} {user.lname}</li>
-                    
-                    <li className="list-group-item">{studData.messStatus}</li>
+                    {
+                      studData.messStatus == 0 || studData.messStatus==1 ? <li text-danger>Disable</li>:
+                      studData.messStatus == 2 ?  <li className="list-group-item text-success">ON</li> : <li className="list-group-item text-danager">OFF</li>
+                    }                   
                     <li className="list-group-item">{studData.email}</li>
                     <li className="list-group-item">
-                        {studData.profileType === 1 ? "Admin" : "Registered User"}2
+                        {studData.profileType === 1 ? "Admin" : "Registered User"}
                     </li>
                 </ul>
             </div>

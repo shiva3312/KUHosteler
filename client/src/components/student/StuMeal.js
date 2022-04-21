@@ -29,7 +29,9 @@ const MealAcitvity = ({history}) => {
         else setMealStatus(mealStatus  = 2); 
                 
     };
-
+    user.activity.sort(function(a,b){
+        return new Date(b.date) - new Date(a.date);
+      });
     const mealAcitvity = () => {
      
         return (
@@ -44,14 +46,14 @@ const MealAcitvity = ({history}) => {
                     <td>
                         {
                             mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
-                            mealStatus == 2 ? <button type="submit" className="btn btn-success" onClick={submit}>ON</button> : <button type="submit" className="btn btn-danger" onClick={submit}>OFF</button>
+                            mealStatus == 2 ? <button type="submit" className="btn btn-danger" onClick={submit}>OFF</button> : <button type="submit" className="btn btn-success" onClick={submit}>ON</button>
                         }
                     </td>
                 </tr>
             </table>
              </div>
             <div  className="card mb-5 shadow-sm m-3">
-                <h3 className="card-header gradiant text-light text-center">Meal Activity</h3>
+                <h3 className="card-header gradiant text-dark text-center">Meal Activity</h3>
                 <table className="table table-hover " id="tableLevel-2">
                     <thead>
                         <tr className="bg-dark">
@@ -59,15 +61,14 @@ const MealAcitvity = ({history}) => {
                             <th className="align-middle text-center text-light h5">Date</th>
                             <th className="align-middle text-center text-light h5" >Mess status</th>
                             <th className="align-middle text-center text-light h5" >Moring Charge</th>
-                            <th className="align-middle text-center text-light h5" >Night Charge</th>
-                           
+                            <th className="align-middle text-center text-light h5" >Night Charge</th>                           
                         </tr>
                     </thead>
                     <tbody>
                    { user.activity.map((rec , i)=>(
                         <tr className="table-warning" key={i}>                       
                             <td className="text-center align-middle ">{i+1}</td>
-                            <td className="text-center align-middle">{rec.date}</td>
+                            <td className="text-center align-middle">{rec.date.slice(0,15)}</td>
                             <td className="text-center align-middle">{rec.mess_status}</td>
                             <td className="text-center align-middle">{rec.morning_charge}</td>
                             <td className="text-center align-middle">{rec.night_charge}</td>

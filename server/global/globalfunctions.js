@@ -68,7 +68,7 @@ if (0)
 
         var date = new Date(guest.date);
         var dateValidation = current_date.getDate() == date.getDate() && current_date.getMonth() == date.getMonth();
-        var mealshiftValidation = (guest.mess_activity == 'morning' || guest.mess_activity == 'on');
+        var mealshiftValidation = (guest.mealTime == 'morning' || guest.mealTime == 'on');
 
         console.log(dateValidation +" "+mealshiftValidation);
 
@@ -87,7 +87,7 @@ if (0)
         }
 
          var  guestDate = (guest.date).slice(0,15)
-        if (guest.mess_activity == 'morning' && guestDate == push_date) {
+        if (guest.mealTime == 'morning' && guestDate == push_date) {
           // if guest.activity == 'morning' then pull the guest from manager.active_guest_list
           User.findOneAndUpdate({
             _id: student._id,
@@ -99,7 +99,7 @@ if (0)
             }
           }, function(err, guestFound) {});
 
-        } else if (guest.mess_activity == 'on' && guestDate == push_date) {
+        } else if (guest.mealTime == 'on' && guestDate == push_date) {
           //if guest.activity == 'on' then  update the guest details from manager.active_guest_list
           User.findOneAndUpdate({ _id: student._id,active_guest_list: { $elemMatch: { _id: guest._id  } } }, {
             $set: {
@@ -202,7 +202,7 @@ if (0)
           student.active_guest_list.forEach((guest, i) => {
             var date = new Date(guest.date);
             var dateValidation = current_date.getDate() == date.getDate() && current_date.getMonth() == date.getMonth();
-            var mealshiftValidation = (guest.mess_activity == 'night' );
+            var mealshiftValidation = (guest.mealTime == 'night' );
             var lock =0; // if lock is 0 this outer data will be pusher other wise id is matched and inner data will be pushed
             if (dateValidation && mealshiftValidation){
                 var guestName = guest.name;

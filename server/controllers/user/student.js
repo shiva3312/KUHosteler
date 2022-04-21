@@ -178,7 +178,7 @@ if(!(validationUnder30day && startTOendDate  && afterToday )) {
             guestHolderId: req.profile.id,
             name: name,
             mealStatus: 0,
-            mealTime: 'm/n',
+            mealTime: 'on',
             morCharge: manager.guestMorMealCharge,
             nigCharge: manager.guestNigMealCharge,
           }
