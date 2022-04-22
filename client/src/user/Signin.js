@@ -104,7 +104,7 @@ const Signin = () => {
                 return <Redirect to="/user/info" />;
             }else if (user && user.profileType === 1){
                 return <Redirect to="/manager/dashboard" />;
-            }else  if(user && user.profileType === 0  && user.membership == 1){
+            }else  if(user && user.profileType === 0  ){
                 return <Redirect to="/student/home" />;
             }
             // else if(user && user.profileType === 2){
