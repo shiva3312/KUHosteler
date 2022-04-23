@@ -1,60 +1,115 @@
-// List all the student and give require link and control
-//  1. force off/on the meal 
-//  2. membership activation/deactivation
-//  3. setting hostel Id
-//  4. view profile of the student / Records
-//  5. remove form hostel 
-//  6. make passout border
-//  7. 
-
-import React, { useState } from "react";
-import { getAllstudents  } from "./ManApi";
+import React, { useDebugValue, useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
-import { Link } from "react-router-dom";
+import Footer from "../Footer"
+import {  getAllstudents , updateMembershipStatus ,fchangeMealStatus} from "./ManApi";
 
-const AdminDashboard = () => {
 
-    const [student , setstudents] = useState([]);
-    const [error, setError] = useState(false);
-    const {  user , token } = isAuthenticated();   
-    const loadStudents = () => {
-        getAllstudents(user._id , token).then(data => {
+const StudentListInfo = () => {
+    const {  user,token } = isAuthenticated();
+    const [ students , setStudents] = useState([]); 
+    
+    const [reRender , setReRender] = useState(false);
+
+    const loadUsers=()=>{
+        getAllstudents(user._id, token).then((data)=>{ setStudents(data.students);});        
+    }
+
+    const toggleMembership = (stuId , status ) =>{
+        updateMembershipStatus(user._id, token , {memId: stuId , status:status} ).then((data)=>{
             if (data.error) {
-                setError(data.error);
+               console.log(data.error);
             } else {
-                console.log(data);
+               console.log(data.info);
             }
-        });
-    };
+        })
+        setReRender(!reRender);
+    }
 
-   
-    const adminInfo = () => {
+    const toggleMeal =(stuId , status)=>{
+        fchangeMealStatus(user._id, token, {stuId: stuId, status:status}).then((data)=>{
+            if(data.error) 
+            console.log(data.error);
+            else console.log(data.info);
+        })
+        setReRender(!reRender);
+    }
+
+    const viewDetails = (stuId ) =>{    
+       return (
+        <>
+        </>
+        );
+    }
+
+    useEffect(()=>{   
+        loadUsers();
+    },[reRender])
+
+ 
+    const studentList = () => {     
+     
         return (
             <div className="card mb-5">
-                <h3 className="card-header">User Information</h3>
-                <ul className="list-group">
-                    <li className="list-group-item">{user.fname} {user.lname}</li>
-                    <li className="list-group-item">{user.email}</li>
-                    <li className="list-group-item">
-                        {user.profileType === 1 ? "Admin" : "Registered User"}
-                    </li>
-                </ul>
+                <h3 className="card-header text-center">Student Request List</h3>
+               
+                <table className="table table-hover " id="tableLevel-2">
+                    <thead>
+                        <tr className="bg-dark">
+                            <th className="align-middle text-center text-light h5 p-3">SL</th>
+                            <th className="align-middle text-center text-light h5" >Picture</th>
+                            <th className="align-middle text-center text-light h5" >Name</th>
+                            <th className="align-middle text-center text-light h5" >Room No.</th>
+                            <th className="align-middle text-center text-light h5" >Membership</th> 
+                            <th className="align-middle text-center text-light h5" >Meal</th>   
+                            <th className="align-middle text-center text-light h5" colSpan={3} >Action</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                   {  students.map((student , i)=>(                      
+                        <tr className="table-warning" key={i}>                       
+                            <td className="text-center align-middle ">{i+1}</td>
+                            <td className="text-center align-middle"> </td>
+                            <td className="text-center align-middle">{student.fname} {student.lname}</td>
+                            <td className="text-center align-middle">{student.roomNo}</td>
+                            
+                            {student.membership ===2 ?                                
+                            <td className="text-center" > <button type="submit" className="btn btn-success "  onClick={()=>toggleMembership(student._id , 3)}>Border</button></td>:
+                            <td className="text-center"> <button type="submit" className="btn btn-danger "  onClick={()=>toggleMembership(student._id , 2)}>Ex Border</button></td>
+                            }
+                            {student.messStatus > 1 ?
+                                <td className="text-center"> <button type="submit" className="btn btn-danger  " onClick={()=>toggleMeal(student._id , 0)}>Turn OFF</button></td>:
+                                <td className="text-center"> <button type="submit" className="btn btn-success  " onClick={()=>toggleMeal(student._id ,2 )}>Turn ON</button></td>
+                            }
+                            
+                            <td className="text-center"> <button type="button" className="btn btn-primary" data-toggle="modal"  >View Details</button></td>                       
+                            
+                        </tr>
+                        ))}
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>                
             </div>
         );
     };
 
+
+ 
+
     return (
+        <>
         <ManLayout
-            title="All Students"
+            title="Dashboard"
             description={`${user.fname} ${user.lname}`}
             className="container-fluid"
         >
-            <div className="row">                
-               {loadStudents()}
-            </div>
+            <div className="row">                            
+              {studentList()} 
+            </div>           
         </ManLayout>
+        <Footer />
+        </>
     );
 };
 
-export default AdminDashboard;
+export default StudentListInfo;

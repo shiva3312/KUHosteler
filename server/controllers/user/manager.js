@@ -252,19 +252,20 @@ exports.setmessActivity = (req, res)=>{
 
 
 exports.fchangeMealStatus = (req, res)=>{
-  User.findOne({_id: req.body._id}, (err, user)=>{
+  const stuId = req.body.values.stuId;
+  const status = req.body.values.status;
+  User.findOne({_id: stuId}, (err, user)=>{
     if(err || !user ){
       return res.json({
         error : "Something went wrong"
       });
     }else{
-      user.messStatus ^= 2;
+      user.messStatus = status;
       user.save((err, result)=>{
         if(err) return res.json({error: err});
         else {
           return res.json({
-            status : "Meal Button Disabled sucessfully",
-            info : result.messStatus
+            info : "Successfully Changed"
           })
         }
       });

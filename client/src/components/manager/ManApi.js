@@ -236,15 +236,15 @@ export const messActivity = (userId, token, status) => {
 
 
 
-export const fchangeMealStatus = (userId, token,stuId, status) => {
-    return fetch(`${API}/manager/fchangeMealStatus/stu/${stuId}/${userId}`, {
+export const fchangeMealStatus = (userId, token,values) => {
+    return fetch(`${API}/manager/fchangeMealStatus/stu/${values.stuId}/${userId}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ status })
+        body: JSON.stringify({ values })
     })
         .then(response => {
             return response.json();
