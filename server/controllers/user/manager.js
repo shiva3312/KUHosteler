@@ -55,10 +55,28 @@ exports.allemployee = (req, res)=>{
     if(err || !users){
       return res.json({error: "Somthing went wrong"});
     } else {
-      return res.josn({ users: users});
+      return res.json({ users: users});
     }
   })
 }
+
+
+exports.allReqList = (req, res)=>{
+  User.find({hostelName : req.profile.hostelName , profileType: 0 ,$or :[{membership:0},{membership:5}] } , (err, students)=>{
+    if(err || !students){
+      return res.json({error: "Somthing went wrong with students List"});
+    } else {   
+       User.find({hostelName : req.profile.hostelName , profileType: 2 ,$or :[{membership:0},{membership:5}]} , (err, employees)=>{
+         if(err || !employees){
+            return res.json({error: "Somthing went wrong with employee list"});
+          } else {
+            return res.json({ employees, students});
+            }
+          })
+        }
+     })
+}
+
 
 
 exports.studpayRecord = (req, res)=>{
@@ -254,8 +272,6 @@ exports.fchangeMealStatus = (req, res)=>{
   })
 }
 
-
-
 exports.setstudetnHostelId = (req, res)=>{
   User.findOne({_id: req.body._id}, (err, user)=>{
     if(err || !user ){
@@ -277,61 +293,19 @@ exports.setstudetnHostelId = (req, res)=>{
   })
 }
 
-exports.activateAcoount =(req ,res)=>{
-  User.findById(req.body._id, (err , user)=>{
-    if(err || !user) return res.json({status:"Something went wrong"});
-
-    user.membership =1;
-    user.save((err, res)=>{
+exports.updateMembershipStatus =(req ,res)=>{
+  const status = req.body.values.status;
+  const userId = req.body.values.memId;
+  User.findById({_id:userId}, (err , user)=>{       
+    if(err || !user) return res.json({error:"Something went wrong"});
+    user.membership = status;   
+    user.save((err , result)=>{
       if(err) return res.json({error: err});
-      return res.json({status : "sucessfully saved"});
+      else
+      return res.json({info : "sucessfully Updated"});
     });
   })
-}
-exports.deactivateAccount =(req ,res)=>{
-  User.findById(req.body._id, (err , user)=>{
-    if(err || !user) return res.json({ status:"Something went wrong"});
-
-    user.membership =0;
-    user.save((err, res)=>{
-      if(err) return res.json({error: err});
-      return res.json({status : "sucessfully saved"});
-    });
-  })
-}
-exports.wasmember =(req ,res)=>{
-  User.findById(req.body._id, (err , user)=>{
-    if(err || !user) return res.json({ status:"Something went wrong"});
-
-    user.membership =2;
-    user.save((err, res)=>{
-      if(err) return res.json({error: err});
-      return res.json({status : "sucessfully saved"});
-    });
-  })
-}
-exports.rejectAccountCreation =(req ,res)=>{
-  User.findById(req.body._id, (err , user)=>{
-    if(err || !user) return res.json({ status:"Something went wrong"});
-
-    user.membership =3;
-    user.save((err, res)=>{
-      if(err) return res.json({error: err});
-      return res.json({status : "sucessfully saved"});
-    });
-  })
-}
-
-exports.officialguest =(req ,res)=>{
-  User.findById(req.body._id, (err , user)=>{
-    if(err || !user) return res.json({ status:"Something went wrong"});
-
-    user.membership = 4;
-    user.save((err, res)=>{
-      if(err) return res.json({error: err});
-      return res.json({status : "sucessfully saved"});
-    });
-  })
+  
 }
 
 exports.theme = (req, res)=>{

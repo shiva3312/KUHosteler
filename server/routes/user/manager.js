@@ -15,6 +15,7 @@ const {
     dashboard,
     allstudents,
     allemployee,
+    allReqList,
     studpayRecord,
     gethelpSection,
     notice,
@@ -35,11 +36,7 @@ const {
     setmessActivity,  // turn on  / turn off whole mess
     fchangeMealStatus, // forcefully manager can change the meal status of particular student
     setstudetnHostelId,
-    activateAcoount,
-    deactivateAccount,
-    rejectAccountCreation,
-    wasmember,
-    officialguest,
+    updateMembershipStatus,
     theme
   } = require("../../controllers/user/manager");
 
@@ -52,6 +49,7 @@ router.get("/dashboard/:userId", dashboard );
 router.get("/todaymealList/:userId",  allstudents );  //check student meal status and its guest on front-end side
 router.get("/allstudents/:userId", allstudents );
 router.get("/allemployee/:userId", allemployee);
+router.get("/allReqList/:userId", allReqList);
 router.get("/studpayRecord/:stuId/:userId",studpayRecord);
 router.get("/helpSection/:userId" ,gethelpSection);
 router.get("/notice/:userId", notice);
@@ -67,11 +65,7 @@ router.post("/sethelpSection/:userId",sethelpSection);
 
 
 // router.put("/editProfile/:userId",editProfile);
-router.put("/meal/activateAcoount/:stuId/:userId",activateAcoount);
-router.put("/meal/deactivateAccount/:stuId/:userId",deactivateAccount);
-router.put("/meal/rejectAccountCreation/:stuId/:userId",rejectAccountCreation);
-router.put("/meal/warmember/:stuId/:userId",wasmember);
-router.put("/meal/officialguest/:stuId/:userId",officialguest );
+router.put("/meal/activateAcoount/:stuId/:userId",updateMembershipStatus);
 router.put("/meal/messActivity/:userId",setmessActivity);
 router.put("/fchangeMealStatus/stu/:stuId/:userId",fchangeMealStatus)
 router.put("/setcost/:userId" ,setcost)
