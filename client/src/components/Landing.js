@@ -17,13 +17,13 @@ export default function Landing({history}) {
              <div className="collapse navbar-collapse ps-5" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto ">                            
                     <li className="nav-item ps-3 px-3">
-                        <Link className="nav-link fw-bold" href="#">About</Link>
+                        <Link className="nav-link fw-bold" to="#">About</Link>
                     </li>
                     <li className="nav-item ps-3 px-3">
-                        <Link className="nav-link fw-bold" href="#">Contact</Link>
+                        <Link className="nav-link fw-bold" to="#">Contact</Link>
                     </li>
                     <li className="nav-item ps-3 px-3">
-                        <Link className="nav-link fw-bold" href="#">Support</Link>
+                        <Link className="nav-link fw-bold" to="#">Support</Link>
                     </li>
                     {isAuthenticated() && (                       
                         <Link className="nav-item ps-3 px-3 pt-1"  onClick={() => signout(() => { history.push("/"); }) } >

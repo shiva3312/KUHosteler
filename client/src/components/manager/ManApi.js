@@ -64,6 +64,22 @@ export const getAllemployees = (userId, token) => {
         .catch(err => console.log(err));
 };
 
+export const getAllReqList = (userId, token) => {
+    return fetch(`${API}/manager/allReqList/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+
 export const getPaymentRecord = (stuId,userId, token) => {
     return fetch(`${API}/manager/studpayRecord/${stuId}/${userId}`, {
         method: "GET",
@@ -184,15 +200,16 @@ export const sethelpSection = (userId, token, records) => {
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<< PUT ROUTERS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-export const activateAcoount = (userId, token,stuId, status) => {
-    return fetch(`${API}/manager/meal/activateAcoount/${stuId}/${userId}`, {
+export const updateMembershipStatus = (manId, token, values) => {
+    console.log(values);
+    return fetch(`${API}/manager/meal/activateAcoount/${values.memID}/${manId}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ status })
+        body: JSON.stringify({ values })
     })
         .then(response => {
             return response.json();
@@ -200,70 +217,6 @@ export const activateAcoount = (userId, token,stuId, status) => {
         .catch(err => console.log(err));
 };
 
-
-export const deactivateAccount = (userId, token,stuId, status) => {
-    return fetch(`${API}/manager/meal/deactivateAccount/${stuId}/${userId}`, {
-        method: 'PUT',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ status })
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
-
-export const rejectAccountCreation = (userId, token,stuId, status) => {
-    return fetch(`${API}/manager/meal/rejectAccountCreation/${stuId}/${userId}`, {
-        method: 'PUT',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ status })
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
-
-export const warmember = (userId, token,stuId, status) => {
-    return fetch(`${API}/manager/meal/warmember/${stuId}/${userId}`, {
-        method: 'PUT',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ status })
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
-
-export const officialguest = (userId, token,stuId, status) => {
-    return fetch(`${API}/manager/meal/officialguest/${stuId}/${userId}`, {
-        method: 'PUT',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ status })
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
 
 export const messActivity = (userId, token, status) => {
     return fetch(`${API}/manager/meal/messActivity//${userId}`, {
