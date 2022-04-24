@@ -46,7 +46,7 @@ const Routes = () => {
                 <ManagerRoute path="/manager/studpayRecord/:stuId/:userId" exact component={ManStuProfile} />
                 <ManagerRoute path="/manager/notice" exact component={ManNotice} />
                 <ManagerRoute path="/manager/abouthostel" exact component={AboutHostel} />
-                <ManagerRoute path="/manager/getcost" exact component={ManCharge} />
+                <ManagerRoute path="/manager/charges" exact component={ManCharge} />
                 <ManagerRoute path="/manager/studentprofile/:stuId/:userId" exact component={ManStuProfile} />
                 {/*student GetRoute */}
                 <PrivateRoute path="/student/home" exact component={StuHome} />

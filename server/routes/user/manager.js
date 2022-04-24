@@ -12,7 +12,7 @@ const {
     userById,
 
     // GET ROUTER function
-    dashboard,
+    read,
     allstudents,
     allemployee,
     allReqList,
@@ -21,7 +21,7 @@ const {
     notice,
     abouthostel,  //get and post both
     getStudentprofile,
-    getcost,
+    getCharges,
 
     // POST ROUTER function .....
     msgToAllSturent,
@@ -31,7 +31,7 @@ const {
 
     // PUT ROUTER function
     editProfile,
-    setcost,
+    setCharges,
     setboundtime,
     setmessActivity,  // turn on  / turn off whole mess
     fchangeMealStatus, // forcefully manager can change the meal status of particular student
@@ -45,7 +45,7 @@ router.use("/*/:userId",requireSignin,isAuth,isManager, (req, res,next)=>{
     next();
 });
 
-router.get("/dashboard/:userId", dashboard );
+router.get("/read/:userId", read );
 router.get("/todaymealList/:userId",  allstudents );  //check student meal status and its guest on front-end side
 router.get("/allstudents/:userId", allstudents );
 router.get("/allemployee/:userId", allemployee);
@@ -54,7 +54,7 @@ router.get("/studpayRecord/:stuId/:userId",studpayRecord);
 router.get("/helpSection/:userId" ,gethelpSection);
 router.get("/notice/:userId", notice);
 router.get("/abouthostel/:userId",abouthostel);
-router.get("/cost/:userId" ,getcost);
+router.get("/getCharges/:userId" ,getCharges);
 router.get("studentprofile/:stuId/:userId",getStudentprofile);
 
 // router.post("/msgToManger/:userId",msgToManger);
@@ -68,7 +68,7 @@ router.post("/sethelpSection/:userId",sethelpSection);
 router.put("/meal/activateAcoount/:stuId/:userId",updateMembershipStatus);
 router.put("/meal/messActivity/:userId",setmessActivity);
 router.put("/fchangeMealStatus/stu/:stuId/:userId",fchangeMealStatus)
-router.put("/setcost/:userId" ,setcost)
+router.put("/setCharges/:userId" ,setCharges)
 router.put("/setboundtime/:userId" ,setboundtime)
 router.put("/setstudetnHostelId/:stuId/:userId",setstudetnHostelId);
 router.put("/setting/theme/:userId",theme);

@@ -3,7 +3,7 @@
 import { API } from "../../config";
 
 export const read = (userId, token) => {
-    return fetch(`${API}/student/home/${userId}`, {
+    return fetch(`${API}/student/read/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",

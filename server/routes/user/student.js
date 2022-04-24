@@ -31,7 +31,7 @@ router.use("/*/:userId",requireSignin,isAuth, (req, res,next)=>{
   next();
 });
 
-router.get("/home/:userId", read );
+router.get("/read/:userId", read );
 router.get("/mealRecord/:userId",  mealRecord);
 router.get("/paymentRecord/:userId", paymentRecord);
 router.get("/helpdesk/:userId", helpdesk);

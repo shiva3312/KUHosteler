@@ -25,18 +25,10 @@ await  User.findById(id).exec((err, user) => {
     });
 };
 
-
-exports.dashboard = (req , res)=>{
-  User.find({profileType: 0, hostelName: req.profile.hostelName },(err, Allstudents)=>{
-      if(err || !Allstudents){
-        res.json({error: "Somthing went worng"});
-      }else{
-        return  res.json({
-          students: Allstudents,
-          manager: req.profile
-        })
-      }
-  })
+exports.read = (req , res)=>{
+  req.profile.hashed_password = undefined;
+  req.profile.salt = undefined;
+  return res.json(req.profile);
 }
 
 exports.allstudents = (req, res)=>{
@@ -110,7 +102,7 @@ exports.getStudentprofile = (req, res)=>{
   })
 }
 
-exports.getcost = (req, res)=>{
+exports.getCharges = (req, res)=>{
   return res.json({
     guestMorMealCharge : req.profile.guestMorMealCharge,
     guestNigMealCharge : req.profile.guestNigMealCharge,
@@ -171,7 +163,7 @@ exports.sethelpSection = (req, res)=>{
 exports.editProfile = (req, res)=>{
 }
 
-exports.setcost = (req, res)=>{
+exports.setCharges = (req, res)=>{
   User.findOne({_id: req.profile._id}, (err, user)=>{
     if(err || !user ){
       return res.json({
@@ -180,11 +172,11 @@ exports.setcost = (req, res)=>{
     }else{
       user.guestMorMealCharge = req.body.guestMorMealCharge;
       user.guestNigMealCharge = req.body.guestNigMealCharge;
-      user.grandCharge = req.body.grandCharge;
-      user.newChargelist = req.body.newChargelist;
+      user.grandCharge = req.body.grandCharge;     
       user.save();
+      
 
-      //update charge into boundTime collection
+    //  update charge into boundTime collection
       BoundTime.findById(req.profile._id , (err, manager)=>{
         if(err || !manager) return res.json({err:"something went wrong"});
         manager.guestMorMealCharge = user.guestMorMealCharge;
@@ -194,7 +186,7 @@ exports.setcost = (req, res)=>{
           if(err) return res.json({error: err});
           else {
             return res.json({
-              status : "cost updated sucessfully",
+              info : "cost updated sucessfully",
             })
           }
         });

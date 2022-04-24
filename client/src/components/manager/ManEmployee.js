@@ -83,7 +83,7 @@ const EmployeeListInfo = () => {
     return (
         <>
         <ManLayout
-            title="Dashboard"
+            title="Employees"
             description={`${user.fname} ${user.lname}`}
             className="container-fluid"
         >

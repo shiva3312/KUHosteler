@@ -4,7 +4,7 @@ import { API } from "../../config";
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< GET ROUTERS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 export const read = (userId, token) => {
-    return fetch(`${API}/manager/dashboard/${userId}`, {
+    return fetch(`${API}/manager/read/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -140,8 +140,8 @@ export const getAboutHostel = (userId, token) => {
         .catch(err => console.log(err));
 };
 
-export const getCosts = (userId, token) => {
-    return fetch(`${API}/manager/cost/${userId}`, {
+export const getCharges = (userId, token) => {
+    return fetch(`${API}/manager/getCharges/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -253,15 +253,15 @@ export const fchangeMealStatus = (userId, token,values) => {
 };
 
 
-export const setcost = (userId, token, status) => {
-    return fetch(`${API}/manager/setcost/${userId}`, {
+export const setCharges = (userId, token, values) => {
+    return fetch(`${API}/manager/setCharges/${userId}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ status })
+        body: JSON.stringify(values)
     })
         .then(response => {
             return response.json();

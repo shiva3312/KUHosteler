@@ -99,7 +99,7 @@ const StudentListInfo = () => {
     return (
         <>
         <ManLayout
-            title="Dashboard"
+            title="Student"
             description={`${user.fname} ${user.lname}`}
             className="container-fluid"
         >
