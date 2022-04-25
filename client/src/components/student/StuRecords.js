@@ -37,12 +37,12 @@ const MealAcitvity = ({ history }) => {
                         <table cellpadding="0" cellspacing="0" border="0">
                             <thead>
                                 <tr>
-                                    <th>SL</th>
+                                    <th>SL no.</th>
                                     <th>Date</th>
                                     <th>Audit Amount</th>
                                     <th>Paid</th>
                                     <th>Fine</th>
-                                    <th>Due Amount</th>
+                                    <th>Due </th>
 
                                 </tr>
                             </thead>
