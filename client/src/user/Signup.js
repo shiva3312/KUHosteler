@@ -17,6 +17,7 @@ const Signup = () => {
         address:'',
         dob:'',
         error: '',
+        avatar:'',
         success: false,
         redirectToReferrer: false
     });
@@ -33,6 +34,7 @@ const Signup = () => {
       address,
       dob,
       error,
+      avatar,
       success,
       redirectToReferrer
       } = values;
@@ -44,7 +46,7 @@ const Signup = () => {
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: false });
- signup({ fname,lname, email,gender, password,address,selfPhNo,profileType,hostelName,dob}).then(data => {       
+ signup({ fname,lname, email,gender, password,address,selfPhNo,profileType,hostelName,dob,avatar}).then(data => {       
             if (data.error) {
                 setValues({ ...values, error: data.error, success: false });
             } else {
@@ -61,6 +63,7 @@ const Signup = () => {
                     address:'',
                     dob:'',
                     error: '',
+                    avatar:'',
                     success: true,
                     redirectToReferrer: true
 
@@ -83,7 +86,7 @@ const Signup = () => {
 
       <div className="col form-outline text-start form-white mb-4">
               <label className="form-label text-white" htmlFor="profileType">Profile Type</label>
-              <select className="form-select" name="profileType" onChange={handleChange('profileType')} value={profileType}>
+              <select className="form-select" name="profileType" onChange={handleChange('profileType')} value={profileType} >
                 <option value="0" >Student</option>
                 <option value="2" >Employee</option>
                 <option value="1">Manager</option>
@@ -92,28 +95,28 @@ const Signup = () => {
 
         <div className="form-outline text-start form-white mb-4" >
             <label  className="form-label text-white" htmlFor="email" >Email</label>
-            <input required="" type="email" className="form-control" name="username" onChange={handleChange('email')} value={email} />
+            <input required="true" type="email" className="form-control" name="username" onChange={handleChange('email')} value={email}  />
           </div>
           <div className="form-outline text-start form-white mb-4" >
             <label  className="form-label text-white" htmlFor="password" >Password</label>
-            <input type="password" className="form-control" name="password" required="" onChange={handleChange('password')} value={password}/>
+            <input type="password" className="form-control" name="password" required="true" onChange={handleChange('password')} value={password}  />
           </div>  
   
           <div className="row">
             <div className="col  form-outline text-start form-white mb-4" >
               <label  className="form-label text-white" htmlFor="fname" >First Name</label>
-              <input type="text" className="form-control" name="fname" required="" onChange={handleChange('fname')} value={fname}/>
+              <input type="text" className="form-control" name="fname" required="true" onChange={handleChange('fname')} value={fname}/>
             </div>
             <div className=" col  form-outline text-start form-white mb-4">
               <label  className="form-label text-white" htmlFor="lname">Last Name</label>
-              <input type="text" className="form-control" name="lname" required="" onChange={handleChange('lname')} value={lname}/>
+              <input type="text" className="form-control" name="lname" required="true" onChange={handleChange('lname')} value={lname}/>
             </div>
           </div>  
 
           <div className="row">         
             <div className="col form-outline text-start form-white mb-4">
               <label className="form-label text-white" htmlFor="dob">Date Of Beath</label>
-              <input type="date" className="form-control" name="dob" required="" onChange={handleChange('dob')} value={dob} />        
+              <input type="date" className="form-control" name="dob" required="true" onChange={handleChange('dob')} value={dob} />        
             </div>
 
             <div className="col form-outline text-start form-white mb-4">
@@ -129,7 +132,7 @@ const Signup = () => {
 
           <div className="col form-outline text-start form-white mb-4" >  
             <label className="form-label text-white" htmlFor="hostelName" >Hostel Name</label>
-              <select id="hostelName" className="form-control" name="hostelName" required="" onChange={handleChange('hostelName')} value={hostelName}>
+              <select id="hostelName" className="form-control" name="hostelName" required="true" onChange={handleChange('hostelName')} value={hostelName}>
               
                 <option defaultValue="btmens" >BT MEN'S</option>
                 <option value="banyan">BANYAN</option>
@@ -143,12 +146,12 @@ const Signup = () => {
           
           <div className="col form-outline text-start form-white mb-4">
             <label  className="form-label text-white" htmlFor="selfPhNo">Mobile Number</label>
-            <input type="text" className="form-control" name="selfPhNo" required="" onChange={handleChange('selfPhNo')} value={selfPhNo} />        
+            <input type="text" className="form-control" name="selfPhNo" required="true" onChange={handleChange('selfPhNo')} value={selfPhNo} />        
           </div>
         
           <div className="col form-outline text-start form-white mb-4">
             <label  className="form-label text-white" htmlFor="address">Address</label>
-            <input type="text" className="form-control" name="address" required="" onChange={handleChange('address')} value={address} />        
+            <input type="text" className="form-control" name="address" required="true" onChange={handleChange('address')} value={address} />        
           </div>        
            
 

@@ -36,7 +36,7 @@ return(
             <div className="px-5 pt-4 pb-0 cover">
                 <div className="media align-items-end profile-head">
                     <div className="profile ps-3 mr-5 mt-5">
-                        <img className="img mb-2 img-thumbnail" src="https://images.unsplash.com/photo-1422728280635-45167d8b7197?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTU3fHxwZXJzb258ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="..." width="190" /></div>
+                        <img className="img mb-2 img-thumbnail" src={user.avatar} alt="..." width="190" /></div>
                 </div>
             </div>
             <div className=" bg-white pt-1 d-flex ">
