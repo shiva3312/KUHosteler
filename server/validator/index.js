@@ -5,6 +5,9 @@ exports.userSignupValidator = (req, res, next) => {
 
     req.check('fname', 'Name is required').notEmpty();
     req.check('lname', 'Name is required').notEmpty();
+    req.check('dob', 'Date of Birth is Required').notEmpty();
+    req.check('hostelName', 'Hostel Name is required').notEmpty();
+   
 
     req.check('email', 'Email must be between 3 to 32 characters')
         .matches(/.+\@.+\..+/)
