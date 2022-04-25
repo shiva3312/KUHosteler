@@ -84,44 +84,54 @@ const AddGuest = ({history}) => {
         
        return (
         
-        <div  className="card mb-5 shadow-sm m-3">
-              <div id="guestlist" className="container align-middle lower-part mt-5 pt-5 mb-5 pb-5 ">
+        <> <h1>Active guest list</h1>
+        <section className="shadow">
+        
+        
+       
 
-        <div className="row bg-dark">
-            <h3 className="display-6 text-light text-center text-middle p-3 "> Active Guest List</h3>
-        </div>
-
-        <div className="row">
-        <table className="table table-hover  " id="tableLevel-1">
+        <div className="shadow tbl-header" id="guestlist">
+        <table cellpadding="0" cellspacing="0" border="0" id="tableLevel-1">
         <thead>
-          <tr className="bg-dark">
-            <th className="text-center align-middle text-light h4 p-4">SL</th>
-            <th className="text-center align-middle text-light h4">Date</th>
-            <th className="text-center align-middle text-light h4">Name </th>
-            <th className="text-center align-middle text-light h4">Meal Time </th>
-            <th className="text-center align-middle text-light h4" >Meal status</th>
-            <th className="text-center align-middle text-light h4" colSpan={1} >Activity</th>
+          <tr>
+            <th>SL</th>
+            <th>Date</th>
+            <th>Name </th>
+            <th >Meal Time </th>
+            <th  >Meal status</th>
+            <th colSpan={1} >Activity</th>
           </tr>
         </thead>
-
-        <tbody>
+        </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
         {  
         stuData.active_guest_list.map((guest , i)=>(       
-        <tr className="table-warning" key={i}>
-            <td className="text-center align-middle  ">{i+1}</td>
-            <td className="text-center align-middle  ">{(guest.date).slice(0,15)}</td>
-            <td className="text-center align-middle  ">{guest.name.charAt(0).toUpperCase() + guest.name.slice(1)} </td>
-            {guest.mealTime=== 'on' ?<td className="text-center align-middle  ">Mor / Nig</td>:
-            <td className="text-center align-middle  ">{guest.mealTime}</td>}
-            {guest.mealStatus === false ?  <td className="text-center align-middle text-primary" >Listed</td> :
-            <td className="text-center align-middle text-success " >Activated</td>
+        <tr  key={i}>
+            <td>{i+1}</td>
+            <td >{(guest.date).slice(0,15)}</td>
+            <td >{guest.name.charAt(0).toUpperCase() + guest.name.slice(1)} </td>
+            {guest.mealTime=== 'on' ?<td >Mor & Nig</td>:
+            <td >{guest.mealTime}</td>}
+            {guest.mealStatus === false ?  <td className=" fw-bold">Listed</td> :
+            <td >Activated</td>
          }
-            <td className="align-center align-middle" >
+            <td >
                 <table  >
                     <tbody>
-                        <tr className="" >
+                        <tr  >
                             {/* <th> <button type="submit" className="btn btn-primary " >Edit</button></th> */}
-                            <th> <button type="submit" className="btn btn-danger  " onClick={()=>deleteguest(guest._id)}>Delete</button></th>
+                            <th> <button type="submit" className="button btn-sm btn-danger  " onClick={()=>deleteguest(guest._id)}>Delete
+                        
+                                
+                            </button> 
+                            <span>
+                        <i  className="fa fa-trash-o text-danger fa-lg pe-2 ps-2" onClick={()=>deleteguest(guest._id)}></i>
+                             
+                        </span>
+                              </th>
                         </tr>
                     </tbody>
                 </table>
@@ -134,34 +144,32 @@ const AddGuest = ({history}) => {
 
         </table>
         </div>
-        </div>
-        </div>
+      </section>
+      </>
         
     )
     }
 
     const addGuestForm = () => {
         return (
-           
-        <div id="addguest" className=" card mb-5 container bg-light mb-5 pb-5 ">
-        <div className="bg-dark ">
-            <h3 className="display-6 text-light text-center text-middle ">Add Guest</h3>
-        </div>
-               
-        <form className="row g-3" >
-            <div className="col-lg-3 col-sm-12">
-                <table className="table table-borderless">
+            <> <h1>Add new guest</h1>
+            <section > 
+         <form className=" row mt-2 justify-content-center" >
+             
+         <div id="addguest" className="tbl-header
+   col-lg-2">
+           <table  cellpadding="0" cellspacing="0" border="0">
                     <tbody>
-                    <tr><td colSpan="" className="lead"> Name </td></tr>
+                    <tr><td colSpan="" className="text-start lead"> Name </td></tr>
                     <tr><td><input type="Name" className="form-control" id="inputEmail" placeholder=" Enter Guest Name"  required  onChange={handleChange('name')} value={name}></input></td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <div className="col-lg-4 col-sm-12">
-                <table className="table table-borderless">
+            <div className="tbl-header col-lg-4 col-sm-12">
+                <table cellpadding="0" cellspacing="0" border="0">
                     <tbody>
-                    <tr><td colSpan="2" className="lead"> From </td></tr>
+                    <tr><td colSpan="2" className="text-start lead"> From </td></tr>
                     <tr><td>
                             <select className="form-select"  onChange={handleChange('startoption')} value={startoption}>
                                 <option defaultValue="on">Morning/Night</option>
@@ -175,32 +183,34 @@ const AddGuest = ({history}) => {
                 </table>
             </div>
 
-            <div className="col-lg-4 col-sm-12">
-                <table className="table table-borderless">
+            <div className="tbl-header col-lg-4 col-sm-12">
+                <table cellpadding="0" cellspacing="0" border="0">
                     <tbody>
-                    <tr><td colSpan="2" className="lead"> To </td></tr>
+                    <tr><td colSpan="3" className="text-start lead"> To </td></tr>
                     <tr><td>
                         <select className="form-select"  onChange={handleChange('endoption')} value={endoption}>
                             <option defaultValue="on">On</option>
                             <option value="morning">Only Morning</option>
                             <option value="night">Only Night</option>
                         </select>
-                    </td><td><input type="date" className="form-control"  onChange={handleChange('endDate')} value={endDate} required></input></td></tr>
+                    </td><td><input type="date" className="form-control"  onChange={handleChange('endDate')} value={endDate} required></input></td>
+                    <td width="10%"><button className="btn btn-success" onClick ={clickSubmit}>Add</button></td> </tr>
                     </tbody>
                 </table>
             </div>
-
-            <div className="col-lg-1 col-sm-12 text-end">
-                <table className="table table-borderless">
+{/* 
+            <div className="tbl-header col-lg-1 col-sm-12 text-end">
+                <table cellpadding="0" cellspacing="0" border="0">
                     <tbody>
-                    <tr><td  className="lead ">. </td></tr>
+                    <tr><td  className="text-start lead "></td></tr>
                     <tr><td width="10%"><button className="btn btn-success" onClick ={clickSubmit}>Add</button></td> </tr>
                     </tbody>
                 </table>
 
-            </div>
+            </div> */}
         </form>
-        </div>
+        </section>
+        </>
     )};
 
     const showError = () => (
@@ -210,8 +220,9 @@ const AddGuest = ({history}) => {
     );
 
     const showSuccess = () => (
-        <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
+        <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ display: success ? '' : 'none' }}>
             Guest is Successfully added
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     );
 
