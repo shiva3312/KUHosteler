@@ -8,7 +8,6 @@ import { Chart as ChartJS } from "chart.js/auto";
 import Footer from "../Footer"
 
 const UserDashboard = ({history}) => {  
-    
     const {  user , token} = isAuthenticated();
     const [ studData , setStuData] = useState( user);
      
@@ -43,33 +42,37 @@ const UserDashboard = ({history}) => {
 
       calculateMealCount();
         return (
-            <div  className="card mb-5">
-              <Pie
+          <>
+          <div className="pt-5 pb-1 card pb-2 mt-5 mb-4 th">
+          <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">PIE CHART</h4>
+          <Pie 
                 data={{
                   labels: ['OFF', 'M/N', 'M', 'N'],
+                 
                   datasets: [
                     {
                       label: '# of votes',
                       data: [mealCount.off, mealCount.on, mealCount.mor, mealCount.mor],
                       backgroundColor: [
-                        'rgba(255, 9, 13, 0.6)',
-                        'rgba(54, 162, 12, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(0, 0, 0, 0.4)', 
+                        '#efb8ef',
+                        '#781a78',
+                        '#e27ce2',
+                        '#491049', 
                        
                       ],
+                     
                       borderColor: [
-                        'rgba(255, 9, 13, 1)',
-                        'rgba(54, 162, 12, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(0, 0, 0, 0.5)',                       
+                        'white',
+                        'white',
+                        'white',
+                        'white',                       
                       ],
-                      borderWidth: 1,
+                      borderWidth: 3,
                     },
                   ],
                 }}
-                height={400}
-                width={600}
+                height={750}
+                width={750}
                 // options={{
                 //   maintainAspectRatio: false,
                 //   scales: {
@@ -88,7 +91,10 @@ const UserDashboard = ({history}) => {
                 //   },
                 // }}
               />
-            </div>
+          
+       </div>
+            
+            </>
           )
     }
 
@@ -96,21 +102,45 @@ const UserDashboard = ({history}) => {
 
     const userInfo = () => {
      
-        return (
-            <div  className="card mb-5">
-                <h3 className="card-header">User Information</h3>
-                <ul className="list-group">                    
-                    <li className="list-group-item">{studData.fname} {user.lname}</li>
+        return(
+         
+            <div className="pt-5 card pb-5 mt-5 ms-auto th">
+            <h4 className="shadow card-head pt-2 pb-2 mb-3 gradiant text-light text-center">USER INFORMATION</h4>
+           <ul className="con shadow p-2 ">                    
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{studData.fname} {user.lname}</li>
                     {
-                      studData.messStatus == 0 || studData.messStatus==1 ? <li text-danger>Disable</li>:
-                      studData.messStatus == 2 ?  <li className="list-group-item text-success">ON</li> : <li className="list-group-item text-danager">OFF</li>
+                      studData.messStatus == 0 || studData.messStatus==1 ? <li className="text-danger">Disable</li>:
+                      studData.messStatus == 2 ?  <li className="dt ps-3 list-group p-2 shadow ms-5 me-5 m-3 text-success">ON</li> : <li className="dt ps-3 list-group p-2 shadow ms-5 me-5 m-3 text-danger">OFF</li>
                     }                   
-                    <li className="list-group-item">{studData.email}</li>
-                    <li className="list-group-item">
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{studData.email}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">
                         {studData.profileType === 1 ? "Admin" : "Registered User"}
                     </li>
                 </ul>
-            </div>
+            
+         </div>
+
+//         <table >
+//   <tr>
+//     <th>Name:</th>
+//     <td>{studData.fname} {user.lname}</td>
+//   </tr>
+//   <tr>
+//     <th>Meal Status:</th>
+//     {
+//                      studData.messStatus == 0 || studData.messStatus==1 ? <td text-danger>Disable</td>:
+//                        studData.messStatus == 2 ?  <td className="list-group-item text-success">ON</td> : <td className="list-group-item text-danager">OFF</td>
+//              }  
+//   </tr>
+//   <tr>
+//   <th>Email:</th>
+//   <td>{studData.email}</td>
+//   </tr>
+//   <tr>
+//   <th>ProfileType:</th>
+//   <td>{studData.profileType === 1 ? "Admin" : "Registered User"} </td>
+//   </tr>
+// </table>
         );
     };
 
@@ -119,11 +149,19 @@ const UserDashboard = ({history}) => {
         <>
         <StuLayout history={history} >
             {/* show your content in this div */}
-            <div className="row " >                
-                <div  className="col mb-0">{userInfo()}</div>
-                <div  className="col mb-0">{showPieChart()}</div>
-            </div>
            
+            <div className="row m-3" >                
+            {/* <div className="wrapper"> */}
+             <div className="col-md-7 box"> {userInfo()}
+             {/* <div  className="col mb-0">{userInfo()}</div> */}
+             </div>   
+             {/* <div class="middle"></div>     */}
+             {/* if i remove middle then it looks like parallel */}       
+             <div className="col-md-5 box "> {showPieChart()}
+              {/* <div  className="col mb-0">{showPieChart()}</div> */}
+            </div>
+            </div>
+            {/* </div> */}
         </StuLayout>
         <Footer />
         </>       

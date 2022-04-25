@@ -3,26 +3,26 @@ import StuLayout from "./StuLayout";
 import { isAuthenticated } from "../../auth";
 import { Link } from "react-router-dom";
 import Footer from "../Footer"
-
+import "../../css/student.css";
+import '../../css/global.css';
 
 const AdminDashboard = ({history}) => {  
     
     const {  user } = isAuthenticated();
     const basicInfo = () => {
         return (
-            <div  className="card mb-5 shadow-sm m-3">
-                <h3 className="card-header gradiant text-dark text-center">Basic Info</h3>
-                <ul className="list-group">
-                
-                    <li className="list-group-item">{user.email}</li>
-                    <li className="list-group-item">{user.membership===1? "Activated" : "Deactivated"}</li>
-                    <li className="list-group-item">{user.hostelName}</li>
-                    <li className="list-group-item">{user.roomNo}</li>                 
-                    <li className="list-group-item">{user.hostelId}</li>                         
-                    <li className="list-group-item">{user.bio}</li>                  
-                    <li className="list-group-item">{user.dob}</li>
-                    <li className="list-group-item">{user.address}</li>
-                    <li className="list-group-item">
+            <div  className="gradiant pt-5 card pb-5  ">
+               <h4 className="shadow card-head pt-2 pb-2 th text-light text-center">BASIC INFO</h4>
+                    <ul className=" con shadow">
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.email}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.membership===1? "Activated" : "Deactivated"}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.hostelName}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.roomNo}</li>                 
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.hostelId}</li>                         
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.bio}</li>                  
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.dob}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.address}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">
                         {user.profileType === 1 ? "Admin" : "Registered User"}2
                     </li>
                 </ul>
@@ -33,13 +33,13 @@ const AdminDashboard = ({history}) => {
 
     const constactInfo = () => {
         return (
-            <div  className="card mb-5 shadow-sm m-3">
-                <h3 className="card-header gradiant text-dark text-center">Contact Info</h3>
-                <ul className="list-group">
-                    <li className="list-group-item">{user.selfPhNo} </li>
-                    <li className="list-group-item">{user.gPhNo}</li> 
-                    <li className="list-group-item">{user.guardian}</li>
-                    <li className="list-group-item">
+            <div className="pt-5 card pb-5 gradiant">
+            <h4 className="shadow card-head pt-2 pb-2 th text-light text-center">CONTACT INFO</h4>
+           <ul className="con shadow">
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.selfPhNo} </li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.gPhNo}</li> 
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{user.guardian}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">
                         {user.profileType === 1 ? "Admin" : "Registered User"}2
                     </li>
                 </ul>
