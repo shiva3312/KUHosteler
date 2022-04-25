@@ -10,8 +10,7 @@ const Layout = ({
     children
 }) => (
     <div>
-        <Menu />
-        <hr></hr>
+        <Menu />        
         <div className="jumbotron">
             <h2  className="text-center text-middle pt-5">{title}</h2>           
         </div>

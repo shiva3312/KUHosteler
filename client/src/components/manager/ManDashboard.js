@@ -3,7 +3,14 @@ import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
 import Footer from "../Footer"
 import { Line  } from "react-chartjs-2";
-import { updateMembershipStatus, getAllstudents,getAllemployees,getAllReqList } from "./ManApi";
+import { updateMembershipStatus,
+         getAllstudents,
+         getAllemployees,
+         getAllReqList ,
+         getAllGuest,
+         updateGuestMealStatus,
+        removeGuest
+        } from "./ManApi";
 
 
 const AdminDashboard = () => {
@@ -12,6 +19,8 @@ const AdminDashboard = () => {
     const [ employees , setEmployees] = useState([]);
     const [stuReqList , setStuReqList] = useState([]);
     const [empReqList , setEmpReqList] = useState([]);
+    const [allListedGuest , setAllListedGuest] = useState([]);
+    const [allactivatedGuest , setAllactivatedGuest] =useState([]);
     const [countStuGuest , setcountStuGuest] = useState(0);
     const [rederOnchange , setrenderOnchange] = useState(false);
     const [auditinfo , setAuditInfo] = useState({
@@ -46,17 +55,14 @@ const AdminDashboard = () => {
         getAllstudents(user._id, token).then((data)=>{             
             let count = 0;
             data.students.forEach(stu => { count+= stu.active_guest_list.length; }); 
-
             setcountStuGuest(count);
             setStudents(data.students);             
         });        
         getAllemployees(user._id, token).then((data)=>{ setEmployees(data.users); });
-
-        setAuditInfo({
-            charges:[...charges],
-            months:[...months],
-            totalFine:[...totalFine]
-        })
+        setAuditInfo({ charges:[...charges],  months:[...months], totalFine:[...totalFine]  });
+        getAllGuest(user._id , token).then((data)=>{ setAllListedGuest(data.allListedGuest)  });
+        getAllGuest(user._id , token).then((data)=>{ setAllactivatedGuest(data.allactivatedGuest) });
+   
    
     }
     
@@ -71,10 +77,27 @@ const AdminDashboard = () => {
         setrenderOnchange(!rederOnchange);
     }
 
-    useEffect(()=>{   
-        loadUsers();
-        AllReqList();
-    },[rederOnchange])
+    const changeGeustMealStatus =(guestId , userId ,status)=>{
+        updateGuestMealStatus(user._id, token , {guestId , userId , status} ).then((data)=>{
+            if (data.error) {
+               console.log(data.error);
+            } else {
+               console.log(data.info);
+            }
+        })
+        setrenderOnchange(!rederOnchange); 
+    }
+
+    const deleteGuest = (guestId , userId)=>{
+        removeGuest(user._id, token , {guestId , userId} ).then((data)=>{
+            if (data.error) {
+               console.log(data.error);
+            } else {
+               console.log(data.info);
+            }
+        })
+        setrenderOnchange(!rederOnchange); 
+    }
 
     const basicInfoCards =()=>{
         return (
@@ -125,10 +148,10 @@ const AdminDashboard = () => {
     const studentReqList = () => {     
         if(stuReqList.length===0) return <></>
         return (
-            <div className="card mb-5">
+            <div className=" mb-5">
                 <h3 className="card-header text-center">Student Request List</h3>
                
-                <table className="table table-hover " id="tableLevel-2">
+                <table className="table table-hover ">
                     <thead>
                         <tr className="bg-dark">
                             <th className="align-middle text-center text-light h5 p-3">SL</th>
@@ -142,10 +165,10 @@ const AdminDashboard = () => {
                     </thead>
                     <tbody>
                    {  stuReqList.map((student , i)=>(                      
-                        <tr className="table-warning" key={i}>                       
+                        <tr className="" key={i}>                       
                             <td className="text-center align-middle ">{i+1}</td>
                             <td className="text-center align-middle">{student.createdAt.slice(0,10)}</td>
-                            <td className="text-center align-middle"> </td>
+                            <td className="text-center align-middle"> <img className="img mb-2 img-thumbnail" src={student.avatar} alt="..." width="75" /></td>
                             <td className="text-center align-middle">{student.fname} {student.lname}</td>
                             <td className="text-center align-middle">{student.department}</td>   
                             <td className="text-center align-middle">{student.selfPhNo}</td>                               
@@ -237,6 +260,100 @@ const AdminDashboard = () => {
        
       }
 
+    const listedGuest=()=>{
+        if(allListedGuest.length===0) return <></>
+        return (
+            <div className=" mb-5">
+                <h3 className="card-header text-center">Listed Guest Meal Request List</h3>
+               
+                <table className="table table-hover ">
+                    <thead>
+                        <tr className="bg-dark">
+                            <th className="align-middle text-center text-light h5 p-3">SL</th>
+                            <th className="align-middle text-center text-light h5" >Guest Name</th>
+                            <th className="align-middle text-center text-light h5" >Guest Type</th>
+                            <th className="align-middle text-center text-light h5" >Guest Holder</th>
+                            <th className="align-middle text-center text-light h5" >Department</th>    
+                            <th className="align-middle text-center text-light h5" >Mob No.</th>
+                            <th className="align-middle text-center text-light h5" >Room No</th> 
+                            <th className="align-middle text-center text-light h5" colSpan={2} >Action</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                   { allListedGuest.map((guest , i)=>(                      
+                        <tr className="" key={i}>                       
+                            <td className="text-center align-middle ">{i+1}</td>                           
+                            <td className="text-center align-middle">{guest.name}</td>
+                            {
+                                guest.guestType ==0 ? <td className="text-center align-middle">Normal</td> :
+                                <td className="text-center align-middle">Official</td>
+                            }
+                            
+                            <td className="text-center align-middle">{guest.holderName}</td>
+                            <td className="text-center align-middle">{guest.holderDeapartment}</td>   
+                            <td className="text-center align-middle">{guest.holderMobNo}</td> 
+                            <td className="text-center align-middle">{guest.holderRoomNo}</td>                              
+                            <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td>
+                            <td> <button type="submit" className="btn btn-danger  " onClick={()=>deleteGuest(guest._id,guest.holderId )}>Remove</button></td>                       
+                        </tr>
+                        ))}
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>                
+            </div>
+        );
+    }
+
+    const activatedGuest=()=>{
+        if(allactivatedGuest.length===0) return <></>
+        return (
+            <div className=" mb-5">
+                <h3 className="card-header text-center">Activated Meal Guest List</h3>
+               
+                <table className="table table-hover ">
+                    <thead>
+                        <tr className="bg-dark">
+                            <th className="align-middle text-center text-light h5 p-3">SL</th>
+                            <th className="align-middle text-center text-light h5" >Guest Name</th>
+                            <th className="align-middle text-center text-light h5" >Guest Type</th>
+                            <th className="align-middle text-center text-light h5" >Guest Holder</th>
+                            <th className="align-middle text-center text-light h5" >Department</th>    
+                            <th className="align-middle text-center text-light h5" >Mob No.</th>
+                            <th className="align-middle text-center text-light h5" >Room No</th> 
+                            <th className="align-middle text-center text-light h5" colSpan={2} >Action</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                   { allactivatedGuest.map((guest , i)=>(                      
+                        <tr className="" key={i}>                       
+                            <td className="text-center align-middle ">{i+1}</td>                           
+                            <td className="text-center align-middle">{guest.name}</td>
+                            {
+                                guest.guestType ==0 ? <td className="text-center align-middle">Normal</td> :
+                                <td className="text-center align-middle">Official</td>
+                            }
+                            
+                            <td className="text-center align-middle">{guest.holderName}</td>
+                            <td className="text-center align-middle">{guest.holderDeapartment}</td>   
+                            <td className="text-center align-middle">{guest.holderMobNo}</td> 
+                            <td className="text-center align-middle">{guest.holderRoomNo}</td>                              
+                            <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td>
+                            <td> <button type="submit" className="btn btn-danger  " onClick={()=>deleteGuest(guest._id,guest.holderId )}>Remove</button></td>                       
+                        </tr>
+                        ))}
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>                
+            </div>
+        );
+    }
+
+    
+    useEffect(()=>{   
+        loadUsers();
+        AllReqList();
+    },[rederOnchange])  
+
     return (
         <>
         <ManLayout
@@ -244,12 +361,13 @@ const AdminDashboard = () => {
             description={`${user.fname} ${user.lname}`}
             className="container-fluid"
         >
-            <div className="row">  
-                          
-              {studentReqList()}
-              {staffReqList()}
-              {basicInfoCards()}
-              {showPieChart()}
+            <div className="row">
+            {studentReqList()}
+            {staffReqList()}  
+            {activatedGuest()}
+            {listedGuest()}           
+            {basicInfoCards()}
+            {showPieChart()}
               
             </div>           
         </ManLayout>

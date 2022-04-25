@@ -171,6 +171,37 @@ export const getStudentprofile = (stuId,userId, token) => {
         .catch(err => console.log(err));
 };
 
+export const getPreparedMealList = (userId, token) => {
+    return fetch(`${API}/manager/preparedMealList/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const getAllGuest = (userId, token) => {
+    
+    return fetch(`${API}/manager/getallguest/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
 
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<< POST ROUTERS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -182,7 +213,7 @@ export const sethelpSection = (userId, token, records) => {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: records
+        body: JSON.stringify({ records })
     })
         .then(response => {
             return response.json();
@@ -201,7 +232,6 @@ export const sethelpSection = (userId, token, records) => {
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<< PUT ROUTERS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 export const updateMembershipStatus = (manId, token, values) => {
-    console.log(values);
     return fetch(`${API}/manager/meal/activateAcoount/${values.memID}/${manId}`, {
         method: 'PUT',
         headers: {
@@ -216,6 +246,39 @@ export const updateMembershipStatus = (manId, token, values) => {
         })
         .catch(err => console.log(err));
 };
+
+export const updateGuestMealStatus = (userId, token, values) => {
+    return fetch(`${API}/manager/updateguestmeal/${userId}`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({values})
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const removeGuest = (userId, token , values) => {
+    return fetch(`${API}/manager/removeguest/${userId}`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({values})
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
 
 
 export const messActivity = (userId, token, status) => {

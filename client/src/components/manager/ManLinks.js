@@ -24,7 +24,7 @@ const Menu = ({ history }) => (
             </li>
 
             <li className="nav-item">            
-            <Link to="/manager/todaymealList" ><button className="btn btn-outline-light btn-lg px-4" type="submit" >Meal List</button></Link>           
+            <Link to="/manager/preparedMealList" ><button className="btn btn-outline-light btn-lg px-4" type="submit" >Meal List</button></Link>           
             </li>
 
             {isAuthenticated() && (

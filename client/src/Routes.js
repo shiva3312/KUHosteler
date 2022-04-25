@@ -40,7 +40,6 @@ const Routes = () => {
 
                 {/*manager GetRoute */}
                 <ManagerRoute path="/manager/dashboard" exact component={ManDashboard} />
-                <ManagerRoute path="/manager/todaymealList" exact component={ManMeal} />
                 <ManagerRoute path="/manager/allstudents" exact component={ManStudents} />
                 <ManagerRoute path="/manager/allemployee" exact component={ManEmployee} />
                 <ManagerRoute path="/manager/studpayRecord/:stuId/:userId" exact component={ManStuProfile} />
@@ -48,13 +47,18 @@ const Routes = () => {
                 <ManagerRoute path="/manager/abouthostel" exact component={AboutHostel} />
                 <ManagerRoute path="/manager/charges" exact component={ManCharge} />
                 <ManagerRoute path="/manager/studentprofile/:stuId/:userId" exact component={ManStuProfile} />
+
+
                 {/*student GetRoute */}
                 <PrivateRoute path="/student/home" exact component={StuHome} />
                 <PrivateRoute path="/student/basicInfo" exact component={StuBasicInfo} />
                 <PrivateRoute path="/student/guest" exact component={StuGuest} />
                 <PrivateRoute path="/student/meal" exact component={StuMeal} />
                 <PrivateRoute path="/student/records" exact component={StuRecords} />
-                     
+
+                {/* global Route */}
+                <PrivateRoute path="/manager/preparedMealList" exact component={ManMeal} />                    
+
                
             </Switch>
         </BrowserRouter>

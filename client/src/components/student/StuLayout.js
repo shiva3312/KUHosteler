@@ -25,7 +25,7 @@ return(
             <h3 className="ps-5  text-white">KuHosteler</h3>
             <div className="d-flex justify-content-end"></div>
             {isAuthenticated() && (
-                <Link className="nav-item ps-3 px-3 pt-1"  onClick={() => signout(() => { history.push("/auth/signin"); }) } >
+                <Link className="nav-item ps-3 px-3 pt-1" to={"/"}  onClick={() => signout(() => { history.push("/auth/signin"); }) } >
                 <button className="pt-1 pb-1 btn btn-outline-light fw-bold" type="submit">Signout</button>
                  </Link>
              )}          

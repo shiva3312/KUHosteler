@@ -10,7 +10,10 @@ const PostSchema = new Schema({
   guestMorMealCharge:Number,
   guestNigMealCharge: Number,
   grandCharge: Number,
-  lock: Boolean
+  lock: Boolean, // to handle record pushing 
+  borderMealList:[],
+  guestMealList:[]
+
 });
 
 module.exports = mongoose.model('boundTime', PostSchema);

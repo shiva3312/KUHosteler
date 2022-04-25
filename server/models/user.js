@@ -16,13 +16,12 @@ const userSchema = new mongoose.Schema({
   salt:String,
   hostelName:{ type :String, default:null},
   department: { type :String, default:null},
-  passoutYear: { type :String, default:null},
-  tag: String,  //diff type of tag ( maintanance , mess-prefect... etc)
+  hostelTag: { type :String, default:null},  //diff type of tag ( maintanance , mess-prefect... etc)
   roomNo: { type :Number, default:0},
   gender: { type :String, default:null},
   religion:{ type :String, default:null},
   dob: { type :String, default:null},
-  university:{ type :String, default:null},
+  university:{ type :String, default:"University of kalyani"},
   session:String,  // Ex 2018-22 
 
   //contact
@@ -64,7 +63,7 @@ const userSchema = new mongoose.Schema({
   active_guest_list: [{
       date: String,
       guestHolderId: {type: ObjectId , ref:'user'},
-      mealStatus : Boolean, // activated(0) or Listed(1)
+      mealStatus : Boolean, // activated(1) or Listed(0)
       mealTime:String, // moring & Night | night |mor | OFF
       name: String,
       morCharge: { type :Number, default:0},

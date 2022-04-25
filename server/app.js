@@ -69,8 +69,11 @@ app.use('/student', require('./routes/user/student'));
   //             boundTime.findById(user._id , (err, manager)=>{
   //               if(err || !manager) console.log("something went wrong");
   //               else {
-  //                 manager.lock = false;
-  //                 manager.save();
+  //                  manager.lock = false; 
+  //                  //this function will prepare mealList of corresponding hostel
+  //                     prepareMealList(user.hostelName);                     
+  //                  manager.save();
+
   //               }
   //             })
   //         }

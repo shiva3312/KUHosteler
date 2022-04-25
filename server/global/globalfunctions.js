@@ -1,29 +1,84 @@
-const fs = require('fs');
-const data= require('../dbs/boundTime.json');
 const User= require('../models/user');
+const boundTime = require('../models/boundTime')
+var mongoose = require('mongoose');
 
-exports.readJSON = ()=>{
-try{
-  fs.readFileSync('./dbs/boundTime.json' , 'UTF-8' , (err, result)=>{
+
+// indian date-time system
+var d = new Date();
+var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+// current_date is of 24h system .....
+var current_date = new Date(utc + (3600000*+5.5));
+// current_date12 is 12h system
+var current_date12 =  current_date.toLocaleString();
+const isMorning = current_date.getHours >=1 && current_date.getHours<=11;
+
+
+
+
+
+
+exports.prepareMealList =async (hostelName)=>{
+  boundTime.findOne({hostelName:hostelName},(err, manager)=>{
+    // free up borderMealList the meal list beforing saving new meal list 
+    manager.borderMealList.forEach((rec)=>{
+      boundTime.findOneAndUpdate({hostelName: hostelName},
+        { $pull: { borderMealList: { _id : rec._id }}}, function(err, guestFound){});  
+    });
+    // free up guestMealList the meal list beforing saving new meal list 
+    manager.guestMealList.forEach((rec)=>{
+      boundTime.findOneAndUpdate({hostelName: hostelName},
+        { $pull: { guestMealList: { _id : rec._id }}}, function(err, guestFound){});  
+    });
+   
     if(err) console.log(err);
-    else {
-      const data = JSON.parse(result);
-      console.log(data.boundTIme);
+    else {     
+      User.find({hostelName:hostelName}, (err , students)=>{
+        if(err) console.log(err);
+        else{             
+          students.forEach((student)=>{
+            if(student.messStatus == 3){              
+              let rec = {
+                _id : new mongoose.Types.ObjectId(),
+                fname : student.fname,
+                lname : student.lname,
+                avatar: student.avatar,                
+                department : student.department,
+                roomNo : student.roomNo  
+              }                         
+              manager.borderMealList.push(rec);              
+            }
+            student.active_guest_list.forEach((guest)=>{
+              const currDateInString = current_date.toDateString();
+              console.log(currDateInString.slice(0,15) , " --- " , guest.date.slice(0,15));
+              console.log(currDateInString.slice(0,15) === guest.date.slice(0,15));
+              console.log(isMorning && guest.mealTime == "night");
+              // if time is morning and gues mealTime is night then don't push the records otherwise push in all cases
+                if(!(isMorning && guest.mealTime == "night")){
+                if(currDateInString.slice(0,15) === guest.date.slice(0,15) && guest.mealStatus == 1){
+                  let newGuestRec = {
+                    _id :new mongoose.Types.ObjectId(),
+                    name : guest.name,
+                    guestHolder : student.fname + " " + student.lname ,
+                    guestType: student.profileType
+                  }
+                  manager.guestMealList.push(newGuestRec);                 
+                }}                
+            });            
+          });
+        }
+        manager.save((err)=>{
+          if(err){
+            console.log(err);
+          }
+        });
+      });   
     }
-  })
+  });
 }
-  catch(err){
-    console.log(err);
-  }
-}
-
-
 
 exports.pushMealRecords = async (hostelName , guestMorCharge, guestNigCharge , grandCharge) => {
 var morCharge = 0
 var nigCharge = 0;
-console.log("working");
-console.log(hostelName);
   //push morning
 User.find({
   profileType: 0,
@@ -35,9 +90,7 @@ User.find({
   var push_date = curr_date.slice(0, 15);
   Allstudent.forEach(function(student) {
     console.log("each student getting access");
-///////////////////////////////////////////////// MORNING ////////////////////////////////////////////////////////////
-
-
+  ///////////////////////////////////////////////// MORNING ////////////////////////////////////////////////////////////
 if (0)
 {
     console.log("moringing loop runs ");
@@ -235,7 +288,7 @@ if (0)
 
                           //delete all the whose date == pushed date .........
                             User.findOneAndUpdate({ _id: student._id},
-                            { $pull: { active_guest_list: { _id : guest._id }}}, function(err, guestFound){;});
+                            { $pull: { active_guest_list: { _id : guest._id }}}, function(err, guestFound){});
 
                         }
 

@@ -1,5 +1,7 @@
 const User = require("../../models/user.js");
 const BoundTime = require("../../models/boundTime.js");
+const {prepareMealList } = require("../../global/globalfunctions")
+const boundTime = require("../../models/boundTime.js");
 /// indian date-time system
 var d = new Date();
 var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
@@ -21,6 +23,7 @@ await  User.findById(id).exec((err, user) => {
             });
         }
         req.profile = user;
+      
         next();
     });
 };
@@ -111,7 +114,56 @@ exports.getCharges = (req, res)=>{
   })
 }
 
+exports.getPreparedMealList = (req, res)=>{
+  boundTime.findById(req.profile._id , (err, manager)=>{
+    if(err) {
+      return res.json({error:err});
+    }else{
+      return res.json({
+        borderMealList: manager.borderMealList,
+        guestMealList : manager.guestMealList
+      });
+    }
+  });
+}
 
+
+exports.getAllGuest = (req, res)=>{
+  console.log("here is the request send to bakend",req.profile.hostelName);
+  User.find( { hostelName : req.profile.hostelName } , (err, users)=>{
+    if(err || !users){
+      return res.json({error: "Somthing went wrong"});
+    } else {
+      var allListedGuest = [];
+      var allactivatedGuest = [];
+      users.forEach((user)=>{
+        user.active_guest_list.forEach((guest)=>{
+          let newGuest ={
+            _id : guest._id,
+            holderId : user._id,
+            name : guest.name,
+            guestType : user.profileType,
+            holderName: user.fname + user.lname ,
+            holderDeapartment : user.department,
+            holderMobNo : user.selfPhNo,
+            holderRoomNo : user.roomNo               
+          }
+          if(guest.mealStatus === false){            
+            allListedGuest.push(newGuest);
+          }else {
+            allactivatedGuest.push(newGuest);
+          }
+
+        })
+      })
+      return res.json({
+        allListedGuest,
+        allactivatedGuest
+      });
+      
+    }
+  })
+}
 
 
 
@@ -176,7 +228,7 @@ exports.setCharges = (req, res)=>{
       user.save();
       
 
-    //  update charge into boundTime collection
+      //  update charge into boundTime collection
       BoundTime.findById(req.profile._id , (err, manager)=>{
         if(err || !manager) return res.json({err:"something went wrong"});
         manager.guestMorMealCharge = user.guestMorMealCharge;
@@ -191,7 +243,7 @@ exports.setCharges = (req, res)=>{
           }
         });
       })
-
+     
     }
   })
 }
@@ -222,6 +274,8 @@ exports.setboundtime = (req, res , next)=>{
 
         });
       })
+
+
 
     }
   })
@@ -300,6 +354,44 @@ exports.updateMembershipStatus =(req ,res)=>{
   })
   
 }
+
+exports.updateGuestMealStatus =(req ,res)=>{
+  const guestId = req.body.values.guestId;
+  const userId = req.body.values.userId;
+  const status  = req.body.values.status;
+
+  User.findOneAndUpdate({ _id: userId,active_guest_list: { $elemMatch: { _id: guestId  } } }, {
+    $set: {
+      "active_guest_list.$.mealStatus":status ,
+    }
+  }, function(err, result){
+    if(err) {
+      return res.json({error:err});
+    }else {
+      return res.json({info:result})
+    }
+
+  });
+}
+
+exports.removeguest =(req ,res)=>{
+  const guestId = req.body.values.guestId;
+  const userId = req.body.values.userId;
+  
+  User.findOneAndUpdate({ _id: userId},
+    { $pull: { active_guest_list: { _id : guestId }}}, function(err, result){
+      if(err) {
+        return res.json({error:err});
+      }else {
+        return res.json({info:result})
+      }
+    });
+  
+}
+
+
+
+
 
 exports.theme = (req, res)=>{
   User.findOne({_id :req.profile._id}, (err, user)=>{

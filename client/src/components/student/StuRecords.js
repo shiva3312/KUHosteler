@@ -15,7 +15,7 @@ const MealAcitvity = ({ history }) => {
         read(user._id, token).then((data) => {
             setStuData(data)
         })
-    });
+    },[]);
 
     stuData.paymentRecord.forEach(rec => {
         totalDue += rec.totalFine + rec.auditAmount - rec.paid;
@@ -34,7 +34,7 @@ const MealAcitvity = ({ history }) => {
                 <section className="shadow">
 
                     <div className="shadow tbl-header">
-                        <table cellpadding="0" cellspacing="0" border="0">
+                        <table cellPadding="0" cellSpacing="0" border="0">
                             <thead>
                                 <tr>
                                     <th>SL</th>
@@ -48,8 +48,8 @@ const MealAcitvity = ({ history }) => {
                             </thead>
                         </table>
                     </div>
-                    <div class="tbl-content">
-                        <table cellpadding="0" cellspacing="0" border="0">
+                    <div className="tbl-content">
+                        <table cellPadding="0" cellSpacing="0" border="0">
                             <tbody>
 
                                 {stuData.paymentRecord.map((rec, i) => (
@@ -70,10 +70,10 @@ const MealAcitvity = ({ history }) => {
                             </tbody>
                         </table>
                     </div>
-                    <tfoot class="table-borderless ">
+                    <tfoot className="table-borderless ">
                         <tr >
-                            <th colspan="7" class="table-white text-center text-middle">Total Due Amount</th>
-                            <th class="table-white text-center text-middle">{totalDue} Rs.</th>
+                            <th colSpan="7" className="table-white text-center text-middle">Total Due Amount</th>
+                            <th className="table-white text-center text-middle">{totalDue} Rs.</th>
                         </tr>
                     </tfoot>
                 </section>

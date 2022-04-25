@@ -22,6 +22,8 @@ const {
     abouthostel,  //get and post both
     getStudentprofile,
     getCharges,
+    getPreparedMealList,
+    getAllGuest,
 
     // POST ROUTER function .....
     msgToAllSturent,
@@ -37,8 +39,11 @@ const {
     fchangeMealStatus, // forcefully manager can change the meal status of particular student
     setstudetnHostelId,
     updateMembershipStatus,
+    updateGuestMealStatus,
+    removeguest,
     theme
   } = require("../../controllers/user/manager");
+
 
 
 router.use("/*/:userId",requireSignin,isAuth,isManager, (req, res,next)=>{
@@ -56,6 +61,8 @@ router.get("/notice/:userId", notice);
 router.get("/abouthostel/:userId",abouthostel);
 router.get("/getCharges/:userId" ,getCharges);
 router.get("studentprofile/:stuId/:userId",getStudentprofile);
+router.get("/preparedMealList/:userId" , getPreparedMealList);
+router.get("/getallguest/:userId" , getAllGuest);
 
 // router.post("/msgToManger/:userId",msgToManger);
 // router.post("/socialpost/:userId",socialpost);
@@ -66,6 +73,11 @@ router.post("/sethelpSection/:userId",sethelpSection);
 
 // router.put("/editProfile/:userId",editProfile);
 router.put("/meal/activateAcoount/:stuId/:userId",updateMembershipStatus);
+router.put("/updateguestmeal/:userId", updateGuestMealStatus);
+router.put("/removeguest/:userId", removeguest);
+
+
+
 router.put("/meal/messActivity/:userId",setmessActivity);
 router.put("/fchangeMealStatus/stu/:stuId/:userId",fchangeMealStatus)
 router.put("/setCharges/:userId" ,setCharges)

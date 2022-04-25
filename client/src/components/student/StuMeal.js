@@ -16,7 +16,7 @@ const MealAcitvity = ({ history }) => {
         read(user._id, token).then((data) => {
             setMealStatus(data.messStatus)
         })
-    });
+    },[]);
 
 
 
@@ -38,24 +38,22 @@ const MealAcitvity = ({ history }) => {
             <>
 
                 <div className="mt-5 row justify-content-center">
-                    <div class="th pt-3 shadow col-3">
-                        <td>
+                    <div className="th pt-3 shadow col-3">
                             <h6>Meal Status</h6>
-                        </td>
                     </div>
-                    <div class="th shadow col-2 ps-3">
+                    <div className="th shadow col-2 ps-3"> 
                         <td>
                             {
-                                mealStatus == 0 || mealStatus == 1 ? <li text-danger>Disable</li> :
+                                mealStatus == 0 || mealStatus == 1 ? <li className="text-danger">Disable</li> :
                                     mealStatus == 2 ? <button type="submit" className="btn p-2 btn-danger" onClick={submit}>OFF</button> : <button type="submit" className="btn p-2 btn-success" onClick={submit}>ON</button>
                             }
-                        </td>
+                        </td>                   
                     </div>
                 </div>
                 <h1>Meal Activity</h1>
                 <section className="shadow">
                     <div className="shadow tbl-header">
-                        <table cellpadding="0" cellspacing="0" border="0" id="tableLevel-2">
+                        <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
                             <thead>
                                 <tr>
                                     <th>Serial No.</th>
@@ -67,8 +65,8 @@ const MealAcitvity = ({ history }) => {
                             </thead>
                         </table>
                     </div>
-                    <div class="tbl-content">
-                        <table cellpadding="0" cellspacing="0" border="0">
+                    <div className="tbl-content">
+                        <table cellPadding="0" cellSpacing="0" border="0">
                             <tbody>
                                 {user.activity.map((rec, i) => (
                                     <tr key={i}>
@@ -77,11 +75,9 @@ const MealAcitvity = ({ history }) => {
                                         <td >{rec.mess_status}</td>
                                         <td >{rec.morning_charge}</td>
                                         <td >{rec.night_charge}</td>
-
                                     </tr>
                                 ))}
                             </tbody>
-
                         </table>
                     </div>
                 </section>
