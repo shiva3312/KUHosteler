@@ -70,12 +70,15 @@ const MealAcitvity = ({ history }) => {
                             </tbody>
                         </table>
                     </div>
-                    <tfoot className="table-borderless ">
+                    <table>
+                    <tfoot className="table border ">
+
                         <tr >
-                            <th colSpan="7" className="table-white text-center text-middle">Total Due Amount</th>
-                            <th className="table-white text-center text-middle">{totalDue} Rs.</th>
+                            <th colSpan="5" className="text-center">Total Due Amount</th>
+                            <th colSpan="1"className="table-white  text-middle">{totalDue} Rs.</th>
                         </tr>
                     </tfoot>
+                    </table>
                 </section>
 
 
@@ -90,9 +93,9 @@ const MealAcitvity = ({ history }) => {
         <>
             <StuLayout history={history} >
                 {/* show your content in this div */}
-                <div className="row " >
+              
                     <div className="col mb-0">{mealAcitvity()}</div>
-                </div>
+              
             </StuLayout>
             <Footer />
         </>

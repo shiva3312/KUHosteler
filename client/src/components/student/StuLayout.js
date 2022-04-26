@@ -31,8 +31,7 @@ return(
              )}          
         </div>
     </nav>
-    <div className="row justify-content-center align-items-center h-100">
-        <div className="bg-white shadow  overflow-hidden">
+      <div className="bg-white shadow  overflow-hidden">
             <div className="ps-4 pt-4 pb-0 pe-4 cover">
                 <div className="media align-items-end profile-head">
 
@@ -48,10 +47,12 @@ return(
                 </div>
             </div>
             <nav className="nav-link justify-content-center p-2 mt-5 navbar bg-dark fs-6">
-                                <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/home"><span className="text1">Home</span>
+                              
+                                <Link className=" navbar-brand fs-6 pe-2 ps-2" to="/student/home" ><span className="text1">Home</span>
                                  <span className="icon">
                                 <i  className=" fa fa-home fa-md pe-2 ps-2"></i>
                                   </span></Link>
+                                  
                         
                                <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/basicInfo">  
                                <span className="text1">My Profile</span>
@@ -85,7 +86,7 @@ return(
                 
             </nav>
         </div>
-    </div>
+ 
 </div>
 
 

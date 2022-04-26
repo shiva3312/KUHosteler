@@ -5,13 +5,13 @@ export default function Footer() {
   return (
    
         <footer >
-        <div  className="containr-fluid ">
+        <div  className="footer ">
         <div  className="card bg-dark mt-2 ">
         <div  className="row ">
             <div  className="ku col-md-4 col-sm-4 col-xs-4 ">
                  <div  className="footer-text pull-left">
                     <div  className="">
-                        <h1  className="head font-weight-bold mr-2  text-white" >KuHosteler</h1>
+                        <h2  className="head font-weight-bold mr-2 text-white" >KuHosteler</h2>
                      
                     </div>
                     <p  className="card-text text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi non pariatur numquam animi nam at impedit odit nisi.</p>
@@ -30,7 +30,7 @@ export default function Footer() {
                    
             </div>
             <div  className="col-md-2 col-sm-2 col-xs-2">
-                <h5  className="heading text-white pt-3">Report </h5>
+                <h5  className="heading text-white pt-3 text-decoration-underline">Report </h5>
                 <ul  className="heading card-text">
                     <li ><Link to="" className="text-white text-decoration-none">Suggest Feature</Link> </li>
                     <li ><Link to="" className="text-white text-decoration-none">Report Bug</Link> </li>
@@ -41,7 +41,7 @@ export default function Footer() {
                
             </div>
             <div  className="col-md-2 col-sm-2 col-xs-2">
-                <h5  className="heading text-white pt-3"> App</h5>
+                <h5  className="heading text-white pt-3 text-decoration-underline"> App</h5>
                 <ul  className="heading  card-text">
                     <li ><Link to="" className="text-white text-decoration-none">About App</Link> </li>
                     <li ><Link to="" className="text-white text-decoration-none">Help Desk</Link> </li>

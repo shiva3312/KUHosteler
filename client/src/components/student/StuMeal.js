@@ -97,9 +97,9 @@ const MealAcitvity = ({history}) => {
         <>
         <StuLayout history={history} >
             {/* show your content in this div */}
-            <div className="row " >           
+                     
                 <div  className="col mb-0">{mealAcitvity()}</div>
-            </div>             
+                        
         </StuLayout>
         <Footer />
         </>       

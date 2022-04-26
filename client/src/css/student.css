@@ -15,6 +15,7 @@
 }
 .navbar-brand:hover{
     color: white;
+    background-color:  rgba(156, 97, 184, 0.897);
   
 }
 .gradiant{
@@ -244,7 +245,7 @@ h1{
 }
 .dt{
     font-weight: 500;
-    background:linear-gradient(to left,rgb(156, 116, 250),rgba(182, 106, 226, 0.562));
+    background:linear-gradient(to right,rgb(156, 116, 250),rgba(182, 106, 226, 0.562));
 }
 @media (min-width: 550px) {
     .fa-trash-o {
