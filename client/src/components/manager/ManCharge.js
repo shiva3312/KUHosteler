@@ -7,33 +7,50 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
 import Footer from "../Footer"
-import {  read , setCharges ,setboundtime} from "./ManApi";
+import {  read , setCharges ,setboundtime ,addAuditCharges} from "./ManApi";
 
 
 const Charges = () => {
     const {  user,token } = isAuthenticated();
     const [manager , setmanager] = useState(user);
-    const [toggler , setToggler] = useState(false)
-    const [values , setValues] = useState({
+    const [amount , setAmount]= useState({
+        auditAmount:0,
+        error:'',
+        success:''
+    });
+    const [auditToggler , setauditToggler] = useState(false);
+    const [guestToggler , setguestToggler] = useState(false);
+    const [values , setValues ] = useState({
         guestMorMealCharge : manager.guestMorMealCharge,
         guestNigMealCharge : manager.guestNigMealCharge,
         grandCharge : manager.grandCharge,
         error: '',
         success: false,
-     });
+    });
 
-     const {
+    user.paymentRecord.sort(function(a,b){
+        return new Date(a.auditDate) - new Date(b.auditDate);
+      });
+
+  
+    const {
         guestMorMealCharge ,
         guestNigMealCharge ,
         grandCharge ,
         error,
         success,
-     } = values;
+    } = values;
 
-     const handleChange = name => event => {
+    const {
+        auditAmount,
+    }= amount;
+
+    const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value });
     };
-
+    const handleAuditChange = name => event => {
+        setAmount({ ...amount, error: false, [name]: event.target.value });
+    };
 
     const clickSubmit = event => {        
         event.preventDefault();
@@ -51,16 +68,112 @@ const Charges = () => {
                     success: true,
                  });
 
-                setToggler(!toggler);
+                setguestToggler(!guestToggler);
             }
         });
     };
+    
+    const clickSubmitAduditCharge = event => {        
+        event.preventDefault();
+        setAmount({ ...amount, error: false });
+        
+        addAuditCharges(user._id , token , amount).then((data) => {       
+            if (data.error) {
+                setAmount({ ...amount, error: data.error, success: false });
+            } else {
+                setAmount({
+                    amount:0,
+                    error: '',
+                    success: true,
+                 });
+                setauditToggler(!auditToggler);
+            }
+        });
+    };
+    
+    const auditedChargeMealList = () => {
+      
+        return (
+            <>
+
+                <h1>Audited Meal Charge </h1>
+                <div className="text-end" style={{ display: !auditToggler ? '' : 'none' }}> 
+                    
+                    <button className="btn btn-primary" onClick={()=>setauditToggler(!auditToggler)}>Add Meal Charge</button>
+                </div>
+                <section className="shadow">
+
+                    <div className="shadow tbl-header">
+                        <table cellPadding="0" cellSpacing="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th>SL no.</th>
+                                    <th>Date</th>
+                                    <th>Audit Amount</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div className="tbl-content">
+                        <table cellPadding="0" cellSpacing="0" border="0">
+                            <tbody>
+
+                                {manager.paymentRecord.map((rec, i) => (
+
+                                    <tr key={i}>
+                                        <td >{i + 1}</td>
+                                        <td>{rec.auditDate.slice(0, 15)}</td>
+                                        <td >{rec.auditAmount}</td>
+                                      
+                                    </tr>
+
+                                ))
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <table>
+                    <tfoot className="table border ">
+
+                    </tfoot>
+                    </table>
+                </section>
+               
+
+            </>
+        );
+    };
+
+    const auditMealChargeForm =()=>(
+        
+        <form style={{ display: auditToggler ? '' : 'none' }}> 
+        <section className=" gradient">       
+        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">Add Meal Charge</h4>
+            <div className="col form-outline text-start form-white mb-4">
+              <label  className="form-label text-white" htmlFor="auditAmount">Audit Amount</label>
+              <input type="Number" className="form-control" name="auditAmount" required="" onChange={handleAuditChange('auditAmount')} value={auditAmount} />        
+            </div>      
+           <div className="row">           
+                <div className="col">
+                  <button className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmitAduditCharge} >Add Charge</button>
+                </div>
+            </div>      
+        </section>
+        </form>
+        
+    );
 
     const showCharges =()=>(
         <>
-        <div style={{ display: !toggler ? '' : 'none' }}>
-       
+        <div style={{ display: !guestToggler ? '' : 'none' }}>
+        
         <div className="mt-4">
+        <div className="text-end"> 
+            <button className="btn btn-primary" onClick={()=>setguestToggler(!guestToggler)}>Update</button>
+        </div>
+        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">Guest Meal Charges</h4>
+
             <table className="table table-hover " >
                 <thead>
                 <tr >
@@ -78,30 +191,14 @@ const Charges = () => {
                 </tbody>
             </table>
         </div>
-        <div className="text-end"> 
-            <button className="btn btn-primary" onClick={()=>setToggler(!toggler)}>Update</button>
-        </div>
+        
         </div>
         </>
-    )
-
-    const showError = () => (
-        <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
-            {error}
-        </div>
     );
-
-    const showSuccess = () => (
-        <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            Charge updated Successfully
-        </div>
-    );
-
-
 
     const chargeForm = () => (
         
-        <form style={{ display: toggler ? '' : 'none' }}> 
+        <form style={{ display: guestToggler ? '' : 'none' }}> 
         <section className=" gradient">  
             <div className="col form-outline text-start form-white mb-4">
               <label  className="form-label text-white" htmlFor="guestMorMealCharge">Guest Morning Charge</label>
@@ -122,14 +219,35 @@ const Charges = () => {
             </div>      
         </section>
         </form>
-      ); 
+    ); 
 
+    const showError = () => (
+        <>
+        <div className="alert alert-danger" style={{ display: error || amount.error ? '' : 'none' }}>
+            {error}
+        </div>
+       
+        </>
+    );
 
+    const showSuccess = () => (
+        <>
+        <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
+            Charge updated Successfully
+        </div>
+         <div className="alert alert-info" style={{ display: amount.success ? '' : 'none' }}>
+         Charge added Successfully
+        </div>
+        </>
+    );
+
+   
     useEffect(()=>{
         read(user._id, token).then((data) =>{
             setmanager(data)
-        })
-    },[values,toggler]);
+        });
+        
+    },[values,guestToggler,auditToggler]);
 
     
     return (
@@ -139,11 +257,15 @@ const Charges = () => {
             description={"Meal and Event charges"}
             className="container-fluid"
         >
-            <div className="row">   
+            <div className="row">  
+               
                 {showSuccess()}
                 {showError()}    
                 {showCharges()}                     
                 {chargeForm()}
+                {auditMealChargeForm()}
+                {auditedChargeMealList()}
+                
                
             </div>           
         </ManLayout>

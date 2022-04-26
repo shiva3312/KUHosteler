@@ -28,7 +28,6 @@ const AdminDashboard = () => {
         months:[],
         totalFine:[]
     });
-    
 
     const AllReqList=()=>{
         getAllReqList(user._id, token).then((data)=>{
@@ -43,8 +42,11 @@ const AdminDashboard = () => {
         const months =[];
         const totalFine =[];
         user.paymentRecord.sort(function(a,b){
-            return new Date(a.date) - new Date(b.date);
+            return new Date(a.auditDate) - new Date(b.auditDate);
           });
+        
+        
+      
         user.paymentRecord.forEach((rec)=>{
             charges.push(rec.auditAmount);
             months.push(rec.auditDate.slice(0,15));
@@ -62,7 +64,8 @@ const AdminDashboard = () => {
         setAuditInfo({ charges:[...charges],  months:[...months], totalFine:[...totalFine]  });
         getAllGuest(user._id , token).then((data)=>{ setAllListedGuest(data.allListedGuest)  });
         getAllGuest(user._id , token).then((data)=>{ setAllactivatedGuest(data.allactivatedGuest) });
-   
+        
+       
    
     }
     
@@ -261,6 +264,11 @@ const AdminDashboard = () => {
       }
 
     const listedGuest=()=>{
+        
+        allListedGuest.sort(function(a,b){
+            return new Date(a.mealDate) - new Date(b.mealDate);
+          });
+       
         if(allListedGuest.length===0) return <></>
         return (
             <div className=" mb-5">
@@ -273,7 +281,7 @@ const AdminDashboard = () => {
                             <th className="align-middle text-center text-light h5" >Guest Name</th>
                             <th className="align-middle text-center text-light h5" >Guest Type</th>
                             <th className="align-middle text-center text-light h5" >Guest Holder</th>
-                            <th className="align-middle text-center text-light h5" >Department</th>    
+                            <th className="align-middle text-center text-light h5" >Meal Date</th>    
                             <th className="align-middle text-center text-light h5" >Mob No.</th>
                             <th className="align-middle text-center text-light h5" >Room No</th> 
                             <th className="align-middle text-center text-light h5" colSpan={2} >Action</th>                            
@@ -290,7 +298,7 @@ const AdminDashboard = () => {
                             }
                             
                             <td className="text-center align-middle">{guest.holderName}</td>
-                            <td className="text-center align-middle">{guest.holderDeapartment}</td>   
+                            <td className="text-center align-middle">{guest.mealDate.slice(0,15)}</td>   
                             <td className="text-center align-middle">{guest.holderMobNo}</td> 
                             <td className="text-center align-middle">{guest.holderRoomNo}</td>                              
                             <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td>
@@ -304,7 +312,12 @@ const AdminDashboard = () => {
         );
     }
 
+
     const activatedGuest=()=>{
+       
+        allactivatedGuest.sort(function(a,b){
+            return new Date(a.mealDate) - new Date(b.mealDate);
+          });
         if(allactivatedGuest.length===0) return <></>
         return (
             <div className=" mb-5">
@@ -320,7 +333,7 @@ const AdminDashboard = () => {
                             <th className="align-middle text-center text-light h5" >Department</th>    
                             <th className="align-middle text-center text-light h5" >Mob No.</th>
                             <th className="align-middle text-center text-light h5" >Room No</th> 
-                            <th className="align-middle text-center text-light h5" colSpan={2} >Action</th>                            
+                            <th className="align-middle text-center text-light h5"  >Action</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -334,10 +347,10 @@ const AdminDashboard = () => {
                             }
                             
                             <td className="text-center align-middle">{guest.holderName}</td>
-                            <td className="text-center align-middle">{guest.holderDeapartment}</td>   
+                            <td className="text-center align-middle">{guest.mealDate.slice(0,15)}</td>   
                             <td className="text-center align-middle">{guest.holderMobNo}</td> 
                             <td className="text-center align-middle">{guest.holderRoomNo}</td>                              
-                            <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td>
+                            {/* <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td> */}
                             <td> <button type="submit" className="btn btn-danger  " onClick={()=>deleteGuest(guest._id,guest.holderId )}>Remove</button></td>                       
                         </tr>
                         ))}

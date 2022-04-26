@@ -6,7 +6,7 @@ import { read } from "./stuApi";
 
 
 
-const MealAcitvity = ({ history }) => {
+const AuditedMealChargeList = ({ history }) => {
     var totalDue = 0;
     const { user, token } = isAuthenticated();
     var [stuData, setStuData] = useState(user)
@@ -22,11 +22,11 @@ const MealAcitvity = ({ history }) => {
     });
 
     user.activity.sort(function (a, b) {
-        return new Date(b.date) - new Date(a.date);
+        return new Date(a.date)-new Date(b.date) ;
     });
 
 
-    const mealAcitvity = () => {
+    const auditedChargeMealList = () => {
         return (
             <>
 
@@ -94,7 +94,7 @@ const MealAcitvity = ({ history }) => {
             <StuLayout history={history} >
                 {/* show your content in this div */}
               
-                    <div className="col mb-0">{mealAcitvity()}</div>
+                    <div className="col mb-0">{auditedChargeMealList()}</div>
               
             </StuLayout>
             <Footer />
@@ -102,4 +102,4 @@ const MealAcitvity = ({ history }) => {
     );
 };
 
-export default MealAcitvity;
+export default AuditedMealChargeList;

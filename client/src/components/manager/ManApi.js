@@ -332,6 +332,23 @@ export const setCharges = (userId, token, values) => {
         .catch(err => console.log(err));
 };
 
+export const addAuditCharges = (userId, token, values) => {
+    return fetch(`${API}/manager/addAuditCharges/${userId}`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(values)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+
 
 export const setboundtime = (userId, token, status) => {
     return fetch(`${API}/manager/setboundtime/${userId}`, {

@@ -146,7 +146,8 @@ exports.getAllGuest = (req, res)=>{
             holderName: user.fname + user.lname ,
             holderDeapartment : user.department,
             holderMobNo : user.selfPhNo,
-            holderRoomNo : user.roomNo               
+            holderRoomNo : user.roomNo,
+            mealDate : guest.date               
           }
           if(guest.mealStatus === false){            
             allListedGuest.push(newGuest);
@@ -247,6 +248,47 @@ exports.setCharges = (req, res)=>{
     }
   })
 }
+
+
+
+//addAuditCharges
+exports.addAuditCharges = (req, res)=>{
+  User.findOne({_id: req.profile._id}, (err, user)=>{
+    if(err || !user ){
+      return res.json({
+        error : "Something went wrong"
+      });
+    }else{
+      
+
+      // pushing meal charge to managers account 
+      date = new Date().toDateString();
+      var newRec ={
+        auditDate : date,
+        auditAmount : req.body.auditAmount
+      }
+      // push audited meal charge to every corresponding studetn 
+
+      User.find({hostelName : req.profile.hostelName } , (err , users)=>{
+        if(err){
+          console.log(err);
+        }else {
+          users.forEach((user)=>{
+            user.paymentRecord.push(newRec);
+            user.save();
+          })
+        }
+      })
+
+      return res.json({info : "Audited meal Charge successfully added"});
+
+     
+    }
+  })
+}
+
+
+
 
 
 
@@ -356,6 +398,7 @@ exports.updateMembershipStatus =(req ,res)=>{
 }
 
 exports.updateGuestMealStatus =(req ,res)=>{
+  
   const guestId = req.body.values.guestId;
   const userId = req.body.values.userId;
   const status  = req.body.values.status;
@@ -366,6 +409,7 @@ exports.updateGuestMealStatus =(req ,res)=>{
     }
   }, function(err, result){
     if(err) {
+      console.log(result);
       return res.json({error:err});
     }else {
       return res.json({info:result})
