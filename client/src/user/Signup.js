@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect , Link } from "react-router-dom";
 import '../css/global.css';
-import { signup  ,getAllcode} from '../auth';
+import { signup  ,getAllcode ,getAllHostedUnHostedHostel} from '../auth';
 
 const Signup = () => {
     const [isCodeVarified , setIsCodeVarified] = useState(0);
     const[ codes , setCodes] =useState([]);
+    const [hostedHostels, setHostedHostels] =useState([]);
+    const [toggler ,setToggler] = useState(0);
     const [values, setValues] = useState({
         fname: '',
         lname:'',
-        email: '',
+        email: '', 
         password: '',
         department:'',
         roomNo:'',        
@@ -56,12 +58,38 @@ const Signup = () => {
         if(name === 'code'){
           setIsCodeVarified(false)
         }
+        if(profileType === 0 ){
+          setToggler(!toggler);
+        }
     };
 
     const clickSubmit = event => {
         event.preventDefault();
-        if(!isCodeVarified){
+        console.log(isCodeVarified , profileType);
+        if(!isCodeVarified && profileType ==1){
           setValues({ ...values, error: "code not varified" });
+        }
+
+        // manger already exist for selected hostel...
+        else if(profileType ==1 ){
+          hostedHostels.forEach((hostel)=>{
+            if(hostel.hostelName === hostelName){
+              setValues({ ...values, error: "Manger already exist" });
+            }
+          })
+        }
+        
+        // if selected hostel has not hosted the service ...
+        else if(profileType != 1  ){
+          var isMnagerExist = false;
+          hostedHostels.forEach((hostel)=>{
+            if(hostel.hostelName === hostelName){
+              isMnagerExist = true;              
+            }
+          })
+          if(!isMnagerExist){
+            setValues({ ...values, error: "Manger doest exist" });
+          }
         }
         
         else {
@@ -120,7 +148,17 @@ const Signup = () => {
           setCodes(data.codes);
         }
       })
-    },[profileType]);
+
+      
+        getAllHostedUnHostedHostel().then((data)=>{
+          if(data.error){
+            console.log("Data did not fetched");
+          }else {
+            setHostedHostels(data.hostedHostels)
+            console.log(hostedHostels);
+          }
+        })
+    },[profileType , toggler]);
   
     const signUpForm = () => (
       <form> 
@@ -142,8 +180,8 @@ const Signup = () => {
               </select>
             </div>
 
-          <div className="row">
-            <div className="col    form-outline text-start form-white mb-4" style={{ display: profileType == 1? '' : 'none' }} >
+          <div className="row" style={{ display: profileType == 1? '' : 'none' }}>
+            <div className="col    form-outline text-start form-white mb-4"  >
               <label  className="form-label text-white" htmlFor="code" >Varify Code</label>
               <input type="text" className="form-control"  name="code" required={true} placeholder="Enter varification code"  onChange={handleChange('code')} value={code}/>
             </div>
@@ -286,7 +324,9 @@ const Signup = () => {
 
     return (
         <div >
-
+            {JSON.stringify(isCodeVarified)}
+            {JSON.stringify(profileType)}
+            {JSON.stringify(codes)}
             {showSuccess()}
             {showError()}
             {signUpForm()}

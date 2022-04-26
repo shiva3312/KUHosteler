@@ -194,4 +194,24 @@ exports.getAllcode=(req, res)=>{
   }
   
 
+    
+exports.getAllHostedUnHostedHostel=(req, res)=>{
+    var hostedHostels =[];
+   
+    boundTime.find({}, (err, registerHostels)=>{
+      if(err) {
+          console.log("err came " , err);
+        return res.json({error:err})
+      }else{
+        //save hosted hostels ....
+        registerHostels.forEach(hostel => {
+            let rec = {
+                hostelName : hostel.hostelName
+            }
+            hostedHostels.push(rec);
+         });
+        return res.json({hostedHostels})
+      }
+    })
+  }
   
