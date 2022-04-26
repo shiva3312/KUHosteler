@@ -231,13 +231,13 @@ const AddGuest = ({history}) => {
         <>
         <StuLayout history={history} >
             
-            <div className="row " >                
+                            
                 {showSuccess()}
                 {showError()}
                 <div >{addGuestForm()}</div>       
                 <div >{getAllGuest()}</div>            
                 
-            </div>
+           
            
         </StuLayout>
         <Footer />

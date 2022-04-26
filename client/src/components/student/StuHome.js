@@ -43,7 +43,7 @@ const UserDashboard = ({history}) => {
       calculateMealCount();
         return (
           <>
-          <div className="pt-5 pb-1 card pb-2 mt-5 mb-4 th">
+          <div className="pt-5 pb-3 card pb-2 mt-5 mb-4 th">
           <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">PIE CHART</h4>
           <Pie 
                 data={{
@@ -102,23 +102,29 @@ const UserDashboard = ({history}) => {
 
     const userInfo = () => {
      
-        return(
-         
-            <div className="pt-5 card pb-5 mt-5 ms-auto th">
-            <h4 className="shadow card-head pt-2 pb-2 mb-3 gradiant text-light text-center">USER INFORMATION</h4>
-           <ul className="con shadow p-2 ">                    
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{studData.fname} {user.lname}</li>
-                    {
-                      studData.messStatus == 0 || studData.messStatus==1 ? <li className="text-danger">Disable</li>:
-                      studData.messStatus == 2 ?  <li className="dt ps-3 list-group p-2 shadow ms-5 me-5 m-3 text-success">ON</li> : <li className="dt ps-3 list-group p-2 shadow ms-5 me-5 m-3 text-danger">OFF</li>
-                    }                   
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">{studData.email}</li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">
-                        {studData.profileType === 1 ? "Admin" : "Registered User"}
-                    </li>
-                </ul>
-            
-         </div>
+      return(
+       
+          <div className="pt-5 card pb-5 mt-5 ms-auto th">
+          <h4 className="shadow card-head pt-2 pb-2 mb-3 gradiant text-light text-center">USER INFORMATION</h4>
+         <ul className="con shadow p-2 ">                    
+                  <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Name   &nbsp;&emsp;:&ensp;{studData.fname} {user.lname}</li>
+                  {
+                    studData.messStatus == 0 || studData.messStatus==1 ? <li className="text-danger">Disable</li>:
+                    studData.messStatus == 2 ? <li className="dt ps-3 list-group p-2 shadow ms-5 me-5 m-3 text-success">ON</li> : <li className="dt ps-3 list-group p-2 shadow ms-5 me-5 m-3 text-danger">OFF</li>
+                  }                   
+                  <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">User Id &emsp;:&ensp;{studData.email}</li>
+                 
+                  {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">
+                      {studData.profileType === 1 ? "Admin" : "Registered User"}
+                  </li> */}
+                   <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Room No :&ensp;{user.roomNo}</li>                 
+                   <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Hostel Id&nbsp;:&ensp;{user.hostelId}</li>                         
+                
+                  <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Bio &emsp; &emsp;:&ensp;Lorem  adipisndae laboriosam dfjds</li>
+                 
+              </ul>
+          
+       </div>
 
 //         <table >
 //   <tr>
