@@ -100,7 +100,7 @@ const Signin = () => {
 
     const redirectUser = () => {
         if (redirectToReferrer) {
-            if(user && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
+            if(user && !(user.profileType==1) && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
                 return <Redirect to="/user/info" />;
             }else if (user && user.profileType === 1){
                 return <Redirect to="/manager/dashboard" />;

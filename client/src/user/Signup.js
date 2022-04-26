@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect , Link } from "react-router-dom";
 import '../css/global.css';
-import { signin, authenticate, isAuthenticated } from "../auth";
-import { signup } from '../auth';
+import { signup  ,getAllcode} from '../auth';
 
 const Signup = () => {
+    const [isCodeVarified , setIsCodeVarified] = useState(0);
+    const[ codes , setCodes] =useState([]);
     const [values, setValues] = useState({
         fname: '',
         lname:'',
@@ -18,6 +19,7 @@ const Signup = () => {
         profileType:0,
         hostelName:'btmens',
         gender:'male',
+        code:'',
         address:'',
         dob:'',
         error: '',
@@ -25,6 +27,7 @@ const Signup = () => {
         success: false,
         redirectToReferrer: false
     });
+    
 
     const { 
       fname,
@@ -43,16 +46,25 @@ const Signup = () => {
       dob,
       error,
       avatar,
+      code,
       success,
       redirectToReferrer
       } = values;
 
-    const handleChange = name => event => {
+    const handleChange = name => event => {        
         setValues({ ...values, error: false, [name]: event.target.value });
+        if(name === 'code'){
+          setIsCodeVarified(false)
+        }
     };
 
     const clickSubmit = event => {
         event.preventDefault();
+        if(!isCodeVarified){
+          setValues({ ...values, error: "code not varified" });
+        }
+        
+        else {
         setValues({ ...values, error: false });
         signup(values).then(data => {       
             if (data.error) {
@@ -73,6 +85,7 @@ const Signup = () => {
                     hostelName:'btmens',
                     gender:'male',
                     address:'',
+                    code:'',
                     dob:'',
                     error: '',
                     avatar:'',
@@ -82,8 +95,32 @@ const Signup = () => {
                 });
             }
         });
+      }
     };
 
+    const codeVarification = (event) => { 
+      event.preventDefault();
+      var matchfound = false;
+      codes.forEach((savedCode)=>{    
+        if(code == savedCode.code ){      
+          setIsCodeVarified(true);
+          matchfound = true;
+        }
+      }) 
+      if(matchfound === false)
+      setIsCodeVarified(false);     
+    }
+
+    useEffect(()=>{
+      //load all codes...
+      getAllcode().then((data)=>{
+        if(data.error){
+          console.log("Data did not fetched");
+        }else {     
+          setCodes(data.codes);
+        }
+      })
+    },[profileType]);
   
     const signUpForm = () => (
       <form> 
@@ -103,7 +140,21 @@ const Signup = () => {
                 <option value="2" >Employee</option>
                 <option value="1">Manager</option>
               </select>
-            </div> 
+            </div>
+
+          <div className="row">
+            <div className="col    form-outline text-start form-white mb-4" style={{ display: profileType == 1? '' : 'none' }} >
+              <label  className="form-label text-white" htmlFor="code" >Varify Code</label>
+              <input type="text" className="form-control"  name="code" required={true} placeholder="Enter varification code"  onChange={handleChange('code')} value={code}/>
+            </div>
+            <div className="col-3 text-center pt-4"style={{ display: code && !isCodeVarified ? '' : 'none' }} >
+                  <button  className="btn btn-outline-light btn-sm mt-3 " type="submit" onClick={codeVarification} >varify</button>
+            </div>
+            <div className="col-3 text-center pt-4"style={{ display: isCodeVarified ? '' : 'none' }} >
+                <p className="text-success">Verfied</p>
+            </div>
+            
+          </div>   
 
         <div className="form-outline text-start form-white mb-4" >
             <label  className="form-label text-white" htmlFor="email" >Email</label>
@@ -151,7 +202,7 @@ const Signup = () => {
             <label className="form-label text-white" htmlFor="hostelName" >Hostel Name</label>
               <select id="hostelName" className="form-control" name="hostelName" required={true} onChange={handleChange('hostelName')} value={hostelName}>
               
-                <option Value="btmens" >BT MEN'S</option>
+                <option value="btmens" >BT MEN'S</option>
                 <option value="banyan">BANYAN</option>
                 <option value="pg1" >PG 1</option>
                 <option value="pg2" >PG 2</option>
@@ -199,7 +250,7 @@ const Signup = () => {
 
           <div className="row">           
               <div className="col ">
-                  <Link to="/" ><button className="btn btn-outline-light btn-lg px-4 " type="submit" >Back to Home</button></Link>
+                  <Link to="/" ><button className="btn btn-outline-light btn-lg px-4 " type="submit" >Home</button></Link>
               </div>
               <div className="col">
                   <button  className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Register</button>
@@ -235,11 +286,11 @@ const Signup = () => {
 
     return (
         <div >
+
             {showSuccess()}
             {showError()}
             {signUpForm()}
-            {redirectUser()}
-            {JSON.stringify(values)}
+            {redirectUser()}       
 
           
            

@@ -1,5 +1,5 @@
 const User= require('../models/user');
-const boundTime = require('../models/boundTime')
+const boundTime = require('../models/boundTime');
 var mongoose = require('mongoose');
 
 
@@ -11,10 +11,6 @@ var current_date = new Date(utc + (3600000*+5.5));
 // current_date12 is 12h system
 var current_date12 =  current_date.toLocaleString();
 const isMorning = current_date.getHours >=1 && current_date.getHours<=11;
-
-
-
-
 
 
 exports.prepareMealList =async (hostelName)=>{
@@ -35,8 +31,9 @@ exports.prepareMealList =async (hostelName)=>{
       User.find({hostelName:hostelName}, (err , students)=>{
         if(err) console.log(err);
         else{             
-          students.forEach((student)=>{
-            if(student.messStatus == 3){              
+          // if messStatus is on (3)   and student is member of the hostel (membership = 2) then push data
+          students.forEach((student)=>{            
+            if(student.messStatus == 3 && student.membership == 2){              
               let rec = {
                 _id : new mongoose.Types.ObjectId(),
                 fname : student.fname,

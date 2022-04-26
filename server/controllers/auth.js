@@ -8,12 +8,10 @@ const jwt = require('jsonwebtoken'); // to generate signed token
 const expressJwt = require('express-jwt'); // for authorization check
 const { errorHandler } = require('../helpers/dbErrorHandler');
 const boundTime = require('../models/boundTime');
+const Admin = require('../models/admin');
 
 // using promise
 exports.signup = (req, res) => {
-
-
-
     const newGravatar = normalize(
         gravatar.url(req.body.email, {
           s: '200',
@@ -24,6 +22,9 @@ exports.signup = (req, res) => {
       );
    
     req.body.avatar = newGravatar;
+    if(req.body.profileType == 1){
+        req.body.membership= 2;
+    }
     const user = new User(req.body);
     console.log("req.body", req.body);
     user.save((err, user) => {
@@ -48,6 +49,22 @@ exports.signup = (req, res) => {
             })
             newMnagerInboudDB.save();
           }
+
+
+            //delet the used code and inset new code 
+            let newCode = (Math.random() + 1).toString(36).substring(7); 
+            //pull the code 
+            Admin.findOneAndUpdate({},{ $pull: { codes: { code : req.body.code }}}, function(err, res){});  
+            //push new code 
+            Admin.findOne({},(err, admin)=>{
+                if(err){
+                    console.log(err);
+                }else {
+                    admin.codes.push({code:newCode});
+                    admin.save();                    
+                }
+            })
+            
             user.salt = undefined;
             user.hashed_password = undefined;
             res.json({user});
@@ -94,8 +111,7 @@ exports.signup = (req, res) => {
 // };
 
 exports.signin = (req, res) => {
-    // find the user based on email
-   
+    // find the user based on email   
     const { email, password } = req.body;
     User.findOne({ email }, (err, user) => {
         if (err || !user) {
@@ -163,3 +179,19 @@ exports.isDev = (req, res, next) => {
     }
     next();
 };
+
+
+
+exports.getAllcode=(req, res)=>{
+    Admin.findOne({}, (err, admin)=>{
+      if(err) {
+          console.log("err came " , err);
+        return res.json({error:err})
+      }else{
+        return res.json({codes : admin.codes})
+      }
+    })
+  }
+  
+
+  

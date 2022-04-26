@@ -65,3 +65,20 @@ export const isAuthenticated = () => {
         return false;
     }
 };
+
+
+export const getAllcode = () => {
+    return fetch(`${API}/auth/getAllcode`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
