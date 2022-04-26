@@ -21,9 +21,13 @@ const userSchema = new mongoose.Schema({
   gender: { type :String, default:null},
   religion:{ type :String, default:null},
   dob: { type :String, default:null},
+
   university:{ type :String, default:"University of kalyani"},
   session:String,  // Ex 2018-22 
-
+  course: { type :String, default:null},
+  subject: { type :String, default:null},
+  semester: { type :String, default:null},
+  
   //contact
   guardian :{ type :String, default:null},
   gPhNo :{ type :String, default:null},

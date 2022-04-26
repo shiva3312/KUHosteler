@@ -34,29 +34,31 @@ const MealAcitvity = ({history}) => {
       });
     const mealAcitvity = () => {
      
-        return (
-            <>
-            <div className="container">
-          <div  className="mt-5 row justify-content-center">
-             <div class="col-3 th">
-      <th>
-    <h6>Meal Status</h6>
-    </th>
-    </div><div class="col-3 th">
-    <th>
-                      <h6 >  {
-                            mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
-                            mealStatus == 2 ? <button type="submit" className="btn-sm btn-danger" onClick={submit}>OFF</button> : <button type="submit" className="btn-sm p-2 btn-success" onClick={submit}>ON</button>
-                        }</h6>
-                    </th>
+    return (
+    <>
+    <div className="container">
+        <div  className="mt-5 row justify-content-center">
+            <div className="col-3 th">
+                <th>
+                    <h6>Meal Status</h6>
+                </th>
+            </div>
+            <div className="col-3 th">
+                <th>
+                    <h6 >  
+                    {
+                        mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
+                        mealStatus == 2 ? <button type="submit" className="btn-sm btn-danger" onClick={submit}>TURN OFF</button> : <button type="submit" className="btn-sm p-2 btn-success" onClick={submit}>TURN ON</button>
+                    }
+                    </h6>
+                </th>
+            </div>
+        </div>
     </div>
-    </div>
-    
-             </div>
              <h1>Meal Activity</h1>
              <section className="shadow">
             <div  className="shadow tbl-header">
-                <table cellpadding="0" cellspacing="0" border="0" id="tableLevel-2">
+                <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
                     <thead>
                         <tr>
                             <th>SL</th>
@@ -68,8 +70,8 @@ const MealAcitvity = ({history}) => {
                     </thead>
                     </table>
                     </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
+  <div className="tbl-content">
+    <table cellPadding="0" cellSpacing="0" border="0">
       <tbody>
            { user.activity.map((rec , i)=>(
                         <tr key={i}>                       

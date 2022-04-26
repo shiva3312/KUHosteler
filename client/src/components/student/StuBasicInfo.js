@@ -16,13 +16,12 @@ const AdminDashboard = ({history}) => {
                <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">BASIC DETAILS</h4>
                     <ul className=" con shadow">
                     <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Profile Type &ensp;:&ensp;
-                        {user.profileType === 1 ? "Admin" : "Registered User"}2
+                        {user.profileType === 1 ? "Manager" : user.profileType === 0 ? "Student" :"Employee"}
                     </li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Date of Birth &nbsp;:&ensp;{user.dob}</li>
-                   
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Date of Birth &nbsp;:&ensp;{user.dob}</li>                   
                     <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Email Account&nbsp;:&ensp;{user.email}</li>
                     <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Membership &ensp;:&ensp;{user.membership===1? "Activated" : "Deactivated"}</li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Hostel Name &nbsp;:&ensp;{user.hostelName}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Hostel Name &nbsp;:&ensp;{user.hostelName.toUpperCase()}</li>
                     {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Room Number&nbsp;:&ensp;{user.roomNo}</li>                  */}
                      {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Bio &nbsp;:&ensp;{user.bio}</li>                   */}
                    
@@ -38,13 +37,13 @@ const AdminDashboard = ({history}) => {
                <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">EDUCATIONAL DETAILS</h4>
                     <ul className=" con shadow">
                     
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Course &emsp;:&ensp;{}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Course &emsp;:&ensp;{user.course}</li>
                    
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Subjetct &ensp;:&ensp;{}</li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Semester&nbsp;:&ensp;{}</li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Year &emsp; &emsp;:&ensp;{}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Subjetct &ensp;:&ensp;{user.subject}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Semester&nbsp;:&ensp;{user.semester}</li>
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Session &emsp; &emsp;:&ensp;{user.session}</li>
                     {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Room Number&nbsp;:&ensp;{user.roomNo}</li>                  */}
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">College &emsp;:&ensp;{}</li>                         
+                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">College &emsp;:&ensp;{user.university}</li>                         
                     {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Bio &nbsp;:&ensp;{user.bio}</li>                   */}
                    
                 </ul>

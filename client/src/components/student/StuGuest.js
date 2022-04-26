@@ -91,7 +91,7 @@ const AddGuest = ({history}) => {
        
 
         <div className="shadow tbl-header" id="guestlist">
-        <table cellpadding="0" cellspacing="0" border="0" id="tableLevel-1">
+        <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-1">
         <thead>
           <tr>
             <th>SL</th>
@@ -104,8 +104,8 @@ const AddGuest = ({history}) => {
         </thead>
         </table>
   </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
+  <div className="tbl-content">
+    <table cellPadding="0" cellSpacing="0" border="0">
       <tbody>
         {  
         stuData.active_guest_list.map((guest , i)=>(       
@@ -158,7 +158,7 @@ const AddGuest = ({history}) => {
              
          <div id="addguest" className="tbl-header
    col-lg-2">
-           <table  cellpadding="0" cellspacing="0" border="0">
+           <table  cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                     <tr><td colSpan="" className="text-start lead"> Name </td></tr>
                     <tr><td><input type="Name" className="form-control" id="inputEmail" placeholder=" Enter Guest Name"  required  onChange={handleChange('name')} value={name}></input></td></tr>
@@ -167,7 +167,7 @@ const AddGuest = ({history}) => {
             </div>
 
             <div className="tbl-header col-lg-4 col-sm-12">
-                <table cellpadding="0" cellspacing="0" border="0">
+                <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                     <tr><td colSpan="2" className="text-start lead"> From </td></tr>
                     <tr><td>
@@ -184,7 +184,7 @@ const AddGuest = ({history}) => {
             </div>
 
             <div className="tbl-header col-lg-4 col-sm-12">
-                <table cellpadding="0" cellspacing="0" border="0">
+                <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                     <tr><td colSpan="3" className="text-start lead"> To </td></tr>
                     <tr><td>
@@ -200,7 +200,7 @@ const AddGuest = ({history}) => {
             </div>
 {/* 
             <div className="tbl-header col-lg-1 col-sm-12 text-end">
-                <table cellpadding="0" cellspacing="0" border="0">
+                <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                     <tr><td  className="text-start lead "></td></tr>
                     <tr><td width="10%"><button className="btn btn-success" onClick ={clickSubmit}>Add</button></td> </tr>
@@ -222,7 +222,7 @@ const AddGuest = ({history}) => {
     const showSuccess = () => (
         <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ display: success ? '' : 'none' }}>
             Guest is Successfully added
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     );
 
