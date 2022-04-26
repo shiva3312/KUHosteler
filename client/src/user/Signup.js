@@ -65,7 +65,6 @@ const Signup = () => {
 
     const clickSubmit = event => {
         event.preventDefault();
-        console.log(isCodeVarified , profileType);
         if(!isCodeVarified && profileType ==1){
           setValues({ ...values, error: "code not varified" });
         }
@@ -155,7 +154,6 @@ const Signup = () => {
             console.log("Data did not fetched");
           }else {
             setHostedHostels(data.hostedHostels)
-            console.log(hostedHostels);
           }
         })
     },[profileType , toggler]);
@@ -324,9 +322,7 @@ const Signup = () => {
 
     return (
         <div >
-            {JSON.stringify(isCodeVarified)}
-            {JSON.stringify(profileType)}
-            {JSON.stringify(codes)}
+           
             {showSuccess()}
             {showError()}
             {signUpForm()}
