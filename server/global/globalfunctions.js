@@ -1,6 +1,7 @@
 const User= require('../models/user');
 const boundTime = require('../models/boundTime');
 var mongoose = require('mongoose');
+const { count } = require('../models/user');
 
 
 // indian date-time system
@@ -10,11 +11,17 @@ var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
 var current_date = new Date(utc + (3600000*+5.5));
 // current_date12 is 12h system
 var current_date12 =  current_date.toLocaleString();
-const isMorning = current_date.getHours >=1 && current_date.getHours<=11;
+
+const isMorning = current_date.getHours() >=1 && current_date.getHours()<=11;
 
 
 exports.prepareMealList =async (hostelName)=>{
-  boundTime.findOne({hostelName:hostelName},(err, manager)=>{
+ 
+        var countBorderMeal =0;
+        var countNormalGuestMeal =0;
+        var countOfficialGuestMeal=0;
+
+  boundTime.findOne({hostelName:hostelName },(err, manager)=>{
     // free up borderMealList the meal list beforing saving new meal list 
     manager.borderMealList.forEach((rec)=>{
       boundTime.findOneAndUpdate({hostelName: hostelName},
@@ -33,7 +40,7 @@ exports.prepareMealList =async (hostelName)=>{
         else{             
           // if messStatus is on (3)   and student is member of the hostel (membership = 2) then push data
           students.forEach((student)=>{            
-            if(student.messStatus == 3 && student.membership == 2){              
+            if(student.messStatus == 3 && student.membership == 2 && student.profileType ==0){              
               let rec = {
                 _id : new mongoose.Types.ObjectId(),
                 fname : student.fname,
@@ -42,13 +49,13 @@ exports.prepareMealList =async (hostelName)=>{
                 department : student.department,
                 roomNo : student.roomNo  
               }                         
-              manager.borderMealList.push(rec);              
+              manager.borderMealList.push(rec);  
+              countBorderMeal++;    
+              
             }
             student.active_guest_list.forEach((guest)=>{
               const currDateInString = current_date.toDateString();
-              console.log(currDateInString.slice(0,15) , " --- " , guest.date.slice(0,15));
-              console.log(currDateInString.slice(0,15) === guest.date.slice(0,15));
-              console.log(isMorning && guest.mealTime == "night");
+            
               // if time is morning and gues mealTime is night then don't push the records otherwise push in all cases
                 if(!(isMorning && guest.mealTime == "night")){
                 if(currDateInString.slice(0,15) === guest.date.slice(0,15) && guest.mealStatus == 1){
@@ -58,19 +65,119 @@ exports.prepareMealList =async (hostelName)=>{
                     guestHolder : student.fname + " " + student.lname ,
                     guestType: student.profileType
                   }
-                  manager.guestMealList.push(newGuestRec);                 
+                  manager.guestMealList.push(newGuestRec);     
+                  
+                  if(student.profileType==1)
+                    countOfficialGuestMeal++;
+                  else countNormalGuestMeal++;
                 }}                
-            });            
+            });       
           });
         }
+
+       
         manager.save((err)=>{
           if(err){
             console.log(err);
           }
         });
-      });   
+
+
+        // puht here all data
+           //save the border , normal guest and official guest count in mealInfoList 
+
+    // couse records are pushing on the basis of only month and year....
+      var monthYear = current_date.toString().slice(3,7)+" " +current_date.toString().slice(11,15);    
+      User.findOne({hostelName:hostelName, profileType:1} , (err, manager)=>{      
+        if(err) console.log(err);
+        else {
+        // first search current month object exit or not
+        var isCurrentMonthRecExist= false; 
+        manager.mealInfoList.forEach((rec)=>{
+          //if yesss
+          if(monthYear === rec.auditedDate ){
+            isCurrentMonthRecExist = true;
+          // then update the data.....
+              // if(morning)
+
+              // total meal night + morning
+              const totalMeal = rec.totalMeal + countBorderMeal+ countNormalGuestMeal+ countOfficialGuestMeal;
+
+              if(isMorning){
+              let countBorder =rec.mealCountList.borderMor + countBorderMeal;
+              let countNguest =rec.mealCountList.guestMor + countNormalGuestMeal + countOfficialGuestMeal;
+              let counTotal =rec.mealCountList.totalMor + countBorderMeal+ countNormalGuestMeal+ countOfficialGuestMeal;;
+                  User.findOneAndUpdate({ _id: manager._id,mealInfoList: { $elemMatch: { _id: rec._id  } } }, {
+                  $set: {
+                    
+                    "mealInfoList.$.totalMeal": totalMeal,
+                    "mealInfoList.$.mealCountList.borderMor": countBorder,
+                    "mealInfoList.$.mealCountList.guestMor": countNguest,
+                    "mealInfoList.$.mealCountList.totalMor": counTotal
+                  }
+                }, function(err, guestFound) {
+
+                  if(err){
+                    console.log(err);
+                  }else 
+                  console.log("saved in data");
+                });
+             }
+              // if(night)
+              else{
+                let countBorder = rec.mealCountList.borderNig + countBorderMeal;
+                let countNguest = rec.mealCountList.guestNig + countNormalGuestMeal + countOfficialGuestMeal;
+                let counTotal = rec.mealCountList.totalNig + countBorderMeal+ countNormalGuestMeal+ countOfficialGuestMeal;;
+              
+                User.findOneAndUpdate({ _id: manager._id,mealInfoList: { $elemMatch: { _id: rec._id  } } }, {
+                  $set: {
+                    
+                    "mealInfoList.$.totalMeal": totalMeal,
+                    "mealInfoList.$.mealCountList.borderNig": countBorder,
+                    "mealInfoList.$.mealCountList.guestNig": countNguest,
+                    "mealInfoList.$.mealCountList.totalNig": counTotal
+                  }
+                }, function(err, guestFound) {});
+                
+              }
+
+              
+          }
+        })         
+          if(!isCurrentMonthRecExist){
+        // if(not)
+            // create a new month object for moring only .....
+           
+            var newMealInfoRec = {
+              auditedDate : monthYear,
+              perheadCharge:0,
+              totalMeal : countBorderMeal+ countNormalGuestMeal+ countOfficialGuestMeal,
+              mealCountList :{
+                borderMor: countBorderMeal,
+                borderNig:0,
+                guestMor:  countNormalGuestMeal + countOfficialGuestMeal,
+                guestNig:0,
+                totalMor :countBorderMeal+ countNormalGuestMeal+ countOfficialGuestMeal,
+                totalNig:0,        
+              }
+            }          
+            // push recorde in mealInfoList
+            manager.mealInfoList.push(newMealInfoRec);
+            manager.save();
+          }       
+         
+        }
+      });
+
+      });  
     }
   });
+
+
+ 
+ 
+    
+    
 }
 
 exports.pushMealRecords = async (hostelName , guestMorCharge, guestNigCharge , grandCharge) => {

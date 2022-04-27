@@ -2,6 +2,7 @@ const User = require("../../models/user.js");
 const BoundTime = require("../../models/boundTime.js");
 const {prepareMealList } = require("../../global/globalfunctions")
 const boundTime = require("../../models/boundTime.js");
+
 /// indian date-time system
 var d = new Date();
 var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
@@ -247,21 +248,49 @@ exports.setCharges = (req, res)=>{
      
     }
   })
+  
+
 }
 
 
 
 //addAuditCharges
 exports.addAuditCharges = (req, res)=>{
-  User.findOne({_id: req.profile._id}, (err, user)=>{
-    if(err || !user ){
+
+  const d =new Date( req.body.auditedDate);
+  const auditedDate = d.toDateString().slice(4,7)+" "+d.toDateString().slice(11,15);
+  
+
+  console.log("date --------",req.body,d, auditedDate);
+  User.findOne({_id: req.profile._id}, (err, manager)=>{
+    if(err || !manager ){
       return res.json({
         error : "Something went wrong"
       });
     }else{
-      
 
-      // pushing meal charge to managers account 
+      var recId;
+      manager.mealInfoList.forEach((rec)=>{
+        if(rec.auditedDate == auditedDate){
+          recId = rec._id
+          console.log(rec._id);
+        }
+      });
+
+
+      // set amount in manger mealInfoList ....
+      User.findOneAndUpdate({ _id: manager._id,mealInfoList: { $elemMatch: { _id: recId  } } }, {
+        $set: {
+
+          "mealInfoList.$.perheadCharge": req.body.auditAmount
+        }
+      }, function(err, guestFound) {
+        if(err){
+          return res.json({error:"This month has not meal records"})
+        }
+      });
+    
+    
       date = new Date().toDateString();
       var newRec ={
         auditDate : date,
@@ -269,13 +298,13 @@ exports.addAuditCharges = (req, res)=>{
       }
       // push audited meal charge to every corresponding studetn 
 
-      User.find({hostelName : req.profile.hostelName } , (err , users)=>{
+      User.find({hostelName : req.profile.hostelName , profileType:0} , (err , students)=>{
         if(err){
           console.log(err);
         }else {
-          users.forEach((user)=>{
-            user.paymentRecord.push(newRec);
-            user.save();
+          students.forEach((student)=>{
+            student.paymentRecord.push(newRec);
+            student.save();
           })
         }
       })

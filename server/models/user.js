@@ -22,12 +22,13 @@ const userSchema = new mongoose.Schema({
   religion:{ type :String, default:null},
   dob: { type :String, default:null},
 
+  education:{
   university:{ type :String, default:"University of kalyani"},
   session:String,  // Ex 2018-22 
   course: { type :String, default:null},
   subject: { type :String, default:null},
   semester: { type :String, default:null},
-  
+  },
   //contact
   guardian :{ type :String, default:null},
   gPhNo :{ type :String, default:null},
@@ -43,7 +44,7 @@ const userSchema = new mongoose.Schema({
   notification: { type :Number, default:0},
   salary:{ type :Number, default:0},
   profileType: { type :Number, default:0} ,  // 0 student , 1 manager , 2 employee , 3 admin
-  abouthostel :{},
+
 
 //Meal
   mealPreference :[{day:String, morning: [{choice:String }], night:[{choice:String }]}],
@@ -85,18 +86,13 @@ const userSchema = new mongoose.Schema({
 
   //committee member
     committeeMember: [{ membeberId:ObjectId, tag:String }],
-  //staff
-    staff: [{staffId : ObjectId, tag:String }],
+
   //notice  / fest
     notice: [{ title: String , text: String, description:String , date : {type:Date , default:Date.now}}],
-  //students
-    student :[{studentId: String }],
 
   //mess
    //use binary concept (00 to 11) right bit for forced off / left bit for student messStatus
     messStatus:{ type :Number, default:1},
-    morBoundTime: String,
-    nigBoundTime: String,
 
   //Records
     mealInfoList:[{
@@ -104,17 +100,17 @@ const userSchema = new mongoose.Schema({
       perheadCharge:{ type :Number, default:0},
       totalMeal:{ type :Number, default:0},
       mealCountList :{
-        morOnly:{ type :Number, default:0},
-        nigOnly:{ type :Number, default:0},
-        morNig :{ type :Number, default:0},
-        off: { type :Number, default:0},
+        borderMor:{ type :Number, default:0},
+        borderNig:{ type :Number, default:0},
+        guestMor:{ type :Number, default:0},
+        guestNig:{ type :Number, default:0},
+        totalMor :{ type :Number, default:0},
+        totalNig:{ type :Number, default:0},        
       }
     }],
 
   //charge
-      guestMorMealCharge:{ type :Number, default:0},
-      guestNigMealCharge:{ type :Number, default:0},
-      grandCharge : { type :Number, default:0},
+  
       newChargelist:[{
       tag:String,      // tag => fine / fest ...etc
       Title:String,
