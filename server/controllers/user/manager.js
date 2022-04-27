@@ -316,6 +316,35 @@ exports.addAuditCharges = (req, res)=>{
   })
 }
 
+//addFineOrDepositMoney
+
+exports.addFineOrDepositMoney = (req, res)=>{
+  const userId = req.body.userId;
+  const fine = req.body.fine;
+  const reason = req.body.reason;
+  const deposit = req.body.deposit;
+
+  User.findById(userId, (err, user) =>{
+    if(err|| !user){
+      return res.status(400).json({ error: "User Not Found"})
+    } else {
+       // if  it is fine ... 
+          date = new Date().toDateString();     
+          const newRec = {
+            auditDate: date,
+            auditAmount:0,
+            totalFine: fine,
+            fineReason:reason,
+            paid:deposit,
+          };
+        user.paymentRecord.push(newRec);
+        user.save((err)=>{
+        if(err)  return res.status(501).json({ error: "Some error, Amount not saved "})
+        else {  return res.status(501).json({ info: "sucessfully saved"})}
+      });
+    }
+  })
+}
 
 
 

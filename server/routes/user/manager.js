@@ -35,6 +35,7 @@ const {
     editProfile,
     setCharges,
     addAuditCharges,
+    addFineOrDepositMoney,
     setboundtime,
     setmessActivity,  // turn on  / turn off whole mess
     fchangeMealStatus, // forcefully manager can change the meal status of particular student
@@ -80,9 +81,10 @@ router.put("/removeguest/:userId", removeguest);
 
 
 router.put("/meal/messActivity/:userId",setmessActivity);
-router.put("/fchangeMealStatus/stu/:stuId/:userId",fchangeMealStatus)
-router.put("/setCharges/:userId" ,setCharges)
-router.put("/addAuditCharges/:userId" ,addAuditCharges)
+router.put("/fchangeMealStatus/stu/:stuId/:userId",fchangeMealStatus);
+router.put("/setCharges/:userId" ,setCharges);
+router.put("/addAuditCharges/:userId" ,addAuditCharges);
+router.put("/addFineOrDepositMoney/:userId" ,addFineOrDepositMoney);
 router.put("/setboundtime/:userId" ,setboundtime)
 router.put("/setstudetnHostelId/:stuId/:userId",setstudetnHostelId);
 router.put("/setting/theme/:userId",theme);
