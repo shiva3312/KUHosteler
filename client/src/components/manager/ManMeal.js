@@ -14,7 +14,7 @@ var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
 var current_date = new Date(utc + (3600000*+5.5));
 // current_date12 is 12h system
 var current_date12 =  current_date.toLocaleString();
-const isMorning = current_date.getHours >=6 && current_date.getHours<17;
+const isMorning = current_date.getHours() >=6 && current_date.getHours()<17;
 
 
 
@@ -156,7 +156,7 @@ const TodayMealList = () => {
     return (
         <>
         <ManLayout
-            title= {isMorning ? " Morning " : " Night "+ "Meal List"}
+            title= {isMorning ? " Morning Prepared Meal List " : " Night Prepared Meal List " }
             description={`${user.fname} ${user.lname}`}
             className="container-fluid"
         >

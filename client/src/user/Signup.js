@@ -64,8 +64,11 @@ const Signup = () => {
     };
 
     const clickSubmit = event => {
+         
+        var isSignUpPossible = true;
         event.preventDefault();
         if(!isCodeVarified && profileType ==1){
+          isSignUpPossible = false;
           setValues({ ...values, error: "code not varified" });
         }
 
@@ -73,6 +76,7 @@ const Signup = () => {
         else if(profileType ==1 ){
           hostedHostels.forEach((hostel)=>{
             if(hostel.hostelName === hostelName){
+              isSignUpPossible = false;
               setValues({ ...values, error: "Manger already exist" });
             }
           })
@@ -82,16 +86,18 @@ const Signup = () => {
         else if(profileType != 1  ){
           var isMnagerExist = false;
           hostedHostels.forEach((hostel)=>{
-            if(hostel.hostelName === hostelName){
-              isMnagerExist = true;              
+            if(hostel.hostelName === hostelName){             
+              isMnagerExist = true;    
+              isSignUpPossible = true          
             }
           })
           if(!isMnagerExist){
+            isSignUpPossible = false;
             setValues({ ...values, error: "Manger doest exist" });
           }
         }
         
-        else {
+         if(isSignUpPossible){
         setValues({ ...values, error: false });
         signup(values).then(data => {       
             if (data.error) {

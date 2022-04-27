@@ -15,6 +15,7 @@ const Charges = () => {
     const [manager , setmanager] = useState(user);
     const [amount , setAmount]= useState({
         auditAmount:0,
+        auditedDate:'',
         error:'',
         success:''
     });
@@ -43,6 +44,7 @@ const Charges = () => {
 
     const {
         auditAmount,
+        auditedDate,
     }= amount;
 
     const handleChange = name => event => {
@@ -72,7 +74,7 @@ const Charges = () => {
             }
         });
     };
-    
+ 
     const clickSubmitAduditCharge = event => {        
         event.preventDefault();
         setAmount({ ...amount, error: false });
@@ -90,9 +92,10 @@ const Charges = () => {
             }
         });
     };
-    
+   
     const auditedChargeMealList = () => {
       
+       
         return (
             <>
 
@@ -110,6 +113,9 @@ const Charges = () => {
                                     <th>SL no.</th>
                                     <th>Date</th>
                                     <th>Audit Amount</th>
+                                    <th>Border Meal</th>
+                                    <th>Guest Meal</th>
+                                    <th>Toatal Meal</th>
                                 </tr>
                             </thead>
                         </table>
@@ -118,12 +124,15 @@ const Charges = () => {
                         <table cellPadding="0" cellSpacing="0" border="0">
                             <tbody>
 
-                                {manager.paymentRecord.map((rec, i) => (
+                                {manager.mealInfoList.map((rec, i) => (
 
-                                    <tr key={i}>
+                                    <tr style={{display: rec.auditAmount? '' : 'none'}} key={i}>
                                         <td >{i + 1}</td>
-                                        <td>{rec.auditDate.slice(0, 15)}</td>
-                                        <td >{rec.auditAmount}</td>
+                                        <td>{rec.auditedDate.slice(0, 15)}</td>
+                                        <td >{rec.perheadCharge}</td>
+                                        <td >{rec.mealCountList.borderMor + rec.mealCountList.borderNig}</td>
+                                        <td >{rec.mealCountList.guestMor + rec.mealCountList.guestNig}</td>
+                                        <td >{rec.totalMeal}</td>
                                       
                                     </tr>
 
@@ -151,13 +160,18 @@ const Charges = () => {
         <section className=" gradient">       
         <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">Add Meal Charge</h4>
             <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="auditAmount">Audit Amount</label>
+              <label  className="form-label text-white" htmlFor="auditedDate">Month</label>
+              <input type="month" className="form-control" name="auditedDate" required="" onChange={handleAuditChange('auditedDate')} value={auditedDate} />        
+            </div> 
+            <div className="col form-outline text-start form-white mb-4">
+              <label  className="form-label text-white" htmlFor="auditAmount">Meal Charge</label>
               <input type="Number" className="form-control" name="auditAmount" required="" onChange={handleAuditChange('auditAmount')} value={auditAmount} />        
             </div>      
-           <div className="row">           
+            <div className="row">           
                 <div className="col">
-                  <button className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmitAduditCharge} >Add Charge</button>
-                </div>
+                  <button className="btn btn-outline-light btn-lg btn-success px-4" type="submit" onClick={clickSubmitAduditCharge} >Add Charge</button>
+                <button className="btn btn-outline-light btn-lg btn-danger ml-2 px-4" type="submit" onClick={(e)=>{e.preventDefault(); setauditToggler(!auditToggler)}} >Cancle</button>
+            </div>
             </div>      
         </section>
         </form>
@@ -241,7 +255,6 @@ const Charges = () => {
         </>
     );
 
-   
     useEffect(()=>{
         read(user._id, token).then((data) =>{
             setmanager(data)
@@ -258,7 +271,7 @@ const Charges = () => {
             className="container-fluid"
         >
             <div className="row">  
-               
+               {JSON.stringify(amount)}
                 {showSuccess()}
                 {showError()}    
                 {showCharges()}                     
