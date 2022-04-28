@@ -24,9 +24,12 @@ const AdminDashboard = () => {
     const [countStuGuest , setcountStuGuest] = useState(0);
     const [rederOnchange , setrenderOnchange] = useState(false);
     const [auditinfo , setAuditInfo] = useState({
-        charges:[],
+        perheadCharge:[],
+        totalMeal:[],
         months:[],
-        totalFine:[]
+        totalFine:[],
+        totalBorder:[],
+        totalGuest:[]
     });
 
     const AllReqList=()=>{
@@ -38,19 +41,25 @@ const AdminDashboard = () => {
 
     const loadUsers=()=>{
 
-        const charges = [];
+        const perheadCharge = [];
         const months =[];
         const totalFine =[];
-        user.paymentRecord.sort(function(a,b){
-            return new Date(a.auditDate) - new Date(b.auditDate);
+        const totalMeal=[];
+        const totalGuest= [];
+        const totalBorder=[];
+        user.mealInfoList.sort(function(a,b){
+            return new Date(a.auditedDate) - new Date(b.auditedDate);
           });
         
         
       
-        user.paymentRecord.forEach((rec)=>{
-            charges.push(rec.auditAmount);
-            months.push(rec.auditDate.slice(0,15));
+        user.mealInfoList.forEach((rec)=>{
+            perheadCharge.push(rec.perheadCharge);
+            months.push(rec.auditedDate);
             totalFine.push(rec.totalFine);
+            totalMeal.push(rec.totalMeal);
+            totalGuest.push(rec.mealCountList.guestMor+rec.mealCountList.guestNig);
+            totalBorder.push(rec.mealCountList.borderMor+rec.mealCountList.borderNig);
         })
 
         
@@ -61,7 +70,14 @@ const AdminDashboard = () => {
             setStudents(data.students);             
         });        
         getAllemployees(user._id, token).then((data)=>{ setEmployees(data.users); });
-        setAuditInfo({ charges:[...charges],  months:[...months], totalFine:[...totalFine]  });
+        setAuditInfo(
+            {   perheadCharge:[...perheadCharge],  
+                months:[...months], 
+                totalFine:[...totalFine], 
+                totalMeal:[...totalMeal], 
+                totalGuest:[...totalGuest], 
+                totalBorder:[...totalBorder] 
+            });
         getAllGuest(user._id , token).then((data)=>{ setAllListedGuest(data.allListedGuest)  });
         getAllGuest(user._id , token).then((data)=>{ setAllactivatedGuest(data.allactivatedGuest) });
         
@@ -224,36 +240,81 @@ const AdminDashboard = () => {
         );
     };
 
-    const showPieChart =()=>{
+    const mealChargeLineChart =()=>{
 
         const data = {
             labels: [...auditinfo.months],
                 datasets: [{
                     label: "Meal Charges",
-                    data: [...auditinfo.charges],
+                    data: [...auditinfo.perheadCharge],
                     fill: true,
+                    lineTension: 0.35,
                     backgroundColor: "rgba(75,192,192,0.2)",
                     borderColor: "rgba(75,192,192,1)"
                 },
+                 {
+                    label: "Total Fine",
+                    data: [...auditinfo.totalFine],
+                    fill: false,
+                    lineTension: 0.35,
+                    backgroundColor:"#742774",
+                    borderColor: "#742774"
+                }            
                 
-                    {
-                        label: "Total Fine",
-                        data: [...auditinfo.totalFine],
-                        fill: false,
-                        backgroundColor:"#742774",
-                        borderColor: "#742774"
-                      }
+            ]   
+            
+            }
+        
+
+        return <>
+          <div className="card mb-5">
+          <Line data={data} />
+          </div>
+        </>     
+       
+      }
+
+      const countLineChart =()=>{
+
+        const data = {
+            labels: [...auditinfo.months],
+                datasets: [                
+               
                 
+                {
+                    label: "Total Border Meal",
+                    data: [...auditinfo.totalBorder],
+                    fill: false,
+                    lineTension: 0.35,
+                    backgroundColor:"#746574",
+                    borderColor: "#746574"
+                },
                 
-            ],
-            options: {
+                {
+                    label: "Total Guest Meal",
+                    data: [...auditinfo.totalGuest],
+                    fill: false,
+                    lineTension: 0.35,
+                    backgroundColor:"#744374",
+                    borderColor: "#744374"
+                } ]  ,
+            
+            
+            },
+            options = {
                 scales: {
-                    y: {
-                        stacked: false
-                    }
+                    xAxes: [{
+                        gridLines: {
+                           display:false
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            display:false
+                        }   
+                    }]
                 }
             }
-        };
 
         return <>
           <div className="card mb-5">
@@ -312,7 +373,6 @@ const AdminDashboard = () => {
         );
     }
 
-
     const activatedGuest=()=>{
        
         allactivatedGuest.sort(function(a,b){
@@ -360,7 +420,6 @@ const AdminDashboard = () => {
             </div>
         );
     }
-
     
     useEffect(()=>{   
         loadUsers();
@@ -375,12 +434,14 @@ const AdminDashboard = () => {
             className="container-fluid"
         >
             <div className="row">
+          
             {studentReqList()}
             {staffReqList()}  
             {activatedGuest()}
             {listedGuest()}           
             {basicInfoCards()}
-            {showPieChart()}
+            {mealChargeLineChart()}
+            {countLineChart()}
               
             </div>           
         </ManLayout>

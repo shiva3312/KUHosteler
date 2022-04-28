@@ -99,6 +99,7 @@ const userSchema = new mongoose.Schema({
       auditedDate: String,
       perheadCharge:{ type :Number, default:0},
       totalMeal:{ type :Number, default:0},
+      totalFine:{ type :Number, default:0},
       mealCountList :{
         borderMor:{ type :Number, default:0},
         borderNig:{ type :Number, default:0},
