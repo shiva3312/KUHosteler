@@ -155,14 +155,17 @@ h1{
   table{
     width:100%;
     table-layout: fixed;
+   
   }
   .tbl-header{
     background-color: rgba(255,255,255,0.3);
+
    }
   .tbl-content{
     height:300px;
     overflow-x:auto;
     margin-top: 0px;
+  
     border: 1px solid rgba(255,255,255,0.3);
   }
   .th{
@@ -253,8 +256,23 @@ h1{
      }
  }  
 
-
- 
+ /* .meal{
+   
+     padding-left: 50px;
+     padding-right:50px;
+ } */
+ @media (max-width: 450px) {
+   .meal
+   { 
+    font-size: 12px;
+   }
+ } 
+.de{
+    color: rgba(139, 62, 62, 0.884);
+}
+.row{
+    border-radius: 1.3rem;
+}
 
 
    

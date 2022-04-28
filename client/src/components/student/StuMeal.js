@@ -36,24 +36,36 @@ const MealAcitvity = ({history}) => {
      
     return (
     <>
-    <div className="container">
-        <div  className="mt-5 row justify-content-center">
-            <div className="col-3 th">
-                <th>
-                    <h6>Meal Status</h6>
-                </th>
+    {/* <div className="container"> */}
+    <h1>Meal Status</h1>
+        <div  className="mt-3 m-5 row meal th shadow">
+            <div className="col-9 p-3 ps-3 pe-0 text-start  text-white">
+            MEAL STATUS &emsp;:&emsp;{
+               mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
+               mealStatus == 2 ? <span className="pt-3 fw-bold  text-success" >ACTIVATED</span> : <span className="pt-3  fw-bold de" >DEACTIVATED</span>
+             } 
+            
             </div>
-            <div className="col-3 th">
+            
+            <div className="col-3  text-end ">
+            {
+               mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
+               mealStatus == 2 ? <i type="submit" className="p-2 pt-3 fw-bold fa fa-lg fa-toggle-on text-success" onClick={submit}></i> : <i type="submit" className=" p-2 pt-3 fw-bold fa fa-lg fa-toggle-off de " onClick={submit}></i>
+             }
+              
+            </div>
+            
+            {/* <div className="col-3 th">
                 <th>
                     <h6 >  
                     {
                         mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
-                        mealStatus == 2 ? <button type="submit" className="btn-sm btn-danger" onClick={submit}>TURN OFF</button> : <button type="submit" className="btn-sm p-2 btn-success" onClick={submit}>TURN ON</button>
+                        mealStatus == 2 ? <button type="submit" className="btn" onClick={submit}>ACTIVATED<i className="fa fa-lg fa-toggle-on text-success"></i></button> : <button type="submit" className="btn" onClick={submit}><i className="fa fa-toggle-off text-secondary"></i></button>
                     }
                     </h6>
                 </th>
-            </div>
-        </div>
+            </div> */}
+        {/* </div> */}
     </div>
              <h1>Meal Activity</h1>
              <section className="shadow">
