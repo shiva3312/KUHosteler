@@ -37,9 +37,11 @@ const MealAcitvity = ({history}) => {
     return (
     <>
     {/* <div className="container"> */}
-    <h1>Meal Status</h1>
-        <div  className="mt-3 m-5 row meal th shadow">
-            <div className="col-9 p-3 ps-3 pe-0 text-start  text-white">
+    <h1 className="text-start ms-4 me-4 border-bottom">
+            <i className="fa fa-angle-double-right text-white"></i>
+           &nbsp;Check your meal status</h1>
+        <div  className="mt-5 m-5 row meal th shadow">
+            <div className="fs-5 col-9 p-3 ps-3 pe-0 text-start  text-white">
             MEAL STATUS &emsp;:&emsp;{
                mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
                mealStatus == 2 ? <span className="pt-3 fw-bold  text-success" >ACTIVATED</span> : <span className="pt-3  fw-bold de" >DEACTIVATED</span>
@@ -50,7 +52,7 @@ const MealAcitvity = ({history}) => {
             <div className="col-3  text-end ">
             {
                mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
-               mealStatus == 2 ? <i type="submit" className="p-2 pt-3 fw-bold fa fa-lg fa-toggle-on text-success" onClick={submit}></i> : <i type="submit" className=" p-2 pt-3 fw-bold fa fa-lg fa-toggle-off de " onClick={submit}></i>
+               mealStatus == 2 ? <i type="submit" className="check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on " onClick={submit}></i> : <i type="submit" className="check p-2 pt-3 fw-bold fa fa-lg fa-toggle-off  " onClick={submit}></i>
              }
               
             </div>
@@ -67,8 +69,12 @@ const MealAcitvity = ({history}) => {
             </div> */}
         {/* </div> */}
     </div>
-             <h1>Meal Activity</h1>
-             <section className="shadow">
+    <h1 className="text-start ms-4 me-4 border-bottom">
+            <i className="fa fa-angle-double-right text-white"></i>
+           &nbsp; your meal activity</h1>
+           <h1 className="fs-4">Meal activity</h1>
+        
+        <section className="shadow">
             <div  className="shadow tbl-header">
                 <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
                     <thead>

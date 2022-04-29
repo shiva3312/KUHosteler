@@ -104,7 +104,7 @@ const Charges = () => {
                     
                     <button className="btn btn-primary" onClick={()=>setauditToggler(!auditToggler)}>Add Meal Charge</button>
                 </div>
-                <section className="shadow">
+                <div className="shadow">
 
                     <div className="shadow tbl-header">
                         <table cellPadding="0" cellSpacing="0" border="0">
@@ -147,7 +147,7 @@ const Charges = () => {
 
                     </tfoot>
                     </table>
-                </section>
+                </div>
                
 
             </>
@@ -180,33 +180,40 @@ const Charges = () => {
 
     const showCharges =()=>(
         <>
+        <h1 className="m-4">Guest Meal Charges</h1>
+
         <div style={{ display: !guestToggler ? '' : 'none' }}>
         
-        <div className="mt-4">
+        
         <div className="text-end"> 
             <button className="btn btn-primary" onClick={()=>setguestToggler(!guestToggler)}>Update</button>
         </div>
-        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">Guest Meal Charges</h4>
-
-            <table className="table table-hover " >
+        <div className="shadow">
+            <div className="shadow tbl-header">
+            <table table cellPadding="0" cellSpacing="0" border="0" >
                 <thead>
                 <tr >
-                    <th className="align-middle text-center text-light">Guest Morning Charge</th>
-                    <th className="align-middle text-center text-light">Gues Night Charge</th>
-                    <th className="align-middle text-center text-light" >Gues Grand Charge</th>
+                    <th >Guest Morning Charge</th>
+                    <th >Gues Night Charge</th>
+                    <th >Gues Grand Charge</th>
                 </tr>
                 </thead>
+                </table>
+                </div>
+                <div className="table tbl-content">
+                <table cellPadding="0" cellSpacing="0" border="0">
                 <tbody>
                 <tr >
-                    <td className="align-middle text-center text-light">{guestMorMealCharge}</td>
-                    <td className="align-middle text-center text-light">{guestNigMealCharge}</td>
-                    <td className="align-middle text-center text-light">{grandCharge}</td>
+                    <td >{guestMorMealCharge}</td>
+                    <td >{guestNigMealCharge}</td>
+                    <td >{grandCharge}</td>
                 </tr>
                 </tbody>
             </table>
+            </div>
         </div>
-        
         </div>
+      
         </>
     );
 
