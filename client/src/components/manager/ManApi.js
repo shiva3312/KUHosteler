@@ -348,6 +348,21 @@ export const addAuditCharges = (userId, token, values) => {
         .catch(err => console.log(err));
 };
 
+export const addFineOrDepositMoney = (userId, token, values) => {
+    return fetch(`${API}/manager/addFineOrDepositMoney/${userId}`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(values)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 
 
 export const setboundtime = (userId, token, status) => {
@@ -399,7 +414,5 @@ export const changeTheme = (userId, token, status) => {
         })
         .catch(err => console.log(err));
 };
-
-
 
 

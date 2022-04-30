@@ -279,10 +279,12 @@ exports.addAuditCharges = (req, res)=>{
 
 
       // set amount in manger mealInfoList ....
+      const auditDate = new Date(req.body.auditedDate).toDateString();
       User.findOneAndUpdate({ _id: manager._id,mealInfoList: { $elemMatch: { _id: recId  } } }, {
         $set: {
 
-          "mealInfoList.$.perheadCharge": req.body.auditAmount
+          "mealInfoList.$.perheadCharge": req.body.auditAmount,
+          "mealInfoList.$.auditedDate": auditDate
         }
       }, function(err, guestFound) {
         if(err){
@@ -308,16 +310,12 @@ exports.addAuditCharges = (req, res)=>{
           })
         }
       })
-
       return res.json({info : "Audited meal Charge successfully added"});
-
-     
     }
   })
 }
 
 //addFineOrDepositMoney
-
 exports.addFineOrDepositMoney = (req, res)=>{
   const userId = req.body.userId;
   const fine = req.body.fine;
@@ -338,10 +336,39 @@ exports.addFineOrDepositMoney = (req, res)=>{
             paid:deposit,
           };
         user.paymentRecord.push(newRec);
-        user.save((err)=>{
-        if(err)  return res.status(501).json({ error: "Some error, Amount not saved "})
-        else {  return res.status(501).json({ info: "sucessfully saved"})}
+       
+
+      // add this fine to mealInfo list fine....
+      const d =new Date();
+      const auditedDate = d.toDateString().slice(4,7)+" "+d.toDateString().slice(11,15);
+      var recId;
+      var totalFine =0;
+      manager.mealInfoList.forEach((rec)=>{
+        if(rec.auditedDate == auditedDate){
+          recId = rec._id
+          totalFine += rec.totalFine;
+        }
       });
+
+      totalFine += fine;
+  // set amount in manger mealInfoList ....
+      User.findOneAndUpdate({ _id: manager._id,mealInfoList: { $elemMatch: { _id: recId  } } }, {
+        $set: {
+            "mealInfoList.$.totalFine": totalFine
+          }
+        }, function(err, guestFound) {
+          if(err){
+            return res.json({error:"This month has not meal records"})
+          }
+        });
+
+
+          //saving the user...
+        user.save((err)=>{
+          if(err)  return res.status(501).json({ error: "Some error, Amount not saved "})
+          else {  return res.status(200).json({ info: "sucessfully saved"})}
+        });
+
     }
   })
 }
