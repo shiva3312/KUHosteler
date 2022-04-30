@@ -84,7 +84,11 @@ const AddGuest = ({history}) => {
         
        return (
         
-        <> <h1>Active guest list</h1>
+        <>
+         <h1 className="text-start ms-4 me-4 border-bottom">
+            <i className="fa fa-angle-double-right text-white"></i>
+           &nbsp;Active Guests</h1>
+         <h1 className="fs-4">Details of active guests</h1>
         <section className="shadow">
         
         
@@ -152,64 +156,80 @@ const AddGuest = ({history}) => {
 
     const addGuestForm = () => {
         return (
-            <> <h1>Add new guest</h1>
-            <section > 
-         <form className=" row mt-2 justify-content-center" >
-             
-         <div id="addguest" className="tbl-header
-   col-lg-2">
-           <table  cellPadding="0" cellSpacing="0" border="0">
-                    <tbody>
-                    <tr><td colSpan="" className="text-start lead"> Name </td></tr>
-                    <tr><td><input type="Name" className="form-control" id="inputEmail" placeholder=" Enter Guest Name"  required  onChange={handleChange('name')} value={name}></input></td></tr>
-                    </tbody>
-                </table>
-            </div>
+            <> 
+           
+            <h1 className="text-start ms-4 me-4 border-bottom">
+            <i className="fa fa-angle-double-right text-white"></i>
+           &nbsp;Add new guest</h1>
+            <div  className="mt-5 m-5 row th shadow">
+           <div className="col-3 p-4 ps-4">
+               <i className="fa fa-lg fa-user-plus text-white"></i>
+           </div>
+            <div className="col-9 p-3 ps-3  text-end">
+           
+<button type="button" className=" bton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <span className="button__icon">
+        <i className="fa fa-plus"></i>
+    </span>
+    <span className="button__text">
+    Add New Guest   
+    </span>
+ 
+</button>
 
-            <div className="tbl-header col-lg-4 col-sm-12">
-                <table cellPadding="0" cellSpacing="0" border="0">
-                    <tbody>
-                    <tr><td colSpan="2" className="text-start lead"> From </td></tr>
-                    <tr><td>
-                            <select className="form-select"  onChange={handleChange('startoption')} value={startoption}>
-                                <option defaultValue="on">Morning/Night</option>
+</div>
+</div>
+
+<div className="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header text-white">
+        <h5 className="modal-title " id="exampleModalLabel">Fill the following details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body text-white">
+      <div className="mb-3" id="addguest">
+  <label for="exampleFormControlInput1" class="form-label">Name</label>
+  <input type="Name" className="form-control" id="inputEmail" placeholder=" Enter Guest Name"  required  onChange={handleChange('name')} value={name}/>
+                   </div>
+                   <div className="row">
+                   <label for="exampleFormControlInput1" class="form-label">From</label>
+                    <div className="col-6 mb-3">
+                   <select className="form-select"  onChange={handleChange('startoption')} value={startoption}>
+                                <option defaultValue="on">Morning & Night</option>
                                 <option value="morning">Only Morning</option>
                                 <option value="night">Only Night</option>
                             </select>
-                        </td>
-                        <td><input type="date" className="form-control"  onChange={handleChange('startDate')} value={startDate} required></input></td>
-                     </tr>
-                     </tbody>
-                </table>
-            </div>
-
-            <div className="tbl-header col-lg-4 col-sm-12">
-                <table cellPadding="0" cellSpacing="0" border="0">
-                    <tbody>
-                    <tr><td colSpan="3" className="text-start lead"> To </td></tr>
-                    <tr><td>
-                        <select className="form-select"  onChange={handleChange('endoption')} value={endoption}>
-                            <option defaultValue="on">On</option>
+                            </div>
+                            <div className="col-6 mb-3">
+                            <input type="date" className="col-3 form-control"  onChange={handleChange('startDate')} value={startDate} required></input>
+                            </div>
+                            </div>
+                    <div className="row">
+                    <label for="exampleFormControlInput1" class="form-label">To</label>
+                    <div className="col-6 mb-3">
+                  
+                    <select className="form-select"  onChange={handleChange('endoption')} value={endoption}>
+                            <option defaultValue="on">Morning & Night</option>
                             <option value="morning">Only Morning</option>
                             <option value="night">Only Night</option>
                         </select>
-                    </td><td><input type="date" className="form-control"  onChange={handleChange('endDate')} value={endDate} required></input></td>
-                    <td width="10%"><button className="btn btn-success" onClick ={clickSubmit}>Add</button></td> </tr>
-                    </tbody>
-                </table>
-            </div>
-{/* 
-            <div className="tbl-header col-lg-1 col-sm-12 text-end">
-                <table cellPadding="0" cellSpacing="0" border="0">
-                    <tbody>
-                    <tr><td  className="text-start lead "></td></tr>
-                    <tr><td width="10%"><button className="btn btn-success" onClick ={clickSubmit}>Add</button></td> </tr>
-                    </tbody>
-                </table>
-
-            </div> */}
-        </form>
-        </section>
+                        </div>
+                        <div className="col-6 mb-3">
+                        <input type="date" className="form-control"  onChange={handleChange('endDate')} value={endDate} required></input> 
+                        </div>
+                    </div>
+       
+      </div>
+      <div className="modal-footer ">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-success" onClick ={clickSubmit}>Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+          
+         
         </>
     )};
 

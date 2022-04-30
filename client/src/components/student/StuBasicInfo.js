@@ -15,13 +15,27 @@ const AdminDashboard = ({history}) => {
             <div  className=" pt-5 card mt-3 pb-5 th ">
                <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">BASIC DETAILS</h4>
                     <ul className=" con shadow">
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Profile Type &ensp;:&ensp;
-                        {user.profileType === 1 ? "Manager" : user.profileType === 0 ? "Student" :"Employee"}
-                    </li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Date of Birth &nbsp;:&ensp;{user.dob}</li>                   
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Email Account&nbsp;:&ensp;{user.email}</li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Membership &ensp;:&ensp;{user.membership===1? "Activated" : "Deactivated"}</li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Hostel Name &nbsp;:&ensp;{user.hostelName.toUpperCase()}</li>
+                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-5 ps-0">Profile Type</div>
+                        <div className="col-7">: {user.profileType === 1 ? "Manager" : user.profileType === 0 ? "Student" :"Employee"}
+                    </div>
+          </li>
+                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                        <div className="col-5 ps-0 pe-0">Date of birth</div>
+                        <div className="col-7">: {user.dob}</div>
+                       </li>                   
+                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-5 ps-0 pe-0">Email Account</div>
+                        <div className="col-7">: {user.email}</div>
+                       </li>
+                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-5 ps-0 pe-0">Membership</div>
+                        <div className="col-7">: {user.membership===1? <span className="text-success fw-bold "> Activated</span> : <span className="text-danger fw-bold"> Deactivated</span>}</div>
+                        </li>
+                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-5 ps-0 pe-0">Hostel Name</div>
+                        <div className="col-7">: {user.hostelName.toUpperCase()}</div>
+                        </li>
                     {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Room Number&nbsp;:&ensp;{user.roomNo}</li>                  */}
                      {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Bio &nbsp;:&ensp;{user.bio}</li>                   */}
                    
@@ -36,16 +50,27 @@ const AdminDashboard = ({history}) => {
             <div  className=" pt-5 mt-3 card pb-5 th ">
                <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">EDUCATIONAL DETAILS</h4>
                     <ul className=" con shadow">
-                    
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Course &emsp;:&ensp;{user.course}</li>
-                   
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Subjetct &ensp;:&ensp;{user.subject}</li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Semester&nbsp;:&ensp;{user.semester}</li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Session &emsp; &emsp;:&ensp;{user.session}</li>
-                    {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Room Number&nbsp;:&ensp;{user.roomNo}</li>                  */}
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">College &emsp;:&ensp;{user.university}</li>                         
-                    {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Bio &nbsp;:&ensp;{user.bio}</li>                   */}
-                   
+                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-3 ps-0 pe-0">Course</div>
+                        <div className="col-9">: {user.course}</div>
+                        </li>
+                        <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-3 ps-0 pe-0">Subject</div>
+                        <div className="col-9">: {user.subject}</div>
+                        </li>
+                        <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-3 ps-0 pe-0">Semester </div>
+                        <div className="col-9 ">: {user.semester}</div>
+                        </li>
+                        <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-3 ps-0 pe-0">Session</div>
+                        <div className="col-9">: {user.session}</div>
+                        </li>
+                        <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-3 ps-0 pe-0">College</div>
+                        <div className="col-9">: {user.university}</div>
+                        </li>
+                  
                 </ul>
             </div>
           
@@ -58,10 +83,19 @@ const AdminDashboard = ({history}) => {
             <div className="pt-5 mt-3 card pb-5 th">
             <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">CONTACT DETAILS</h4>
            <ul className="con shadow">
-           <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Home Address &emsp;:&ensp;{user.address}</li>
+           <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+           <div className="col-5 ps-0 pe-0">Home Address</div>
+                        <div className="col-7">: {user.address}</div>
+                 </li>
                     
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Phone Number &emsp;:&ensp; {user.selfPhNo} </li>
-                    <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Guardian Phone &ensp;:&ensp;{user.gPhNo}</li> 
+                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-5 ps-0 pe-0">Phone No</div>
+                        <div className="col-7 pe-0">: {user.selfPhNo}</div>
+                       </li>
+                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+                    <div className="col-5 pe-0 ps-0">Guardian Phone</div>
+                        <div className="col-7 pe-0">: {user.gPhNo}</div>
+                        </li> 
                    {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Profile Type &emsp;&emsp;:&ensp;
                         {user.profileType === 1 ? "Admin" : "Registered User"}2
                     </li> */}

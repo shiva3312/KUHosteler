@@ -167,39 +167,48 @@ const AdminDashboard = () => {
     const studentReqList = () => {     
         if(stuReqList.length===0) return <></>
         return (
-            <div className=" mb-5">
-                <h3 className="card-header text-center">Student Request List</h3>
-               
-                <table className="table table-hover ">
+            <>
+            <h1 className="m-4">Student Request List</h1>
+            <div className="shadow">
+
+ <div className="shadow tbl-header ">
+ 
+                <table cellPadding="0" cellSpacing="0" border="0" >
                     <thead>
-                        <tr className="bg-dark">
-                            <th className="align-middle text-center text-light h5 p-3">SL</th>
-                            <th className="align-middle text-center text-light h5">Requested Date</th>
-                            <th className="align-middle text-center text-light h5" >Picture</th>
-                            <th className="align-middle text-center text-light h5" >Name</th>
-                            <th className="align-middle text-center text-light h5" >Department</th>    
-                            <th className="align-middle text-center text-light h5" >Mob No.</th> 
-                            <th className="align-middle text-center text-light h5" colSpan={3} >Action</th>                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                   {  stuReqList.map((student , i)=>(                      
-                        <tr className="" key={i}>                       
-                            <td className="text-center align-middle ">{i+1}</td>
-                            <td className="text-center align-middle">{student.createdAt.slice(0,10)}</td>
-                            <td className="text-center align-middle"> <img className="img mb-2 img-thumbnail" src={student.avatar} alt="..." width="75" /></td>
-                            <td className="text-center align-middle">{student.fname} {student.lname}</td>
-                            <td className="text-center align-middle">{student.department}</td>   
-                            <td className="text-center align-middle">{student.selfPhNo}</td>                               
+                        <tr >
+                            <th>SL</th>
+                            <th >Requested Date</th>
+                            <th  >Picture</th>
+                            <th>Name</th>
+                            <th  >Department</th>    
+                            <th >Mob No.</th> 
+                            <th colSpan={2} >Action</th>                            
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div className="tbl-content">
+                        <table cellPadding="0" cellSpacing="0" border="0">
+                            <tbody>
+ {  stuReqList.map((student , i)=>(                      
+                        <tr  key={i}>                       
+                            <td >{i+1}</td>
+                            <td >{student.createdAt.slice(0,10)}</td>
+                            <td > <img className="img mb-2 img-thumbnail" src={student.avatar} alt="..." width="75" /></td>
+                            <td >{student.fname} {student.lname}</td>
+                            <td >{student.department}</td>   
+                            <td >{student.selfPhNo}</td>                               
                             <td> <button type="submit" className="btn btn-success "  onClick={()=>clickSubmit(student._id , 2)}>Accept</button></td>
                             <td> <button type="submit" className="btn btn-primary  " onClick={()=>clickSubmit(student._id , 1)}>Guest</button></td>
-                            <td> <button type="submit" className="btn btn-danger  " onClick={()=>clickSubmit(student._id , 4)}>Reject</button></td>                       
+                            {/* <td> <button type="submit" className="btn btn-danger  " onClick={()=>clickSubmit(student._id , 4)}>Reject</button></td>                        */}
                         </tr>
                         ))}
                     </tbody>
                     <tfoot></tfoot>
                 </table>                
             </div>
+            </div>
+            </>
         );
     };
 
@@ -207,36 +216,43 @@ const AdminDashboard = () => {
       
         if(empReqList.length===0) return <></>
         return (
-            <div className="card mb-5">
-                <h3 className="card-header text-center">Employee Request List</h3>
-               
-                <table className="table table-hover " id="tableLevel-2">
+            <>
+            <h1>Employee Request List</h1>
+            <div className="shadow tbl-header"> 
+                 <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
                     <thead>
-                        <tr className="bg-dark">
-                            <th className="align-middle text-center text-light h5 p-3">SL</th>
-                            <th className="align-middle text-center text-light h5">Requested Date</th>
-                            <th className="align-middle text-center text-light h5" >Picture</th>
-                            <th className="align-middle text-center text-light h5" >Name</th>
-                            <th className="align-middle text-center text-light h5" >Mob No.</th> 
-                            <th className="align-middle text-center text-light h5" colSpan={2} >Action</th>                            
+                        <tr >
+                            <th >SL</th>
+                            <th >Requested Date</th>
+                            <th  >Picture</th>
+                            <th>Name</th>
+                            <th >Mob No.</th> 
+                            <th colSpan={2} >Action</th>                            
                         </tr>
                     </thead>
+                    </table>
+                    </div>
+                    <div>
+                    <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
+                    
+                      
                     <tbody>
                    {  empReqList.map((emp , i)=>(                      
-                        <tr className="table-warning" key={i}>                       
-                            <td className="text-center align-middle ">{i+1}</td>
-                            <td className="text-center align-middle">{emp.createdAt.slice(0,10)}</td>
-                            <td className="text-center align-middle"> </td>
-                            <td className="text-center align-middle">{emp.fname} {emp.lname}</td>  
-                            <td className="text-center align-middle">{emp.selfPhNo}</td>                               
+                        <tr  key={i}>                       
+                            <td>{i+1}</td>
+                            <td >{emp.createdAt.slice(0,10)}</td>
+                            <td> </td>
+                            <td >{emp.fname} {emp.lname}</td>  
+                            <td>{emp.selfPhNo}</td>                               
                             <td> <button type="submit" className="btn btn-success  " onClick={()=>clickSubmit(emp._id , 2)} >Accept</button></td>
                             <td> <button type="submit" className="btn btn-danger  " onClick={()=>clickSubmit(emp._id , 4)}>Reject</button></td>                       
                         </tr>
                         ))}
                     </tbody>
-                    <tfoot></tfoot>
+                   
                 </table>                
             </div>
+            </>
         );
     };
 
@@ -332,44 +348,51 @@ const AdminDashboard = () => {
        
         if(allListedGuest.length===0) return <></>
         return (
-            <div className=" mb-5">
-                <h3 className="card-header text-center">Listed Guest Meal Request List</h3>
-               
-                <table className="table table-hover ">
-                    <thead>
-                        <tr className="bg-dark">
-                            <th className="align-middle text-center text-light h5 p-3">SL</th>
-                            <th className="align-middle text-center text-light h5" >Guest Name</th>
-                            <th className="align-middle text-center text-light h5" >Guest Type</th>
-                            <th className="align-middle text-center text-light h5" >Guest Holder</th>
-                            <th className="align-middle text-center text-light h5" >Meal Date</th>    
-                            <th className="align-middle text-center text-light h5" >Mob No.</th>
-                            <th className="align-middle text-center text-light h5" >Room No</th> 
-                            <th className="align-middle text-center text-light h5" colSpan={2} >Action</th>                            
+            <>
+            <h1 className="m-4">Guest Meal Request List</h1>
+            <div className="shadow">
+            <div className="shadow tbl-header">
+                        <table cellPadding="0" cellSpacing="0" border="0">
+                            <thead>
+                                 <tr>
+                            <th >SL</th>
+                            <th  >Guest Name</th>
+                            <th  >Guest Type</th>
+                            <th  >Guest Holder</th>
+                            <th  >Meal Date</th>    
+                            <th  >Mob No.</th>
+                            <th  >Room No</th> 
+                            <th  colSpan={2} >Action</th>                            
                         </tr>
                     </thead>
-                    <tbody>
-                   { allListedGuest.map((guest , i)=>(                      
-                        <tr className="" key={i}>                       
-                            <td className="text-center align-middle ">{i+1}</td>                           
-                            <td className="text-center align-middle">{guest.name}</td>
+                    </table>
+                    </div>
+                    <div className="shadow tbl-content">
+                        <table cellPadding="0" cellSpacing="0" border="0">
+                         <tbody>
+                         { allListedGuest.map((guest , i)=>(                      
+                        <tr  key={i}>                       
+                            <td >{i+1}</td>                           
+                            <td >{guest.name}</td>
                             {
-                                guest.guestType ==0 ? <td className="text-center align-middle">Normal</td> :
-                                <td className="text-center align-middle">Official</td>
+                                guest.guestType ==0 ? <td >Normal</td> :
+                                <td >Official</td>
                             }
                             
-                            <td className="text-center align-middle">{guest.holderName}</td>
-                            <td className="text-center align-middle">{guest.mealDate.slice(0,15)}</td>   
-                            <td className="text-center align-middle">{guest.holderMobNo}</td> 
-                            <td className="text-center align-middle">{guest.holderRoomNo}</td>                              
+                            <td >{guest.holderName}</td>
+                            <td >{guest.mealDate.slice(0,15)}</td>   
+                            <td >{guest.holderMobNo}</td> 
+                            <td >{guest.holderRoomNo}</td>                              
                             <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td>
                             <td> <button type="submit" className="btn btn-danger  " onClick={()=>deleteGuest(guest._id,guest.holderId )}>Remove</button></td>                       
                         </tr>
                         ))}
                     </tbody>
-                    <tfoot></tfoot>
+                    
                 </table>                
             </div>
+            </div>
+            </>
         );
     }
 
@@ -387,29 +410,29 @@ const AdminDashboard = () => {
                     <thead>
                         <tr className="bg-dark">
                             <th className="align-middle text-center text-light h5 p-3">SL</th>
-                            <th className="align-middle text-center text-light h5" >Guest Name</th>
-                            <th className="align-middle text-center text-light h5" >Guest Type</th>
-                            <th className="align-middle text-center text-light h5" >Guest Holder</th>
-                            <th className="align-middle text-center text-light h5" >Department</th>    
-                            <th className="align-middle text-center text-light h5" >Mob No.</th>
-                            <th className="align-middle text-center text-light h5" >Room No</th> 
-                            <th className="align-middle text-center text-light h5"  >Action</th>                            
+                            <th  >Guest Name</th>
+                            <th  >Guest Type</th>
+                            <th  >Guest Holder</th>
+                            <th  >Department</th>    
+                            <th  >Mob No.</th>
+                            <th  >Room No</th> 
+                            <th   >Action</th>                            
                         </tr>
                     </thead>
                     <tbody>
                    { allactivatedGuest.map((guest , i)=>(                      
                         <tr className="" key={i}>                       
                             <td className="text-center align-middle ">{i+1}</td>                           
-                            <td className="text-center align-middle">{guest.name}</td>
+                            <td >{guest.name}</td>
                             {
-                                guest.guestType ==0 ? <td className="text-center align-middle">Normal</td> :
-                                <td className="text-center align-middle">Official</td>
+                                guest.guestType ==0 ? <td >Normal</td> :
+                                <td >Official</td>
                             }
                             
-                            <td className="text-center align-middle">{guest.holderName}</td>
-                            <td className="text-center align-middle">{guest.mealDate.slice(0,15)}</td>   
-                            <td className="text-center align-middle">{guest.holderMobNo}</td> 
-                            <td className="text-center align-middle">{guest.holderRoomNo}</td>                              
+                            <td >{guest.holderName}</td>
+                            <td >{guest.mealDate.slice(0,15)}</td>   
+                            <td >{guest.holderMobNo}</td> 
+                            <td >{guest.holderRoomNo}</td>                              
                             {/* <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td> */}
                             <td> <button type="submit" className="btn btn-danger  " onClick={()=>deleteGuest(guest._id,guest.holderId )}>Remove</button></td>                       
                         </tr>
@@ -433,8 +456,9 @@ const AdminDashboard = () => {
             description={`${user.fname} ${user.lname}`}
             className="container-fluid"
         >
-            <div className="row">
-          
+
+            <div >
+
             {studentReqList()}
             {staffReqList()}  
             {activatedGuest()}
