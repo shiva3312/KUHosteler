@@ -6,7 +6,7 @@ export default function Footer() {
    
         <footer >
         <div  className="footer ">
-        <div  className="card bg-dark mt-2 ">
+        <div  className="bg-dark card">
         <div  className="row ">
             <div  className="ku col-md-4 col-sm-4 col-xs-4 ">
                  <div  className="footer-text pull-left">

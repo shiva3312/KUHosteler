@@ -41,39 +41,45 @@ const EmployeeListInfo = () => {
     const emploeyeeList = () => {     
      
         return (
-            <div className="card mb-5">
-                <h3 className="card-header text-center">Student Request List</h3>
-               
-                <table className="table table-hover " id="tableLevel-2">
+            <>
+            <h1 className="m-4">Employee Request List</h1>
+            <div className="shadow tbl-header">
+               <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
                     <thead>
-                        <tr className="bg-dark">
-                            <th className="align-middle text-center text-light h5 p-3">SL</th>
-                            <th className="align-middle text-center text-light h5" >Picture</th>
-                            <th className="align-middle text-center text-light h5" >Name</th>
-                            <th className="align-middle text-center text-light h5" >Membership</th>   
-                            <th className="align-middle text-center text-light h5" >Action</th>                            
+                        <tr >
+                            <th >SL</th>
+                            <th >Picture</th>
+                            <th >Name</th>
+                            <th  >Membership</th>   
+                            <th >Action</th>                            
                         </tr>
                     </thead>
+                    </table>
+                    </div>
+                    <div className="shadow tbl-content">
+                    <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
+               
                     <tbody>
                    {  employees.map((employee , i)=>(                      
-                        <tr className="table-warning" key={i}>                       
-                            <td className="text-center align-middle ">{i+1}</td>
-                            <td className="text-center align-middle"> </td>
-                            <td className="text-center align-middle">{employee.fname} {employee.lname}</td>
+                        <tr key={i}>                       
+                            <td >{i+1}</td>
+                            <td> </td>
+                            <td >{employee.fname} {employee.lname}</td>
                             
                             {employee.membership ===2 ?                                
-                            <td className="text-center" > <button type="submit" className="btn btn-success "  onClick={()=>toggleMembership(employee._id , 3)}>Present</button></td>:
-                            <td className="text-center"> <button type="submit" className="btn btn-danger "  onClick={()=>toggleMembership(employee._id , 2)}>Left</button></td>
+                            <td  > <button type="submit" className="btn btn-success "  onClick={()=>toggleMembership(employee._id , 3)}>Present</button></td>:
+                            <td > <button type="submit" className="btn btn-danger "  onClick={()=>toggleMembership(employee._id , 2)}>Left</button></td>
                             }
                             
-                            <td className="text-center"> <button type="button" className="btn btn-primary" data-toggle="modal"  >View Details</button></td>                       
+                            <td > <button type="button" className="btn btn-primary" data-toggle="modal"  >View Details</button></td>                       
                             
                         </tr>
                         ))}
                     </tbody>
-                    <tfoot></tfoot>
+                  
                 </table>                
             </div>
+            </>
         );
     };
 
@@ -91,7 +97,7 @@ const EmployeeListInfo = () => {
               {emploeyeeList()} 
             </div>           
         </ManLayout>
-        <Footer />
+        {/* <Footer /> */}
         </>
     );
 };

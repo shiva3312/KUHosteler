@@ -4,7 +4,7 @@ body {
    }
    .card-body {
        border-radius: 15px;
-       background: linear-gradient(to right,rgb(96, 33, 243),rgb(179, 9, 179));
+       /* background: linear-gradient(to right,rgb(96, 33, 243),rgb(179, 9, 179)); */
  
    }
  
