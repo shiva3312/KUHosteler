@@ -1,4 +1,5 @@
 import { API } from '../config';
+const nodemailer = require('nodemailer');
 
 export const signup = user => {
     return fetch(`${API}/auth/signup`, {
@@ -25,6 +26,23 @@ export const signin = user => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+export const uploadpic = (userId, token, data) => {
+    return fetch(`${API}/auth/user/uploadphoto/${userId}`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: data
     })
         .then(response => {
             return response.json();
@@ -98,3 +116,23 @@ export const getAllHostedUnHostedHostel = () => {
             console.log(err);
         });
 };
+
+
+export const verfyMail = (values) => {
+    return fetch(`${API}/auth/verfyMail`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+    })
+  
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+

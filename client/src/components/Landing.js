@@ -26,7 +26,7 @@ export default function Landing({history}) {
                         <Link className="nav-link fw-bold" to="#">Support</Link>
                     </li>
                     {isAuthenticated() && (                       
-                        <Link className="nav-item ps-3 px-3 pt-1"  onClick={() => signout(() => { history.push("/"); }) } >
+                        <Link className="nav-item ps-3 px-3 pt-1" to=""  onClick={() => signout(() => { history.push("/"); }) } >
                         <button className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6" type="submit">Signout</button>
                         </Link>
                      )}

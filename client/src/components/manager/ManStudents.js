@@ -154,7 +154,8 @@ const StudentListInfo = () => {
                     <div className="shadow tbl-content">
                <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
                     <tbody>
-                   {  students.map((student , i)=>(                      
+                   {  students.map((student , i)=>( 
+                       <>                     
                         <tr key={i}>                       
                             <td>{i+1}</td>
                             <td> </td>

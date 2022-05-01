@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signup from './user/Signup';
 import Signin from './user/Signin';
 import InfoPage from './user/InfoPage';
+import UpLoadPhoto from './user/PicUploading';
 import Landing from './components/Landing';
 import ManagerRoute from './auth/ManagerRoute';
 import PrivateRoute from './auth/PrivateRoute'
@@ -55,6 +56,7 @@ const Routes = () => {
                 <PrivateRoute path="/student/guest" exact component={StuGuest} />
                 <PrivateRoute path="/student/meal" exact component={StuMeal} />
                 <PrivateRoute path="/student/records" exact component={StuRecords} />
+                <PrivateRoute path="/user/uploadphoto" exact component={UpLoadPhoto} />
 
                 {/* global Route */}
                 <PrivateRoute path="/manager/preparedMealList" exact component={ManMeal} />                    
