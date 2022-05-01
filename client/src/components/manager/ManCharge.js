@@ -275,7 +275,7 @@ const Charges = () => {
         <ManLayout
             title="All Charges"
             description={"Meal and Event charges"}
-            className="container-fluid"
+            className="container-fluid pb-4"
         >
             <div className="row">  
                {JSON.stringify(amount)}
@@ -289,7 +289,7 @@ const Charges = () => {
                
             </div>           
         </ManLayout>
-        <Footer />
+        {/* <Footer /> */}
         </>
     );
 };

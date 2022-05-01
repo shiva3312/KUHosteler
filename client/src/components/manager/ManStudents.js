@@ -56,7 +56,7 @@ const StudentListInfo = () => {
     const chargeForm = () => (
         
         <form > 
-        <section className=" gradient">  
+        <div className="container">
             <div className="col form-outline text-start form-white mb-4">
               <label  className="form-label text-white" htmlFor="deposit">deposit</label>
               <input type="Number" className="form-control" name="deposit" required="" onChange={handleChange('deposit')} value={deposit} />        
@@ -74,7 +74,7 @@ const StudentListInfo = () => {
                   <button className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Update</button>
                 </div>
             </div>      
-        </section>
+            </div>
         </form>
     ); 
 
@@ -177,38 +177,38 @@ const StudentListInfo = () => {
                        
                             {/* All action will be shown here  */}                            
                         </tr>
-                        <tr >                     
-                            <tr className="bg-dark">
-                                <th className="align-middle text-center text-light h5 p-3">Membership</th>
-                                <th className="align-middle text-center text-light h5" >Fine</th>
-                                <th className="align-middle text-center text-light h5" >Meal</th>
-                                <th className="align-middle text-center text-light h5" >Payment</th>
-                                <th className="align-middle text-center text-light h5" >View profile</th>                            
-                            </tr>
+                        // <tr >                     
+                        //     <tr className="bg-dark">
+                        //         <th className="align-middle text-center text-light h5 p-3">Membership</th>
+                        //         <th className="align-middle text-center text-light h5" >Fine</th>
+                        //         <th className="align-middle text-center text-light h5" >Meal</th>
+                        //         <th className="align-middle text-center text-light h5" >Payment</th>
+                        //         <th className="align-middle text-center text-light h5" >View profile</th>                            
+                        //     </tr>
                         
-                            <tr className="table-warning" key={i}>                       
-                            {
-                                student.membership ===2 ?                                
-                                <td className="text-center" > <button type="submit" className="btn btn-success "  onClick={()=>toggleMembership(student._id , 3)}>Border</button></td>:
-                                <td className="text-center"> <button type="submit" className="btn btn-danger "  onClick={()=>toggleMembership(student._id , 2)}>Ex Border</button></td>
-                            }                                        
-                                <td className="text-center text-dark align-middle"><button type="submit" className="btn btn-success  " 
-                                onClick={()=>{setUserId(student._id)}}>Add Fine</button></td>
+                        //     <tr className="table-warning" key={i}>                       
+                        //     {
+                        //         student.membership ===2 ?                                
+                        //         <td className="text-center" > <button type="submit" className="btn btn-success "  onClick={()=>toggleMembership(student._id , 3)}>Border</button></td>:
+                        //         <td className="text-center"> <button type="submit" className="btn btn-danger "  onClick={()=>toggleMembership(student._id , 2)}>Ex Border</button></td>
+                        //     }                                        
+                        //         <td className="text-center text-dark align-middle"><button type="submit" className="btn btn-success  " 
+                        //         onClick={()=>{setUserId(student._id)}}>Add Fine</button></td>
 
-                            {
-                                student.messStatus > 1 ?
-                                <td className="text-center"> <button type="submit" className="btn btn-danger  " 
-                                onClick={()=>toggleMeal(student._id , 0)}>Turn OFF</button></td>:
-                                <td className="text-center"> <button type="submit" className="btn btn-success  " 
-                                onClick={()=>toggleMeal(student._id ,2 )}>Turn ON</button></td>
-                            }                                        
-                                <td className="text-center text-dark align-middle"><button type="submit" className="btn btn-success  " 
-                                onClick={()=>{setUserId(student._id)}} >Pay</button></td>
-                                <td className="text-center text-dark align-middle"> <button type="submit" className="btn btn-success  " 
-                                onClick={()=>toggleMeal(student._id )}>View ( drop Down )</button></td>
-                            </tr>
-                        </tr>
-                        </>  
+                        //     {
+                        //         student.messStatus > 1 ?
+                        //         <td className="text-center"> <button type="submit" className="btn btn-danger  " 
+                        //         onClick={()=>toggleMeal(student._id , 0)}>Turn OFF</button></td>:
+                        //         <td className="text-center"> <button type="submit" className="btn btn-success  " 
+                        //         onClick={()=>toggleMeal(student._id ,2 )}>Turn ON</button></td>
+                        //     }                                        
+                        //         <td className="text-center text-dark align-middle"><button type="submit" className="btn btn-success  " 
+                        //         onClick={()=>{setUserId(student._id)}} >Pay</button></td>
+                        //         <td className="text-center text-dark align-middle"> <button type="submit" className="btn btn-success  " 
+                        //         onClick={()=>toggleMeal(student._id )}>View ( drop Down )</button></td>
+                        //     </tr>
+                        // </tr>
+                        
                         
                         ))}
                     </tbody>
@@ -227,7 +227,7 @@ const StudentListInfo = () => {
         <ManLayout
             title="Student"
             description={`${user.fname} ${user.lname}`}
-            className="container-fluid"
+            className="container-fluid pb-5"
         >
 
             <div > 
@@ -238,7 +238,7 @@ const StudentListInfo = () => {
 
             </div>           
         </ManLayout>
-        <Footer />
+        {/* <Footer /> */}
         </>
     );
 };
