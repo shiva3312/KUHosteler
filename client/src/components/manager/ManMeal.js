@@ -166,7 +166,7 @@ const TodayMealList = () => {
                 {getGuestMealList()}
             </div>           
         </ManLayout>
-        <Footer />
+        {/* <Footer /> */}
         </>
     );
 };
