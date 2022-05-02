@@ -343,7 +343,9 @@ exports.addFineOrDepositMoney = (req, res)=>{
       const auditedDate = d.toDateString().slice(4,7)+" "+d.toDateString().slice(11,15);
       var recId;
       var totalFine =0;
-      manager.mealInfoList.forEach((rec)=>{
+
+      //find manager to push data....
+      req.profile.mealInfoList.forEach((rec)=>{
         if(rec.auditedDate == auditedDate){
           recId = rec._id
           totalFine += rec.totalFine;
@@ -352,7 +354,7 @@ exports.addFineOrDepositMoney = (req, res)=>{
 
       totalFine += fine;
   // set amount in manger mealInfoList ....
-      User.findOneAndUpdate({ _id: manager._id,mealInfoList: { $elemMatch: { _id: recId  } } }, {
+      User.findOneAndUpdate({ _id: req.profile._id,mealInfoList: { $elemMatch: { _id: recId  } } }, {
         $set: {
             "mealInfoList.$.totalFine": totalFine
           }

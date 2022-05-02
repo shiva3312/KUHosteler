@@ -60,9 +60,9 @@ exports.signup = (req, res) => {
               morBoundTime: '06:00',
               nigBoundTime: "06:00",
               hostelName: user.hostelName,
-              guestMorMealCharge:user.guestMorMealCharge,
-              guestNigMealCharge: user.guestNigMealCharge,
-              grandCharge: user.grandCharge,
+              guestMorMealCharge:50,
+              guestNigMealCharge: 50,
+              grandCharge: 150,
               lock:true
             })
             newMnagerInboudDB.save();
@@ -217,7 +217,7 @@ exports.getAllHostedUnHostedHostel=(req, res)=>{
     var hostedHostels =[];   
     boundTime.find({}, (err, registerHostels)=>{
       if(err) {
-          console.log("err came " , err);
+          
         return res.json({error:err})
       }else{
         //save hosted hostels ....
@@ -233,7 +233,6 @@ exports.getAllHostedUnHostedHostel=(req, res)=>{
   }
   
 exports.uploadPic = (req, res) => {
-
     // requested userId can be found using  ...  req.profile._id
     const userId = req.profile._id;
 
@@ -246,6 +245,15 @@ exports.uploadPic = (req, res) => {
 exports.verfyMail = (req, res) => {
     const mail = req.body.email;
     const otp = req.body.newOTP;
+
+    //check if this email already exits...
+    User.findOne({mail}, (err , user)=>{
+        if(err){
+            return res.json({error:err})
+        }else if(user){
+            return res.json({info:"This mail already in use. Please SignIn.."})
+        }
+    })
  
     const message = "Dear Candidate , The OTP to varify your account is : " + otp;
 
