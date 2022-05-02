@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { Redirect , Link } from "react-router-dom";
 import '../css/global.css';
 import { signin, authenticate, isAuthenticated } from "../auth";
@@ -20,6 +20,7 @@ const Signin = () => {
     };
 
     const clickSubmit = event => {
+        console.log("cliked button ");
         event.preventDefault();
         setValues({ ...values, error: false, loading: true });
         signin({ email, password }).then(data => {
@@ -35,6 +36,7 @@ const Signin = () => {
             }
         });
     };
+
 
     const signUpForm = () => (
       
@@ -99,27 +101,27 @@ const Signin = () => {
         );
 
     const redirectUser = () => {
-        if (redirectToReferrer) {
-            console.log(!user.image);
+     
+        if (redirectToReferrer) {            
             // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
             if( !user.image){
+              
                 return <Redirect to="/user/uploadphoto" />;
             }
-            else if(user && !(user.profileType==1) && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
+            else if(user && (user.profileType!==1) && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
                 return <Redirect to="/user/info" />;
             }else if (user && user.profileType === 1){
                 return <Redirect to="/manager/dashboard" />;
             }else  if(user && user.profileType === 0  ){
                 return <Redirect to="/student/home" />;
             }
-            // else if(user && user.profileType === 2){
-            //     return <Redirect to="/admin/dashboard" />;
-            // }else{
-            //     return <Redirect to="/satff/home" />;
-            // }
+            else if(user && user.profileType === 2){
+                return <Redirect to="/employee/home" />;
+            }
+          
         }
-        if (isAuthenticated()){
-           
+       else if (isAuthenticated()){
+        console.log("it is ruuning in authentication");
             return <Redirect to="/" />;
         }
     };

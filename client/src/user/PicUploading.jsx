@@ -1,9 +1,11 @@
 import React, { useState ,useEffect } from "react";
 import { Redirect , Link } from "react-router-dom";
 import '../css/global.css';
-import { signin, authenticate, isAuthenticated ,uploadpic} from "../auth";
+import {  isAuthenticated ,uploadpic} from "../auth";
 
 const UpLoadimage = () => {
+
+   
     const [values, setValues] = useState({
         
         image: '',
@@ -106,7 +108,7 @@ const UpLoadimage = () => {
     const redirectUser = () => {
     if (redirectToProfile) {  
         // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
-        if(!user.image){
+        if(!user.image){  
               //show error and after some second redirect to uploadphot.jsx page again
             return <Redirect to="/user/uploadimage" />;
         }
@@ -117,14 +119,16 @@ const UpLoadimage = () => {
         }else  if(user && user.profileType === 0  ){
             return <Redirect to="/student/home" />;
         }
-        // else if(user && user.profileType === 2){
-        //     return <Redirect to="/admin/dashboard" />;
-        // }else{
+        else if(user && user.profileType === 2){
+            return <Redirect to="/employee/home" />;
+        }
+        // else{
         //     return <Redirect to="/satff/home" />;
         // }
         }
 
         else if (!isAuthenticated()){
+          
             return <Redirect to="/" />;
         }
     };

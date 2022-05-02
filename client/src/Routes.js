@@ -29,6 +29,10 @@ import StuGuest from './components/student/StuGuest';
 import StuMeal from './components/student/StuMeal';
 import StuRecords from './components/student/StuRecords';
 
+//employee route
+import EmpTodayMealList from './components/employee/EmpMealList';
+import EmpBasicInfo from './components/employee/EmpBasicInfo';
+import EmpDashboard from './components/employee/EmpHome';
 
 
 const Routes = () => {
@@ -40,6 +44,7 @@ const Routes = () => {
                 <Route path="/auth/signup" exact component={Signup} />
                 <Route path="/user/info" exact component={InfoPage} />
                 <Route path="/user/forgotpassword" exact component={UpdatePassword} />
+                <PrivateRoute path="/user/uploadphoto" exact component={UpLoadPhoto} />
 
                 {/*manager GetRoute */}
                 <ManagerRoute path="/manager/dashboard" exact component={ManDashboard} />
@@ -58,7 +63,12 @@ const Routes = () => {
                 <PrivateRoute path="/student/guest" exact component={StuGuest} />
                 <PrivateRoute path="/student/meal" exact component={StuMeal} />
                 <PrivateRoute path="/student/records" exact component={StuRecords} />
-                <PrivateRoute path="/user/uploadphoto" exact component={UpLoadPhoto} />
+              
+
+                <PrivateRoute path="/employee/home" exact component={EmpDashboard} />
+                <PrivateRoute path="/employee/basicinfo" exact component={EmpBasicInfo} />
+                <PrivateRoute path="/employee/meallist" exact component={EmpTodayMealList} />
+
 
                 {/* global Route */}
                 <PrivateRoute path="/manager/preparedMealList" exact component={ManMeal} />                    

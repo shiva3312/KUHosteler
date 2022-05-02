@@ -37,7 +37,8 @@ const InfoPage = () => {
             { stud.membership ==0  ? 
             <div  className="card mb-5 shadow-sm m-3">
                 <h3 className=" gradiant text-dark text-center">Your request has been sent now please wait </h3>     
-                <p  className=" text-dark text-center" >within 24 hour your account will be activated</p>          
+                <p  className=" text-dark text-center" >within 24 hour your account will be activated</p>       
+                <Link to="/">  <button className="btn btn-outline-primary ">Back to Home</button></Link>   
             </div> : 
             
             stud.membership == 4 ?  
