@@ -53,7 +53,7 @@ export default function Footer() {
         <div  className="row" >
             <div  className="col-md-6 col-sm-6 col-xs-6">
                 <div  className="pull-left text-white">
-                    <p><i  className="fa fa-copyright text-white"></i> 2022 KuHosteler</p>
+                    <p><i  className="fa fa-copyright text-white"></i> {new Date().getFullYear()} KuHosteler</p>
                 </div>
             </div>
             <div  className="col-md-6 col-sm-6 col-xs-6">

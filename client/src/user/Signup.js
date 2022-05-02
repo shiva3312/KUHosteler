@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect , Link } from "react-router-dom";
 import '../css/global.css';
-import { signup  ,getAllcode ,getAllHostedUnHostedHostel} from '../auth';
+import { signup  ,getAllcode ,getAllHostedUnHostedHostel , verfyMail} from '../auth';
 
 const Signup = () => {
     const [isCodeVarified , setIsCodeVarified] = useState(0);
-    const[ codes , setCodes] =useState([]);
+    const[ codes , setCodes] =useState([]);    
     const [hostedHostels, setHostedHostels] =useState([]);
+    const [mailOtpStatus, setMailOtpStatus] = useState({
+      isOtpsend: false,
+      sendOtp : '',
+      varified:false
+    });
     const [toggler ,setToggler] = useState(0);
     const [values, setValues] = useState({
         fname: '',
@@ -22,14 +27,14 @@ const Signup = () => {
         hostelName:'btmens',
         gender:'male',
         code:'',
+        otp:'',
         address:'',
         dob:'',
         error: '',
         avatar:'',
         success: false,
         redirectToReferrer: false
-    });
-    
+    });    
 
     const { 
       fname,
@@ -49,14 +54,28 @@ const Signup = () => {
       error,
       avatar,
       code,
+      otp,
       success,
       redirectToReferrer
       } = values;
 
-    const handleChange = name => event => {        
+    
+      const handleChange = name => event => {        
         setValues({ ...values, error: false, [name]: event.target.value });
         if(name === 'code'){
           setIsCodeVarified(false)
+        }
+        if(name === 'email'){
+          setMailOtpStatus({
+            isOtpsend: false,
+            otp: '',
+            sendOtp : '',
+            varified:false
+          });
+         
+        }
+        if(name === 'otp'){
+          setMailOtpStatus({...mailOtpStatus, varified:false})
         }
         if(profileType === 0 ){
           setToggler(!toggler);
@@ -73,7 +92,7 @@ const Signup = () => {
         }
 
         // manger already exist for selected hostel...
-        else if(profileType ==1 ){
+        else if(profileType ===1 ){
           hostedHostels.forEach((hostel)=>{
             if(hostel.hostelName === hostelName){
               isSignUpPossible = false;
@@ -83,7 +102,7 @@ const Signup = () => {
         }
         
         // if selected hostel has not hosted the service ...
-        else if(profileType != 1  ){
+        else if(profileType !== 1  ){
           var isMnagerExist = false;
           hostedHostels.forEach((hostel)=>{
             if(hostel.hostelName === hostelName){             
@@ -97,7 +116,12 @@ const Signup = () => {
           }
         }
         
-         if(isSignUpPossible){
+        if(!mailOtpStatus.varified){
+          isSignUpPossible = false;
+          setValues({ ...values, error: "Mail is not varified. please varify your mail" });
+        }
+
+         if(isSignUpPossible ){
         setValues({ ...values, error: false });
         signup(values).then(data => {       
             if (data.error) {
@@ -143,6 +167,44 @@ const Signup = () => {
       if(matchfound === false)
       setIsCodeVarified(false);     
     }
+
+    const {
+      isOtpsend,
+      sendOtp,
+      varified
+    } = mailOtpStatus;
+
+    const sentOtp=(event) =>{
+      event.preventDefault();
+      // write code to varify
+      let newOTP = (Math.random() + 1).toString(36).substring(7);
+      setMailOtpStatus({...mailOtpStatus ,isOtpsend :!isOtpsend, sendOtp:newOTP});
+
+
+        // send the  newOTP to users mailId ...
+        verfyMail({email , newOTP}).then((data)=>{
+          if(data.error){
+            console.log(data.error);
+          }else {
+            console.log(data.info);
+          }
+        })
+
+        // also check if user exit with this mail id ....
+       
+
+    }
+
+    const varifyOTP=(event)=>{
+      event.preventDefault();
+     console.log("here is the otp".sendOtp , otp );
+      if(sendOtp == otp){
+        setMailOtpStatus({...mailOtpStatus , varified : true, success:"OTP varyfied"})
+      }else{
+        setValues({...values, error:"Entered OTP is not correct"})
+      }
+    }
+
 
     useEffect(()=>{
       //load all codes...
@@ -198,10 +260,39 @@ const Signup = () => {
             
           </div>   
 
-        <div className="form-outline text-start form-white mb-4" >
+
+
+          <div className="row" >
+            <div className="col    form-outline text-start form-white mb-4"  >
             <label  className="form-label text-white" htmlFor="email" >Email</label>
             <input required={true} type="email" className="form-control" name="username" onChange={handleChange('email')} value={email}  />
+            </div>
+            <div className="col-3 text-center pt-4"style={{ display: email && !mailOtpStatus.isOtpsend ? '' : 'none' }} >
+                  <button  className="btn btn-outline-light btn-sm mt-3 btn-primary " type="submit" onClick={sentOtp} >Send OTP</button>
+            </div>            
+            <div className="col-3 text-center pt-4"style={{ display: mailOtpStatus.isOtpsend  ? '' : 'none' }} >
+                <p className="text-dark">OTP sent</p>
+            </div>                        
+          </div>  
+
+          <div className="row" >
+          <div className="col    form-outline text-start form-white mb-4"  style={{ display: email && mailOtpStatus.isOtpsend ? '' : 'none' }} >
+            <label  className="form-label text-white" htmlFor="otp" >Enter the OTP</label>
+            <input required={true} type="text" className="form-control" name="otp" onChange={handleChange('otp')} value={otp}  />
+            </div>
+            <div className="col-3 text-center pt-4"style={{ display: otp&& mailOtpStatus.isOtpsend && !mailOtpStatus.varified ? '' : 'none' }} >
+                  <button  className="btn btn-outline-light btn-sm mt-3 " type="submit" onClick={varifyOTP} >Varify</button>
+            </div>
+
+            <div className="col-3 text-center pt-4"style={{ display: mailOtpStatus.varified  ? '' : 'none' }} >
+                <p className="text-dark">Verfied</p>
+            </div> 
           </div>
+
+          {/* <div className="form-outline text-start form-white mb-4" >
+            <label  className="form-label text-white" htmlFor="email" >Email</label>
+            <input required={true} type="email" className="form-control" name="username" onChange={handleChange('email')} value={email}  />
+          </div> */}
           <div className="form-outline text-start form-white mb-4" >
             <label  className="form-label text-white" htmlFor="password" >Password</label>
             <input type="password" className="form-control" name="password" required={true} onChange={handleChange('password')} value={password}  />
@@ -328,7 +419,9 @@ const Signup = () => {
 
     return (
         <div >
-           
+            
+            {JSON.stringify(mailOtpStatus)}
+            {JSON.stringify(values)}
             {showSuccess()}
             {showError()}
             {signUpForm()}

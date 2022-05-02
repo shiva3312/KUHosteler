@@ -100,7 +100,12 @@ const Signin = () => {
 
     const redirectUser = () => {
         if (redirectToReferrer) {
-            if(user && !(user.profileType==1) && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
+            console.log(!user.image);
+            // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
+            if( !user.image){
+                return <Redirect to="/user/uploadphoto" />;
+            }
+            else if(user && !(user.profileType==1) && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
                 return <Redirect to="/user/info" />;
             }else if (user && user.profileType === 1){
                 return <Redirect to="/manager/dashboard" />;
@@ -114,7 +119,7 @@ const Signin = () => {
             // }
         }
         if (isAuthenticated()){
-            console.log(isAuthenticated());
+           
             return <Redirect to="/" />;
         }
     };

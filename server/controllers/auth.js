@@ -10,6 +10,24 @@ const { errorHandler } = require('../helpers/dbErrorHandler');
 const boundTime = require('../models/boundTime');
 const Admin = require('../models/admin');
 
+
+
+
+
+exports.userById = async (req, res, next, id) => {
+    await  User.findById(id).exec((err, user) => {
+            if (err || !user) {
+                return res.status(400).json({
+                    error: 'User not found'
+                });
+            }
+            req.profile = user;
+          
+            next();
+        });
+    };
+
+
 // using promise
 exports.signup = (req, res) => {
     const newGravatar = normalize(
@@ -42,9 +60,9 @@ exports.signup = (req, res) => {
               morBoundTime: '06:00',
               nigBoundTime: "06:00",
               hostelName: user.hostelName,
-              guestMorMealCharge:user.guestMorMealCharge,
-              guestNigMealCharge: user.guestNigMealCharge,
-              grandCharge: user.grandCharge,
+              guestMorMealCharge:50,
+              guestNigMealCharge: 50,
+              grandCharge: 150,
               lock:true
             })
             newMnagerInboudDB.save();
@@ -196,11 +214,10 @@ exports.getAllcode=(req, res)=>{
 
     
 exports.getAllHostedUnHostedHostel=(req, res)=>{
-    var hostedHostels =[];
-   
+    var hostedHostels =[];   
     boundTime.find({}, (err, registerHostels)=>{
       if(err) {
-          console.log("err came " , err);
+          
         return res.json({error:err})
       }else{
         //save hosted hostels ....
@@ -215,3 +232,65 @@ exports.getAllHostedUnHostedHostel=(req, res)=>{
     })
   }
   
+exports.uploadPic = (req, res) => {
+    // requested userId can be found using  ...  req.profile._id
+    const userId = req.profile._id;
+
+    
+    // write code to set image data..`
+  
+};
+
+
+exports.verfyMail = (req, res) => {
+    const mail = req.body.email;
+    const otp = req.body.newOTP;
+
+    //check if this email already exits...
+    User.findOne({mail}, (err , user)=>{
+        if(err){
+            return res.json({error:err})
+        }else if(user){
+            return res.json({info:"This mail already in use. Please SignIn.."})
+        }
+    })
+ 
+    const message = "Dear Candidate , The OTP to varify your account is : " + otp;
+
+    //write code to send mail with above msg
+
+};
+
+exports.updatepassword = (req, res) => {
+    const userId = req.body.userId;
+    const password = req.body.password;
+
+    
+
+     // findOneAndUpdate pass word ...
+     var newPassword ;
+     User.findById(userId, (err, user)=>{
+        if(err){
+            console.log(err);
+        }else {
+            console.log("in the encryption ");
+            newPassword = user.encryptPassword(password);
+          
+            User.findOneAndUpdate({_id : userId} , {$set :{ 
+                'hashed_password' : newPassword
+            }}, (err ,res)=>{
+            if(err){
+             console.log(err);
+                }else{
+             console.log("successfully updated");
+            }
+     });
+        }
+     })
+     
+     
+
+
+};
+
+

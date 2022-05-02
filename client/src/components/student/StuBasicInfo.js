@@ -30,7 +30,7 @@ const AdminDashboard = ({history}) => {
                        </li>
                     <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
                     <div className="col-5 ps-0 pe-0">Membership</div>
-                        <div className="col-7">: {user.membership===1? <span className="text-success fw-bold "> Activated</span> : <span className="text-danger fw-bold"> Deactivated</span>}</div>
+                        <div className="col-7">: {user.membership===2? <span className="text-success fw-bold "> Activated</span> : <span className="text-danger fw-bold"> Deactivated</span>}</div>
                         </li>
                     <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
                     <div className="col-5 ps-0 pe-0">Hostel Name</div>

@@ -72,7 +72,7 @@ const Layout = ({
 
             {isAuthenticated() && (
               // <div className="col">
-              <span className="" onClick={() => signout(() => { history.push("/"); })}><button className="btn text-white " type="submit" ><span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out</button></span>
+              <span className="side" to="/"  onClick={() => signout(() => { history.push("/"); })}><button className="btn text-white " type="submit" ><span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out</button></span>
 
 
             )}
