@@ -136,3 +136,21 @@ export const verfyMail = (values) => {
         });
 };
 
+export const updatePassword = (values) => {
+    return fetch(`${API}/auth/updatepassword`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+    })
+  
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+

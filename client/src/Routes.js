@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signup from './user/Signup';
 import Signin from './user/Signin';
+import UpdatePassword from './user/ForgotPassword';
 import InfoPage from './user/InfoPage';
 import UpLoadPhoto from './user/PicUploading';
 import Landing from './components/Landing';
@@ -38,6 +39,7 @@ const Routes = () => {
                 <Route path="/auth/signin" exact component={Signin} />
                 <Route path="/auth/signup" exact component={Signup} />
                 <Route path="/user/info" exact component={InfoPage} />
+                <Route path="/user/forgotpassword" exact component={UpdatePassword} />
 
                 {/*manager GetRoute */}
                 <ManagerRoute path="/manager/dashboard" exact component={ManDashboard} />

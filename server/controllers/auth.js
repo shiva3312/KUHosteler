@@ -261,4 +261,36 @@ exports.verfyMail = (req, res) => {
 
 };
 
+exports.updatepassword = (req, res) => {
+    const userId = req.body.userId;
+    const password = req.body.password;
+
+    
+
+     // findOneAndUpdate pass word ...
+     var newPassword ;
+     User.findById(userId, (err, user)=>{
+        if(err){
+            console.log(err);
+        }else {
+            console.log("in the encryption ");
+            newPassword = user.encryptPassword(password);
+          
+            User.findOneAndUpdate({_id : userId} , {$set :{ 
+                'hashed_password' : newPassword
+            }}, (err ,res)=>{
+            if(err){
+             console.log(err);
+                }else{
+             console.log("successfully updated");
+            }
+     });
+        }
+     })
+     
+     
+
+
+};
+
 
