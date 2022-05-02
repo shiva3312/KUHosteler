@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer"
 
 
-const AdminDashboard = ({history}) => {  
+const StuProfile = ({history}) => {  
     
     const {  user } = isAuthenticated();
 
@@ -40,4 +40,4 @@ const AdminDashboard = ({history}) => {
     );
 };
 
-export default AdminDashboard;
+export default StuProfile;

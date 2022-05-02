@@ -1,12 +1,12 @@
 import React from "react";
-import StuLayout from "./StuLayout";
+import EmpLayout from "./EmpLayout";
 import { isAuthenticated } from "../../auth";
 import { Link } from "react-router-dom";
 import Footer from "../Footer"
 import "../../css/student.css";
 import '../../css/global.css';
 
-const BasicInfo = ({history}) => {  
+const EmpBasicInfo = ({history}) => {  
     
     const {  user } = isAuthenticated();
     const basicInfo = () => {
@@ -44,38 +44,6 @@ const BasicInfo = ({history}) => {
             
         );
     };
-    const eduInfo = () => {
-        return (
-           
-            <div  className=" pt-5 mt-3 card pb-5 th ">
-               <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">EDUCATIONAL DETAILS</h4>
-                    <ul className=" con shadow">
-                    <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
-                    <div className="col-3 ps-0 pe-0">Course</div>
-                        <div className="col-9">: {user.course}</div>
-                        </li>
-                        <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
-                    <div className="col-3 ps-0 pe-0">Subject</div>
-                        <div className="col-9">: {user.subject}</div>
-                        </li>
-                        <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
-                    <div className="col-3 ps-0 pe-0">Semester </div>
-                        <div className="col-9 ">: {user.semester}</div>
-                        </li>
-                        <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
-                    <div className="col-3 ps-0 pe-0">Session</div>
-                        <div className="col-9">: {user.session}</div>
-                        </li>
-                        <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
-                    <div className="col-3 ps-0 pe-0">College</div>
-                        <div className="col-9">: {user.university}</div>
-                        </li>
-                  
-                </ul>
-            </div>
-          
-        );
-    };
 
 
     const constactInfo = () => {
@@ -93,7 +61,7 @@ const BasicInfo = ({history}) => {
                         <div className="col-7 pe-0">: {user.selfPhNo}</div>
                        </li>
                     <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
-                    <div className="col-5 pe-0 ps-0">Guardian Phone</div>
+                    <div className="col-5 pe-0 ps-0">Alternate Mob No.</div>
                         <div className="col-7 pe-0">: {user.gPhNo}</div>
                         </li> 
                    {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">Profile Type &emsp;&emsp;:&ensp;
@@ -107,28 +75,21 @@ const BasicInfo = ({history}) => {
 
     return (
         <>
-        <StuLayout history={history} >
-            {/* show your content in this div */}
-            <div className="row m-3" >                
-            {/* <div className="wrapper"> */}
-             <div className="col-md-6 "> {basicInfo()}
-             {/* <div  className="col mb-0">{userInfo()}</div> */}
-             </div>   
-             {/* <div class="middle"></div>     */}
-             {/* if i remove middle then it looks like parallel */}       
-             <div className="col-md-6 "> {eduInfo()}
-              {/* <div  className="col mb-0">{showPieChart()}</div> */}
-            </div>
-            </div>
-            <div className="row m-3" >                
-               <div  className="col md-6">{constactInfo()}</div>
+        <EmpLayout history={history} >
+        
+            <div className="row m-3" >              
+         
+             <div className="col-md-6 "> {basicInfo()}</div>
+             <div  className="col md-6">{constactInfo()}</div>
+           
+           
            </div>
            
            
-        </StuLayout>
+        </EmpLayout>
         <Footer />
         </>       
     );
 };
 
-export default BasicInfo;
+export default EmpBasicInfo;
