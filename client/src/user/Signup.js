@@ -74,7 +74,7 @@ const Signup = () => {
           });
          
         }
-        if(name == 'otp'){
+        if(name === 'otp'){
           setMailOtpStatus({...mailOtpStatus, varified:false})
         }
         if(profileType === 0 ){
@@ -92,7 +92,7 @@ const Signup = () => {
         }
 
         // manger already exist for selected hostel...
-        else if(profileType ==1 ){
+        else if(profileType ===1 ){
           hostedHostels.forEach((hostel)=>{
             if(hostel.hostelName === hostelName){
               isSignUpPossible = false;
@@ -102,7 +102,7 @@ const Signup = () => {
         }
         
         // if selected hostel has not hosted the service ...
-        else if(profileType != 1  ){
+        else if(profileType !== 1  ){
           var isMnagerExist = false;
           hostedHostels.forEach((hostel)=>{
             if(hostel.hostelName === hostelName){             
@@ -116,7 +116,12 @@ const Signup = () => {
           }
         }
         
-         if(isSignUpPossible){
+        if(!mailOtpStatus.varified){
+          isSignUpPossible = false;
+          setValues({ ...values, error: "Mail is not varified. please varify your mail" });
+        }
+
+         if(isSignUpPossible ){
         setValues({ ...values, error: false });
         signup(values).then(data => {       
             if (data.error) {
