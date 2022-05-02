@@ -106,7 +106,7 @@ const UpLoadimage = () => {
     const redirectUser = () => {
     if (redirectToProfile) {  
         // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
-        if(!user.image.data){
+        if(!user.image){
               //show error and after some second redirect to uploadphot.jsx page again
             return <Redirect to="/user/uploadimage" />;
         }

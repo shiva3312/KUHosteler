@@ -1,5 +1,5 @@
 import { API } from '../config';
-const nodemailer = require('nodemailer');
+
 
 export const signup = user => {
     return fetch(`${API}/auth/signup`, {
