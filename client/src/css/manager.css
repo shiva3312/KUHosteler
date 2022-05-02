@@ -6,13 +6,23 @@
     list-style-type:none;
     text-decoration: none;
   }
- 
+  .side{
+    padding-right: 99px;
+  }
+  .side1{
+    padding-right:90px;
+    padding-top:15px;
+    padding-bottom:15px;
+  }
   #sidebar-toggle{
     display:none;
   }
   .side:hover{
     background:rgba(212, 140, 212, 0.713);
-    color:purple;
+    /* color:purple; */
+  }
+  .side1:hover{
+    color: black;
   }
   .sidebar{
     width:240px;

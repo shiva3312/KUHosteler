@@ -31,38 +31,38 @@ const Layout = ({
         <ul>
 
           <li className="side p-3" >
-            <Link to="/manager/dashboard" className=" text-decoration-none">
+            <Link to="/manager/dashboard" className="text-decoration-none">
               <span className="fa fa-lg fa-dashboard"></span>
-              <span>&ensp;Dashboard</span>
+              <span className="side1">&ensp;Dashboard</span>
             </Link>
           </li>
           <li className="side p-3">
             <Link to="/manager/allstudents" className="text-decoration-none" >
 
               <span className="fa fa-lg fa-graduation-cap"></span>
-              <span>Student Manage</span>
+              <span className="side1">Student </span>
             </Link>
           </li>
           <li className="side p-3">
             <Link to="/manager/allemployee" className="text-decoration-none" >
 
               <span className="fa fa-lg fa-street-view"></span>
-              <span>&ensp;Employee Manage</span>
+              <span className="side1">&ensp;Employee</span>
             </Link>
           </li>
 
           <li className="side p-3">
-            <Link to="/manager/charges" className="text-decoration-none" >
+            <Link to="/manager/charges" className=" text-decoration-none" >
 
               <span className="fa fa-lg fa-money"></span>
-              <span>&nbsp;Charges</span>
+              <span  className="side1">&nbsp;Charges</span>
             </Link>
           </li>
           <li className="side p-3">
             <Link to="/manager/preparedMealList" className="text-decoration-none" >
 
               <span className="fa fa-lg fa-cutlery"></span>
-              <span>&nbsp;Meal List</span>
+              <span  className="side1">&nbsp;Meal List</span>
             </Link>
           </li>
 
@@ -72,7 +72,7 @@ const Layout = ({
 
             {isAuthenticated() && (
               // <div className="col">
-              <span className="side" onClick={() => signout(() => { history.push("/"); })}><button className="btn text-white " type="submit" ><span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out</button></span>
+              <span className="" onClick={() => signout(() => { history.push("/"); })}><button className="btn text-white " type="submit" ><span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out</button></span>
 
 
             )}
