@@ -47,8 +47,8 @@ export default function Landing({history}) {
         </div>
      </nav>
         <center>
-            <div className="home-page pt-5 mt-5 pb-5 mb-5 ">
-                <div className="home-div col-8 pb-3">
+            <div className="gradiant home-page pt-5 pb-5  ">
+                <div className="home-div col-7 pb-5">
                     <p className="welcome pt-5 fw-bold text-light fs-5 pt-3">Welcome</p>
                     <i className="fa fa-university text-light fs-1"></i>
                     <h1 className="text-light">To the University Hostel Portal</h1>

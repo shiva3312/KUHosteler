@@ -18,12 +18,12 @@ const Layout = ({
   <div>
 
     <input type="checkbox" id="sidebar-toggle" />
-    <div className="sidebar  th">
+    <div className="sidebar ">
       <div className="sidebar-header "><h3 className="brand">
 
         <span>KuHosteler</span>
       </h3>
-        <label for="sidebar-toggle" className="fa fa-lg fa-bars"></label>
+        <label htmlFor="sidebar-toggle" className="fa fa-lg fa-bars"></label>
 
       </div>
 
@@ -72,7 +72,7 @@ const Layout = ({
 
             {isAuthenticated() && (
               // <div className="col">
-              <span className="side" to="/"  onClick={() => signout(() => { history.push("/"); })}><button className="btn text-white " type="submit" ><span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out</button></span>
+              <span className="" to="/"  onClick={() => signout(() => { history.push("/"); })}><button className="btn text-white " type="submit" ><span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out</button></span>
 
 
             )}
@@ -122,7 +122,7 @@ const Layout = ({
       <div className="jumbotron">
         <h1 className="text-center mb-0 pt-5 pb-5">{title}</h1>
       </div>
-      <div className="bground"><div className={className}>{children}</div>
+      <div className=""><div className={className}>{children}</div>
       </div>
       <Footer/>
     </div>

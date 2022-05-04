@@ -19,12 +19,11 @@
   
 }
 .gradiant{
-    background: linear-gradient(to right,rgb(96, 33, 243),rgb(179, 9, 179));
+    background: linear-gradient(to left,#388087,#6FB3B8);
    
 }
 body {
     /* background: linear-gradient(to right,rgb(151, 165, 247),rgb(219, 147, 219)); */
-    background: linear-gradient(to right,rgb(73, 16, 204),purple);
     min-height: 100vh;
     overflow-x: hidden
 }
@@ -146,7 +145,7 @@ body {
 h1{
     margin-top: 40px;
     font-size: 30px;
-    color: #fff;
+    color: #388087;
     text-transform: uppercase;
     font-weight: 300;
     text-align: center;
@@ -158,7 +157,7 @@ h1{
    
   }
   .tbl-header{
-    background-color: rgba(255,255,255,0.3);
+    background-color: #6FB3B8;
 
    }
   .tbl-content{
@@ -166,16 +165,16 @@ h1{
     overflow-x:auto;
     margin-top: 0px;
   
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid #C2EDCE;
   }
   .th{
-      background-color: rgba(255,255,255,0.3);
+      background-color: rgba(255,255,255,0.2);
   }
   th{
     padding: 15px 10px;
     text-align: center;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
     color: #fff;
     text-transform: uppercase;
   }
@@ -183,16 +182,18 @@ h1{
     padding: 15px 10px;
     text-align: center;
     vertical-align:middle;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 14px;
-    color: #fff;
-    border-bottom: solid 1px rgba(255,255,255,0.1);
+    background-color: #fff;
+    color: grey;
+    border-bottom: solid 1px rgb(171, 168, 168);
   }
   @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+  @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap);
   body{
-    background: -webkit-linear-gradient(left, rgb(90, 25, 241),rgb(160, 6, 160));
-    background: linear-gradient(to right, rgb(96, 36, 235),rgb(156, 10, 156));
-    font-family: 'Roboto', sans-serif;
+    /* background: -webkit-linear-gradient(left, rgb(90, 25, 241),rgb(160, 6, 160)); */
+    /* background: linear-gradient(to right, rgb(96, 36, 235),rgb(156, 10, 156)); */
+    font-family: 'Quicksand', sans-serif;
   }
   section{
     margin: 50px;
@@ -256,11 +257,6 @@ h1{
      }
  }  
 
- /* .meal{
-   
-     padding-left: 50px;
-     padding-right:50px;
- } */
  @media (max-width: 450px) {
    .meal
    { 
@@ -278,12 +274,13 @@ h1{
     display:inline-flex;
     height:45px;
     padding:0;
-    background:rgb(144, 25, 241);
+    background:#C2EDCE;
     border:none;
     outline:none;
     border-radius:10px;
+    border:2px solid #6FB3B8;
     overflow:hidden;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:#388087;
     font-size:16px;
     font-weight:500;
     cursor:pointer;
@@ -291,17 +288,15 @@ h1{
 }@media (max-width:400px){
     .bton{
         font-size: 12px;
-        
-        
-
     }
 }
 
 .bton:hover{
-    background: rgb(160, 6, 160);
+    background: #388087;
+    color: #fff;
 }
 .bton:active{
-    background:#9d0daa ;
+    background:#388087 ;
 }
 .button__text,
 .button__icon{
@@ -313,18 +308,22 @@ h1{
 }
 .button__icon{
     font-size:1.5em;
-    background: #9d0daa;
+    background: #388087;
 }
 
 .modal-body{
-    font-weight: 500;
-    background:linear-gradient(to right,rgb(156, 116, 250),rgba(182, 106, 226, 0.562));
+    font-weight: 600;
+    background: #F6F6F2;
+    color: grey;
+    /* background:linear-gradient(to right,rgb(156, 116, 250),rgba(182, 106, 226, 0.562)); */
 }
 .modal-header{
-    background:rgb(156, 116, 250);
+    background:#388087;
+    color:#fff;
 }
 .modal-footer{
-    background:rgba(179, 111, 219, 0.562);
+    background:#C2EDCE;
+
 }
 .check{
  
