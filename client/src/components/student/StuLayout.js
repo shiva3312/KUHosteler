@@ -19,7 +19,7 @@ return(
 
     <>   
 
-    <div className="gradient">
+    <div className="gradiant">
     <nav className="navbar navbar-light ">
         <div className="container-fluid ">
             <h3 className="ps-5  text-white">KuHosteler</h3>
@@ -31,7 +31,7 @@ return(
              )}          
         </div>
     </nav>
-      <div className="bg-white shadow  overflow-hidden">
+      <div className="bg-white shadow-sm  overflow-hidden">
             <div className="ps-4 pt-4 pb-0 pe-4 cover">
                 <div className="media align-items-end profile-head">
 
@@ -46,32 +46,32 @@ return(
                     <p className="small mb-4">{user.department}</p>
                 </div>
             </div>
-            <nav className="nav-link justify-content-center p-2 mt-5 navbar bg-dark fs-6">
+            <nav className="nav-link justify-content-center p-2 mt-5 navbar  fs-6">
                               
-                                <Link className=" navbar-brand fs-6 pe-2 ps-2" to="/student/home" ><span className="text1">Home</span>
+                                <Link className=" navbar-brand fs-6 pe-2 ps-2" to="/student/home" ><span className="text1">HOME</span>
                                  <span className="icon">
                                 <i  className=" fa fa-home fa-md pe-2 ps-2"></i>
                                   </span></Link>
                                   
                         
                                <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/basicInfo">  
-                               <span className="text1">My Profile</span>
+                               <span className="text1">MY PROFILE</span>
                               <span className="icon ">
                                 <i  className=" fa fa-user-circle fa-md pe-2 ps-2"></i>
                             </span></Link>
                          
                                 <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/meal">
-                                    <span className="text1">Meal</span>
+                                    <span className="text1">MEAL</span>
                                     <span className="icon">
                                  <i  className=" fa fa-glass fa-md pe-2 ps-2"></i>
                              </span></Link>
                          
-                               <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/guest/"><span className="text1">Add Guest</span>
+                               <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/guest/"><span className="text1">ADD GUEST</span>
                                 <span className="icon">
                                  <i  className=" fa fa-user-plus fa-md pe-2 ps-2"></i>
                                 </span></Link>
                            
-                              <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/records"><span className="text1">Payment</span>
+                              <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/records"><span className="text1">PAYMENT</span>
                               <span className="icon">
                                 <i  className=" fa fa-money fa-md pe-2 ps-2"></i>
                             </span></Link>

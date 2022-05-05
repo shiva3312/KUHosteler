@@ -11,11 +11,13 @@
     font-size: 15px;
 }
 .navbar-brand{
-    color: rgba(156, 97, 184, 0.897);
+    color: #388087;
 }
 .navbar-brand:hover{
-    color: white;
-    background-color:  rgba(156, 97, 184, 0.897);
+    /* color: #388087; */
+   color:  #388087;
+   background: #F6F6F2;
+   border-bottom:2px solid #388087;
   
 }
 .gradiant{
@@ -38,7 +40,7 @@ body {
 }
 .text{
     
-    background-image:linear-gradient(to right,rgb(96, 33, 243),rgb(179, 9, 179));
+    background-image:linear-gradient(to right,#388087,#6FB3B8);
     background-size: 100%;
     background-clip: none;
     -webkit-background-clip: text;
@@ -191,7 +193,7 @@ h1{
   @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
   @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap);
   body{
-    /* background: -webkit-linear-gradient(left, rgb(90, 25, 241),rgb(160, 6, 160)); */
+    /* background: linear-gradient(#6FB3B8,#C2EDCE); */
     /* background: linear-gradient(to right, rgb(96, 36, 235),rgb(156, 10, 156)); */
     font-family: 'Quicksand', sans-serif;
   }
@@ -236,7 +238,7 @@ h1{
   }
 /*Stubasic detail css*/
 .con{
-    background-color: rgb(218, 211, 243);
+    background-color: #F6F6F2;
 }
 @media (max-width:550px)
 {
@@ -249,7 +251,7 @@ h1{
 }
 .dt{
     font-weight: 500;
-    background:linear-gradient(to right,rgb(156, 116, 250),rgba(182, 106, 226, 0.562));
+    background:linear-gradient(#91ced2,#469aa1);
 }
 @media (min-width: 550px) {
     .fa-trash-o {
@@ -303,10 +305,14 @@ h1{
     display:inline-flex;
     align-items:center;
     padding:12px;
-    color:#fff;
+    color:grey;
     height:100%;
 }
+.button__text:hover{
+    color: #fff;
+}
 .button__icon{
+    color: #fff;
     font-size:1.5em;
     background: #388087;
 }
@@ -328,10 +334,13 @@ h1{
 .check{
  
     font-size: 1.7em;
-    color: #9d0daa;
+    color: #388087;
+    border: none;
+    background-color: #F6F6F2;
+  
 }
 
 .check:hover{
-   color: purple;
+   color: #6FB3B8;
     
 }

@@ -38,12 +38,13 @@ const MealAcitvity = ({history}) => {
     <>
     {/* <div className="container"> */}
     <h1 className="text-start ms-4 me-4 border-bottom">
-            <i className="fa fa-angle-double-right text-white"></i>
+            <i className="fa fa-angle-double-right "></i>
            &nbsp;Check your meal status</h1>
         <div  className="mt-5 m-5 row meal th shadow">
-            <div className="fs-5 col-9 p-3 ps-3 pe-0 text-start  text-white">
-            MEAL STATUS &emsp;:&emsp;{
-               mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
+            <div className="fs-5 col-9 p-3 ps-3 pe-0 text-start  ">
+            MEAL STATUS &emsp;:&emsp;
+            {
+               mealStatus== 0 || mealStatus==1 ? <span className="pt-3 fw-bold  text-secondary">DISABLE</span>:
                mealStatus == 2 ? <span className="pt-3 fw-bold  text-success" >ACTIVATED</span> : <span className="pt-3  fw-bold de" >DEACTIVATED</span>
              } 
             
@@ -51,8 +52,11 @@ const MealAcitvity = ({history}) => {
             
             <div className="col-3  text-end ">
             {
-               mealStatus== 0 || mealStatus==1 ? <li text-danger>Disable</li>:
-               mealStatus == 2 ? <i type="submit" className="check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on " onClick={submit}></i> : <i type="submit" className="check p-2 pt-3 fw-bold fa fa-lg fa-toggle-off  " onClick={submit}></i>
+               mealStatus== 0 || mealStatus==1 ? <button type="submit" className="check text-secondary p-2 pt-4 fw-bold fa fa-lg fa-toggle-off "  ></button>:
+               mealStatus == 2 ? 
+               <button type="submit" className="check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on " onClick={submit}>
+
+               </button> : <button type="submit" className="check p-2 pt-3 fw-bold fa fa-lg fa-toggle-off  " onClick={submit}></button>
              }
               
             </div>
@@ -70,7 +74,7 @@ const MealAcitvity = ({history}) => {
         {/* </div> */}
     </div>
     <h1 className="text-start ms-4 me-4 border-bottom">
-            <i className="fa fa-angle-double-right text-white"></i>
+            <i className="fa fa-angle-double-right "></i>
            &nbsp; your meal activity</h1>
            <h1 className="fs-4">Meal activity</h1>
         
