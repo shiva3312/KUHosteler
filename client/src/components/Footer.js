@@ -24,7 +24,7 @@ export default function Footer() {
                 <h5  className="heading text-white pt-3 text-decoration-underline">About </h5>
                 <ul  className="heading card-text">
                     <li ><Link to="" className="text-white text-decoration-none">About Us</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Contact Us</Link> </li>
+                    <li ><Link to="/user/Developer" className="text-white text-decoration-none">Contact Us</Link> </li>
                     <li ><Link to="" className="text-white text-decoration-none">Support Us</Link> </li>        
                 </ul>
                    
@@ -33,8 +33,8 @@ export default function Footer() {
                 <h5  className="heading text-white pt-3 text-decoration-underline">Report </h5>
                 <ul  className="heading card-text">
                     <li ><Link to="" className="text-white text-decoration-none">Suggest Feature</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Report Bug</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">FAQ</Link> </li>
+                    <li ><Link to="/user/ReportBug" className="text-white text-decoration-none">Report Bug</Link> </li>
+                    <li ><Link to="/user/Faq" className="text-white text-decoration-none">FAQ</Link> </li>
                </ul>
                        
                   
@@ -44,7 +44,7 @@ export default function Footer() {
                 <h5  className="heading text-white pt-3 text-decoration-underline"> App</h5>
                 <ul  className="heading  card-text">
                     <li ><Link to="" className="text-white text-decoration-none">About App</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Help Desk</Link> </li>
+                    <li ><Link to="/user/HelpDesk" className="text-white text-decoration-none">Help Desk</Link> </li>
                 </ul>
                        
             </div>
