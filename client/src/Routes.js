@@ -3,6 +3,10 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signup from './user/Signup';
 import Signin from './user/Signin';
+import Faq from './components/Faq';
+import HelpDesk from './components/HelpDesk';
+import ReportBug from './components/ReportBug';
+import Developer from './components/Developer';
 import UpdatePassword from './user/ForgotPassword';
 import InfoPage from './user/InfoPage';
 import UpLoadPhoto from './user/PicUploading';
@@ -20,7 +24,6 @@ import ManNotice from './components/manager/ManNotice';
 import ManStuProfile from './components/manager/ManStuProfile';
 import ManStudents from './components/manager/ManStudents';
 import AboutHostel from './components/AboutHostel';
-
 //student route
 import StuHome from './components/student/StuHome';
 import StuMyprofile from './components/student/StuMyprofile';
@@ -43,6 +46,10 @@ const Routes = () => {
                 <Route path="/auth/signin" exact component={Signin} />
                 <Route path="/auth/signup" exact component={Signup} />
                 <Route path="/user/info" exact component={InfoPage} />
+                <Route path="/user/Faq" exact component={Faq} />
+                <Route path="/user/HelpDesk" exact component={HelpDesk} />
+                <Route path="/user/ReportBug" exact component={ReportBug} />
+                <Route path="/user/Developer" exact component={Developer} />
                 <Route path="/user/forgotpassword" exact component={UpdatePassword} />
                 <PrivateRoute path="/user/uploadphoto" exact component={UpLoadPhoto} />
 

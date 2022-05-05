@@ -2,3 +2,21 @@
 .env
 .txt
 /RawData
+.env
+*.txt
+node_modules/
+jspm_packages/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+# node-waf configuration
+.lock-wscript
+build/Release
+node_modules/
+jspm_packages/
+typings/
+.npm
+.eslintcache
+.node_repl_history      
