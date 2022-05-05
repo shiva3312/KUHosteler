@@ -27,6 +27,15 @@ exports.userById = async (req, res, next, id) => {
         });
     };
 
+exports.image = (req, res, next) => {
+    if (req.profile.image.data) {
+        res.set('Content-Type', req.profile.image.contentType);
+        return res.send(req.profile.image.data);
+    }
+    next();
+};
+    
+
 
 // using promise
 exports.signup = (req, res) => {
@@ -238,6 +247,76 @@ exports.uploadPic = (req, res) => {
 
     
     // write code to set image data..`
+    let form = new formidable.IncomingForm();
+    form.keepExtensions = true;
+    form.parse(req, (err, fields, files) => {
+        if (err) {
+            return res.status(400).json({
+                error: 'Image could not be uploaded'
+            });
+        }
+      
+
+        // 1kb = 1000
+        // 1mb = 1000000
+
+        console.log(files);
+
+        
+
+        if (files.image) {
+            // console.log("FILES image: ", files.image);
+            if (files.image.size > 1000000) {
+                return res.status(400).json({
+                    error: 'Image should be less than 1mb in size'
+                });
+            }
+
+            console.log("data file here",fs.readFileSync(files.image.path));
+            console.log("content type here ",files.image.type);
+
+            const newImg = {
+                data :fs.readFileSync(files.image.path),
+                contentType: files.image.type
+            }
+
+            User.findOneAndUpdate({_id : userId } , {$set:{
+                "image.data" : fs.readFileSync(files.image.path),
+                "image.contentType": files.image.type
+            }},(err , result)=>{
+                if(err){
+                    console.log(err);
+                }else {
+                    return res.status(300).json({
+                        info: 'successfully saved'
+                       });
+                }
+            })
+
+
+            // User.findById(userId, (err , user)=>{
+            //     if(err){
+            //         console.log(err);
+            //         return res.status(500).json({
+            //             error: 'Something went wrong'
+            //         });
+            //     }else {
+            //         user.image.push(newImg);
+            //         user.save((err, result)=>{
+            //             if(err){
+            //                 console.log(err);
+            //             }else {
+            //                 return res.status(300).json({
+            //                     info: 'successfully saved'
+            //                 });
+            //             }
+            //         });
+            //     }
+            // })
+
+        }
+
+    });
   
 };
 

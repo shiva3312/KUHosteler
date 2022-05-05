@@ -10,6 +10,7 @@ const {
     getAllHostedUnHostedHostel,   
     uploadPic,
     verfyMail,
+    image,
     updatepassword
 } = require("../controllers/auth");
  const { userSignupValidator } = require("../validator/index.js");
@@ -22,6 +23,7 @@ router.get("/getAllHostedUnHostedHostel", getAllHostedUnHostedHostel);
 router.post("/user/uploadphoto/:userId" ,uploadPic);
 router.post("/verfyMail" , verfyMail);
 router.put("/updatepassword",updatepassword )
+router.get("/image/:userId", image);
 
 router.param('userId', userById);
 module.exports = router;

@@ -5,7 +5,7 @@ import {  isAuthenticated ,uploadpic} from "../auth";
 
 const UpLoadimage = () => {
 
-   
+    const { user, token } = isAuthenticated();   
     const [values, setValues] = useState({
         
         image: '',
@@ -16,7 +16,7 @@ const UpLoadimage = () => {
         formData:new FormData()
     });
  
-    const { user, token } = isAuthenticated();
+   
     const {
         
         uploading,
@@ -27,36 +27,21 @@ const UpLoadimage = () => {
     } = values;
 
     // load categories and set form data
-    const init = () => {
-        // getCategories().then(data => {
-        //     if (data.error) {
-        //         setValues({ ...values, error: data.error });
-        //     } else {
-        //         setValues({
-        //             ...values,
-        //             categories: data,
-        //             formData: new FormData()
-        //         });
-        //     }
-        // });
-    };
 
-    useEffect(() => {
-        init();
-    }, []);
 
     const handleChange = name => event => {
-        const value = name === 'image' ? event.target.files[0] : event.target.value;
+        const value =( name === 'image') ? event.target.files[0] : event.target.value;
         formData.set(name, value);
         setValues({ ...values, [name]: value });
+      
     };
 
     const clickSubmit = event => {
+        console.log(values);
         event.preventDefault();
-        setValues({ ...values, error: '', uploading: true });
+        setValues({ ...values, error: false, uploading: true });
 
         uploadpic( user._id, token, formData).then(data => {
-
             console.log(data);
             if (data.error) {
                 setValues({ ...values, error: data.error });
@@ -64,7 +49,7 @@ const UpLoadimage = () => {
                 setValues({
                     ...values,
                     image: '',
-                    success:true,
+                    success:data.info,
                     uploading: false,
                     redirectToProfile : true
                 });
@@ -108,7 +93,7 @@ const UpLoadimage = () => {
     const redirectUser = () => {
     if (redirectToProfile) {  
         // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
-        if(!user.image){  
+        if(!user.image.data===null){  
               //show error and after some second redirect to uploadphot.jsx page again
             return <Redirect to="/user/uploadimage" />;
         }

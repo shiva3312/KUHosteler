@@ -104,7 +104,7 @@ const Signin = () => {
      
         if (redirectToReferrer) {            
             // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
-            if( !user.image){
+            if( !user.image.data ===null){
               
                 return <Redirect to="/user/uploadphoto" />;
             }

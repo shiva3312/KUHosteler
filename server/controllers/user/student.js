@@ -26,6 +26,7 @@ exports.userById =  (req, res, next, id) => {
 exports.read = (req, res) => {
       req.profile.hashed_password = undefined;
       req.profile.salt = undefined;
+      req.profile.image = undefined;
       return res.json(req.profile);
 };
 
