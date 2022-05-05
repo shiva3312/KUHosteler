@@ -18,12 +18,12 @@ const Layout = ({
   <div>
 
     <input type="checkbox" id="sidebar-toggle" />
-    <div className="sidebar  th">
+    <div className="sidebar ">
       <div className="sidebar-header "><h3 className="brand">
 
         <span>KuHosteler</span>
       </h3>
-        <label for="sidebar-toggle" className="fa fa-lg fa-bars"></label>
+        <label htmlFor="sidebar-toggle" className="fa fa-lg fa-bars"></label>
 
       </div>
 
@@ -31,38 +31,38 @@ const Layout = ({
         <ul>
 
           <li className="side p-3" >
-            <Link to="/manager/dashboard" className=" text-decoration-none">
+            <Link to="/manager/dashboard" className="text-decoration-none">
               <span className="fa fa-lg fa-dashboard"></span>
-              <span>&ensp;Dashboard</span>
+              <span className="side1">&ensp;Dashboard</span>
             </Link>
           </li>
           <li className="side p-3">
             <Link to="/manager/allstudents" className="text-decoration-none" >
 
               <span className="fa fa-lg fa-graduation-cap"></span>
-              <span>Student Manage</span>
+              <span className="side1">Student </span>
             </Link>
           </li>
           <li className="side p-3">
             <Link to="/manager/allemployee" className="text-decoration-none" >
 
               <span className="fa fa-lg fa-street-view"></span>
-              <span>&ensp;Employee Manage</span>
+              <span className="side1">&ensp;Employee</span>
             </Link>
           </li>
 
           <li className="side p-3">
-            <Link to="/manager/charges" className="text-decoration-none" >
+            <Link to="/manager/charges" className=" text-decoration-none" >
 
               <span className="fa fa-lg fa-money"></span>
-              <span>&nbsp;Charges</span>
+              <span  className="side1">&nbsp;Charges</span>
             </Link>
           </li>
           <li className="side p-3">
             <Link to="/manager/preparedMealList" className="text-decoration-none" >
 
               <span className="fa fa-lg fa-cutlery"></span>
-              <span>&nbsp;Meal List</span>
+              <span  className="side1">&nbsp;Meal List</span>
             </Link>
           </li>
 
@@ -72,7 +72,7 @@ const Layout = ({
 
             {isAuthenticated() && (
               // <div className="col">
-              <span className="side" to="/"  onClick={() => signout(() => { history.push("/"); })}><button className="btn text-white " type="submit" ><span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out</button></span>
+              <span className="" to="/"  onClick={() => signout(() => { history.push("/"); })}><button className="btn text-white " type="submit" ><span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out</button></span>
 
 
             )}
@@ -122,7 +122,7 @@ const Layout = ({
       <div className="jumbotron">
         <h1 className="text-center mb-0 pt-5 pb-5">{title}</h1>
       </div>
-      <div className="bground"><div className={className}>{children}</div>
+      <div className=""><div className={className}>{children}</div>
       </div>
       <Footer/>
     </div>

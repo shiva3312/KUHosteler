@@ -1,7 +1,6 @@
 import React, { useDebugValue, useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
-import Footer from "../Footer"
 import {  getAllemployees , updateMembershipStatus ,fchangeMealStatus} from "./ManApi";
 
 
@@ -42,7 +41,9 @@ const EmployeeListInfo = () => {
      
         return (
             <>
-            <h1 className="m-4">Employee Request List</h1>
+            <h1 className="p-2 text-start border-bottom">
+            <i className="fa fa-angle-double-right"></i>
+            &nbsp;Employee Request List</h1>
             <div className="shadow tbl-header">
                <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
                     <thead>
@@ -56,7 +57,7 @@ const EmployeeListInfo = () => {
                     </thead>
                     </table>
                     </div>
-                    <div className="shadow tbl-content">
+                    <div className="mb-5 shadow-lg tbl-content">
                     <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
                
                     <tbody>
@@ -93,11 +94,11 @@ const EmployeeListInfo = () => {
             description={`${user.fname} ${user.lname}`}
             className="container-fluid"
         >
-            <div className="row">                            
+                                      
               {emploeyeeList()} 
-            </div>           
+                     
         </ManLayout>
-        {/* <Footer /> */}
+      
         </>
     );
 };
