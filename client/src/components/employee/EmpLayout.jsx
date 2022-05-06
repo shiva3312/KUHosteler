@@ -2,6 +2,7 @@
 import React from "react";
 import {Link} from "react-router-dom"
 import { signout, isAuthenticated } from "../../auth/index.js";
+import ShowImage from "../ShowImage.js";
 import '../../css/global.css'
 
 import "../../css/student.css";
@@ -36,7 +37,8 @@ return(
                 <div className="media align-items-end profile-head">
 
                     <div className="profile ps-3 mr-5 mt-5">
-                        <img className="img mb-2 img-thumbnail" src={user.avatar} alt="..." width="190" /></div>
+                    <ShowImage user={user} Width= "13%" ClassName="img mb-2 img-thumbnail" />
+                        </div>
 
                 </div>
             </div>

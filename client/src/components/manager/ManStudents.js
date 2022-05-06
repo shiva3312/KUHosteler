@@ -2,6 +2,7 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
 import Footer from "../Footer"
+import ShowImage from "../ShowImage";
 import {  getAllstudents , updateMembershipStatus ,fchangeMealStatus ,addFineOrDepositMoney} from "./ManApi";
 
 
@@ -170,7 +171,9 @@ const StudentListInfo = () => {
                        <>                     
                         <tr key={i}>                       
                             <td>{i+1}</td>
-                            <td> </td>
+                            <td>
+                                <ShowImage user={student} Width= "50%" ClassName="img mb-2 img-thumbnail" />
+                            </td>
                             <td >{student.fname} {student.lname}</td>
                             <td >{student.roomNo}</td>
 

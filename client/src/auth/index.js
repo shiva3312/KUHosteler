@@ -118,6 +118,25 @@ export const getAllHostedUnHostedHostel = () => {
 };
 
 
+
+;
+export const resetPassword = (email) => {
+    return fetch(`${API}/auth/resetPassword`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(email)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 export const verfyMail = (values) => {
     return fetch(`${API}/auth/verfyMail`, {
         method: 'POST',

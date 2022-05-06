@@ -1,7 +1,69 @@
 /**
  * border radius
  */
-
+ .modalBackground {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 110;
+    
+   
+    
+    
+   }
+   
+   .modalContainer {
+     width: 50%;
+     height: auto;
+     border-radius: 12px;
+     background-color: white;
+     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     display: flex;
+     flex-direction: column;
+    z-index: 110;
+     text-align: center;
+    
+   }
+   
+   .modalContainer .title {
+     display: inline-block;
+     text-align: center;
+     margin-top: 10px;
+   }
+   
+   .titleCloseBtn {
+     display: flex;
+     justify-content: flex-end;
+     height: 40px;
+     padding: 5px;
+     background: linear-gradient(to right,rgb(96, 33, 243),rgb(179, 9, 179));
+     
+   }
+   
+   .titleCloseBtn button {
+     background-color: transparent;
+     border: none;
+     font-size: 25px;
+     cursor: pointer;
+     color: #fff;
+   }
+.loginform{
+    padding: 12%;
+}
+.otp {
+    background: linear-gradient(to right,rgb(96, 33, 243),rgb(179, 9, 179));
+    margin-top: 10px;
+    width: 100%;
+    color: #fff;
+}
 
 .btn,.jumbotron, .nav :hover {
     border-radius: 0px;

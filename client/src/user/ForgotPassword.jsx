@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import { Redirect , Link } from "react-router-dom";
+import { Redirect , Link, useParams } from "react-router-dom";
 import '../css/global.css';
 import {  authenticate, isAuthenticated ,updatePassword } from "../auth";
 
 const UpdatePassword = () => {
 
-    const userId = "626f4ae7aef5f31c790a018d";
+    const {user , toke} = isAuthenticated();
+
+    const {userId , token} = useParams()
     const [values, setValues] = useState({        
         password: "",
         confirmPassword :"",
         error: "",
+        success:'',
+        redirectToReferrer: false
         
     });
 
-    const {  password, confirmPassword, error } = values;
+    const {  password, confirmPassword, error, success ,redirectToReferrer} = values;
    
 
     const handleChange = name => event => {
@@ -26,13 +30,15 @@ const UpdatePassword = () => {
         if(password !== confirmPassword)
         setValues({ ...values, error: "Password did not match" });
 
-        updatePassword({ userId, password }).then(data => {
+        updatePassword({ userId, password , token }).then(data => {
             if (data.error) {
-                setValues({ ...values, error: data.error});
+                setValues({ ...values, error: "Link has been expired" });
             } else {
                 authenticate(data, () => {
                     setValues({
                         ...values,
+                        success:"data.info",
+                        redirectToReferrer : true
                       
                     });
                 });
@@ -91,12 +97,34 @@ const UpdatePassword = () => {
         </div>
     );
 
+    const showSuccess = () => (
+        <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
+           {success}
+        </div>
+    );
+
+    const redirectUser = () => {
+     
+        if (redirectToReferrer) {            
+            // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
+           if (user && user.profileType === 1){
+                return <Redirect to="/manager/dashboard" />;
+            }else  if(user && user.profileType === 0  ){
+                return <Redirect to="/student/home" />;
+            }
+            else if(user && user.profileType === 2){
+                return <Redirect to="/employee/home" />;
+            }
+          
+        }
+    };
 
     return (
         <div>
-          
+            {showSuccess}
             {showError()}
             {signUpForm()}
+            {redirectUser()}
          
         </div>
     );

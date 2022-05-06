@@ -112,7 +112,7 @@ const Signup = () => {
               isSignUpPossible = true          
             }
           })
-          if(!isMnagerExist){
+          if(profileType!=1 &&  !isMnagerExist){
             isSignUpPossible = false;
             setValues({ ...values, error: "Manger doest exist" });
           }
@@ -165,10 +165,13 @@ const Signup = () => {
         if(code == savedCode.code ){      
           setIsCodeVarified(true);
           matchfound = true;
+          setValues({ ...values, success: "Code is applied" });
         }
       }) 
-      if(matchfound === false)
-      setIsCodeVarified(false);     
+      if(matchfound === false){
+      setIsCodeVarified(false);
+      setValues({ ...values, error: "Code is not correct"});
+      }     
     }
 
     const {
@@ -187,6 +190,7 @@ const Signup = () => {
         // send the  newOTP to users mailId ...
         verfyMail({email , newOTP}).then((data)=>{
           if(data.error){
+            setValues({ ...values, error: data.error});
             console.log(data.error);
           }else {
             console.log(data.info);
@@ -435,7 +439,7 @@ const Signup = () => {
 
     const showSuccess = () => (
         <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            New account is created. Please <Link to="/auth/signin">Signin</Link>
+           {success}
         </div>
     );
 
@@ -449,7 +453,6 @@ const Signup = () => {
         <div >
             
             {JSON.stringify(mailOtpStatus)}
-            {JSON.stringify(values)}
             {showSuccess()}
             {showError()}
             {signUpForm()}

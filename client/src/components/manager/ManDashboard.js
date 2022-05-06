@@ -199,7 +199,7 @@ const AdminDashboard = () => {
                                     <tr key={i}>
                                         <td >{i + 1}</td>
                                         <td >{student.createdAt.slice(0, 10)}</td>
-                                        <td >   <ShowImage user={user} Width= "55%" ClassName="img mb-2 img-thumbnail" />    </td>
+                                        <td >   <ShowImage user={student} Width= "55%" ClassName="img mb-2 img-thumbnail" />    </td>
                                         <td >{student.fname} {student.lname}</td>
                                         <td >{student.department}</td>
                                         <td >{student.selfPhNo}</td>

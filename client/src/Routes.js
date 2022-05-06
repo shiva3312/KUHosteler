@@ -50,7 +50,7 @@ const Routes = () => {
                 <Route path="/user/HelpDesk" exact component={HelpDesk} />
                 <Route path="/user/ReportBug" exact component={ReportBug} />
                 <Route path="/user/Developer" exact component={Developer} />
-                <Route path="/user/forgotpassword" exact component={UpdatePassword} />
+                <Route path="/user/forgotpassword/:userId/:token" exact component={UpdatePassword} />
                 <PrivateRoute path="/user/uploadphoto" exact component={UpLoadPhoto} />
 
                 {/*manager GetRoute */}

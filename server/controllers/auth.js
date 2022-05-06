@@ -9,6 +9,10 @@ const expressJwt = require('express-jwt'); // for authorization check
 const { errorHandler } = require('../helpers/dbErrorHandler');
 const boundTime = require('../models/boundTime');
 const Admin = require('../models/admin');
+const nodemailer = require("nodemailer");
+const {google} = require("googleapis");
+const JWT_SECRET = "some super serect";
+
 
 
 
@@ -260,12 +264,7 @@ exports.uploadPic = (req, res) => {
 
         // 1kb = 1000
         // 1mb = 1000000
-
-        console.log(files);
-
-        
-
-        if (files.image) {
+      if (files.image) {
             // console.log("FILES image: ", files.image);
             if (files.image.size > 1000000) {
                 return res.status(400).json({
@@ -292,85 +291,176 @@ exports.uploadPic = (req, res) => {
                         info: 'successfully saved'
                        });
                 }
-            })
-
-
-            // User.findById(userId, (err , user)=>{
-            //     if(err){
-            //         console.log(err);
-            //         return res.status(500).json({
-            //             error: 'Something went wrong'
-            //         });
-            //     }else {
-            //         user.image.push(newImg);
-            //         user.save((err, result)=>{
-            //             if(err){
-            //                 console.log(err);
-            //             }else {
-            //                 return res.status(300).json({
-            //                     info: 'successfully saved'
-            //                 });
-            //             }
-            //         });
-            //     }
-            // })
-
+            });
+           
         }
-
-    });
-  
+    });  
 };
 
+exports.resetPassword = (req,res,next) => {
+    var email = req.body.emailid;   
+    User.findOne({"email": email},function(err,foundUser){
+      if(err){
+        console.log(err);
+      } else {
 
-exports.verfyMail = (req, res) => {
-    const mail = req.body.email;
-    const otp = req.body.newOTP;
-
-    //check if this email already exits...
-    User.findOne({mail}, (err , user)=>{
-        if(err){
-            return res.json({error:err})
-        }else if(user){
-            return res.json({info:"This mail already in use. Please SignIn.."})
+      if(!foundUser){
+          console.log("user does not exist");
+          return res.status(500).json({error:"User does not exist Please SignUp"});
         }
-    })
- 
-    const message = "Dear Candidate , The OTP to varify your account is : " + otp;
 
-    //write code to send mail with above msg
-
-};
-
-exports.updatepassword = (req, res) => {
-    const userId = req.body.userId;
-    const password = req.body.password;
-
-    
-
-     // findOneAndUpdate pass word ...
-     var newPassword ;
-     User.findById(userId, (err, user)=>{
-        if(err){
-            console.log(err);
-        }else {
-            console.log("in the encryption ");
-            newPassword = user.encryptPassword(password);
-          
-            User.findOneAndUpdate({_id : userId} , {$set :{ 
-                'hashed_password' : newPassword
-            }}, (err ,res)=>{
-            if(err){
-             console.log(err);
-                }else{
-             console.log("successfully updated");
+      const secret = JWT_SECRET + foundUser.password;
+      const payload = {
+        email: foundUser.email,
+        id: foundUser._id
+      }
+      const token = jwt.sign(payload,secret,{expiresIn: "15m"});
+      const link = `http://localhost:3000/user/forgotpassword/${foundUser._id}/${token}`;
+      const CLIENT_ID = process.env.CLIENT_ID;
+      const CLIENT_SECRET = process.env.CLIENT_SECRET;
+      const REDIRECT_URI = process.env.REDIRECT_URI;
+      const REFRESH_TOKEN= process.env.REFRESH_TOKEN;
+      const oAuth2Client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,REDIRECT_URI);     
+      oAuth2Client.setCredentials({refresh_token: REFRESH_TOKEN});  
+      async function sendMail(){
+        try {
+          const accessToken = await oAuth2Client.getAccessToken();         
+          const transport = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              type: "OAuth2",
+              user: "kuhosteler@gmail.com",
+              clientId: CLIENT_ID,
+              clientSecret: CLIENT_SECRET,
+              refreshToken: REFRESH_TOKEN,
+              accessToken: accessToken
             }
-     });
+          });
+          const mailOptions = {
+            from: "KuHosteler  <kuhosteler@gmail.com>",
+            to: foundUser.email,
+            subject: "RESET PASSWORD",
+            text: `http://localhost:3000/user/forgotpassword/${foundUser._id}/${token}`  
+          };
+          const result = transport.sendMail(mailOptions);
+          return result;
+        } catch (e) {
+      console.log(e.message);
         }
-     })
-     
-     
+      }  
+       sendMail()
+       .then(result => console.log("email sent "))
+       .catch(e => console.log(e.message));
 
+       return res.status(300).json({info:"Code has been sent to you Please check your  Email"})
+    }})}
 
-};
+    exports.verfyMail = (req, res) => {
+        const mail = req.body.email;
+        const otp = req.body.newOTP;
+        console.log(mail,otp);
+        //check if this email already exits...
+        User.findOne({email: mail}, (err , user)=>{
+            if(err){
+                console.log(err)
+                return res.json({error:err})
+            }else if(user){
+                console.log("Mail is already in use");
+                return res.status(500).json({error:"This mail already in use, Please SignIn."})
+            }else{
+              
+          const CLIENT_ID = process.env.CLIENT_ID;
+          const CLIENT_SECRET = process.env.CLIENT_SECRET;
+          const REDIRECT_URI = process.env.REDIRECT_URI;
+          const REFRESH_TOKEN= process.env.REFRESH_TOKEN;           
+      
+          const oAuth2Client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,REDIRECT_URI);         
+          oAuth2Client.setCredentials({refresh_token: REFRESH_TOKEN});      
+          async function sendMail(){
+            try {
+              const accessToken = await oAuth2Client.getAccessToken();
+              const transport = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                  type: "OAuth2",
+                  user: "kuhosteler@gmail.com",
+                  clientId: CLIENT_ID,
+                  clientSecret: CLIENT_SECRET,
+                  refreshToken: REFRESH_TOKEN,
+                  accessToken: accessToken
+                }
+              });
+              const mailOptions = {
+                from: "KuHostel <kuhosteler@gmail.com>",
+                to: mail,
+                subject: "MAIL VERIFICATION",
+                text: `Your OTP for mail verification is ${otp}`      
+              };
+              const result = transport.sendMail(mailOptions);
+              return result;
+            } catch (e) {
+              console.log(e.message);
+            }
+          }      
+           sendMail()
+           .then(result => console.log("email sent "))
+           .catch(e => console.log(e.message));
 
+           return res.status(300).json({info:"Code has been sent to you Please check your  Email"})
+            }
+        });     
+        
+    
+    };
+    
+    exports.updatepassword = (req, res) => {
+        const userId = req.body.userId;
+        const password = req.body.password;
+        const token = req.body.token;
+        // findOneAndUpdate pass word ...
+         var newPassword ;
+         User.findById(userId, (err, user)=>{
+            if(err){
+                console.log(err);
+            }else {
 
+              if(!user){
+                console.log("user does not exist");
+                return res.status(500).json({error:"User does not exist Please SignUp"});
+              }
+
+              const secret = JWT_SECRET + user.password;
+              try {
+                const payload = jwt.verify(token,secret);
+                console.log("in the encryption ");
+                newPassword = user.encryptPassword(password);
+              
+                User.findOneAndUpdate({_id : userId} , {$set :{ 
+                    'hashed_password' : newPassword
+                }}, (err ,result)=>{
+                if(err){
+                 console.log(err);
+                    }else{
+
+                console.log("successfully updated");
+                
+                // when user successfully saved its password return the with valide token 
+                // generate a signed token with user id and secret
+                const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRETE);
+                // persist the token as 't' in cookie with expiry date
+                res.cookie('t', token, { expire: new Date() + 9999 });
+                // return response with user and token to frontend client     
+                return res.json({ token, user });
+                 
+                }
+         });
+               
+              } catch (e) {
+              return res.status(300).json({error: e.message})
+            
+              }
+               
+            }
+         })
+  };
+  

@@ -1,9 +1,11 @@
-import React, { useState} from "react";
+import React, { useState,useEffect} from "react";
 import { Redirect , Link } from "react-router-dom";
 import '../css/global.css';
-import { signin, authenticate, isAuthenticated } from "../auth";
+import { signin, authenticate, isAuthenticated,resetPassword } from "../auth";
 
 const Signin = () => {
+    const [showForget,setShowForget] = useState(false);
+    const [emailid,setEmail] = useState("");
     const [values, setValues] = useState({
         email: "",
         password: "",
@@ -11,13 +13,20 @@ const Signin = () => {
         loading: false,
         redirectToReferrer: false
     });
-
+    useEffect(() => {},[emailid]);
     const { email, password, loading, error, redirectToReferrer } = values;
     const { user } = isAuthenticated();
+
+   
 
     const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value });
     };
+    const resetSubmit = e =>{
+        e.preventDefault();
+        resetPassword({emailid});
+        setShowForget(false);
+    }
 
     const clickSubmit = event => {
         console.log("cliked button ");
@@ -62,7 +71,9 @@ const Signin = () => {
     <input type="password" className="form-control" name="password" required="" onChange={handleChange('password')} value={password}/>
     </div>
       
-    <p className="small mb-4 pb-lg-2"><Link className="text-white-50" to="#!">Forgot password?</Link></p>
+    <p className="small mb-4 pb-lg-2" ><button onClick={(e) =>
+    {e.preventDefault()
+    setShowForget(true)}} className="text-white-50 btn" >Forgot password?</button></p>
       
     <div >
     <button className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Sign In</button>
@@ -129,6 +140,34 @@ const Signin = () => {
             return <Redirect to="/" />;
         }
     };
+    const showForgetPassword = () => (
+        <div className='modalBackground'>
+           
+          <div className='modalContainer'>
+          <div className="titleCloseBtn">
+            <button
+              onClick={() => {
+               setShowForget(false);
+              }}
+            >
+              X
+            </button>
+          </div>
+          <form onSubmit={resetSubmit}>
+       
+       <div className="loginform"> <div className="input-group">
+        <div className="input-group-prepend">
+          <span className="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+        </div>
+       
+        <input onChange={(e) => setEmail(e.target.value)} value={emailid} type="email" className="form-control" id="inlineFormInputGroupUsername" placeholder="Enter Your Email" required/>
+      </div> <button type="submit"  className="btn otp" >GET RESET LINK</button>
+      </div>
+       </form>
+         
+          </div>
+        </div>
+      );
 
     return (
         <div>
@@ -136,6 +175,7 @@ const Signin = () => {
             {showError()}
             {signUpForm()}
             {redirectUser()}
+            {showForget && showForgetPassword()}
         </div>
     );
 };
