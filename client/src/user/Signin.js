@@ -108,8 +108,8 @@ const Signin = () => {
      
         if (redirectToReferrer) {            
             // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
-            if( !user.image.data ===null){
-              
+            if(! user.image.data ){
+               
                 return <Redirect to="/user/uploadphoto" />;
             }
             else if(user && (user.profileType!==1) && user.membership == 0 || user.membership == 4 ||   user.membership == 5){

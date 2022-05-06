@@ -36,8 +36,8 @@ const userSchema = new mongoose.Schema({
   address: { type :String, default:null},
   avatar: { type :String, default:null},
   image:  {
-    data: Buffer,
-    contentType: String,
+    data: { type :Buffer, default:null} ,
+    contentType:  { type :String, default:null},
   },
   bio: { type :String, default:null},
   hostelId:{ type :String, default:null},

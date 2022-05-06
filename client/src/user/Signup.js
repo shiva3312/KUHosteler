@@ -32,6 +32,7 @@ const Signup = () => {
         dob:'',
         error: '',
         avatar:'',
+      
         success: false,
         redirectToReferrer: false
     });    
@@ -53,6 +54,7 @@ const Signup = () => {
       dob,
       error,
       avatar,
+     
       code,
       otp,
       success,
@@ -146,6 +148,7 @@ const Signup = () => {
                     dob:'',
                     error: '',
                     avatar:'',
+                  
                     success: true,
                     redirectToReferrer: true
 
@@ -332,12 +335,33 @@ const Signup = () => {
             </div>           
 
           </div>
-          <div className="row">
+
+          {/* if not manager */}
+          <div className="row"  style={{ display: profileType!=1 ? '' : 'none' }}>
           <div className="col-lg-6 form-outline text-start form-white mb-4" >  
             <label className="form-label text-white" htmlFor="hostelName" >Hostel Name</label>
               <select id="hostelName" className="form-control" name="hostelName" required={true} onChange={handleChange('hostelName')} value={hostelName}>
-              
-                <option value="btmens" >BT MEN'S</option>
+                    {hostedHostels &&
+                        hostedHostels.map((hostel, i) => (
+                            <option key={i} value={hostel.hostelName}>
+                                {hostel.hostelName.toUpperCase()}
+                            </option>
+                        ))}
+                </select>              
+            </div>
+            <div className="col-lg-6 form-outline text-start form-white mb-4"  style={{ display: profileType==0 ? '' : 'none' }}>
+              <label className="form-label text-white" htmlFor="roomNo"  style={{ display: profileType==0 ? '' : 'none' }}>Room No</label>
+              <input type="Number" className="form-control" name="roomNo" placeholder='Ex. 10' required={true} onChange={handleChange('roomNo')} value={roomNo} />        
+            </div>
+
+            </div>
+
+          {/* if manager */}
+          <div className="row" style={{ display: profileType==1 ? '' : 'none' }}>
+          <div className="col-lg-6 form-outline text-start form-white mb-4" >  
+            <label className="form-label text-white" htmlFor="hostelName" >Hostel Name</label>
+              <select id="hostelName" className="form-control" name="hostelName" required={true} onChange={handleChange('hostelName')} value={hostelName}>
+               <option value="btmens" >BT MEN'S</option>
                 <option value="banyan">BANYAN</option>
                 <option value="pg1" >PG 1</option>
                 <option value="pg2" >PG 2</option>

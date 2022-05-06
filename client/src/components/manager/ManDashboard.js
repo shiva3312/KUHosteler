@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
+import ShowImage from "../ShowImage"
 import "../../css/manager.css";
 import { Line } from "react-chartjs-2";
 import {
@@ -198,7 +199,7 @@ const AdminDashboard = () => {
                                     <tr key={i}>
                                         <td >{i + 1}</td>
                                         <td >{student.createdAt.slice(0, 10)}</td>
-                                        <td > <img className="img mb-2 img-thumbnail" src={student.avatar} alt="..." width="75" /></td>
+                                        <td >   <ShowImage user={user} Width= "55%" ClassName="img mb-2 img-thumbnail" />    </td>
                                         <td >{student.fname} {student.lname}</td>
                                         <td >{student.department}</td>
                                         <td >{student.selfPhNo}</td>

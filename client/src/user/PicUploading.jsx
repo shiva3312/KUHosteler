@@ -92,12 +92,9 @@ const UpLoadimage = () => {
 
     const redirectUser = () => {
     if (redirectToProfile) {  
+        console.log("redirect is running");
         // if images is not uploded yet then redirect ot PicUpload.jsx page to upload img
-        if(!user.image.data===null){  
-              //show error and after some second redirect to uploadphot.jsx page again
-            return <Redirect to="/user/uploadimage" />;
-        }
-        else if(user && !(user.profileType==1) && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
+       if(user && !(user.profileType==1) && user.membership == 0 || user.membership == 4 ||   user.membership == 5){
             return <Redirect to="/user/info" />;
         }else if (user && user.profileType === 1){
             return <Redirect to="/manager/dashboard" />;
@@ -107,9 +104,9 @@ const UpLoadimage = () => {
         else if(user && user.profileType === 2){
             return <Redirect to="/employee/home" />;
         }
-        // else{
-        //     return <Redirect to="/satff/home" />;
-        // }
+        else if(user && user.profileType === 2){
+            return <Redirect to="/employee/home" />;
+        }
         }
 
         else if (!isAuthenticated()){

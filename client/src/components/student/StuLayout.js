@@ -36,7 +36,7 @@ return(
             <div className="ps-4 pt-4 pb-0 pe-4 cover">
                 <div className="media align-items-end profile-head">
                     <div className="profile ps-3 mr-5 mt-5">
-                        <ShowImage user={user} />    
+                        <ShowImage user={user} Width= "18%" ClassName="img mb-2 img-thumbnail" />    
                     </div>                     
                 </div>
             </div>

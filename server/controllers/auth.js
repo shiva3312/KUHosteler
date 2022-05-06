@@ -49,6 +49,7 @@ exports.signup = (req, res) => {
       );
    
     req.body.avatar = newGravatar;
+    
     if(req.body.profileType == 1){
         req.body.membership= 2;
     }
