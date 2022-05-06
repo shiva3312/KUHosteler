@@ -35,10 +35,10 @@ const userSchema = new mongoose.Schema({
   selfPhNo:String,
   address: { type :String, default:null},
   avatar: { type :String, default:null},
-  image:  [{
+  image:  {
     data: Buffer,
     contentType: String,
-  }],
+  },
   bio: { type :String, default:null},
   hostelId:{ type :String, default:null},
   membership:  { type :Number, default:0}, // notMember(0)| officalGuest(1) | member(2) | WasMember(3) | rejected Request(4)
