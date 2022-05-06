@@ -43,7 +43,7 @@ const UserDashboard = ({history}) => {
       calculateMealCount();
         return (
           <>
-          <div className="pt-5 pb-3 card pb-2 mt-5 mb-4 th">
+          <div className="pt-2 pb-3  pb-2 mt-3 mb-4 th">
           <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">PIE CHART</h4>
           <Pie 
                 data={{
@@ -104,7 +104,7 @@ const UserDashboard = ({history}) => {
      
       return(
        
-          <div className="pt-5 card pb-5 mt-5 ms-auto th">
+          <div className="pt-2  pb-5 mt-3 ms-auto th">
           <h4 className="shadow card-head pt-2 pb-2 mb-3 gradiant text-light text-center">USER INFORMATION</h4>
          <ul className="con shadow p-2 "> 
          <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3">
@@ -113,7 +113,10 @@ const UserDashboard = ({history}) => {
                         </li>                   
                   {
                     studData.messStatus == 0 || studData.messStatus==1 ? 
-                    <li className="text-white">Meal Status : Disable</li>:
+                    <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3 ">
+                     <div className="col-4 ps-0 pe-0">Meal Status</div>
+                     <div className="col-8 ps-0 pe-0"> :<span className="fw-bold text-secondary"> DISABLE</span>
+                     </div></li>:
                     studData.messStatus == 2 ? <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3 ">
                      <div className="col-4 ps-0 pe-0">Meal Status</div>
                      <div className="col-8 ps-0 pe-0">: <span className="fw-bold text-success"> ON</span>

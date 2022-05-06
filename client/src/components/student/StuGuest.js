@@ -86,10 +86,10 @@ const AddGuest = ({history}) => {
         
         <>
          <h1 className="text-start ms-4 me-4 border-bottom">
-            <i className="fa fa-angle-double-right text-white"></i>
+            <i className="fa fa-angle-double-right"></i>
            &nbsp;Active Guests</h1>
          <h1 className="fs-4">Details of active guests</h1>
-        <section className="shadow">
+        <section className="shadow-lg">
         
         
        
@@ -159,11 +159,11 @@ const AddGuest = ({history}) => {
             <> 
            
             <h1 className="text-start ms-4 me-4 border-bottom">
-            <i className="fa fa-angle-double-right text-white"></i>
+            <i className="fa fa-angle-double-right "></i>
            &nbsp;Add new guest</h1>
             <div  className="mt-5 m-5 row th shadow">
            <div className="col-3 p-4 ps-4">
-               <i className="fa fa-lg fa-user-plus text-white"></i>
+               <i className="fa fa-lg fa-user-plus"></i>
            </div>
             <div className="col-9 p-3 ps-3  text-end">
            

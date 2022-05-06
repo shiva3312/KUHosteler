@@ -6,7 +6,6 @@
 import React, { useDebugValue, useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
-import Footer from "../Footer"
 import {  read , setCharges ,setboundtime ,addAuditCharges} from "./ManApi";
 
 
@@ -98,13 +97,12 @@ const Charges = () => {
        
         return (
             <>
-
-                <h1>Audited Meal Charge </h1>
-                <div className="text-end" style={{ display: !auditToggler ? '' : 'none' }}> 
+           
+                {/* <div className="text-end" style={{ display: !auditToggler ? '' : 'none' }}> 
                     
                     <button className="btn btn-primary" onClick={()=>setauditToggler(!auditToggler)}>Add Meal Charge</button>
-                </div>
-                <div className="shadow">
+                </div> */}
+                <div className="pb-4 pt-3">
 
                     <div className="shadow tbl-header">
                         <table cellPadding="0" cellSpacing="0" border="0">
@@ -120,7 +118,7 @@ const Charges = () => {
                             </thead>
                         </table>
                     </div>
-                    <div className="tbl-content">
+                    <div className="shadow tbl-content">
                         <table cellPadding="0" cellSpacing="0" border="0">
                             <tbody>
 
@@ -142,11 +140,8 @@ const Charges = () => {
                             </tbody>
                         </table>
                     </div>
-                    <table>
-                    <tfoot className="table border ">
-
-                    </tfoot>
-                    </table>
+                    
+                  
                 </div>
                
 
@@ -155,11 +150,43 @@ const Charges = () => {
     };
 
     const auditMealChargeForm =()=>(
-        
-        <form style={{ display: auditToggler ? '' : 'none' }}> 
-        <section className=" gradient">       
-        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">Add Meal Charge</h4>
+        <><h1 className="m-3 mt-0 pt-5 border-bottom text-start">
+        <i className="fa fa-angle-double-right"></i>
+        &nbsp;Audit Meal Charge</h1>
+        <p>
+<div className="mt-1 text-end">
+<button class="bton  p-2 pt-2 shadow-sm"type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+ Add Meal Charges<i class="fa fa-caret-down p-1" aria-hidden="true"></i>
+</button>
+</div>
+</p>
+<div class="collapse" id="collapseExample2">
+
+<div class="card card-body">
+    
+<h4 className="text-secondary pt-2 pb-2 ">Add Meal Charge</h4>
             <div className="col form-outline text-start form-white mb-4">
+              <label  className="form-label " htmlFor="auditedDate">Month</label>
+              <input type="month" className="form-control" name="auditedDate" required="" onChange={handleAuditChange('auditedDate')} value={auditedDate} />        
+            </div> 
+            <div className="col form-outline text-start form-white mb-4">
+              <label  className="form-label " htmlFor="auditAmount">Meal Charge</label>
+              <input type="Number" className="form-control" name="auditAmount" required="" onChange={handleAuditChange('auditAmount')} value={auditAmount} />        
+            </div>      
+            <div className="row">           
+                <div className="col">
+                  <button className="bton pt-2 me-2 btn-lg  px-4" type="submit" onClick={clickSubmitAduditCharge} >Add Charge</button>
+                <button className="bton  btn-lg px-4 pt-2 " type="submit" onClick={(e)=>{e.preventDefault(); setauditToggler(!auditToggler)}} >Cancle</button>
+            </div>
+            </div> 
+    </div>
+
+    </div>
+        
+        {/* <form style={{ display: auditToggler ? '' : 'none' }}>  */}
+             
+        {/* <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">Add Meal Charge</h4> */}
+            {/* <div className="col form-outline text-start form-white mb-4">
               <label  className="form-label text-white" htmlFor="auditedDate">Month</label>
               <input type="month" className="form-control" name="auditedDate" required="" onChange={handleAuditChange('auditedDate')} value={auditedDate} />        
             </div> 
@@ -172,55 +199,79 @@ const Charges = () => {
                   <button className="btn btn-outline-light btn-lg btn-success px-4" type="submit" onClick={clickSubmitAduditCharge} >Add Charge</button>
                 <button className="btn btn-outline-light btn-lg btn-danger ml-2 px-4" type="submit" onClick={(e)=>{e.preventDefault(); setauditToggler(!auditToggler)}} >Cancle</button>
             </div>
-            </div>      
-        </section>
-        </form>
+            </div>       */}
+     
+        {/* </form> */}
+        </>
         
     );
 
     const showCharges =()=>(
         <>
-        <h1 className="m-4">Guest Meal Charges</h1>
-
-        <div style={{ display: !guestToggler ? '' : 'none' }}>
+    
+        {/* <div style={{ display: !guestToggler ? '' : 'none' }}> */}
         
         
-        <div className="text-end"> 
+        {/* <div className="text-end"> 
             <button className="btn btn-primary" onClick={()=>setguestToggler(!guestToggler)}>Update</button>
-        </div>
-        <div className="shadow">
-            <div className="shadow tbl-header">
-            <table table cellPadding="0" cellSpacing="0" border="0" >
-                <thead>
-                <tr >
-                    <th >Guest Morning Charge</th>
-                    <th >Gues Night Charge</th>
-                    <th >Gues Grand Charge</th>
-                </tr>
-                </thead>
-                </table>
-                </div>
-                <div className="table tbl-content">
-                <table cellPadding="0" cellSpacing="0" border="0">
-                <tbody>
-                <tr >
-                    <td >{guestMorMealCharge}</td>
-                    <td >{guestNigMealCharge}</td>
-                    <td >{grandCharge}</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
-        </div>
+        </div> */}
+        <ul class="list-group m-2">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Guest Morning Charge
+    <span class="badge  rounded-pill">{guestMorMealCharge}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+   Guest Night Charge
+    <span class="badge rounded-pill">{guestNigMealCharge}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Guest Grand Charge
+    <span class="badge rounded-pill">{grandCharge}</span>
+  </li>
+</ul>
+        
+        
+        {/* </div> */}
       
         </>
     );
 
     const chargeForm = () => (
+
+        <>
+           <h1 className="m-3 mt-0 pt-5 border-bottom text-start">
+                <i className="fa fa-angle-double-right"></i>
+                &nbsp;Guest Meal Charge</h1>
+                <p>
+       <div className="mt-1 text-end">
+        <button class="bton p-2 pt-2 shadow-sm"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+         Update charges<i class="fa fa-caret-down p-1" aria-hidden="true"></i>
+        </button>
+        </div>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+        <div className="col form-outline text-start form-white mb-4">
+              <label  className="form-label text-secondary" htmlFor="guestMorMealCharge">Guest Morning Charge</label>
+              <input type="Number" className="form-control" name="guestMorMealCharge" required="" onChange={handleChange('guestMorMealCharge')} value={guestMorMealCharge} />        
+            </div>
+            <div className="col form-outline text-start form-white mb-4">
+              <label  className="form-label text-secondary" htmlFor="guestNigMealCharge">Guest Night Charge</label>
+              <input type="Number" className="form-control" name="guestNigMealCharge" required="" onChange={handleChange('guestNigMealCharge')} value={guestNigMealCharge} />        
+            </div>
+            <div className="col form-outline text-start form-white mb-4">
+              <label  className="form-label text-white" htmlFor="grandCharge">Guest Grand Charge</label>
+              <input type="Number" className="form-control" name="grandCharge" required="" onChange={handleChange('grandCharge')} value={grandCharge} />        
+            </div>      
+           <div className="row">           
+                <div className="col">
+                  <button className="bton shadow pt-1 p-2 btn-lg " type="submit" onClick={clickSubmit} >Update</button>
+                </div>
+            </div>      </div>
+      </div>
+       
+        {/* <form style={{ display: guestToggler ? '' : 'none' }}> 
         
-        <form style={{ display: guestToggler ? '' : 'none' }}> 
-        <section className=" gradient">  
             <div className="col form-outline text-start form-white mb-4">
               <label  className="form-label text-white" htmlFor="guestMorMealCharge">Guest Morning Charge</label>
               <input type="Number" className="form-control" name="guestMorMealCharge" required="" onChange={handleChange('guestMorMealCharge')} value={guestMorMealCharge} />        
@@ -238,27 +289,40 @@ const Charges = () => {
                   <button className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Update</button>
                 </div>
             </div>      
-        </section>
-        </form>
+      
+        </form> */}
+        </>
     ); 
 
     const showError = () => (
         <>
-        <div className="alert alert-danger" style={{ display: error || amount.error ? '' : 'none' }}>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style={{ display: error || amount.error ? '' : 'none' }}>
+ {error}
+ <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+        {/* <div className="alert alert-danger" style={{ display: error || amount.error ? '' : 'none' }}>
             {error}
-        </div>
+        </div> */}
        
         </>
     );
 
     const showSuccess = () => (
         <>
-        <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
+            <div class="alert alert-info alert-dismissible fade show" role="alert"style={{ display: success ? '' : 'none' }}>
             Charge updated Successfully
-        </div>
-         <div className="alert alert-info" style={{ display: amount.success ? '' : 'none' }}>
+ <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+        {/* <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
+            Charge updated Successfully
+        </div> */}
+               <div class="alert alert-info alert-dismissible fade show" role="alert"style={{ display: amount.success ? '' : 'none' }}>
+               Charge added Successfully
+ <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+         {/* <div className="alert alert-info" style={{ display: amount.success ? '' : 'none' }}>
          Charge added Successfully
-        </div>
+        </div> */}
         </>
     );
 
@@ -280,9 +344,10 @@ const Charges = () => {
             <div className="row">  
                {JSON.stringify(amount)}
                 {showSuccess()}
-                {showError()}    
+                {showError()}
+                {chargeForm()}    
                 {showCharges()}                     
-                {chargeForm()}
+                
                 {auditMealChargeForm()}
                 {auditedChargeMealList()}
                 

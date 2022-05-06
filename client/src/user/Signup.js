@@ -227,12 +227,14 @@ const Signup = () => {
     },[profileType , toggler]);
   
     const signUpForm = () => (
+      <>
+      <div className="gradiant p-1">
       <form> 
-      <section className=" gradient">
+      
       <div className="container py-3">
       <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col-12 col-md-7">
-      <div className="card-body p-5 text-center " >
+      <div className="th card-body p-5 text-center " >
       <div className="mb-md-5 mt-md-4 pb-2">
       <h2 className="fw-bold mb-2 text-uppercase text-white">Register as {profileType == 0 ? "Student": ( profileType == 1 ? "Manager" :"Employee" ) }  </h2>
       <p className="text-white-50 mb-5">Please fill up the following details</p>
@@ -395,8 +397,10 @@ const Signup = () => {
     </div>
     </div>
       </div>          
-   </section>
+  
   </form>
+  </div>
+  </>
     )
 
     const showError = () => (

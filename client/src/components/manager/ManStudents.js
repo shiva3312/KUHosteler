@@ -54,28 +54,40 @@ const StudentListInfo = () => {
     };
     
     const chargeForm = () => (
-        
-        <form > 
-        <div className="container">
-            <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="deposit">deposit</label>
+        <>
+
+
+{/* // <!-- Modal --> */}
+<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Enter Amount Here</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+      <div className="col form-outline text-start form-white mb-4">
+              <label  className="form-label " htmlFor="deposit">deposit</label>
               <input type="Number" className="form-control" name="deposit" required="" onChange={handleChange('deposit')} value={deposit} />        
             </div>
             <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="fine">fine</label>
+              <label  className="form-label" htmlFor="fine">fine</label>
               <input type="Number" className="form-control" name="fine" required="" onChange={handleChange('fine')} value={fine} />        
             </div>
             <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="reason">reason</label>
+              <label  className="form-label " htmlFor="reason">reason</label>
               <input type="text" className="form-control" name="reason" required="" onChange={handleChange('reason')} value={reason} />        
-            </div>      
-           <div className="row">           
-                <div className="col">
-                  <button className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Update</button>
-                </div>
-            </div>      
-            </div>
-        </form>
+            </div> 
+      </div>
+      <div className="modal-footer">
+          <button className="btn btn-outline-secondary fw-bold btn px-4" type="submit" onClick={clickSubmit} >Update</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+      
+        </>
     ); 
 
     const loadUsers=()=>{
@@ -172,12 +184,18 @@ const StudentListInfo = () => {
                                 <td className="text-center  text-dark align-middle">OFF</td>
                             }
                             
-                            <td  className="text-center"> <button type="button" className="btn btn-success" data-toggle="primary"  onClick={(e)=>{e.preventDefault(); setAction(!action);}} >Take Action (drop down)</button></td>
+                            <td  className="text-center">
+                                 {/* <button type="button" className="btn btn-success" data-toggle="primary"  onClick={(e)=>{e.preventDefault(); setAction(!action);}} >Take Action (drop down)
+                                 </button> */}
+                                 <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" onClick={(e)=>{e.preventDefault(); setAction(!action);}}>
+                                 Take Action
+                            </button>
+                                 </td>
                    
                        
                             {/* All action will be shown here  */}                            
                         </tr>
-                         <tr >                     
+                         <tr className="collapse" id="collapseExample">                     
                              <tr className="bg-dark">
                                  <th className="align-middle text-center text-light h5 p-3">Membership</th>
                                  <th className="align-middle text-center text-light h5" >Fine</th>
@@ -192,8 +210,11 @@ const StudentListInfo = () => {
                                  <td className="text-center" > <button type="submit" className="btn btn-success "  onClick={()=>toggleMembership(student._id , 3)}>Border</button></td>:
                                  <td className="text-center"> <button type="submit" className="btn btn-danger "  onClick={()=>toggleMembership(student._id , 2)}>Ex Border</button></td>
                              }                                        
-                                 <td className="text-center text-dark align-middle"><button type="submit" className="btn btn-success  " 
-                                 onClick={()=>{setUserId(student._id)}}>Add Fine</button></td>
+                                 <td className="text-center text-dark align-middle">
+                                  <button type="submit" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={()=>{setUserId(student._id)}} >
+                                Add Fine
+                                </button>
+                                 </td>
 
                              {
                                  student.messStatus > 1 ?
@@ -202,8 +223,11 @@ const StudentListInfo = () => {
                                  <td className="text-center"> <button type="submit" className="btn btn-success  " 
                                  onClick={()=>toggleMeal(student._id ,2 )}>Turn ON</button></td>
                              }                                        
-                                 <td className="text-center text-dark align-middle"><button type="submit" className="btn btn-success  " 
-                                 onClick={()=>{setUserId(student._id)}} >Pay</button></td>
+                                 <td className="text-center text-dark align-middle">
+                                 <button type="submit" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={()=>{setUserId(student._id)}} >
+                                Pay
+                                </button>
+                                     </td>
                                  <td className="text-center text-dark align-middle"> <button type="submit" className="btn btn-success  " 
                                  onClick={()=>toggleMeal(student._id )}>View ( drop Down )</button></td>
                              </tr>
@@ -213,8 +237,12 @@ const StudentListInfo = () => {
                         ))}
                     </tbody>
                     
-                </table>                
+                </table> 
+ 
+
+              
             </div>
+    
             </>
         );
     };

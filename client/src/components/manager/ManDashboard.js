@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
-import Footer from "../Footer"
 import "../../css/manager.css";
 import { Line } from "react-chartjs-2";
 import {
@@ -123,35 +122,35 @@ const AdminDashboard = () => {
 
     const basicInfoCards = () => {
         return (
-            <div className="card shadow-lg pt-4 pb-4 mt-5 mb-5">
+            <div className=" card shadow-lg pt-4 pb-4 mt-5 mb-5">
                 <div className=" text-white  mb-3" >
                     <div className="row">
                         <div className="col-lg-3 col-md-12">
                             <div className="card-body m-2 bg-warning shadow">
-                                <h5 className="card-title mb-4">Student</h5>
-                                <p className="card-text  pb-1">{students.length}</p>
+                                <h4 className="card-title mb-4">{students.length}</h4>
+                                <p className="card-text  pb-1 fs-sm">Student</p>
                             </div>
                         </div>
 
 
                         <div className="col-lg-3 col-md-12">
                             <div className="card-body m-2  bg-success shadow">
-                                <h5 className="card-title mb-4">Employee</h5>
-                                <p className="card-text  pb-1">{employees.length}</p>
+                                <h4 className="card-title mb-4">{employees.length}</h4>
+                                <p className="card-text  pb-1 fs-sm">Employee</p>
                             </div>
                         </div>
 
                         <div className="col-lg-3 col-md-12">
                             <div className="card-body m-2  bg-primary shadow">
-                                <h5 className="card-title  ">Official Guest</h5>
-                                <p className="card-text pb-1 mt-4">{user.active_guest_list.length}</p>
+                                <h4 className="card-title mb-4 ">{user.active_guest_list.length}</h4>
+                                <p className="card-text pb-1 mt-4 fs-sm">Official Guest</p>
                             </div>
                         </div>
 
                         <div className="col-lg-3 col-md-12">
                             <div className="card-body m-2 pe-0 bg-secondary shadow">
-                                <h5 className="card-title">Student's Guest</h5>
-                                <p className="card-text pb-1 mt-4">{countStuGuest}</p>
+                                <h4 className="card-title mb-4">{countStuGuest}</h4>
+                                <p className="card-text pb-1 mt-4 fs-sm">Students' Guest</p>
                             </div>
                         </div>
 
@@ -171,7 +170,9 @@ const AdminDashboard = () => {
         if (stuReqList.length === 0) return <></>
         return (
             <>
-                <h1 className="m-4 mt-0 pt-4">Student Request List</h1>
+                <h1 className="m-4 mt-0 pt-5 border-bottom text-start">
+                <i className="fa fa-angle-double-right"></i>
+                &nbsp;Student Request List</h1>
                 <div className="shadow-lg">
 
                     <div className="shadow tbl-header ">
@@ -201,9 +202,9 @@ const AdminDashboard = () => {
                                         <td >{student.fname} {student.lname}</td>
                                         <td >{student.department}</td>
                                         <td >{student.selfPhNo}</td>
-                                        <td> <button type="submit" className="  btn  btn-sm btn-success " onClick={() => clickSubmit(student._id, 2)}><i class="fa fa-check" aria-hidden="true"></i></button>
-                                        <button type="submit" className="btn ms-1  btn-sm btn-primary  " onClick={() => clickSubmit(student._id, 1)}><i class="fa fa-spinner" aria-hidden="true"></i></button>
-                                         <button type="submit" className="ms-1 btn btn-sm btn-danger  " onClick={()=>clickSubmit(student._id , 4)}><i class="fa fa-ban" aria-hidden="true"></i></button></td>                       
+                                        <td> <button type="submit" className="  btn  btn-sm btn-success " onClick={() => clickSubmit(student._id, 2)}><i className="fa fa-check" aria-hidden="true"></i></button>
+                                        <button type="submit" className="btn ms-1  btn-sm btn-primary  " onClick={() => clickSubmit(student._id, 1)}><i className="fa fa-spinner" aria-hidden="true"></i></button>
+                                         <button type="submit" className="ms-1 btn btn-sm btn-danger  " onClick={()=>clickSubmit(student._id , 4)}><i className="fa fa-ban" aria-hidden="true"></i></button></td>                       
                                     </tr>
                                 ))}
                             </tbody>
@@ -247,8 +248,8 @@ const AdminDashboard = () => {
                                     <td> </td>
                                     <td >{emp.fname} {emp.lname}</td>
                                     <td>{emp.selfPhNo}</td>
-                                    <td> <button type="submit" className="btn btn-success  " onClick={() => clickSubmit(emp._id, 2)} ><i class="fa fa-check" aria-hidden="true"></i></button></td>
-                                    <td> <button type="submit" className="btn btn-danger  " onClick={() => clickSubmit(emp._id, 4)}><i class="fa fa-ban" aria-hidden="true"></i></button></td>
+                                    <td> <button type="submit" className="btn btn-success  " onClick={() => clickSubmit(emp._id, 2)} ><i className="fa fa-check" aria-hidden="true"></i></button></td>
+                                    <td> <button type="submit" className="btn btn-danger  " onClick={() => clickSubmit(emp._id, 4)}><i className="fa fa-ban" aria-hidden="true"></i></button></td>
                                 </tr>
                             ))}
                         </tbody>
@@ -261,7 +262,11 @@ const AdminDashboard = () => {
 
     const mealChargeLineChart = () => {
 
+        
+      
+
         const data = {
+            
             labels: [...auditinfo.months],
             datasets: [{
                 label: "Meal Charges",
@@ -286,7 +291,10 @@ const AdminDashboard = () => {
 
 
         return <>
-            <div className="card mb-5">
+        <h1 className="m-4 mt-0 pt-5 border-bottom text-start">
+        <i className="fa fa-angle-double-right"></i>
+        &nbsp;Meal Charge Report</h1>
+            <div className="card mb-3 shadow-lg">
                 <Line data={data} />
             </div>
         </>
@@ -336,7 +344,10 @@ const AdminDashboard = () => {
             }
 
         return <>
-            <div className="card mb-5">
+        <h1 className="m-4 mt-0 pt-5 border-bottom text-start">
+        <i className="fa fa-angle-double-right"></i>
+        &nbsp;Meal Count Report</h1>
+            <div className="card shadow-lg mb-3">
                 <Line data={data} />
             </div>
         </>
@@ -352,7 +363,9 @@ const AdminDashboard = () => {
         if (allListedGuest.length === 0) return <></>
         return (
             <>
-                <h1 className="m-4">Guest Meal Request List</h1>
+                <h1 className="text-start border-bottom m-4 mt-0 pt-5">
+                <i className="fa fa-angle-double-right"></i>
+                &nbsp;Guest Meal Request List</h1>
                 <div className="shadow lg">
                     <div className="shadow tbl-header">
                         <table cellPadding="0" cellSpacing="0" border="0">
@@ -383,11 +396,11 @@ const AdminDashboard = () => {
                                         }
 
                                         <td >{guest.holderName}</td>
-                                        <td >{guest.mealDate.slice(0, 15)}</td>
+                                        <td >{guest.mealDate.slice(4, 15)}</td>
                                         <td >{guest.holderMobNo}</td>
                                         <td >{guest.holderRoomNo}</td>
-                                        <td> <button type="submit" className="btn btn-success " onClick={() => changeGeustMealStatus(guest._id, guest.holderId, 1)}><i class="fa fa-check" aria-hidden="true"></i></button></td>
-                                        <td> <button type="submit" className="btn btn-danger  " onClick={() => deleteGuest(guest._id, guest.holderId)}><i class="fa fa-ban" aria-hidden="true"></i></button></td>
+                                        <td> <button type="submit" className="btn-sm btn-success " onClick={() => changeGeustMealStatus(guest._id, guest.holderId, 1)}><i className="fa fa-check" aria-hidden="true"></i></button></td>
+                                        <td> <button type="submit" className="btn-sm btn-danger  " onClick={() => deleteGuest(guest._id, guest.holderId)}><i className="fa fa-ban" aria-hidden="true"></i></button></td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -461,18 +474,18 @@ const AdminDashboard = () => {
             >
 
                 <div >
-
+                {basicInfoCards()}
                     {studentReqList()}
                     {staffReqList()}
                     {activatedGuest()}
                     {listedGuest()}
-                    {basicInfoCards()}
+                  
                     {mealChargeLineChart()}
                     {countLineChart()}
 
                 </div>
             </ManLayout>
-            {/* <Footer /> */}
+          
         </>
     );
 };

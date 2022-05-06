@@ -5,7 +5,6 @@
 import React, {  useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
-import Footer from "../Footer"
 import { getPreparedMealList } from "./ManApi";
 
 var d = new Date();
@@ -49,9 +48,32 @@ const TodayMealList = () => {
         
         return (
             <>
-             <div className="mt-5 mb-5">
+            <h1 className="m-3 mt-0 pt-5 border-bottom text-start">
+        <i className="fa fa-angle-double-right"></i>
+        &nbsp;Total Meal Count</h1>
+        
+             <div className=" me-auto mt-3 mb-5">
+
+             <ul className=" list-group shadow">
+  <li className="list-group-item d-flex justify-content-between align-items-center">
+   Border meal 
+    <span className="badge  rounded-pill">{mealList.borderMealList.length}</span>
+  </li>
+  <li className="list-group-item d-flex justify-content-between align-items-center">
+    Guest meal 
+    <span className="badge  rounded-pill">{normalGuestCount}</span>
+  </li>
+  <li className="list-group-item d-flex justify-content-between align-items-center">
+    Official Guest meal
+    <span className="badge  rounded-pill">{officalGuestCount}</span>
+  </li>
+  <li className="total text-secondary fw-bold list-group-item d-flex justify-content-between align-items-center">
+    Total
+    <span className="badge  rounded-pill">{ mealList.borderMealList.length + normalGuestCount + officalGuestCount }</span>
+  </li>
+</ul>
                         
-                <table className="table table-hover ">
+                {/* <table className="table table-hover ">
                     <thead>
                         <tr className="bg-dark">
                             <th className="align-middle text-center text-light h5 ">Border</th>
@@ -74,7 +96,7 @@ const TodayMealList = () => {
                             <td className="text-center align-middle">{ mealList.borderMealList.length + normalGuestCount + officalGuestCount }</td>                                                                                  
                         </tr>
                     </tfoot>
-                </table>                
+                </table>                 */}
             </div>            
             </>
         )
@@ -85,33 +107,42 @@ const TodayMealList = () => {
         
         return (
             <>
-             <div className="mt-5 mb-5">
-                <h3 className="card-header text-center">Border Meal List</h3>               
-                <table className="table table-hover ">
-                    <thead>
-                        <tr className="bg-dark">
-                            <th className="align-middle text-center text-light h5 p-3">SL</th>
-                            <th className="align-middle text-center text-light h5" >Picture</th>
-                            <th className="align-middle text-center text-light h5" >Name</th>
-                            <th className="align-middle text-center text-light h5" >Department</th>    
-                            <th className="align-middle text-center text-light h5" >Room No.</th>                             
+                 <h1 className="m-3 mt-0 pt-4 border-bottom text-start">
+        <i className="fa fa-angle-double-right"></i>
+        &nbsp;Border Meal List</h1>
+        
+        <div className="pb-4 pt-3">
+             <div className="shadow tbl-header">
+               <table cellPadding="0" cellSpacing="0" border="0">
+                    <thead >
+                        <tr >
+                            <th>SL</th>
+                            <th >Picture</th>
+                            <th  >Name</th>
+                            <th >Department</th>    
+                            <th  >Room No.</th>                             
                         </tr>
                     </thead>
+                    </table>
+                    </div>
+                    <div  className="shadow tbl-content">
+                        <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                    {  mealList.borderMealList.map((student , i)=>(                      
                         <tr className="" key={i}>                       
-                            <td className="text-center align-middle ">{i+1}</td>
-                            <td className="text-center align-middle"> <img className="img mb-2 img-thumbnail" src={student.avatar} alt="..." width="75" /></td>
-                            <td className="text-center align-middle">{student.fname} {student.lname}</td>
-                            <td className="text-center align-middle">{student.department}</td>   
-                            <td className="text-center align-middle">{student.roomNo}</td>                               
+                            <td >{i+1}</td>
+                            <td > <img className="img mb-2 img-thumbnail" src={student.avatar} alt="..." width="75" /></td>
+                            <td >{student.fname} {student.lname}</td>
+                            <td >{student.department}</td>   
+                            <td >{student.roomNo}</td>                               
                            
                         </tr>
                         ))}
                     </tbody>
                     <tfoot></tfoot>
                 </table>                
-            </div>            
+            </div> 
+            </div>           
             </>
         )
     }
@@ -121,23 +152,31 @@ const TodayMealList = () => {
         return (
             
             <>
-             <div className=" mb-5" >
-                <h3 className="card-header text-center">Guest Meal List</h3>               
-                <table className="table table-hover ">
-                    <thead>
-                        <tr className="bg-dark">
-                            <th className="align-middle text-center text-light h5 p-3">SL</th>
-                            <th className="align-middle text-center text-light h5" >Name</th>   
-                            <th className="align-middle text-center text-light h5" > Guest Holder</th> 
-                            <th className="align-middle text-center text-light h5" > Guest Type</th>                            
-                        </tr>
+                 <h1 className="m-3 mt-0 pt-5 border-bottom text-start">
+        <i className="fa fa-angle-double-right"></i>
+        &nbsp;Guest MEal List</h1>
+        
+            
+        <div className="pb-5 pt-3">
+             <div className="shadow tbl-header">
+               <table cellPadding="0" cellSpacing="0" border="0">
+                    <thead >
+                        <th >Serial No.</th>
+                            <th >Name</th>   
+                            <th > Guest Holder</th> 
+                            <th  > Guest Type</th>                            
+                       
                     </thead>
+                    </table>
+                    </div>
+                    <div className="shadow tbl-content">
+                        <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                    {  mealList.guestMealList.map((guest , i)=>(                      
                         <tr className="" key={i}>                       
-                            <td className="text-center align-middle ">{i+1}</td>
-                            <td className="text-center align-middle">{guest.name} </td>
-                            <td className="text-center align-middle">{guest.guestHolder}</td>
+                            <td>{i+1}</td>
+                            <td >{guest.name} </td>
+                            <td >{guest.guestHolder}</td>
                             {
                                 guest.guestType==0 ? <td className="text-center align-middle">Normal</td> :
                                 <td className="text-center align-middle">Offical</td>
@@ -145,8 +184,9 @@ const TodayMealList = () => {
                         </tr>
                         ))}
                     </tbody>
-                    <tfoot></tfoot>
-                </table>                
+                 
+                </table> 
+                </div>               
             </div>            
             </>
         )
