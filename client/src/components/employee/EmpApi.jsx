@@ -15,6 +15,7 @@ export const read = (userId, token) => {
         .catch(err => console.log(err));
 };
 
+
 export const getPreparedMealList = (userId, token) => {
     return fetch(`${API}/employee/preparedMealList/${userId}`, {
         method: "GET",
