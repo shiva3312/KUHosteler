@@ -264,7 +264,7 @@ const StudentListInfo = ({ history }) => {
                         aria-expanded="false"
                         aria-controls="collapseExample"
                         onClick={(e) => {
-                          e.preventDefault();
+                        
                           setselectedUserId(student._id);
                         }}
                       >

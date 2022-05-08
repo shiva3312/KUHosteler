@@ -10,7 +10,7 @@ import "../../css/student.css";
 const EmpLayout = ({
     className,
     children,
-   history
+    history
 }) => {
 
  const {user} = isAuthenticated();
