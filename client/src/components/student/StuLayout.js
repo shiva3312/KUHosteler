@@ -15,7 +15,7 @@ const StuLayout = ({ className, children, history }) => {
       <div className="gradiant">
         <nav className="navbar navbar-light ">
           <div className="container-fluid ">
-            <h3 className="ps-5  text-white">KuHosteler</h3>
+            <h3 className="ps-3 m-1  text-white">KuHosteler</h3>
             <div className="d-flex justify-content-end"></div>
             {isAuthenticated() && (
               <Link
@@ -43,7 +43,8 @@ const StuLayout = ({ className, children, history }) => {
               <div className="profile ps-3 mr-5 mt-5">
                 <ShowImage
                   user={user}
-                  Width="13%"
+                  Width="180px"
+                  Height="180px"
                   ClassName="img mb-2 img-thumbnail"
                 />
               </div>

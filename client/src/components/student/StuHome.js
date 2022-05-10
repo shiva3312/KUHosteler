@@ -37,7 +37,7 @@ const UserDashboard = ({ history }) => {
     calculateMealCount();
     return (
       <>
-        <div className="pt-2 pb-3  pb-2 mt-3 mb-4 th">
+        <div className=" pb-3 pt-3 mt-3 mb-4 th">
           <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
             PIE CHART
           </h4>
@@ -88,7 +88,7 @@ const UserDashboard = ({ history }) => {
 
   const userInfo = () => {
     return (
-      <div className="pt-2  pb-5 mt-3 ms-auto th">
+      <div className=" pb-5 pt-3 mt-3 ms-auto th">
         <h4 className="shadow card-head pt-2 pb-2 mb-3 gradiant text-light text-center">
           USER INFORMATION
         </h4>
@@ -175,16 +175,19 @@ const UserDashboard = ({ history }) => {
       <StuLayout history={history}>
         {/* show your content in this div */}
 
-        <div className="row m-3">
+        <div className="row rowstu ">
           {/* <div className="wrapper"> */}
-          <div className="col-md-7 box">
+          <div className="col-md-6 ">
             {" "}
             {userInfo()}
             {/* <div  className="col mb-0">{userInfo()}</div> */}
           </div>
+          <div className="col-md-1 ">
+           
+          </div>
           {/* <div class="middle"></div>     */}
           {/* if i remove middle then it looks like parallel */}
-          <div className="col-md-5 box ">
+          <div className="col-md-5 ">
             {" "}
             {showPieChart()}
             {/* <div  className="col mb-0">{showPieChart()}</div> */}

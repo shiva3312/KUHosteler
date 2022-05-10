@@ -10,12 +10,12 @@ const BasicInfo = ({ history }) => {
   const { user } = isAuthenticated();
   const basicInfo = () => {
     return (
-      <div className=" pt-5 mt-3 pb-5 th ">
+      <div className=" pt-3 mt-3 pb-4 th ">
         <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
           BASIC DETAILS
         </h4>
-        <ul className=" con card shadow">
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+        <ul className="con shadow p-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-5 ps-0">Profile Type</div>
             <div className="col-7">
               :{" "}
@@ -26,15 +26,15 @@ const BasicInfo = ({ history }) => {
                 : "Employee"}
             </div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Date of birth</div>
             <div className="col-7">: {user.dob}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Email Account</div>
             <div className="col-7">: {user.email}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Membership</div>
             <div className="col-7">
               :{" "}
@@ -45,7 +45,7 @@ const BasicInfo = ({ history }) => {
               )}
             </div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Hostel Name</div>
             <div className="col-7">: {user.hostelName.toUpperCase()}</div>
           </li>
@@ -57,28 +57,28 @@ const BasicInfo = ({ history }) => {
   };
   const eduInfo = () => {
     return (
-      <div className=" pt-5 mt-3 pb-5 th ">
+      <div className=" pt-3 mt-3 pb-4 th ">
         <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
           EDUCATIONAL DETAILS
         </h4>
-        <ul className=" con  card shadow">
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+        <ul className="con shadow p-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-3 ps-0 pe-0">Course</div>
             <div className="col-9">: {user.course}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-3 ps-0 pe-0">Subject</div>
             <div className="col-9">: {user.subject}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-3 ps-0 pe-0">Semester </div>
             <div className="col-9 ">: {user.semester}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-3 ps-0 pe-0">Session</div>
             <div className="col-9">: {user.session}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-3 ps-0 pe-0">College</div>
             <div className="col-9">: {user.university}</div>
           </li>
@@ -89,21 +89,21 @@ const BasicInfo = ({ history }) => {
 
   const constactInfo = () => {
     return (
-      <div className="pt-5 mt-3  pb-5 th">
+      <div className="pt-3  pb-4 th">
         <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
           CONTACT DETAILS
         </h4>
-        <ul className="con shadow card">
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+        <ul className="con shadow p-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Home Address</div>
             <div className="col-7">: {user.address}</div>
           </li>
 
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Phone No</div>
             <div className="col-7 pe-0">: {user.selfPhNo}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-2">
+          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
             <div className="col-5 pe-0 ps-0">Guardian Phone</div>
             <div className="col-7 pe-0">: {user.gPhNo}</div>
           </li>
@@ -119,7 +119,7 @@ const BasicInfo = ({ history }) => {
     <>
       <StuLayout history={history}>
         {/* show your content in this div */}
-        <div className="row m-3">
+        <div className="row rowstu">
           {/* <div className="wrapper"> */}
           <div className="col-md-6 ">
             {" "}
@@ -134,7 +134,7 @@ const BasicInfo = ({ history }) => {
             {/* <div  className="col mb-0">{showPieChart()}</div> */}
           </div>
         </div>
-        <div className="row m-3">
+        <div className="row rowstu">
           <div className="col md-6">{constactInfo()}</div>
         </div>
       </StuLayout>
