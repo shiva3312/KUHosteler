@@ -34,8 +34,8 @@
     height:100%;
     top:0;
     left:0;
-    /* background-image: linear-gradient(rgb(87, 32, 214),rgb(137, 8, 137)); */
-    background-color:#388087;
+    background-image: linear-gradient(rgb(76, 143, 148),rgb(45, 200, 211),rgb(112, 222, 212));
+    /* background-color:#388087; */
   
     z-index:100;
     color:#fff;
@@ -251,4 +251,35 @@
 }
 .basic{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.basic1{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px;
+}
+@media (max-width:414px)
+{
+  .basic1{
+    font-size:14px;
+  }
+}
+@media (max-width:393px)
+{
+  .basic1{
+    font-size:12px;
+  }
+}
+.img1{
+  height: 160px;
+  width:160px;
+
+}
+
+@media (max-width:555px)
+{
+  .img1{
+    margin-top: 10px;
+ height:125px;
+
+width:125px;
+}
 }

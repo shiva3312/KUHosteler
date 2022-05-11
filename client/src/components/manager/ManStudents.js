@@ -284,55 +284,78 @@ const StudentListInfo = ({ history }) => {
   <div class="modal-dialog  modal-fullscreen-xxl-down">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Student Details..</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body student">
       <div className="row ">
         <div className="col-5">
+          <div class="">
                       <ShowImage
                         user={student}
-                        Width="10rem"
-                        Height="10rem"
-                        ClassName="img1 img-thumbnail"
+                        
+                        ClassName=" img1 mb-2 img-thumbnail"
                       />
                       </div>
-                 <div className="col-6 mt-3 text-start   ">
+                      </div>
+                 <div className="col-7 mt-3 text-start   ">
 
-                  <h2 className="fs-1  text-uppercase">{student.fname} {student.lname}</h2>
+                  <h2 className="  text-uppercase">{student.fname} {student.lname}</h2>
                   <p class="fst-italic fw-light ">Student of
-                  <h2 className="fs-4 fst-normal">{student.department} </h2>
-                  <p class="fst-italic fw-light ">since
-                  <h2 className="fs-4 fst-normal">student.session </h2></p></p>
+                  <h2 className="fs-5 fst-normal">{student.department} </h2>
+                  <p class="fst-italic fw-light ">from
+                  <h2 className="fs-6 fst-normal">student.session </h2></p></p>
                 
                  </div>
                  </div>
                  <div className="border-bottom">
-                 <h2 className="p-3 pb-0 text-uppercase student text-start">Basic Details</h2>
+                 <h2 className="p-3 pb-0 text-uppercase student text-start">&emsp;Basic Details</h2>
                  </div>
-                 <div className="row m-3 basic">
-                     <div className="col-5">Date of Birth</div>
-                     <div className="col-5">{student.dob}</div>
+                 <div className=" row m-3 basic1">
+                   <div className="col-1"></div>
+                     <div className="col-4 text-start">Date of Birth:</div>
+                     <div className="col-7 text-start">{student.dob}</div>
+                  </div>
+                  <div className=" row m-3 basic1">
+                   <div className="col-1"></div>
+                     <div className="col-4 text-start">Sex:</div>
+                     <div className="col-7 text-start">{student.gender}</div>
+                  </div>
+                  <div className=" row m-3 basic1">
+                   <div className="col-1"></div>
+                     <div className="col-4 text-start">Phone:</div>
+                     <div className="col-7 text-start">{student.phNo}</div>
+                  </div>
+                  <div className=" row m-3 basic1">
+                   <div className="col-1"></div>
+                     <div className="col-4 text-start">Email:</div>
+                     <div className="col-7 text-start">{student.email}</div>
+                  </div>
+                  <div className=" row m-3 basic1">
+                   <div className="col-1"></div>
+                     <div className="col-4 text-start">Hostel Id:</div>
+                     <div className="col-7 text-start">{student.hostelid}</div>
+                  </div>
+                  <div className=" row m-3 basic1">
+                   <div className="col-1"></div>
+                     <div className="col-4 text-start">Room No:</div>
+                     <div className="col-7 text-start">{student.roomNo}</div>
+                  </div>
+                  <div className=" row m-3 basic1">
+                  <div className="col-1"></div>
+                    <div className="col-4 text-start">Address:</div>
+                     <div className="col-7 text-start">{student.address}</div>
                  </div>
-                 <div className="row m-3 basic">
-                     <div className="col-5">Sex</div>
-                     <div className="col-5">{student.gender}</div>
-                 </div>
-                 <div className="row m-3 basic">
-                     <div className="col-5">Hostel Id</div>
-                     <div className="col-5">Hostel Id</div>
-                 </div>
-                 <div className="row m-3 basic">
-                     <div className="col-5">Room No</div>
-                     <div className="col-5">Room No</div>
-                 </div>
+                 
+              
               
                  <div className="border-bottom">
-                 <h2 className="p-3 pb-0 text-uppercase student text-start">Status</h2>
+                 <h2 className="p-3 pb-0 text-uppercase student text-start">&emsp;Status</h2>
                  </div>
-                 <div className="row m-3 basic">
-                     <div className="col-5">Membership Status</div>
-                     <div className="col-5">
+                 <div className="row m-3 basic1 text-start">
+                 <div className="col-1"></div>
+                     <div className="col-4">Membership Status</div>
+                     <div className="col-6">
                        <div  key={i}>
                       {student.membership === 2 ? (
                        <div>
@@ -363,9 +386,10 @@ const StudentListInfo = ({ history }) => {
                       
                  </div>
                
-                 <div className="row m-3 basic">
-                     <div className="col-5">Meal Status</div>
-                     <div className="col-5 "> {student.messStatus > 1 ? (
+                 <div className="row m-3 basic1 text-start">
+                 <div className="col-1"></div>
+                     <div className="col-4">Meal Status</div>
+                     <div className="col-6 "> {student.messStatus > 1 ? (
                         <div>
                           {" "}
                           <button
@@ -390,139 +414,98 @@ const StudentListInfo = ({ history }) => {
                       )}</div>
                  </div>
                  <div className="border-bottom">
-                 <h2 className="p-3 pb-0 text-uppercase student text-start">Charges</h2>
+                 <h2 className="p-3 pb-0 text-uppercase student text-start">&emsp;Charges</h2>
                  </div>
-                 <div className="row m-3 basic">
-                     <div className="col-5">Pay</div>
-                     <div className="col-5">
-                       <button
-                          type="submit"
-                          className="btn-sm btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          onClick={() => {
-                            setselectedUserId(student._id);
-                          }}
-                        >
-                          Pay
-                        </button>
+                 <div className="row m-3 basic1 text-start">
+                 <div className="col-1"></div>
+                     <div className="col-4">Paid Amount:</div>
+                     <div className="col-6">{}
+                       </div>
+                       </div>
+                 <div className="row m-3 basic1 text-start">
+                 <div className="col-1"></div>
+                     <div className="col-4">Due Amount:</div>
+                     <div className="col-6">{}   </div>
+                       </div>
+                 <div className="row m-3 basic1 text-start">
+                 <div className="col-1"></div>
+                     <div className="col-9">
+                     <button class="btn-sm btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+   Pay
+  </button>
+
+<div class="collapse" id="collapseExample1">
+  <div class="card card-body">
+    <div className="text-end">
+      
+  <button type="button" class="text-end btn-close" data-bs-dismiss="collapse" aria-label="Close"></button>
+  </div>
+    <div className="row">
+  <div className="col-6 form-outline text-start form-white mb-2">
+                <label className="form-label " htmlFor="deposit">
+                  Deposit
+                </label>
+                <input
+                  type="Number"
+                  className="form-control"
+                  name="deposit"
+                  required=""
+                  onChange={handleChange("deposit")}
+                  value={deposit}
+                />
+                </div><div className="col-6 form-outline text-start form-white mb-2">
+             <label className="form-label" htmlFor="fine">
+                  Fine
+                </label>
+                <input
+                  type="Number"
+                  className="form-control"
+                  name="fine"
+                  required=""
+                  onChange={handleChange("fine")}
+                  value={fine}
+                />
+              </div>
+              </div>
+              <div className="col form-outline text-start form-white mb-4">
+                <label className="form-label " htmlFor="reason">
+                  Reason
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="reason"
+                  required=""
+                  onChange={handleChange("reason")}
+                  value={reason}
+                />
+              </div>
+              <div className="col-12 text-end">
+              <button
+                className="btn-sm btn-outline-secondary fw-bold btn px-4"
+                type="submit"
+                onClick={clickSubmit}
+              >
+                Update
+              </button>
+              </div>
+              </div>
+</div>
+                     
+
                         </div>
-                    
+                       
                      </div>
-      <tr
-            
-                    style={{
-                      display: student._id === selectedUserId ? "" : "none",
-                    }}
-                  >
-                    <tr className="bg-dark">
-                      <th className="align-middle text-center text-light h5 p-3">
-                        Membership
-                      </th>
-                      <th className="align-middle text-center text-light h5">
-                        Fine
-                      </th>
-                      <th className="align-middle text-center text-light h5">
-                        Meal
-                      </th>
-                      <th className="align-middle text-center text-light h5">
-                        Payment
-                      </th>
-                    
-                    </tr>
-
-                    <tr className="table-warning" key={i}>
-                      {student.membership === 2 ? (
-                        <td className="text-center">
-                          {" "}
-                          <button
-                            type="submit"
-                            className="btn btn-success "
-                            onClick={() => toggleMembership(student._id, 3)}
-                          >
-                            Border
-                          </button>
-                        </td>
-                      ) : (
-                        <td className="text-center">
-                          {" "}
-                          <button
-                            type="submit"
-                            className="btn btn-danger "
-                            onClick={() => toggleMembership(student._id, 2)}
-                          >
-                            Ex Border
-                          </button>
-                        </td>
-                      )}
-                      <td className="text-center text-dark align-middle">
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          onClick={() => {
-                            setselectedUserId(student._id);
-                          }}
-                        >
-                          Add Fine
-                        </button>
-                      </td>
-
-                      {student.messStatus > 1 ? (
-                        <td className="text-center">
-                          {" "}
-                          <button
-                            type="submit"
-                            className="btn btn-danger  "
-                            onClick={() => toggleMeal(student._id, 0)}
-                          >
-                            Turn OFF
-                          </button>
-                        </td>
-                      ) : (
-                        <td className="text-center">
-                          {" "}
-                          <button
-                            type="submit"
-                            className="btn btn-success  "
-                            onClick={() => toggleMeal(student._id, 2)}
-                          >
-                            Turn ON
-                          </button>
-                        </td>
-                      )}
-                      <td className="text-center text-dark align-middle">
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          onClick={() => {
-                            setselectedUserId(student._id);
-                          }}
-                        >
-                          Pay
-                        </button>
-                      </td>
+                     <div className="mt-5 pt-5 border-bottom">
                    
-                      <td className="text-center text-dark align-middle">
-                        {" "}
-                        <button
-                          type="submit"
-                          className="btn btn-dark  "
-                          onClick={() => setselectedUserId(null)}
-                        >
-                          Close
-                        </button>
-                      </td>
-                    </tr>
-                  </tr>
+                     </div>
       </div>
-      <div class="modal-footer">
+     
+      
+      {/* <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Understood</button>
-      </div>
+      </div> */}
     </div>
   </div>
 </div>
@@ -556,6 +539,7 @@ const StudentListInfo = ({ history }) => {
                     </tr>
 
                     <tr className="table-warning" key={i}>
+                      <td>{student.dob}</td>
                       {student.membership === 2 ? (
                         <td className="text-center">
                           {" "}

@@ -21,7 +21,7 @@
   
 }
 .gradiant{
-    background: linear-gradient(to left,#388087,#6FB3B8);
+    background: linear-gradient(to left,#afd9dc,#65ccd6,rgb(15, 159, 139));
    
 }
 body {
@@ -36,7 +36,7 @@ body {
     padding-left: 15rem;
 }
 .bg{
-    background: linear-gradient(to right,rgb(73, 16, 204),purple);
+    background: linear-gradient(to right,#388087,#6FB3B8);
 }
 .text{
     
@@ -132,6 +132,14 @@ body {
             
             margin-left: 62px;
             margin-right: 62px;  
+        }
+    }
+    @media (max-width:429px)
+    {
+        .img{
+            margin-left:40px ;
+            margin-right:40px ;
+         
         }
     }
     @media (min-width: 551px) {

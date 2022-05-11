@@ -534,47 +534,58 @@ const AdminDashboard = ({ history }) => {
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Activated MEal guest list
         </h1>
-        <div>
-        <table className="table table-hover  ">
-          <thead>
-            <tr className="tbl-header">
-              <th >SL</th>
-              <th>Guest Name</th>
-              <th>Guest Type</th>
-              <th>Guest Holder</th>
-              <th>Meal Date</th>
-              <th>Mob No.</th>
-              <th>Room No</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className="shadow lg">
+          <div className="shadow tbl-header">
+            <table  cellPadding="0" cellSpacing="0" border="0">
+              <thead>
+                <tr >  <th className="th1">SL</th>
+              <th className="th1">Guest Name</th>
+              <th className="th1">Guest Type</th>
+              <th className="th1">Guest Holder</th>
+              <th className="th1">Meal Date</th>
+              <th className="th1">Mob No.</th>
+              <th className="th1">Room No</th>
+              <th className="th1">Action</th>
+              </tr>
+              </thead>
+            </table>
+          </div>
+          <div className="shadow tbl-content">
+            <table  className="hoverTable"cellPadding="0" cellSpacing="0" border="0">
+              <tbody>
             {allactivatedGuest.map((guest, i) => (
               <tr className="" key={i}>
                 <td className="text-center align-middle ">{i + 1}</td>
-                <td>{guest.name}</td>
-                {guest.guestType == 0 ? <td>Normal</td> : <td>Official</td>}
+                <td className="th1">{guest.name}</td>
+                {guest.guestType == 0 ? <td className="th1">Normal</td> : <td className="th1">Official</td>}
 
-                <td>{guest.holderName}</td>
-                <td>{guest.mealDate.slice(0, 15)}</td>
-                <td>{guest.holderMobNo}</td>
-                <td>{guest.holderRoomNo}</td>
+                <td className="th1">{guest.holderName}</td>
+                <td className="th1">{guest.mealDate.slice(0, 15)}</td>
+                <td className="th1">{guest.holderMobNo}</td>
+                <td className="th1">{guest.holderRoomNo}</td>
                 {/* <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td> */}
-                <td>
+                <td className="th1">
                   {" "}
-                  <button
+                  <span>
+                                <i
+                                  className="ms-1 fa fa-close text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() => deleteGuest(guest._id, guest.holderId)}
+                                ></i>
+                              </span>
+                  {/* <button
                     type="submit"
                     className="btn btn-danger  "
                     onClick={() => deleteGuest(guest._id, guest.holderId)}
                   >
                     Remove
-                  </button>
+                  </button> */}
                 </td>
               </tr>
             ))}
           </tbody>
-          <tfoot></tfoot>
+     
         </table>
+      </div>
       </div>
       </>
     );
