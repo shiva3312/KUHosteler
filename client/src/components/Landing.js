@@ -106,17 +106,17 @@ export default function Landing({ history }) {
         </div>
       </nav> 
       
-      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
      
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+  <div className="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img src="https://cdn.pixabay.com/photo/2022/04/18/17/28/artwork-7141146_960_720.png" class="d-block h-50 w-100" alt="..."/>
-      <div class="carousel-caption  d-md-block">
+  <div className="carousel-inner">
+    <div className="carousel-item active" data-bs-interval="10000">
+      <img src="https://cdn.pixabay.com/photo/2022/04/18/17/28/artwork-7141146_960_720.png" className="d-block h-50 w-100" alt="..."/>
+      <div className="carousel-caption  d-md-block">
         <div className="content">
         <h2 className="fs-1 text-uppercase " >Welcome!</h2>
         <h2> <i className="icon1 fa fa-university pt-2  fs-1"></i></h2>
@@ -127,9 +127,9 @@ export default function Landing({ history }) {
       </div>
       </div>
     </div>
-    <div class="carousel-item" data-bs-interval="2000">
-      <img src="https://cdn.pixabay.com/photo/2022/04/18/17/28/artwork-7141146_960_720.png" class="d-block w-100" alt="..."/>
-      <div class="carousel-caption  d-md-block">
+    <div className="carousel-item" data-bs-interval="2000">
+      <img src="https://cdn.pixabay.com/photo/2022/04/18/17/28/artwork-7141146_960_720.png" className="d-block w-100" alt="..."/>
+      <div className="carousel-caption  d-md-block">
       <div className="content">
         <h2 className=" text-uppercase ">Quality Infrastructure</h2>
         <h2> <i className="icon1 fa fa-building pt-2  fs-1"></i></h2>
@@ -139,9 +139,9 @@ export default function Landing({ history }) {
     </div>
     </div>
 
-    <div class="carousel-item">
-      <img src="https://cdn.pixabay.com/photo/2022/04/18/17/28/artwork-7141146_960_720.png" class="d-block w-100" alt="..."/>
-      <div class="carousel-caption  d-md-block">
+    <div className="carousel-item">
+      <img src="https://cdn.pixabay.com/photo/2022/04/18/17/28/artwork-7141146_960_720.png" className="d-block w-100" alt="..."/>
+      <div className="carousel-caption  d-md-block">
       <div className="content">
         <h2 className="fs-1 text-uppercase ">Helping You Grow</h2>
         <h2> <i className="icon1 fa fa-leaf pt-2  fs-1"></i></h2>
@@ -152,13 +152,13 @@ export default function Landing({ history }) {
     </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
   </button>
 </div>
 <div className="ps-4 pe-4">
@@ -205,7 +205,7 @@ export default function Landing({ history }) {
           <div className="row">
             <div className="col-lg-3 col-md-12">
               <div className="card-body m-2 gradiant shadow">
-              <img src="..." class="card-img-top" alt="..."/>
+              <img src="..." className="card-img-top" alt="..."/>
                 <p className="card-text  pb-1 fs-sm">Student</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
               </div>
@@ -213,7 +213,7 @@ export default function Landing({ history }) {
 
             <div className="col-lg-3 col-md-12">
               <div className="card-body m-2 gradiant shadow">
-              <img src="..." class="card-img-top" alt="..."/>
+              <img src="..." className="card-img-top" alt="..."/>
                 <p className="card-text  pb-1 fs-sm">Student</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
               </div>
@@ -221,7 +221,7 @@ export default function Landing({ history }) {
 
             <div className="col-lg-3 col-md-12">
               <div className="card-body m-2 gradiant shadow">
-              <img src="..." class="card-img-top" alt="..."/>
+              <img src="..." className="card-img-top" alt="..."/>
                 <p className="card-text  pb-1 fs-sm">Student</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
               </div>
@@ -229,7 +229,7 @@ export default function Landing({ history }) {
 
             <div className="col-lg-3 col-md-12">
               <div className="card-body m-2 gradiant shadow">
-              <img src="..." class="card-img-top" alt="..."/>
+              <img src="..." className="card-img-top" alt="..."/>
                 <p className="card-text  pb-1 fs-sm">Student</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
               </div>

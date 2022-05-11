@@ -147,7 +147,7 @@ const Charges = ({ history }) => {
       <p>
         <div className="mt-1 text-end">
           <button
-            class="bton  p-2 pt-2 shadow-sm"
+            className="bton  p-2 pt-2 shadow-sm"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseExample2"
@@ -155,12 +155,12 @@ const Charges = ({ history }) => {
             aria-controls="collapseExample"
           >
             Add Meal Charges
-            <i class="fa fa-caret-down p-1" aria-hidden="true"></i>
+            <i className="fa fa-caret-down p-1" aria-hidden="true"></i>
           </button>
         </div>
       </p>
-      <div class="collapse" id="collapseExample2">
-        <div class="card card-body">
+      <div className="collapse" id="collapseExample2">
+        <div className="card card-body">
           <h4 className="text-secondary pt-2 pb-2 ">Add Meal Charge</h4>
           <div className="col form-outline text-start form-white mb-4">
             <label className="form-label " htmlFor="auditedDate">
@@ -241,18 +241,18 @@ const Charges = ({ history }) => {
       {/* <div className="text-end"> 
             <button className="btn btn-primary" onClick={()=>setguestToggler(!guestToggler)}>Update</button>
         </div> */}
-      <ul class="list-group m-2">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+      <ul className="list-group m-2">
+        <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Morning Charge
-          <span class="badge  rounded-pill">{guestMorMealCharge}</span>
+          <span className="badge  rounded-pill">{guestMorMealCharge}</span>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Night Charge
-          <span class="badge rounded-pill">{guestNigMealCharge}</span>
+          <span className="badge rounded-pill">{guestNigMealCharge}</span>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Grand Charge
-          <span class="badge rounded-pill">{grandCharge}</span>
+          <span className="badge rounded-pill">{grandCharge}</span>
         </li>
       </ul>
 
@@ -269,7 +269,7 @@ const Charges = ({ history }) => {
       <p>
         <div className="mt-1 text-end">
           <button
-            class="bton p-2 pt-2 shadow-sm"
+            className="bton p-2 pt-2 shadow-sm"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseExample"
@@ -277,12 +277,12 @@ const Charges = ({ history }) => {
             aria-controls="collapseExample"
           >
             Update charges
-            <i class="fa fa-caret-down p-1" aria-hidden="true"></i>
+            <i className="fa fa-caret-down p-1" aria-hidden="true"></i>
           </button>
         </div>
       </p>
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body">
+      <div className="collapse" id="collapseExample">
+        <div className="card card-body">
           <div className="col form-outline text-start form-white mb-4">
             <label
               className="form-label text-secondary"
@@ -369,14 +369,14 @@ const Charges = ({ history }) => {
   const showError = () => (
     <>
       <div
-        class="alert alert-danger alert-dismissible fade show"
+        className="alert alert-danger alert-dismissible fade show"
         role="alert"
         style={{ display: error || amount.error ? "" : "none" }}
       >
         {error}
         <button
           type="button"
-          class="btn-close"
+          className="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close"
         ></button>
@@ -390,28 +390,28 @@ const Charges = ({ history }) => {
   const showSuccess = () => (
     <>
       <div
-        class="alert alert-info alert-dismissible fade show"
+        className="alert alert-info alert-dismissible fade show"
         role="alert"
         style={{ display: success ? "" : "none" }}
       >
         Charge updated Successfully
         <button
           type="button"
-          class="btn-close"
+          className="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close"
         ></button>
       </div>
      
       <div
-        class="alert alert-info alert-dismissible fade show"
+        className="alert alert-info alert-dismissible fade show"
         role="alert"
         style={{ display: amount.success ? "" : "none" }}
       >
         Charge added Successfully
         <button
           type="button"
-          class="btn-close"
+          className="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close"
         ></button>

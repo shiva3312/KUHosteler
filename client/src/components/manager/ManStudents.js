@@ -280,17 +280,17 @@ const StudentListInfo = ({ history }) => {
 
 
 {/* <!-- Modal --> */}
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-fullscreen-xxl-down">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Student Details..</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div className="modal-dialog  modal-fullscreen-xxl-down">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="staticBackdropLabel">Student Details..</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body student">
+      <div className="modal-body student">
       <div className="row ">
         <div className="col-5">
-          <div class="">
+          <div className="">
                       <ShowImage
                         user={student}
                         
@@ -301,9 +301,9 @@ const StudentListInfo = ({ history }) => {
                  <div className="col-7 mt-3 text-start   ">
 
                   <h2 className="  text-uppercase">{student.fname} {student.lname}</h2>
-                  <p class="fst-italic fw-light ">Student of
+                  <p className="fst-italic fw-light ">Student of
                   <h2 className="fs-5 fst-normal">{student.department} </h2>
-                  <p class="fst-italic fw-light ">from
+                  <p className="fst-italic fw-light ">from
                   <h2 className="fs-6 fst-normal">student.session </h2></p></p>
                 
                  </div>
@@ -430,15 +430,15 @@ const StudentListInfo = ({ history }) => {
                  <div className="row m-3 basic1 text-start">
                  <div className="col-1"></div>
                      <div className="col-9">
-                     <button class="btn-sm btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                     <button className="btn-sm btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
    Pay
   </button>
 
-<div class="collapse" id="collapseExample1">
-  <div class="card card-body">
+<div className="collapse" id="collapseExample1">
+  <div className="card card-body">
     <div className="text-end">
       
-  <button type="button" class="text-end btn-close" data-bs-dismiss="collapse" aria-label="Close"></button>
+  <button type="button" className="text-end btn-close" data-bs-dismiss="collapse" aria-label="Close"></button>
   </div>
     <div className="row">
   <div className="col-6 form-outline text-start form-white mb-2">
@@ -502,9 +502,9 @@ const StudentListInfo = ({ history }) => {
       </div>
      
       
-      {/* <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+      {/* <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary">Understood</button>
       </div> */}
     </div>
   </div>
