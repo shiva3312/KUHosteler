@@ -4,8 +4,103 @@ body {
 
    }
    .card-body {
-       border-radius: 15px;
+       border-radius: 10px;
        /* background: linear-gradient(to right,rgb(96, 33, 243),rgb(179, 9, 179)); */
  
    }
  
+.titleCloseBtn{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+}
+.otp:hover{
+    background:linear-gradient(#91ced2,#307f86);
+   color: #F6F6F2;
+   
+}
+
+
+.content{
+    color:rgb(23, 56, 58);
+    font-size:x-large;
+    padding-bottom: 17rem;
+
+
+}
+
+@media (max-width:1286px)
+{
+    .content{
+        padding-bottom: 13rem;
+    }
+    
+}
+
+@media (max-width:1147px)
+{
+    .content{
+        padding-bottom: 11rem;
+    }
+    
+}
+@media (max-width:982px)
+{
+    .content{
+        padding-bottom: 9rem;
+        padding-top: 9rem;
+    }
+    
+}
+@media (max-width:906px)
+{
+    .content{
+        padding-bottom: 7rem;
+       
+    }
+    
+}
+@media (max-width:790px)
+{
+    .content{
+        padding-bottom: 5rem;
+        font-size: large;
+      
+        
+    }
+    
+}
+@media (max-width:656px)
+{
+    .content{
+        padding-bottom: 0rem;
+       
+      
+        
+    }
+    
+}
+@media (max-width:656px)
+{
+    .content{
+      
+        font-size: smaller;   
+    }
+    .dialogue{
+        display: none;
+    }
+    
+}
+@media (max-width:380px)
+{
+    .icon1{
+        display: none;
+    }
+}
+
+@media (min-width:800px)
+{
+    .lg{
+        font-size: 19px;
+    }
+}

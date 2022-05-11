@@ -26,7 +26,8 @@ const AuditedMealChargeList = ({ history }) => {
   const auditedChargeMealList = () => {
     return (
       <>
-        <h1>Payment Record</h1>
+        <h1 className="text-start ms-4 me-4 mb-4 border-bottom">
+          <i className="fa fa-angle-double-right "></i>Payment Record</h1>
         <section className="shadow">
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0">
@@ -61,10 +62,10 @@ const AuditedMealChargeList = ({ history }) => {
           <table>
             <tfoot className="table border ">
               <tr>
-                <th colSpan="5" className="text-center">
+                <th colSpan="5" className="fw-bold text-center text-secondary">
                   Total Due Amount
                 </th>
-                <th colSpan="1" className="table-white  text-middle">
+                <th colSpan="1" className=" fw-bold text-secondary  text-middle">
                   {totalDue} Rs.
                 </th>
               </tr>

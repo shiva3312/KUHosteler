@@ -46,9 +46,9 @@ const Signin = () => {
 
   const signUpForm = () => (
     <>
-      <div className="gradiant">
+      <div className="gradiant ">
         <form>
-          <div className="container py-4">
+          <div className="container  py-5">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-md-12 col-lg-6">
                 <div className="card-body p-5 text-center th shadow-lg">
@@ -57,7 +57,7 @@ const Signin = () => {
                       Login
                     </h2>
                     <p className="text-white-50 mb-5">
-                      Please enter your login and password!
+                      Please enter your email and password!
                     </p>
 
                     <div className="form-outline text-start form-white mb-4">
@@ -143,7 +143,7 @@ const Signin = () => {
 
   const showError = () => (
     <div
-      className="alert alert-danger"
+      className="alert alert-danger mb-0"
       style={{ display: error ? "" : "none" }}
     >
       {error}
@@ -152,7 +152,7 @@ const Signin = () => {
 
   const showLoading = () =>
     loading && (
-      <div className="alert alert-info">
+      <div className="alert alert-info mb-0">
         <h2>Loading...</h2>
       </div>
     );
@@ -181,10 +181,11 @@ const Signin = () => {
     }
   };
   const showForgetPassword = () => (
-    <div className="modalBackground">
-      <div className="modalContainer">
-        <div className="titleCloseBtn">
-          <button
+  
+    <div className="modalBackground th ">
+      <div className="modalContainer ">
+        <div className="dt titleCloseBtn ">
+          <button className="btn pt-0"
             onClick={() => {
               setShowForget(false);
             }}
@@ -198,7 +199,7 @@ const Signin = () => {
             <div className="input-group">
               <div className="input-group-prepend">
                 <span className="input-group-text">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <i class="fa fa-envelope p-1 fa-lg" aria-hidden="true"></i>
                 </span>
               </div>
 
@@ -212,13 +213,14 @@ const Signin = () => {
                 required
               />
             </div>{" "}
-            <button type="submit" className="btn otp">
+            <button type="submit" className="dt  mt-2 btn otp border-bottom">
               GET RESET LINK
             </button>
           </div>
         </form>
       </div>
     </div>
+   
   );
 
   return (
