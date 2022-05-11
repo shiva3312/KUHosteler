@@ -73,11 +73,11 @@ const AddGuest = ({ history }) => {
   const getAllGuest = () => {
     return (
       <>
-        <h1 className="text-start ms-4 me-4 border-bottom">
+        <h1 className="text-start ms-4 me-4 mb-4 border-bottom">
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Active Guests
         </h1>
-        <h1 className="fs-4">Details of active guests</h1>
+        <h3 className="">Details of active guests</h3>
         <section className="shadow-lg">
           <div className="shadow tbl-header" id="guestlist">
             <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-1">
@@ -99,7 +99,7 @@ const AddGuest = ({ history }) => {
                 {stuData.active_guest_list.map((guest, i) => (
                   <tr key={i}>
                     <td>{i + 1}</td>
-                    <td>{guest.date.slice(0, 15)}</td>
+                    <td>{guest.date.slice(3, 15)}</td>
                     <td>
                       {guest.name.charAt(0).toUpperCase() + guest.name.slice(1)}{" "}
                     </td>
@@ -129,7 +129,7 @@ const AddGuest = ({ history }) => {
                               </button>
                               <span>
                                 <i
-                                  className="fa fa-trash-o text-danger fa-lg pe-2 ps-2"
+                                  className="fa fa-trash-o text-danger border fa-lg pe-2 ps-2"
                                   onClick={() => deleteguest(guest._id)}
                                 ></i>
                               </span>
@@ -155,9 +155,9 @@ const AddGuest = ({ history }) => {
           <i className="fa fa-angle-double-right "></i>
           &nbsp;Add new guest
         </h1>
-        <div className="mt-5 m-5 row th shadow">
+        <div className="status bg-white row th shadow-sm">
           <div className="col-3 p-4 ps-4">
-            <i className="fa fa-lg fa-user-plus"></i>
+            <i className=" fa fa-lg fa-user-plus text-secondary"></i>
           </div>
           <div className="col-9 p-3 ps-3  text-end">
             <button
@@ -175,7 +175,7 @@ const AddGuest = ({ history }) => {
         </div>
 
         <div
-          className="modal fade "
+          className="modal fade"
           id="exampleModal"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -194,7 +194,7 @@ const AddGuest = ({ history }) => {
                   aria-label="Close"
                 ></button>
               </div>
-              <div className="modal-body text-white">
+              <div className="modal-body text-secondary">
                 <div className="mb-3" id="addguest">
                   <label for="exampleFormControlInput1" class="form-label">
                     Name

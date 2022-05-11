@@ -179,65 +179,106 @@ const AdminDashboard = ({ history }) => {
           <div className="shadow tbl-header ">
             <table cellPadding="0" cellSpacing="0" border="0">
               <thead>
-                <tr>
-                  <th>SL</th>
-                  <th>Requested Date</th>
-                  <th>Picture</th>
-                  <th>Name</th>
-                  <th>Department</th>
-                  <th>Mob No.</th>
-                  <th className="" colSpan={1}>
+                <tr >
+                  <th className="col-1">SL</th>
+                  <th >Date</th>
+                  <th >Picture</th>
+                  <th >Name</th>
+                  <th className="col-3">Department</th>
+                  <th className="hidden">Phone</th>
+                  <th  className="col-3" >
                     Action
                   </th>
                 </tr>
               </thead>
             </table>
           </div>
-          <div className="tbl-content">
-            <table cellPadding="0" cellSpacing="0" border="0">
-              <tbody>
+          <div className="tbl-content1">
+            <table className="hoverTable" cellPadding="0" cellSpacing="0" border="0">
+              <tbody className="hoverTable">
                 {stuReqList.map((student, i) => (
-                  <tr key={i}>
-                    <td>{i + 1}</td>
-                    <td>{student.createdAt.slice(0, 10)}</td>
-                    <td>
+                
+                 
+                  <tr className="hoverTable"key={i}>
+                    <td className="col-1 th1" >{i + 1}</td>
+                    <td className="th1">{student.createdAt.slice(0, 10)}</td>
+                    <td className="th1">
                       {" "}
                       <ShowImage
                         user={student}
-                        Width="55%"
-                        ClassName="img mb-2 img-thumbnail"
+                        Width="50px"
+                        Height="50px"
+                        ClassName=" img1  img-thumbnail"
                       />{" "}
                     </td>
-                    <td>
+                    <td className="th1">
                       {student.fname} {student.lname}
                     </td>
-                    <td>{student.department}</td>
-                    <td>{student.selfPhNo}</td>
-                    <td>
+                    <td className="col-3 th1" >{student.department}</td>
+                    <td className="th1 hidden">{student.selfPhNo.slice(3,13)}</td>
+                    <td className="col-3">
                       {" "}
-                      <button
+                      {/* <button
                         type="submit"
-                        className="  btn  btn-sm btn-success "
+                        className="button btn-sm btn-success "
                         onClick={() => clickSubmit(student._id, 2)}
                       >
-                        <i className="fa fa-check" aria-hidden="true"></i>
-                      </button>
-                      <button
+                        <i className="fa fa-check-circle" aria-hidden="true"></i>
+                      </button> */}
+                      <span className="sm">
+                                <i
+                                  className="fa fa-check text-success border fa-lg pe-2 ps-2" data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() =>clickSubmit(student._id, 2)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="fa fa-check text-success bg-light fa-lg pe-1 ps-1" data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() =>clickSubmit(student._id, 2)}
+                                ></i>
+                              </span>
+                      {/* <button
                         type="submit"
-                        className="btn ms-1  btn-sm btn-primary  "
+                        className="button btn-sm btn-primary "
                         onClick={() => clickSubmit(student._id, 1)}
                       >
-                        <i className="fa fa-spinner" aria-hidden="true"></i>
-                      </button>
-                      <button
+                        <i className="fa fa-user" aria-hidden="true"></i>
+                      </button> */}
+                      <span className="sm">
+                                <i
+                                  className="ms-1 fa fa-user text-primary border fa-lg pe-2 ps-2 " data-bs-toggle="tooltip" title="Accept as Guest"
+                                  onClick={() =>clickSubmit(student._id, 1)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-user text-primary bg-light fa-lg pe-1 ps-1 " data-bs-toggle="tooltip" title="Accept as Guest"
+                                  onClick={() =>clickSubmit(student._id, 1)}
+                                ></i>
+                              </span>
+                      {/* <button
                         type="submit"
-                        className="ms-1 btn btn-sm btn-danger  "
+                        className="button ms-1 btn-sm btn-danger  "
                         onClick={() => clickSubmit(student._id, 4)}
                       >
-                        <i className="fa fa-ban" aria-hidden="true"></i>
-                      </button>
+                        <i className="fa fa-close" aria-hidden="true"></i>
+                      </button> */}
+                      <span className="sm">
+                                <i
+                                  className="ms-1 fa fa-close text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() =>clickSubmit(student._id, 4)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-close text-danger bg-light fa-lg pe-1 ps-1 " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() =>clickSubmit(student._id, 4)}
+                                ></i>
+                              </span>
                     </td>
                   </tr>
+                 
+                 
                 ))}
               </tbody>
               <tfoot></tfoot>
@@ -252,52 +293,67 @@ const AdminDashboard = ({ history }) => {
     if (empReqList.length === 0) return <></>;
     return (
       <>
-        <h1>Employee Request List</h1>
+   <h1 className="m-4 mt-0 pt-5 border-bottom text-start">
+          <i className="fa fa-angle-double-right"></i>
+          &nbsp;Employee Request List
+        </h1>
         <div className="shadow tbl-header">
           <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
             <thead>
               <tr>
-                <th>SL</th>
-                <th>Requested Date</th>
+                <th className="col-1">SL</th>
+                <th>Date</th>
                 <th>Picture</th>
                 <th>Name</th>
-                <th>Mob No.</th>
-                <th colSpan={2}>Action</th>
+                <th >Mob No.</th>
+                <th className="col-2 ">Action</th>
               </tr>
             </thead>
           </table>
         </div>
-        <div>
+        <div className="shadow tbl-content">
           <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
             <tbody>
               {empReqList.map((emp, i) => (
                 <tr key={i}>
-                  <td>{i + 1}</td>
-                  <td>{emp.createdAt.slice(0, 10)}</td>
-                  <td> </td>
-                  <td>
+                  <td className="col-1 th1">{i + 1}</td>
+                  <td className="th1">{emp.createdAt.slice(0, 10)}</td>
+                  <td className="th1"> fd</td>
+                  <td className="th1">
                     {emp.fname} {emp.lname}
                   </td>
-                  <td>{emp.selfPhNo}</td>
-                  <td>
+                  <td className="th1">{emp.selfPhNo.slice(3,13)}</td>
+                  <td className="col-2 th1">
                     {" "}
-                    <button
-                      type="submit"
-                      className="btn btn-success  "
-                      onClick={() => clickSubmit(emp._id, 2)}
-                    >
-                      <i className="fa fa-check" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                  <td>
+                  
+                    <span className="sm">
+                                <i
+                                  className="ms-1 fa fa-check text-success border fa-lg " data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() => clickSubmit(emp._id, 2)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-check text-success bg-light fa-lg " data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() => clickSubmit(emp._id, 2)}
+                                ></i>
+                              </span>
+                 
                     {" "}
-                    <button
-                      type="submit"
-                      className="btn btn-danger  "
-                      onClick={() => clickSubmit(emp._id, 4)}
-                    >
-                      <i className="fa fa-ban" aria-hidden="true"></i>
-                    </button>
+                   
+                    <span className="sm">
+                                <i
+                                  className="ms-1 fa fa-close text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() => clickSubmit(emp._id, 4)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-close text-danger bg-light fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() => clickSubmit(emp._id, 4)}
+                                ></i>
+                              </span>
+                    
                   </td>
                 </tr>
               ))}
@@ -413,37 +469,38 @@ const AdminDashboard = ({ history }) => {
         </h1>
         <div className="shadow lg">
           <div className="shadow tbl-header">
-            <table cellPadding="0" cellSpacing="0" border="0">
+            <table  cellPadding="0" cellSpacing="0" border="0">
               <thead>
-                <tr>
-                  <th>SL</th>
+                <tr >
+                  <th className="col-1">SL</th>
                   <th>Guest Name</th>
                   <th>Guest Type</th>
                   <th>Guest Holder</th>
                   <th>Meal Date</th>
-                  <th>Mob No.</th>
-                  <th>Room No</th>
-                  <th colSpan={2}>Action</th>
+                  <th className="hidden"> Mob No.</th>
+                  {/* <th>Room No</th> */}
+                  <th className="col-2" colSpan={2} >Action</th>
                 </tr>
               </thead>
             </table>
           </div>
           <div className="shadow tbl-content">
-            <table cellPadding="0" cellSpacing="0" border="0">
+            <table  className="hoverTable"cellPadding="0" cellSpacing="0" border="0">
               <tbody>
                 {allListedGuest.map((guest, i) => (
-                  <tr key={i}>
-                    <td>{i + 1}</td>
-                    <td>{guest.name}</td>
-                    {guest.guestType == 0 ? <td>Normal</td> : <td>Official</td>}
+                  
+                  <tr  key={i}>
+                    <td className="th1 col-1">{i + 1}</td>
+                    <td className="th1">{guest.name}</td>
+                    {guest.guestType == 0 ? <td className="th1">Normal</td> : <td className="th1">Official</td>}
 
-                    <td>{guest.holderName}</td>
-                    <td>{guest.mealDate.slice(4, 15)}</td>
-                    <td>{guest.holderMobNo}</td>
-                    <td>{guest.holderRoomNo}</td>
-                    <td>
+                    <td className="th1">{guest.holderName}</td>
+                    <td className="th1">{guest.mealDate.slice(4, 15)}</td>
+                    <td className="th1 hidden">{guest.holderMobNo.slice(3,13)}</td>
+                    {/* <td className="th1">{guest.holderRoomNo}</td> */}
+                    <td className="col-2 th1" colSpan={2}>
                       {" "}
-                      <button
+                      {/* <button
                         type="submit"
                         className="btn-sm btn-success "
                         onClick={() =>
@@ -451,17 +508,42 @@ const AdminDashboard = ({ history }) => {
                         }
                       >
                         <i className="fa fa-check" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                    <td>
+                      </button> */}
+                      
+                      <span className="sm">
+                                <i
+                                  className="ms-1 fa fa-check text-success border fa-lg " data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() => changeGeustMealStatus(guest._id, guest.holderId, 1)}
+                                ></i>
+                              </span>
+                              <span className="sm1" >
+                                <i
+                                  className="ms-1 fa fa-check text-success bg-light fa-lg " data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() => changeGeustMealStatus(guest._id, guest.holderId, 1)}
+                                ></i>
+                              </span>
                       {" "}
-                      <button
+                      {/* <button
                         type="submit"
                         className="btn-sm btn-danger  "
                         onClick={() => deleteGuest(guest._id, guest.holderId)}
                       >
-                        <i className="fa fa-ban" aria-hidden="true"></i>
-                      </button>
+                        <i className="fa fa-close" aria-hidden="true"></i>
+                      </button> */}
+                     
+                      <span className="sm">
+                                <i
+                                  className="ms-1 fa fa-close text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() => deleteGuest(guest._id, guest.holderId)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-close text-danger bg-light fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() => deleteGuest(guest._id, guest.holderId)}
+                                ></i>
+                              </span>
+                       
                     </td>
                   </tr>
                 ))}
@@ -479,50 +561,65 @@ const AdminDashboard = ({ history }) => {
     });
     if (allactivatedGuest.length === 0) return <></>;
     return (
-      <div className=" mb-5">
-        <h3 className="card-header text-center">Activated Meal Guest List</h3>
-
-        <table className="table table-hover ">
-          <thead>
-            <tr className="bg-dark">
-              <th className="align-middle text-center text-light h5 p-3">SL</th>
-              <th>Guest Name</th>
-              <th>Guest Type</th>
-              <th>Guest Holder</th>
-              <th>Department</th>
-              <th>Mob No.</th>
-              <th>Room No</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
+      <>
+        <h1 className="text-start border-bottom m-4 mt-0 pt-5">
+          <i className="fa fa-angle-double-right"></i>
+          &nbsp;Activated MEal guest list
+        </h1>
+        <div className="shadow lg">
+          <div className="shadow tbl-header">
+            <table  cellPadding="0" cellSpacing="0" border="0">
+              <thead>
+                <tr >  <th className="th1">SL</th>
+              <th className="th1">Guest Name</th>
+              <th className="th1">Guest Type</th>
+              <th className="th1">Guest Holder</th>
+              <th className="th1">Meal Date</th>
+              <th className="th1">Mob No.</th>
+              <th className="th1">Room No</th>
+              <th className="th1">Action</th>
+              </tr>
+              </thead>
+            </table>
+          </div>
+          <div className="shadow tbl-content">
+            <table  className="hoverTable"cellPadding="0" cellSpacing="0" border="0">
+              <tbody>
             {allactivatedGuest.map((guest, i) => (
               <tr className="" key={i}>
                 <td className="text-center align-middle ">{i + 1}</td>
-                <td>{guest.name}</td>
-                {guest.guestType == 0 ? <td>Normal</td> : <td>Official</td>}
+                <td className="th1">{guest.name}</td>
+                {guest.guestType == 0 ? <td className="th1">Normal</td> : <td className="th1">Official</td>}
 
-                <td>{guest.holderName}</td>
-                <td>{guest.mealDate.slice(0, 15)}</td>
-                <td>{guest.holderMobNo}</td>
-                <td>{guest.holderRoomNo}</td>
+                <td className="th1">{guest.holderName}</td>
+                <td className="th1">{guest.mealDate.slice(0, 15)}</td>
+                <td className="th1">{guest.holderMobNo}</td>
+                <td className="th1">{guest.holderRoomNo}</td>
                 {/* <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td> */}
-                <td>
+                <td className="th1">
                   {" "}
-                  <button
+                  <span>
+                                <i
+                                  className="ms-1 fa fa-close text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() => deleteGuest(guest._id, guest.holderId)}
+                                ></i>
+                              </span>
+                  {/* <button
                     type="submit"
                     className="btn btn-danger  "
                     onClick={() => deleteGuest(guest._id, guest.holderId)}
                   >
                     Remove
-                  </button>
+                  </button> */}
                 </td>
               </tr>
             ))}
           </tbody>
-          <tfoot></tfoot>
+     
         </table>
       </div>
+      </div>
+      </>
     );
   };
 

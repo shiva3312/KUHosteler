@@ -44,7 +44,7 @@ const TodayMealList = ({ history }) => {
 
     return (
       <>
-        <h1 className="m-3 mt-0 pt-5 border-bottom text-start">
+        <h1 className=" mt-0 pt-5 border-bottom text-start">
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Total Meal Count
         </h1>
@@ -75,30 +75,7 @@ const TodayMealList = ({ history }) => {
             </li>
           </ul>
 
-          {/* <table className="table table-hover ">
-                    <thead>
-                        <tr className="bg-dark">
-                            <th className="align-middle text-center text-light h5 ">Border</th>
-                            <th className="align-middle text-center text-light h5" >Normal Guest</th>
-                            <th className="align-middle text-center text-light h5" >Official</th>                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                                      
-                        <tr className="" >                       
-                            <td className="text-center align-middle">{mealList.borderMealList.length}</td>
-                            <td className="text-center align-middle">{normalGuestCount}</td>                                           
-                            <td className="text-center align-middle">{officalGuestCount}</td>                                       
-                        </tr>
-                     
-                    </tbody>
-                    <tfoot>
-                    <tr className="table " >                       
-                            <td className="text-center align-middle " colSpan={2}>Total</td>
-                            <td className="text-center align-middle">{ mealList.borderMealList.length + normalGuestCount + officalGuestCount }</td>                                                                                  
-                        </tr>
-                    </tfoot>
-                </table>                 */}
+       
         </div>
       </>
     );
@@ -107,7 +84,7 @@ const TodayMealList = ({ history }) => {
   const getBorderMealList = () => {
     return (
       <>
-        <h1 className="m-3 mt-0 pt-4 border-bottom text-start">
+        <h1 className=" mt-0 pt-4 border-bottom text-start">
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Border Meal List
         </h1>
@@ -161,7 +138,7 @@ const TodayMealList = ({ history }) => {
     // if( mealList.guestMealList.length===0) return <></>
     return (
       <>
-        <h1 className="m-3 mt-0 pt-5 border-bottom text-start">
+        <h1 className=" mt-0 pt-5 border-bottom text-start">
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Guest MEal List
         </h1>

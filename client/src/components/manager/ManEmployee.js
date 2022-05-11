@@ -98,13 +98,16 @@ const EmployeeListInfo = ({ history }) => {
 
                   <td>
                     {" "}
-                    <button
+                    <span> <i className="ms-1 fa fa-eye text-primary border fa-lg " data-bs-toggle="modal"  title="view profile"   onClick={(e) => {
+                      
+                        }}></i></span>
+                    {/* <button
                       type="button"
                       className="btn btn-primary"
                       data-toggle="modal"
                     >
                       View Details
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
               ))}

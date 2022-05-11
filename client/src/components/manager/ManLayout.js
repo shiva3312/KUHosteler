@@ -17,11 +17,14 @@ const Layout = ({
 }) => (
   <div>
     <input type="checkbox" id="sidebar-toggle" />
+    <label htmlFor="sidebar-toggle" className=" p-3 fa fa-lg fa-bars small1"></label>
     <div className="sidebar ">
+      
       <div className="sidebar-header ">
-        <h3 className="brand">
+        <h2 className="brand text-white">
+          
           <span>KuHosteler</span>
-        </h3>
+        </h2>
         <label htmlFor="sidebar-toggle" className="fa fa-lg fa-bars"></label>
       </div>
 
@@ -61,11 +64,13 @@ const Layout = ({
               <span className="side1">&nbsp;Meal List</span>
             </Link>
           </li>
-
-          <li className="side mt-5 p-1">
-            {/* <Link to="/manager/preparedMealList" className="text-decoration-none" >          */}
-
-            {isAuthenticated() && (
+          <li className="side p-3 mt-5">
+            <Link
+             
+              className="out text-decoration-none"
+            >
+              <span className="fa fa-lg fa-sign-out"></span>
+              {isAuthenticated() && (
               // <div className="col">
               <span
                 className=""
@@ -76,12 +81,12 @@ const Layout = ({
                   })
                 }
               >
-                <button className="btn text-white " type="submit">
-                  <span className="fa fa-lg fa-sign-out"></span>&ensp;Sign Out
+                <button className="btn text-white out ps-0 p-0" type="submit">
+                  Sign Out
                 </button>
               </span>
             )}
-            {/* </Link>  */}
+            </Link>
           </li>
 
           {/* {isAuthenticated() && (
@@ -90,41 +95,15 @@ const Layout = ({
             </div>
       )} */}
         </ul>
+      
       </div>
+    
     </div>
 
     <div className="main-content">
-      {/* <ul className="nav nav-tabs bg-primary">
-        <li className="nav-item">            
-            <Link to="/manager/dashboard" ><button className="btn btn-outline-light btn-lg px-4" type="submit" >Dashboard</button></Link>           
-            </li>
-
-            <li className="nav-item">            
-            <Link to="/manager/allstudents" ><button className="btn btn-outline-light btn-lg px-4" type="submit" >Students</button></Link>           
-            </li>
-
-            <li className="nav-item">            
-            <Link to="/manager/allemployee" ><button className="btn btn-outline-light btn-lg px-4" type="submit" >Employee</button></Link>           
-            </li>
-
-            <li className="nav-item">            
-            <Link to="/manager/charges" ><button className="btn btn-outline-light btn-lg px-4" type="submit" >Charges</button></Link>           
-            </li>
-
-            <li className="nav-item">            
-            <Link to="/manager/preparedMealList" ><button className="btn btn-outline-light btn-lg px-4" type="submit" >Meal List</button></Link>           
-            </li>
-
-        {isAuthenticated() && (
-            <div className="col">
-            <span className="col" onClick={() =>signout(() => {history.push("/");})}><button className="btn btn-outline-light btn-lg px-4" type="submit" >SignOut</button></span>
-            </div>
-    )} 
-
-
-      </ul> */}
-      {/* <Menu />         */}
-      <div className="jumbotron">
+   
+    
+      <div className="pt-3 jumbotron">
         <h1 className="text-center mb-0 pt-5 pb-5">{title}</h1>
       </div>
       <div className="">

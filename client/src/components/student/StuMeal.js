@@ -33,8 +33,10 @@ const MealAcitvity = ({ history }) => {
           <i className="fa fa-angle-double-right "></i>
           &nbsp;Check your meal status
         </h1>
-        <div className="mt-5 m-5 row meal th shadow">
-          <div className="fs-5 col-9 p-3 ps-3 pe-0 text-start  ">
+
+        <div className="row status bg-white shadow-sm">
+          
+          <div className="  col-9 p-3 ps-3 pe-0 text-start  ">
             MEAL STATUS &emsp;:&emsp;
             {mealStatus == 0 || mealStatus == 1 ? (
               <span className="pt-3 fw-bold  text-secondary">DISABLE</span>
@@ -49,18 +51,18 @@ const MealAcitvity = ({ history }) => {
             {mealStatus == 0 || mealStatus == 1 ? (
               <button
                 type="submit"
-                className="check text-secondary p-2 pt-4 fw-bold fa fa-lg fa-toggle-off "
+                className="bg-white check text-secondary p-2 pt-3 fa fa-lg fa-toggle-off "
               ></button>
             ) : mealStatus == 2 ? (
               <button
                 type="submit"
-                className="check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on "
+                className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on "
                 onClick={submit}
               ></button>
             ) : (
               <button
                 type="submit"
-                className="check p-2 pt-3 fw-bold fa fa-lg fa-toggle-off  "
+                className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-off  "
                 onClick={submit}
               ></button>
             )}
@@ -78,11 +80,11 @@ const MealAcitvity = ({ history }) => {
             </div> */}
           {/* </div> */}
         </div>
-        <h1 className="text-start ms-4 me-4 border-bottom">
+        <h1 className="text-start ms-4 me-4 mb-4 border-bottom">
           <i className="fa fa-angle-double-right "></i>
           &nbsp; your meal activity
         </h1>
-        <h1 className="fs-4">Meal activity</h1>
+        <h3 className="mt-4">Meal activity</h3>
 
         <section className="shadow">
           <div className="shadow tbl-header">
