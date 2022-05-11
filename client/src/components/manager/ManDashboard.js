@@ -185,7 +185,7 @@ const AdminDashboard = ({ history }) => {
                   <th >Picture</th>
                   <th >Name</th>
                   <th className="col-3">Department</th>
-                  <th className="">Phone</th>
+                  <th className="hidden">Phone</th>
                   <th  className="col-3" >
                     Action
                   </th>
@@ -208,14 +208,14 @@ const AdminDashboard = ({ history }) => {
                         user={student}
                         Width="50px"
                         Height="50px"
-                        ClassName=" img1 mb-2 img-thumbnail"
+                        ClassName=" img1  img-thumbnail"
                       />{" "}
                     </td>
                     <td className="th1">
                       {student.fname} {student.lname}
                     </td>
                     <td className="col-3 th1" >{student.department}</td>
-                    <td className="th1">{student.selfPhNo}</td>
+                    <td className="th1 hidden">{student.selfPhNo.slice(3,13)}</td>
                     <td className="col-3">
                       {" "}
                       {/* <button
@@ -225,9 +225,15 @@ const AdminDashboard = ({ history }) => {
                       >
                         <i className="fa fa-check-circle" aria-hidden="true"></i>
                       </button> */}
-                      <span>
+                      <span className="sm">
                                 <i
                                   className="fa fa-check text-success border fa-lg pe-2 ps-2" data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() =>clickSubmit(student._id, 2)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="fa fa-check text-success bg-light fa-lg pe-1 ps-1" data-bs-toggle="tooltip" title="Accept"
                                   onClick={() =>clickSubmit(student._id, 2)}
                                 ></i>
                               </span>
@@ -238,9 +244,15 @@ const AdminDashboard = ({ history }) => {
                       >
                         <i className="fa fa-user" aria-hidden="true"></i>
                       </button> */}
-                      <span>
+                      <span className="sm">
                                 <i
-                                  className="ms-1 fa fa-user text-primary border fa-lg " data-bs-toggle="tooltip" title="Accept as Guest"
+                                  className="ms-1 fa fa-user text-primary border fa-lg pe-2 ps-2 " data-bs-toggle="tooltip" title="Accept as Guest"
+                                  onClick={() =>clickSubmit(student._id, 1)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-user text-primary bg-light fa-lg pe-1 ps-1 " data-bs-toggle="tooltip" title="Accept as Guest"
                                   onClick={() =>clickSubmit(student._id, 1)}
                                 ></i>
                               </span>
@@ -251,9 +263,15 @@ const AdminDashboard = ({ history }) => {
                       >
                         <i className="fa fa-close" aria-hidden="true"></i>
                       </button> */}
-                      <span>
+                      <span className="sm">
                                 <i
                                   className="ms-1 fa fa-close text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() =>clickSubmit(student._id, 4)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-close text-danger bg-light fa-lg pe-1 ps-1 " data-bs-toggle="tooltip" title="Reject"
                                   onClick={() =>clickSubmit(student._id, 4)}
                                 ></i>
                               </span>
@@ -304,34 +322,34 @@ const AdminDashboard = ({ history }) => {
                   <td className="th1">
                     {emp.fname} {emp.lname}
                   </td>
-                  <td className="th1">{emp.selfPhNo}</td>
+                  <td className="th1">{emp.selfPhNo.slice(3,13)}</td>
                   <td className="col-2 th1">
                     {" "}
-                    {/* <button
-                      type="submit"
-                      className="ms-1 btn-sm btn-success  "
-                      onClick={() => clickSubmit(emp._id, 2)}
-                    >
-                      <i className="fa fa-check" aria-hidden="true"></i>
-                    </button> */}
-                    <span>
+                  
+                    <span className="sm">
                                 <i
                                   className="ms-1 fa fa-check text-success border fa-lg " data-bs-toggle="tooltip" title="Accept"
                                   onClick={() => clickSubmit(emp._id, 2)}
                                 ></i>
                               </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-check text-success bg-light fa-lg " data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() => clickSubmit(emp._id, 2)}
+                                ></i>
+                              </span>
                  
                     {" "}
-                    {/* <button
-                      type="submit"
-                      className="ms-1 btn-sm btn-danger  "
-                      onClick={() => clickSubmit(emp._id, 4)}
-                    >
-                      <i className=" fa fa-close" aria-hidden="true"></i>
-                    </button> */}
-                    <span>
+                   
+                    <span className="sm">
                                 <i
                                   className="ms-1 fa fa-close text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() => clickSubmit(emp._id, 4)}
+                                ></i>
+                              </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-close text-danger bg-light fa-lg " data-bs-toggle="tooltip" title="Reject"
                                   onClick={() => clickSubmit(emp._id, 4)}
                                 ></i>
                               </span>
@@ -459,9 +477,9 @@ const AdminDashboard = ({ history }) => {
                   <th>Guest Type</th>
                   <th>Guest Holder</th>
                   <th>Meal Date</th>
-                  <th>Mob No.</th>
-                  <th>Room No</th>
-                  <th className="col-2" >Action</th>
+                  <th className="hidden"> Mob No.</th>
+                  {/* <th>Room No</th> */}
+                  <th className="col-2" colSpan={2} >Action</th>
                 </tr>
               </thead>
             </table>
@@ -478,9 +496,9 @@ const AdminDashboard = ({ history }) => {
 
                     <td className="th1">{guest.holderName}</td>
                     <td className="th1">{guest.mealDate.slice(4, 15)}</td>
-                    <td className="th1">{guest.holderMobNo}</td>
-                    <td className="th1">{guest.holderRoomNo}</td>
-                    <td className="col-2 th1">
+                    <td className="th1 hidden">{guest.holderMobNo.slice(3,13)}</td>
+                    {/* <td className="th1">{guest.holderRoomNo}</td> */}
+                    <td className="col-2 th1" colSpan={2}>
                       {" "}
                       {/* <button
                         type="submit"
@@ -491,13 +509,19 @@ const AdminDashboard = ({ history }) => {
                       >
                         <i className="fa fa-check" aria-hidden="true"></i>
                       </button> */}
-                      <span>
+                      
+                      <span className="sm">
                                 <i
                                   className="ms-1 fa fa-check text-success border fa-lg " data-bs-toggle="tooltip" title="Accept"
                                   onClick={() => changeGeustMealStatus(guest._id, guest.holderId, 1)}
                                 ></i>
                               </span>
-                  
+                              <span className="sm1" >
+                                <i
+                                  className="ms-1 fa fa-check text-success bg-light fa-lg " data-bs-toggle="tooltip" title="Accept"
+                                  onClick={() => changeGeustMealStatus(guest._id, guest.holderId, 1)}
+                                ></i>
+                              </span>
                       {" "}
                       {/* <button
                         type="submit"
@@ -506,12 +530,20 @@ const AdminDashboard = ({ history }) => {
                       >
                         <i className="fa fa-close" aria-hidden="true"></i>
                       </button> */}
-                      <span>
+                     
+                      <span className="sm">
                                 <i
                                   className="ms-1 fa fa-close text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
                                   onClick={() => deleteGuest(guest._id, guest.holderId)}
                                 ></i>
                               </span>
+                              <span className="sm1">
+                                <i
+                                  className="ms-1 fa fa-close text-danger bg-light fa-lg " data-bs-toggle="tooltip" title="Reject"
+                                  onClick={() => deleteGuest(guest._id, guest.holderId)}
+                                ></i>
+                              </span>
+                       
                     </td>
                   </tr>
                 ))}

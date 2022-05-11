@@ -208,7 +208,7 @@ const StudentListInfo = ({ history }) => {
                 <th>SL</th>
                 <th>Picture</th>
                 <th>Name</th>
-                <th>Room No.</th>
+                {/* <th>Room No.</th> */}
                 <th>Membership</th>
                 <th>Meal</th>
                 <th>Action</th>
@@ -234,7 +234,7 @@ const StudentListInfo = ({ history }) => {
                     <td>
                       {student.fname} {student.lname}
                     </td>
-                    <td>{student.roomNo}</td>
+                    {/* <td>{student.roomNo}</td> */}
 
                     {student.membership === 2 ? (
                       <td className="text-center  text-dark align-middle">
@@ -259,7 +259,7 @@ const StudentListInfo = ({ history }) => {
                       {/* <button type="button" className="btn btn-success" data-toggle="primary"  onClick={(e)=>{e.preventDefault(); setAction(!action);}} >Take Action (drop down)
                                  </button> */}
                       <button
-                        className="btn btn-primary"
+                        className="btn-sm btn-primary"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#collapseExample"
@@ -272,12 +272,12 @@ const StudentListInfo = ({ history }) => {
                       >
                         Take Action
                       </button>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"   onClick={(e) => {
+                     <span> <i className="ms-1 fa fa-eye text-primary border fa-lg " data-bs-toggle="modal"  title="view profile" data-bs-target="#staticBackdrop"   onClick={(e) => {
                           e.preventDefault();
                           setselectedUserId(student._id);
-                        }}>
-  View Profile
-</button>
+                        }}></i></span>
+
+
 
 {/* <!-- Modal --> */}
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

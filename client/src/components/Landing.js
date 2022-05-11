@@ -199,7 +199,7 @@ export default function Landing({ history }) {
 
 
 <h1 className="pt-2">What students say about us</h1>
-<div className=" pt-4 pb-4 mt-5 mb-5">
+<div className="  pb-4 mt-5 mb-5">
         <div className="card text-white  mb-3">
           
           <div className="row">
@@ -237,7 +237,10 @@ export default function Landing({ history }) {
           </div>
         </div>
       </div>
-              <h2>Still having Question?</h2>
+              <h1 className="text-start border-bottom">&ensp;Still having Question?</h1>
+              <p>Contact us :</p>
+              <p>Email us at hostel@email.com</p>
+              <p>We will contact you shortly</p>
       <Footer />
     </div>
   );

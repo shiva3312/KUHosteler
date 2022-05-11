@@ -311,6 +311,11 @@ h1{
     background-color: #8ac3c7;
     
 }
+.fa-eye:hover{
+    cursor:pointer;
+    background-color: #8ac3c7;
+    
+}
 .fa-check:hover{
     cursor:pointer;
     background-color: #8ac3c7;

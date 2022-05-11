@@ -140,7 +140,7 @@ const Charges = ({ history }) => {
 
   const auditMealChargeForm = () => (
     <>
-      <h1 className="m-3 mt-0 pt-5 border-bottom text-start">
+      <h1 className=" mt-0 pt-5 border-bottom text-start">
         <i className="fa fa-angle-double-right"></i>
         &nbsp;Audit Meal Charge
       </h1>
@@ -262,7 +262,7 @@ const Charges = ({ history }) => {
 
   const chargeForm = () => (
     <>
-      <h1 className="m-3 mt-0 pt-5 border-bottom text-start">
+      <h1 className=" mt-0 pt-5 border-bottom text-start">
         <i className="fa fa-angle-double-right"></i>
         &nbsp;Guest Meal Charge
       </h1>
@@ -402,9 +402,7 @@ const Charges = ({ history }) => {
           aria-label="Close"
         ></button>
       </div>
-      {/* <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            Charge updated Successfully
-        </div> */}
+     
       <div
         class="alert alert-info alert-dismissible fade show"
         role="alert"
