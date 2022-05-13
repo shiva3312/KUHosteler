@@ -23,27 +23,27 @@ export default function Footer() {
             <div  className="col-md-2 col-sm-2 col-xs-2 ">
                 <h5  className="heading text-white pt-3 text-decoration-underline">About </h5>
                 <ul  className="heading card-text">
-                    <li ><Link to="" className="text-white text-decoration-none">About Us</Link> </li>
-                    <li ><Link to="/user/Developer" className="text-white text-decoration-none">Contact Us</Link> </li>
-                    <li ><Link to="" className="text-white text-decoration-none">Support Us</Link> </li>        
+                    <li ><Link to="/user/AboutHostel" className="text-white text-decoration-none">About Hostel</Link> </li>
+                    <li ><Link to="/user/Developer" className="text-white text-decoration-none">About Developer</Link> </li>
+                    <li ><Link to="/user/Ourvision" className="text-white text-decoration-none">Our Vision</Link> </li>      
                 </ul>
                    
             </div>
             <div  className="col-md-2 col-sm-2 col-xs-2">
                 <h5  className="heading text-white pt-3 text-decoration-underline">Report </h5>
                 <ul  className="heading card-text">
-                    <li ><Link to="" className="text-white text-decoration-none">Suggest Feature</Link> </li>
+                    <li ><Link to="/user/SuggestFeature" className="text-white text-decoration-none">Suggest Feature</Link> </li>
                     <li ><Link to="/user/ReportBug" className="text-white text-decoration-none">Report Bug</Link> </li>
-                    <li ><Link to="/user/Faq" className="text-white text-decoration-none">FAQ</Link> </li>
                </ul>
                        
                   
                
             </div>
             <div  className="col-md-2 col-sm-2 col-xs-2">
-                <h5  className="heading text-white pt-3 text-decoration-underline"> App</h5>
+                <h5  className="heading text-white pt-3 text-decoration-underline"> Help Index</h5>
                 <ul  className="heading  card-text">
-                    <li ><Link to="" className="text-white text-decoration-none">About App</Link> </li>
+                <li ><Link to="/user/Faq" className="text-white text-decoration-none">FAQ</Link> </li>
+                <li ><Link to="/user/MealTable" className="text-white text-decoration-none">MealTable</Link> </li>  
                     <li ><Link to="/user/HelpDesk" className="text-white text-decoration-none">Help Desk</Link> </li>
                 </ul>
                        

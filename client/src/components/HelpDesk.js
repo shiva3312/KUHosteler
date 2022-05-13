@@ -2,7 +2,9 @@ import React, { useState , useEffect } from "react";
 import Footer from "./Footer";
 import {signout , isAuthenticated} from '../auth/index.js'
 import {Link} from 'react-router-dom'
+import user from './image/user2.jpg'
 import '../css/arpan.css'
+import electric from './image/electric.png'
 export default function ReportBug({history}) {
   // useEffect(() => {
   //   let li= document.querySelectorAll(".labels");
@@ -52,9 +54,9 @@ export default function ReportBug({history}) {
             </div>
         </div>
      </nav>
-
+     <h1 class="tit">HELP DESK of {}</h1>
      <div class="table_responsive">
-             <h1>HELP DESK of {}</h1>
+            
     <table class="t1">
       <thead>
         <tr>
@@ -69,49 +71,137 @@ export default function ReportBug({history}) {
       <tbody>
         <tr>
           <td>01</td>
-          <td><img src="https://freetoolssite.com/wp-content/uploads/2022/02/846799.png.webp" alt=""/></td>
-          <td>Muhibbullah Ansary</td>
-          <td>+880 017xx-xxxxxx</td>
-          <td>medical</td>
+          <td><img src={user}/></td>
+          <td>Prof.Madan ch. Ghosh</td>
+          <td>9433828586</td>
+          <td>Provost</td>
         </tr>
 
         <tr>
           <td>02</td>
-          <td><img src="https://freetoolssite.com/wp-content/uploads/2022/02/webp-to-png.png.webp" alt=""/></td>
-          <td>Moshior Rahman Arif</td>
-          <td>+880 017xx-xxxxxx</td>
-          <td>electrician</td>
+          <td><img src={user}/></td>
+          <td>Mr. Sarit Baran Chowdhury</td>
+          <td>9831102770</td>
+          <td>University Engineer</td>
         </tr>
 
 
         <tr>
           <td>03</td>
-          <td><img src="https://freetoolssite.com/wp-content/uploads/2022/02/youtube.png.webp" alt=""/></td>
-          <td>Suibe</td>
-          <td>+880 017xx-xxxxxx</td>
+          <td><img src={user}/></td>
+          <td>Pradip Subhash</td>
+          <td>9153834659/9674044198</td>
+          <td>Ambulance Driver</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td><img src={user}/></td>
+          <td>Sumit</td>
+          <td>7890152102/9563727973</td>
+          <td>Electrical Service Night</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td><img src={user}/></td>
+          <td>Bikash Maiti</td>
+          <td>9903076918</td>
+          <td>Steward</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td><img src={user}/></td>
+          <td>Krishnapada Kar</td>
+          <td>8777689669</td>
           <td>Attendant</td>
         </tr>
-
+        <tr>
+          <td>07</td>
+          <td><img src={user}/></td>
+          <td>Sumit Konai</td>
+          <td>8768102653</td>
+          <td>Library Assistant</td>
+        </tr>
       </tbody>
       <tbody class="labels">
 			<tr>
 				<td colspan="5">
-					<label for="management">PREFECT</label>
+				<label class="badge bg-danger text-wrap ">PREFECT</label>
 					{/* <input type="checkbox" name="management" id="management" data-toggle="toggle"/> */}
-          <i class="bx bxs-chevron-down arrow"></i>
+          {/* <i class="bx bxs-chevron-down arrow"></i> */}
 				</td>
 			</tr>
 		</tbody>
 		<tbody class="hide">
 			<tr>
+			<td>01</td>
+      <td><img src={user}/></td>
+          <td>Rustom Mondal</td>
+          <td>7980624597</td>
+          <td>Mess Prefect</td>
+			</tr>
+
+      <tr>
+			<td>02</td>
+      <td><img src={user}/></td>
+          <td>Nanda Das</td>
+          <td>9547445915</td>
+          <td>Garden Prefect</td>
+			</tr>
+      <tr>
 			<td>03</td>
-          <td><img src="https://freetoolssite.com/wp-content/uploads/2022/02/youtube.png.webp" alt=""/></td>
-          <td>Suibe</td>
-          <td>+880 017xx-xxxxxx</td>
-          <td>Attendant</td>
+      <td><img src={user}/></td>
+          <td>Sujoy Mondal</td>
+          <td>7602835627</td>
+          <td>Game Prefect</td>
+			</tr>
+      <tr>
+			<td>04</td>
+      <td><img src={user}/></td>
+          <td>Md. Ersad Ali</td>
+          <td>8617664617</td>
+          <td>Auditor Prefect</td>
+			</tr>
+      <tr>
+			<td>05</td>
+      <td><img src={user}/></td>
+          <td>Suraj Das</td>
+          <td>9635201242</td>
+          <td>Auditor Prefect</td>
+			</tr>
+      <tr>
+			<td>06</td>
+      <td><img src={user}/></td>
+          <td>Sujit Saha</td>
+          <td>8777092234</td>
+          <td>Maintenance Prefect</td>
 			</tr>
       </tbody>
-
+      <tbody class="labels">
+			<tr>
+				<td colspan="5">
+					<label class="badge bg-danger text-wrap">Electrical Office</label>
+					{/* <input type="checkbox" name="management" id="management" data-toggle="toggle"/> */}
+          {/* <i class="bx bxs-chevron-down arrow"></i> */}
+				</td>
+			</tr>
+		</tbody>
+    <thead>
+        <tr>
+          <th>Sl</th>
+          <th>Image</th>
+          <th>Electric Provider</th>
+          <th>Help Line No</th>
+          <th>Consumer Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td><img src={electric}/></td>
+          <td>WBSEB</td>
+          <td>18003453213</td>
+          <td>332006888</td>
+        </tr></tbody>
     </table>
   </div>
 <Footer />

@@ -6,6 +6,7 @@ import Signin from './user/Signin';
 import Faq from './components/Faq';
 import HelpDesk from './components/HelpDesk';
 import ReportBug from './components/ReportBug';
+import SuggestFeature from './components/SuggestFeature';
 import Developer from './components/Developer';
 import UpdatePassword from './user/ForgotPassword';
 import InfoPage from './user/InfoPage';
@@ -13,6 +14,7 @@ import UpLoadPhoto from './user/PicUploading';
 import Landing from './components/Landing';
 import ManagerRoute from './auth/ManagerRoute';
 import PrivateRoute from './auth/PrivateRoute'
+import MealTable from './components/MealTable'
 
 // manager route
 
@@ -24,6 +26,7 @@ import ManNotice from './components/manager/ManNotice';
 import ManStuProfile from './components/manager/ManStuProfile';
 import ManStudents from './components/manager/ManStudents';
 import AboutHostel from './components/AboutHostel';
+import OurVision from './components/OurVision';
 //student route
 import StuHome from './components/student/StuHome';
 import StuMyprofile from './components/student/StuMyprofile';
@@ -52,14 +55,16 @@ const Routes = () => {
                 <Route path="/user/Developer" exact component={Developer} />
                 <Route path="/user/forgotpassword/:userId/:token" exact component={UpdatePassword} />
                 <PrivateRoute path="/user/uploadphoto" exact component={UpLoadPhoto} />
-
+                <Route path="/user/AboutHostel" exact component={AboutHostel} />
+                <Route path="/user/SuggestFeature" exact component={SuggestFeature} />
+                <Route path="/user/Ourvision" exact component={OurVision} />
+                <Route path="/user/MealTable" exact component={MealTable} />
                 {/*manager GetRoute */}
                 <ManagerRoute path="/manager/dashboard" exact component={ManDashboard} />
                 <ManagerRoute path="/manager/allstudents" exact component={ManStudents} />
                 <ManagerRoute path="/manager/allemployee" exact component={ManEmployee} />
                 <ManagerRoute path="/manager/studpayRecord/:stuId/:userId" exact component={ManStuProfile} />
                 <ManagerRoute path="/manager/notice" exact component={ManNotice} />
-                <ManagerRoute path="/manager/abouthostel" exact component={AboutHostel} />
                 <ManagerRoute path="/manager/charges" exact component={ManCharge} />
                 <ManagerRoute path="/manager/studentprofile/:stuId/:userId" exact component={ManStuProfile} />
 

@@ -46,7 +46,7 @@ export default function Developer({history})
         </div>
      </nav>
      <center>
-     <div class="container">
+     <div class="cont">
       <div class="box">
       <div class="image">
          <img src={shivam}/>
