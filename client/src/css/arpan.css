@@ -18,6 +18,11 @@
   background: rgb(73, 16, 204);
   color: #fff;
 }
+
+.accordion{
+  background: rgb(74,180,175);
+  background: linear-gradient( 111deg,rgba(74,180,175,1) 0%, rgba(224,254,253,1) 100%);
+}
 .accordion{
   display: flex;
   width: 100%;
@@ -25,15 +30,15 @@
   justify-content: space-between;
   /* background: #fff; */
   /* background: transparent; */
-  background: hsla(0, 0%, 100%, 0.588);
-    box-shadow: 0 8px 32px 0 rgba(31,38,135,.37);
-    border-radius: 30px;
-    border-left: 1px solid rgba(255, 255, 255, 0.633);
-    border-top: 1px solid rgba(255, 255, 255, 0.56);
+  /* background: hsla(0, 0%, 100%, 0.588); */
+    /* box-shadow: 0 8px 32px 0 rgba(31,38,135,.37); */
+    /* border-radius: 30px; */
+    /* border-left: 1px solid rgba(255, 255, 255, 0.633); */
+    /* border-top: 1px solid rgba(255, 255, 255, 0.56); */
   padding: 45px 90px 45px 60px;
   opacity: 0.8;
-  margin-top: 20px;
-  margin-bottom:20px;
+  /* margin-top: 20px; */
+  /* margin-bottom:20px; */
 }
 .accordion .image-box{
   height: 360px;
@@ -50,7 +55,7 @@
 .accordion .accordion-text .title{
   font-size: 35px;
   font-weight: 600;
-  color: rgb(73, 16, 204);
+  color: rgb(23, 56, 58);
   font-family: 'Fira Sans', sans-serif;
 }
 .accordion .accordion-text .faq-text{
@@ -72,9 +77,9 @@
 }
 .accordion-text li .question-arrow .question{
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   /* color: #595959; */
-  color: white;
+  color: rgb(23, 56, 58);
   transition: all 0.3s ease;
 }
 .accordion-text li .question-arrow .arrow{
@@ -88,7 +93,7 @@
 .accordion-text li:hover .question-arrow .question,
 .accordion-text li:hover .question-arrow .arrow{
   /* color: #7d2ae8; */
-  color:rgb(73, 16, 204);
+  color:rgb(71, 106, 94);
 }
 .accordion-text li.showAnswer .question-arrow .question,
 .accordion-text li.showAnswer .question-arrow .arrow{
@@ -106,7 +111,7 @@
   font-size: 15px;
   font-weight: 500;
   /* color: #595959; */
-  color: white;
+  /* color: white; */
   display: none;
 }
 .accordion-text li.showAnswer p{
@@ -137,10 +142,10 @@
     height: 360px;
     width: 300px;
     /* background: #7d2ae8; */
-    background: linear-gradient(to right,rgb(73, 16, 204),purple);
+
     width: 100%;
     border-radius: 25px;
-    padding: 30px;
+    /* padding: 30px; */
   }
   .accordion .accordion-text{
     width: 100%;

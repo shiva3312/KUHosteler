@@ -1,12 +1,32 @@
 body {   
     /* background: linear-gradient(to left,#d1f0da,#F6F6F2); */
+    /* background: rgb(44,103,99); */
+/* background: linear-gradient(70deg, rgba(44,103,99,1) 11%, rgba(191,249,246,1) 56%, rgba(224,254,253,1) 100%); */
         background-color: #F6F6F2;
 
    }
    .card-body {
        border-radius: 10px;
+      
        /* background: linear-gradient(to right,rgb(96, 33, 243),rgb(179, 9, 179)); */
  
+   }
+   .land{
+    background: rgb(74,180,175);
+    background: linear-gradient(111deg, rgba(74,180,175,1) 0%, rgba(224,254,253,1) 100%);
+   }
+   .register{
+       padding: 40px;
+   }
+   @media (max-width:470px)
+   {
+       .register{
+           padding-top: 40px;
+        padding-left:10px;
+        padding-right: 10px;
+
+       }
+      
    }
  
 .titleCloseBtn{
@@ -24,76 +44,47 @@ body {
 .content{
     color:rgb(23, 56, 58);
     font-size:x-large;
-    padding-bottom: 17rem;
+    padding-bottom: 6rem;
 
 
 }
-
-@media (max-width:1286px)
-{
+@media (max-width:1000px){
     .content{
-        padding-bottom: 13rem;
+        margin-bottom: 7rem;
     }
-    
 }
 
-@media (max-width:1147px)
-{
-    .content{
-        padding-bottom: 11rem;
-    }
-    
+
+.hostclr{
+    color:rgb(23, 56, 58);
 }
-@media (max-width:982px)
-{
-    .content{
-        padding-bottom: 9rem;
-        padding-top: 9rem;
-    }
-    
+
+.drkgrn{
+    background:rgb(54, 53, 53);
 }
-@media (max-width:906px)
-{
-    .content{
-        padding-bottom: 7rem;
-       
-    }
-    
-}
+
 @media (max-width:790px)
 {
     .content{
-        padding-bottom: 5rem;
+      
         font-size: large;
       
         
     }
     
 }
-@media (max-width:656px)
+
+
+@media (max-width:900px)
 {
-    .content{
-        padding-bottom: 0rem;
-       
-      
-        
+    .host{
+        display:none;
     }
-    
 }
-@media (max-width:656px)
+
+@media(min-width:901px)
 {
-    .content{
-      
-        font-size: smaller;   
-    }
-    .dialogue{
-        display: none;
-    }
-    
-}
-@media (max-width:380px)
-{
-    .icon1{
+    .host1{
         display: none;
     }
 }
@@ -101,6 +92,33 @@ body {
 @media (min-width:800px)
 {
     .lg{
-        font-size: 19px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width:572px)
+{
+    .ft1{
+        display: none;
+    }
+}
+@media(min-width:571px)
+{
+    .ft{
+        display: none;
+    }
+}
+
+.hostelp{
+    padding:50px;
+    margin:50px;
+ 
+}
+
+@media (max-width:600px)
+{
+    .hostelp{
+        padding:10px;
+        margin:10px;
     }
 }

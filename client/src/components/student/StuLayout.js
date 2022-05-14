@@ -40,11 +40,10 @@ const StuLayout = ({ className, children, history }) => {
         <div className="bg-white shadow-sm  overflow-hidden">
           <div className="ps-4 pt-4 pb-0 pe-4 cover">
             <div className="media align-items-end profile-head">
-              <div className="profile ps-3 mr-5 mt-5">
+              <div className="profile ps-3 mr-5 mt-4 ">
                 <ShowImage
                   user={user}
-                  Width="180px"
-                  Height="180px"
+                
                   ClassName="img mb-2 img-thumbnail"
                 />
               </div>
@@ -55,7 +54,7 @@ const StuLayout = ({ className, children, history }) => {
               <h4 className="media mt-0 mb-0">
                 {user.fname} {user.lname}
               </h4>
-              <p className="small mb-4">{user.department}</p>
+   <p className="small mb-4">{user.department}</p>
             </div>
           </div>
           <nav className="nav-link justify-content-center p-2 mt-5 navbar  fs-6">
