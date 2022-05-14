@@ -43,7 +43,7 @@ export default function SuggestFeature({history})
         </div>
      </nav>
      <center>
-                <div class="contain">
+                <div class="conta">
               <div class="content">
               <div class="image-box">
               <img src={id} alt=""/>

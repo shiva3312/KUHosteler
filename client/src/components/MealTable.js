@@ -44,10 +44,10 @@ export default function MealTable({history})
      </nav>
      <center>
      <h1 class="tit">MEAL MENU</h1>
-     <div class="table_responsive">
+     <div class="table_respons">
      
      <table class="t1">
-      <thead>
+      <thead class="t1_thead">
         <tr>
           <th>Sl</th>
           <th>Image</th>
