@@ -79,7 +79,7 @@ export default function Developer({ history }) {
           </div>
         </div>
       </nav>
-      <center>
+      <center class="bgch">
         <div class="cont">
           <div class="box">
             <div class="image">

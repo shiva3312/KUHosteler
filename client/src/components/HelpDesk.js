@@ -89,17 +89,17 @@ export default function ReportBug({ history }) {
           </div>
         </div>
       </nav>
-      <h1 class="tit">HELP DESK of {}</h1>
+      <h1 class="tit">{}HELP DESK</h1>
       <div class="table_respons">
             
     <table class="t1">
       <thead class="t1_thead">
         <tr>
-          <th>Sl</th>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Designation</th>
+          <th class="thnew">Sl</th>
+          <th class="thnew">Image</th>
+          <th class="thnew">Name</th>
+          <th class="thnew">Phone</th>
+          <th class="thnew">Designation</th>
         </tr>
       </thead>
 
@@ -221,11 +221,11 @@ export default function ReportBug({ history }) {
 		</tbody>
     <thead class="t1_thead">
         <tr>
-          <th>Sl</th>
-          <th>Image</th>
-          <th>Electric Provider</th>
-          <th>Help Line No</th>
-          <th>Consumer Id</th>
+          <th class="thnew">Sl</th>
+          <th class="thnew">Image</th>
+          <th class="thnew">Electric Provider</th>
+          <th class="thnew">Help Line No</th>
+          <th class="thnew">Consumer Id</th>
         </tr>
       </thead>
       <tbody>

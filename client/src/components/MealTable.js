@@ -49,11 +49,11 @@ export default function MealTable({history})
      <table class="t1">
       <thead class="t1_thead">
         <tr>
-          <th>Sl</th>
-          <th>Image</th>
-          <th>Day</th>
-          <th>Morning-Menu</th>
-          <th>Night-Menu</th>
+          <th class="thnew">Sl</th>
+          <th class="thnew">Image</th>
+          <th class="thnew">Day</th>
+          <th class="thnew">Morning-Menu</th>
+          <th class="thnew">Night-Menu</th>
         </tr>
       </thead>
 

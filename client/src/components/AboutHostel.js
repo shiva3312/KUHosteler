@@ -74,7 +74,7 @@ export default function AboutHostel({history})
             </div>
         </div>
      </nav>
-     <center>
+     <center class="bgch">
      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -123,7 +123,7 @@ export default function AboutHostel({history})
 
 
 
-    <section class="team section-padding" id="team">
+    <section >
           <div class="container">
             <div class="cont">
             
@@ -170,10 +170,11 @@ export default function AboutHostel({history})
 
 
 
-      <section id="about" class="about section-padding">
+      <section>
           <div class="container">
               <div class="row">
                   <div class="col-lg-4 col-md-12 col-12">
+
                       <div class="about-img">
                           <img src={ku} alt="" class="img-fluid"/>
                       </div>
@@ -182,13 +183,13 @@ export default function AboutHostel({history})
                       <div class="about-text">
                             <h2>We Provide the Best Quality <br/> Services Ever</h2>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
-                            <a href="#" class="btn btn-warning">Learn More</a>
+                            
                       </div>
                   </div>
               </div>
           </div>
       </section> 
-      <section id="portfolio" class="portfolio section-padding">
+      <section>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -198,9 +199,9 @@ export default function AboutHostel({history})
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-12 col-lg-4">
-                    <div class="card text-light text-center bg-white pb-2">
-                        <div class="card-body text-dark">
+                <div class="col-12 col-md-12 col-lg-4 ">
+                    <div class="card text-light text-center bg-white pb-2 bgch2 ">
+                        <div class="card-body text-dark ">
                           <div class="img-area mb-4">
                               <img src={reunion} class="img-fluid" alt=""/>
                           </div>
@@ -208,7 +209,7 @@ export default function AboutHostel({history})
                     </div>
                 </div>
                 <div class="col-12 col-md-12 col-lg-4">
-                    <div class="card text-light text-center bg-white pb-2">
+                    <div class="card text-light text-center bg-white pb-2 bgch2 ">
                         <div class="card-body text-dark">
                           <div class="img-area mb-4">
                           <img src={reunion2} class="img-fluid" alt=""/>
@@ -217,7 +218,7 @@ export default function AboutHostel({history})
                     </div>
                 </div>
                 <div class="col-12 col-md-12 col-lg-4">
-                    <div class="card text-light text-center bg-white pb-2">
+                    <div class="card text-light text-center bg-white pb-2 bgch2 ">
                         <div class="card-body text-dark">
                           <div class="img-area mb-4">
                           <img src={reunion3} class="img-fluid" alt=""/>
