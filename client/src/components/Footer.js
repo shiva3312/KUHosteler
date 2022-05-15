@@ -86,6 +86,7 @@ export default function Footer() {
               </h5>
               <ul className="heading  card-text">
                 <li>
+
                   <Link
                     to="/user/HelpDesk"
                     className="text-white text-decoration-none"
@@ -164,6 +165,7 @@ export default function Footer() {
               <ul className="heading text-start card-text">
                
                 <li>
+
                   <Link
                     to="/user/HelpDesk"
                     className="text-white text-decoration-none"
@@ -173,7 +175,9 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link to="/user/MealTable" className="text-white text-decoration-none">
+
                     Meal Table
+
                   </Link>{" "}
                 </li>
               </ul>
