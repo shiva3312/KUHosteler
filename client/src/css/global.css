@@ -96,16 +96,18 @@ body {
     }
 }
 
-@media (max-width:572px)
+@media (max-width:575px)
 {
     .ft1{
         display: none;
     }
 }
-@media(min-width:571px)
+@media(min-width:576px)
 {
     .ft{
         display: none;
+       
+       
     }
 }
 

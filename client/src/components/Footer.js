@@ -15,25 +15,25 @@ export default function Footer() {
                   </h2>
                 </div>
                 <p className="card-text text-white">
-                  Kalyani University's hostel management website
-                </p>
+                Kalyani University's hostel management website </p>
                 <div className="text-start social mt-2 mb-3 text-white">
                   {" "}
                   <i className="fa fa-facebook-official fa-lg"></i>{" "}
                   <i className="fa fa-instagram fa-lg"></i>{" "}
-                  <i className="fa fa-facebook"></i>{" "}
+                   <i className="fa fa-facebook"></i>{" "}
                 </div>
               </div>
             </div>
             <div className="col-md-2 col-sm-2 col-xs-2"></div>
+
             <div className="ft1 col-md-2 col-sm-2 col-xs-2 ">
               <h5 className="heading text-white pt-3 text-decoration-underline">
                 About{" "}
               </h5>
               <ul className="heading card-text">
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    About Us
+                  <Link to="/user/AboutHostel" className="text-white text-decoration-none">
+                    About Hostel
                   </Link>{" "}
                 </li>
                 <li>
@@ -41,12 +41,12 @@ export default function Footer() {
                     to="/user/Developer"
                     className="text-white text-decoration-none"
                   >
-                    Contact Us
+                    Our Developer
                   </Link>{" "}
                 </li>
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    Support Us
+                  <Link to="/user/OurVision" className="text-white text-decoration-none">
+                    OurVision
                   </Link>{" "}
                 </li>
               </ul>
@@ -57,7 +57,7 @@ export default function Footer() {
               </h5>
               <ul className="heading card-text">
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
+                  <Link to="/user/SuggestFeature" className="text-white text-decoration-none">
                     Suggest Feature
                   </Link>{" "}
                 </li>
@@ -86,11 +86,6 @@ export default function Footer() {
               </h5>
               <ul className="heading  card-text">
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    About App
-                  </Link>{" "}
-                </li>
-                <li>
                   <Link
                     to="/user/HelpDesk"
                     className="text-white text-decoration-none"
@@ -98,19 +93,23 @@ export default function Footer() {
                     Help Desk
                   </Link>{" "}
                 </li>
+                <li>
+                  <Link to="/user/MealTable" className="text-white text-decoration-none">
+                    Meal Table
+                  </Link>{" "}
+                </li>
               </ul>
             </div>
           </div>
-          <div></div>
-          <div className="ft row">
+          <div className="ft row ">
             <div className="col-4 ">
-              <h5 className="heading text-white pt-3 text-decoration-underline">
+              <h5 className="text-start heading text-white pt-3 text-decoration-underline">
                 About{" "}
               </h5>
-              <ul className="heading card-text">
+              <ul className="text-start fs-6 heading card-text">
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    About Us
+                  <Link to="" className="text-white text-decoration-none ">
+                    About Hostel
                   </Link>{" "}
                 </li>
                 <li>
@@ -118,24 +117,24 @@ export default function Footer() {
                     to="/user/Developer"
                     className="text-white text-decoration-none"
                   >
-                    Contact Us
+                    Our Developer
                   </Link>{" "}
                 </li>
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    Support Us
+                  <Link to="/user/OurVision" className="text-white text-decoration-none">
+                    Our Vision
                   </Link>{" "}
                 </li>
               </ul>
             </div>
 
             <div className="col-4">
-              <h5 className="heading text-white pt-3 text-decoration-underline">
+              <h5 className=" text-start heading text-white pt-3 text-decoration-underline">
                 Report{" "}
               </h5>
-              <ul className="heading card-text">
+              <ul className="text-start heading card-text">
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
+                  <Link to="/user/SuggestFeature" className="text-white text-decoration-none">
                     Suggest Feature
                   </Link>{" "}
                 </li>
@@ -158,22 +157,23 @@ export default function Footer() {
               </ul>
             </div>
             <div className="col-4">
-              <h5 className="heading text-white pt-3 text-decoration-underline">
+              <h5 className="text-start heading text-white pt-3 text-decoration-underline">
                 {" "}
                 App
               </h5>
-              <ul className="heading  card-text">
-                <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    About App
-                  </Link>{" "}
-                </li>
+              <ul className="heading text-start card-text">
+               
                 <li>
                   <Link
                     to="/user/HelpDesk"
                     className="text-white text-decoration-none"
                   >
                     Help Desk
+                  </Link>{" "}
+                </li>
+                <li>
+                  <Link to="/user/MealTable" className="text-white text-decoration-none">
+                    Meal Table
                   </Link>{" "}
                 </li>
               </ul>
