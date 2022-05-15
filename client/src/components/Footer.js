@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer ">
         <div className="bg-dark card">
           <div className="row ">
-            <div className="ku col-md-4 col-sm-4 col-xs-4 ">
+            <div className="col-md-4 col-sm-4 col-xs-4 ">
               <div className="footer-text pull-left">
                 <div className="">
                   <h2 className="head font-weight-bold mr-2 text-white">
@@ -15,22 +15,18 @@ export default function Footer() {
                   </h2>
                 </div>
                 <p className="card-text text-white">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Commodi non pariatur numquam animi nam at impedit odit nisi.
-                </p>
-                <div className="social mt-2 mb-3 text-white">
+                Kalyani University's hostel management website </p>
+                <div className="text-start social mt-2 mb-3 text-white">
                   {" "}
                   <i className="fa fa-facebook-official fa-lg"></i>{" "}
                   <i className="fa fa-instagram fa-lg"></i>{" "}
-                  <i className="fa fa-twitter fa-lg"></i>{" "}
-                  <i className="fa fa-linkedin-square fa-lg"></i>{" "}
-                  <i className="fa fa-facebook"></i>{" "}
+                   <i className="fa fa-facebook"></i>{" "}
                 </div>
               </div>
             </div>
             <div className="col-md-2 col-sm-2 col-xs-2"></div>
 
-            <div className="col-md-2 col-sm-2 col-xs-2 ">
+            <div className="ft1 col-md-2 col-sm-2 col-xs-2 ">
               <h5 className="heading text-white pt-3 text-decoration-underline">
                 About{" "}
               </h5>
@@ -55,7 +51,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-md-2 col-sm-2 col-xs-2">
+            <div className="ft1 col-md-2 col-sm-2 col-xs-2">
               <h5 className="heading text-white pt-3 text-decoration-underline">
                 Report{" "}
               </h5>
@@ -83,13 +79,14 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-md-2 col-sm-2 col-xs-2">
+            <div className="ft1 col-md-2 col-sm-2 col-xs-2">
               <h5 className="heading text-white pt-3 text-decoration-underline">
                 {" "}
                 App
               </h5>
               <ul className="heading  card-text">
                 <li>
+
                   <Link
                     to="/user/HelpDesk"
                     className="text-white text-decoration-none"
@@ -99,7 +96,88 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link to="/user/MealTable" className="text-white text-decoration-none">
-                    MealTable
+                    Meal Table
+                  </Link>{" "}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="ft row ">
+            <div className="col-4 ">
+              <h5 className="text-start heading text-white pt-3 text-decoration-underline">
+                About{" "}
+              </h5>
+              <ul className="text-start fs-6 heading card-text">
+                <li>
+                  <Link to="" className="text-white text-decoration-none ">
+                    About Hostel
+                  </Link>{" "}
+                </li>
+                <li>
+                  <Link
+                    to="/user/Developer"
+                    className="text-white text-decoration-none"
+                  >
+                    Our Developer
+                  </Link>{" "}
+                </li>
+                <li>
+                  <Link to="/user/OurVision" className="text-white text-decoration-none">
+                    Our Vision
+                  </Link>{" "}
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-4">
+              <h5 className=" text-start heading text-white pt-3 text-decoration-underline">
+                Report{" "}
+              </h5>
+              <ul className="text-start heading card-text">
+                <li>
+                  <Link to="/user/SuggestFeature" className="text-white text-decoration-none">
+                    Suggest Feature
+                  </Link>{" "}
+                </li>
+                <li>
+                  <Link
+                    to="/user/ReportBug"
+                    className="text-white text-decoration-none"
+                  >
+                    Report Bug
+                  </Link>{" "}
+                </li>
+                <li>
+                  <Link
+                    to="/user/Faq"
+                    className="text-white text-decoration-none"
+                  >
+                    FAQ
+                  </Link>{" "}
+                </li>
+              </ul>
+            </div>
+            <div className="col-4">
+              <h5 className="text-start heading text-white pt-3 text-decoration-underline">
+                {" "}
+                App
+              </h5>
+              <ul className="heading text-start card-text">
+               
+                <li>
+
+                  <Link
+                    to="/user/HelpDesk"
+                    className="text-white text-decoration-none"
+                  >
+                    Help Desk
+                  </Link>{" "}
+                </li>
+                <li>
+                  <Link to="/user/MealTable" className="text-white text-decoration-none">
+
+                    Meal Table
+
                   </Link>{" "}
                 </li>
               </ul>

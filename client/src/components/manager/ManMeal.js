@@ -89,7 +89,7 @@ const TodayMealList = ({ history }) => {
           &nbsp;Border Meal List
         </h1>
 
-        <div className="pb-4 pt-3">
+        <div className="p-3">
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0">
               <thead>
@@ -143,7 +143,7 @@ const TodayMealList = ({ history }) => {
           &nbsp;Guest MEal List
         </h1>
 
-        <div className="pb-5 pt-3">
+        <div className="p-3 pb-5">
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0">
               <thead>

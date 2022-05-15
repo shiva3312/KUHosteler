@@ -237,12 +237,12 @@ const Signup = () => {
 
   const signUpForm = () => (
     <>
-      <div className="gradiant p-1">
-        <form>
+      <div className="gradiant ">
+       
           <div className="container py-3">
             <div className="row d-flex justify-content-center align-items-center h-100">
-              <div className="col-12 col-md-7">
-                <div className="th card-body p-5 text-center ">
+              <div className="col-12 col-md-8">
+                <div className="th card-body register text-center shadow-lg">
                   <div className="mb-md-5 mt-md-4 pb-2">
                     <h2 className="fw-bold mb-2 text-uppercase text-white">
                       Register as{" "}
@@ -728,14 +728,14 @@ const Signup = () => {
               </div>
             </div>
           </div>
-        </form>
+      
       </div>
     </>
   );
 
   const showError = () => (
     <div
-      className="alert alert-danger"
+      className="alert alert-danger mb-0"
       style={{ display: error ? "" : "none" }}
     >
       {error}
@@ -744,7 +744,7 @@ const Signup = () => {
 
   const showSuccess = () => (
     <div
-      className="alert alert-info"
+      className="alert alert-info pb-0"
       style={{ display: success ? "" : "none" }}
     >
       {success}

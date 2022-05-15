@@ -78,7 +78,7 @@ const AddGuest = ({ history }) => {
           &nbsp;Active Guests
         </h1>
         <h3 className="">Details of active guests</h3>
-        <section className="shadow-lg">
+        <section className="p-1">
           <div className="shadow tbl-header" id="guestlist">
             <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-1">
               <thead>
@@ -93,7 +93,7 @@ const AddGuest = ({ history }) => {
               </thead>
             </table>
           </div>
-          <div className="tbl-content">
+          <div className="shadow tbl-content">
             <table cellPadding="0" cellSpacing="0" border="0">
               <tbody>
                 {stuData.active_guest_list.map((guest, i) => (
