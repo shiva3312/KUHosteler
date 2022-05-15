@@ -79,8 +79,8 @@ export default function Developer({ history }) {
           </div>
         </div>
       </nav>
-      <center>
-        <div class="container">
+      <center class="bgch">
+        <div class="cont">
           <div class="box">
             <div class="image">
               <img src={shivam} />
@@ -118,11 +118,11 @@ export default function Developer({ history }) {
             <div class="image">
               <img src={jukta} />
             </div>
-            <div class="name_job">JUKTA MAITRA</div>
-            <div class="name_job">Student of DETS, Kalyani University(Batch 2018-2022)</div>
+            <div class="name_job">JUKTA</div>
+            <div class="name_job">Student of DETS, Kalyani University(Batch:2018-2022)</div>
             <p>
               {" "}
-             Worked on front end part of this website.
+              Worked on Front end part
             </p>
             <div class="media-icons">
               <a href="#">

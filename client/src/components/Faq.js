@@ -21,12 +21,12 @@ export default function Faq({ history }) {
   }, []);
   return (
     <>
-    <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
+      <nav className=" navbar navbar-expand-lg p-2 navbar-light bg-white ">
         <div className="container-fluid">
-          <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
+          <h3 className="ps-5 fs-1 text fw-bold">KuHosteler</h3>
 
           <button
-            className=" navbar-toggler drkgrn"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -34,61 +34,32 @@ export default function Faq({ history }) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon drkgrn"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
           <div
-            className=" collapse navbar-collapse ps-2"
+            className="collapse navbar-collapse ps-5"
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav ms-auto ">
-              <li className="nav-item ">
-                <Link className="nav-link text-white " to="#">
+              <li className="nav-item ps-3 px-3">
+                <Link className="nav-link fw-bold" to="/student/abouthostel">
                   About
                 </Link>
               </li>
-              <li className="nav-item ">
-                <Link className="nav-link text-white" to="#">
+              <li className="nav-item ps-3 px-3">
+                <Link className="nav-link fw-bold" to="#">
                   Contact
                 </Link>
               </li>
-              <li className="nav-item  ">
-                <Link className="nav-link text-white" to="#">
+              <li className="nav-item ps-3 px-3">
+                <Link className="nav-link fw-bold" to="#">
                   Support
-                </Link>
-              </li>
-              <li
-                className="nav-item ps-3 px-3"
-                style={{
-                  display:
-                    isAuthenticated() &&
-                    isAuthenticated().user.profileType === 1
-                      ? ""
-                      : "none",
-                }}
-              >
-                <Link className="nav-link text-white" to="/manager/dashboard">
-                  Dashboard
-                </Link>
-              </li>
-              <li
-                className="nav-item ps-3 px-3"
-                style={{
-                  display:
-                    isAuthenticated() &&
-                    isAuthenticated().user.profileType === 0
-                      ? ""
-                      : "none",
-                }}
-              >
-                <Link className="nav-link text-white" to="/student/home">
-                  Home
                 </Link>
               </li>
               {isAuthenticated() && (
                 <Link
-                  className="nav-item  pt-1"
-                  to=""
+                  className="nav-item ps-3 px-3 pt-1"
                   onClick={() =>
                     signout(() => {
                       history.push("/");
@@ -96,7 +67,7 @@ export default function Faq({ history }) {
                   }
                 >
                   <button
-                    className="btn btn-outline-light btn-sm mt-1"
+                    className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6"
                     type="submit"
                   >
                     Signout
@@ -104,10 +75,10 @@ export default function Faq({ history }) {
                 </Link>
               )}
               {!isAuthenticated() && (
-                <li className="nav-item   pt-1">
+                <li className="nav-item ps-3 px-3 pt-1">
                   <Link to="/auth/signin">
                     <button
-                      className="btn btn-outline-light btn-sm mt-1"
+                      className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6"
                       type="submit"
                     >
                       Log In
@@ -118,29 +89,29 @@ export default function Faq({ history }) {
             </ul>
           </div>
         </div>
-      </nav> 
-      
+      </nav>
       <center>
         <div class="accordion">
           <div class="image-box">
             <img src={imamain} />
           </div>
-          <div class="accordion-text ">
+          <div class="accordion-text">
             <div class="title">FAQ</div>
             <ul class="faq-text">
               <li>
                 <div class="question-arrow">
-                  <span class="question "> How to open a account?</span>
+                  <span class="question"> How to open a account?</span>
                   <i class="bx bxs-chevron-down arrow"></i>
                 </div>
-                <p className="text-start">
-                 Go to Hostel Portal and click on Login Button. After that if You are a new user then click on Sign up button and fill the registration form accordingly.Once the form fill up has been completed, click on submit button. Your request for opening A new account has been sent to Manager. Your account will be activated only after manager approves the request.
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Nostrum, doloribus.
                 </p>
                 <span class="line"></span>
               </li>
               <li>
                 <div class="question-arrow">
-                  <span class="question"> How to add and delete guest?</span>
+                  <span class="question"> How to add guest?</span>
                   <i class="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
@@ -163,20 +134,21 @@ export default function Faq({ history }) {
               </li>
               <li>
                 <div class="question-arrow">
-                  <span class="question text-start">
+                  <span class="question">
                     What is the next step after sending request for account
                     opening?
                   </span>
                   <i class="bx bxs-chevron-down arrow"></i>
                 </div>
-                <p >
-                 After sending request you have to wait untill manager of your hostel approved request. Once approved your account will be activated.
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Rerum, labore.
                 </p>
                 <span class="line"></span>
               </li>
               <li>
                 <div class="question-arrow">
-                  <span class="question text-start">
+                  <span class="question">
                     What happen if my account opening request will be rejected?
                   </span>
                   <i class="bx bxs-chevron-down arrow"></i>
