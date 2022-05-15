@@ -759,7 +759,7 @@ const Signup = () => {
 
   return (
     <div>
-      {/* {JSON.stringify(mailOtpStatus)} */}
+      {JSON.stringify(mailOtpStatus)}
       {showSuccess()}
       {showError()}
       {signUpForm()}

@@ -60,7 +60,7 @@ const AuditedMealChargeList = ({ history }) => {
             </table>
           </div>
           <table>
-            <tfoot className="table border ">
+            <tfoot className="table-border ">
               <tr>
                 <th colSpan="5" className="fw-bold text-center text-secondary">
                   Total Due Amount

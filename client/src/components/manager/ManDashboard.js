@@ -136,8 +136,8 @@ const AdminDashboard = ({ history }) => {
       <div >
           
    
-          {hour>=12?hour>=16?<h2 className="welcome p-1">Good Evening, {user.fname} {user.lname}</h2> : <h2>Good Afternoon, {user.fname} {user.lname}</h2>:<h2>Good Morning, {user.fname} {user.lname}</h2>}
-        <h2 className="p-1 text ">Welcome</h2>
+          {hour>=12?hour>=16?<h2 className="welcome p-1 pt-3">Good Evening, {user.fname} {user.lname}</h2> : <h2 className="welcome p-1 pt-3">Good Afternoon, {user.fname} {user.lname}</h2>:<h2 className="welcome p-1 pt-3">Good Morning, {user.fname} {user.lname}</h2>}
+        <h2 className="p-1 text pb-3">Welcome</h2>
          
         <div >
           <div className="row cnt">
@@ -238,9 +238,7 @@ const AdminDashboard = ({ history }) => {
             <table  cellPadding="0" cellSpacing="0" border="0">
               <tbody >
                 {stuReqList.map((student, i) => (
-                
-                 
-                  <tr className="hoverTable"key={i}>
+                <tr className="hoverTable"key={i}>
                     <td className="col-1 th1 sl" >{i + 1}</td>
                     <td className="th1">{student.createdAt.slice(0, 10)}</td>
                     <td className="th1">
@@ -259,13 +257,6 @@ const AdminDashboard = ({ history }) => {
                     <td className="th1 hidden">{student.selfPhNo.slice(3,13)}</td>
                     <td className="col-3">
                       {" "}
-                      {/* <button
-                        type="submit"
-                        className="button btn-sm btn-success "
-                        onClick={() => clickSubmit(student._id, 2)}
-                      >
-                        <i className="fa fa-check-circle" aria-hidden="true"></i>
-                      </button> */}
                       <span className="sm">
                                 <i
                                   className="fa fa-check text-success border fa-lg pe-2 ps-2" data-bs-toggle="tooltip" title="Accept"
@@ -278,13 +269,6 @@ const AdminDashboard = ({ history }) => {
                                   onClick={() =>clickSubmit(student._id, 2)}
                                 ></i>
                               </span>
-                      {/* <button
-                        type="submit"
-                        className="button btn-sm btn-primary "
-                        onClick={() => clickSubmit(student._id, 1)}
-                      >
-                        <i className="fa fa-user" aria-hidden="true"></i>
-                      </button> */}
                       <span className="sm">
                                 <i
                                   className="ms-1 fa fa-user text-primary border fa-lg pe-2 ps-2 " data-bs-toggle="tooltip" title="Accept as Guest"
@@ -297,13 +281,6 @@ const AdminDashboard = ({ history }) => {
                                   onClick={() =>clickSubmit(student._id, 1)}
                                 ></i>
                               </span>
-                      {/* <button
-                        type="submit"
-                        className="button ms-1 btn-sm btn-danger  "
-                        onClick={() => clickSubmit(student._id, 4)}
-                      >
-                        <i className="fa fa-close" aria-hidden="true"></i>
-                      </button> */}
                       <span className="sm">
                                 <i
                                   className="ms-1 fa fa-trash text-danger border fa-lg " data-bs-toggle="tooltip" title="Reject"
@@ -317,9 +294,7 @@ const AdminDashboard = ({ history }) => {
                                 ></i>
                               </span>
                     </td>
-                  </tr>
-                 
-                 
+                  </tr>               
                 ))}
               </tbody>
               <tfoot></tfoot>
@@ -338,6 +313,7 @@ const AdminDashboard = ({ history }) => {
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Employee Request List
         </h1>
+        <div className="p-2">
         <div className="shadow tbl-header">
           <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
             <thead>
@@ -394,12 +370,12 @@ const AdminDashboard = ({ history }) => {
                                   onClick={() => clickSubmit(emp._id, 4)}
                                 ></i>
                               </span>
-                    
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
         </div>
       </>
     );
@@ -541,16 +517,7 @@ const AdminDashboard = ({ history }) => {
                     {/* <td className="th1">{guest.holderRoomNo}</td> */}
                     <td className="col-2 th1" colSpan={2}>
                       {" "}
-                      {/* <button
-                        type="submit"
-                        className="btn-sm btn-success "
-                        onClick={() =>
-                          changeGeustMealStatus(guest._id, guest.holderId, 1)
-                        }
-                      >
-                        <i className="fa fa-check" aria-hidden="true"></i>
-                      </button> */}
-                      
+                                           
                       <span className="sm">
                                 <i
                                   className="ms-1 fa fa-check text-success border fa-lg " data-bs-toggle="tooltip" title="Accept"
@@ -564,13 +531,6 @@ const AdminDashboard = ({ history }) => {
                                 ></i>
                               </span>
                       {" "}
-                      {/* <button
-                        type="submit"
-                        className="btn-sm btn-danger  "
-                        onClick={() => deleteGuest(guest._id, guest.holderId)}
-                      >
-                        <i className="fa fa-close" aria-hidden="true"></i>
-                      </button> */}
                      
                       <span className="sm">
                                 <i

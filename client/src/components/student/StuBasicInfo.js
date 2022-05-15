@@ -11,7 +11,7 @@ const BasicInfo = ({ history }) => {
   const basicInfo = () => {
     return (
       <div className=" pt-3 mt-3 pb-4 th ">
-        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
+        <h4 className="shadow card-head pt-2 pb-2 bg text-light text-center">
           BASIC DETAILS
         </h4>
         <ul className="con shadow p-2">
@@ -58,7 +58,7 @@ const BasicInfo = ({ history }) => {
   const eduInfo = () => {
     return (
       <div className=" pt-3 mt-3 pb-4 th ">
-        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
+        <h4 className="shadow card-head pt-2 pb-2 bg text-light text-center">
           EDUCATIONAL DETAILS
         </h4>
         <ul className="con shadow p-2">
@@ -90,7 +90,7 @@ const BasicInfo = ({ history }) => {
   const constactInfo = () => {
     return (
       <div className="pt-3  pb-4 th">
-        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
+        <h4 className="shadow card-head pt-2 pb-2 bg text-light text-center">
           CONTACT DETAILS
         </h4>
         <ul className="con shadow p-2">

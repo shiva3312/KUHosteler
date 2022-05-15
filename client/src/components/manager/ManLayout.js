@@ -21,29 +21,18 @@ const Layout = ({
     <div className="row shadow-sm m-1">
       <div className="col-10 bg-white  ">
     <label htmlFor="sidebar-toggle" className=" p-2 fa fa-bars fa-lg small1">
-   
     </label>
     </div>
-    
-  
     <div className="col-2 bg-white">
      <div>
        <img src="https://cdn.pixabay.com/photo/2017/09/28/11/10/the-university-2795163_960_720.jpg" className="imge img-thumbnail border-rounded" alt="" />
-
      </div>
     </div>
-  
     </div>
     </div>
-
-    
-   
-  
     <div className="sidebar drkgrn ">
-      
       <div className="sidebar-header ">
         <h2 className="brand text-white">
-          
           <span>KuHosteler</span>
         </h2>
         <label htmlFor="sidebar-toggle" className="fa fa-lg fa-bars"></label>
@@ -109,23 +98,16 @@ const Layout = ({
             )}
             </Link>
           </li>
-
-     
         </ul>
-      
       </div>
-    
     </div>
     <div className="sidebar1 ">
-      
       <div className="sidebar-header ">
         <h2 className="brand text-white">
-          
           <span>KuHosteler</span>
         </h2>
    <label htmlFor="sidebar-toggle" className="fa fa-lg fa-bars"></label>
       </div>
-
       <div className=" pt-5 sidebarmenu">
         <ul>
           <li className="side p-3">
@@ -195,11 +177,6 @@ const Layout = ({
     </div>
 
     <div className="main-content">
-  
-    
-      {/* <div className="pt-3 jumbotron"> */}
-        {/* <h1 className=" mb-0">{title}</h1> */}
-      {/* </div> */}
       <div className="">
         <div className={className}>{children}</div>
       </div>

@@ -97,7 +97,7 @@
 }
 .accordion-text li.showAnswer .question-arrow .question,
 .accordion-text li.showAnswer .question-arrow .arrow{
-  color: rgb(73, 16, 204);
+  /* color: rgb(73, 16, 204); */
 }
 .accordion-text li .line{
   display: block;

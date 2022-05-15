@@ -67,7 +67,7 @@ export default function Landing({ history }) {
                       : "none",
                 }}
               >
-                <Link className="nav-link fw-bold" to="/student/home">
+                <Link className="nav-link text-white" to="/student/home">
                   Home
                 </Link>
               </li>
@@ -82,7 +82,7 @@ export default function Landing({ history }) {
                   }
                 >
                   <button
-                    className="pt-1 pb-1 text-white btn btn-outline-light bg-dark fs-6"
+                    className=" btn btn-outline-light btn-sm mt-1"
                     type="submit"
                   >
                     Signout
@@ -93,7 +93,7 @@ export default function Landing({ history }) {
                 <li className="nav-item   pt-1">
                   <Link to="/auth/signin">
                     <button
-                      className="pt-1 pb-1 text-white btn btn-outline-light bg-dark   fs-6"
+                      className="btn btn-outline-light btn-sm mt-1"
                       type="submit"
                     >
                       Log In
@@ -171,59 +171,135 @@ export default function Landing({ history }) {
         <div className="col-4 ">
           <div className="card-body m-2 shadow">
             <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
-            <p className="card-text fw-bold fs-5 pb-1 ">PG-2</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <p className="card-text fw-bold fs-5 pb-1 ">PG Hall-1</p>
+            <p>Kalyani, Nadia, 741235 </p>
           </div>
         </div>
 
         <div className="col-4">
           <div className="card-body m-2 shadow">
             <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
-            <p className="card-text  pb-1 fs-5 fw-bold">PG-1</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <p className="card-text  pb-1 fs-5 fw-bold">Radhakrishnan Bhawan(BT MENS)</p>
+            <p>B-13, Central Park, Kalyani, 741235 </p>
           </div>
         </div>
         <div className="col-4">
           <div className="card-body m-2 shadow">
             <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
-            <p className="card-text  pb-1 fs-4 fw-bold ">LH-1</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <p className="card-text  pb-1 fs-5 fw-bold ">Jagadish Chandra Bhawan(Banyan Hall)</p>
+            <p>Kalyani, Nadia, 741235 </p>
           </div>
         </div>
 
       </div>
-      <div id="carouselExampleControls" class="host1 hostclr carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+      <div className="host row hostclr">
+        <div className="col-4 ">
+          <div className="card-body m-2 shadow">
+            <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
+            <p className="card-text fw-bold fs-5 pb-1 ">LH-1</p>
+            <p>Kalyani, Nadia, 741235 </p>
+          </div>
+        </div>
+
+        <div className="col-4">
+          <div className="card-body m-2 shadow">
+            <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
+            <p className="card-text  pb-1 fs-5 fw-bold">Meghnad Saha Bhawan(PG Hall-3)</p>
+            <p>Kalyani, Nadia, 741235 </p>
+          </div>
+        </div>
+        <div className="col-4">
+          <div className="card-body m-2 shadow">
+            <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
+            <p className="card-text  pb-1 fs-5 fw-bold ">Vivekananda Bhawan(PG Hall-2)</p>
+            <p>Kalyani, Nadia, 741235 </p>
+          </div>
+        </div>
+
+      </div>
+      <div id="carouselExampleControls" className="host1 hostclr carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
                 <img src="https://cdn.pixabay.com/photo/2017/09/28/11/10/the-university-2795163_960_720.jpg" className="card-img-top" alt="..." />
-                <p className="card-text  pb-1 fs-4 fw-bold">BT MENS</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                <p className="card-text  pb-1 fs-5 fw-bold">PG Hall-1</p>
+                <p>Kalyani, Nadia, 741235 </p>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
+          <div className="carousel-item">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
                 <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
-                <p className="card-text  pb-1 fs-4 fw-bold">PG-1</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                <p className="card-text  pb-1 fs-4 fw-bold">Radhakrishnan Bhawan(BT MENS)</p>
+                <p>B-13, Central Park, Kalyani, 741235</p>
               </div>
             </div>
+            
+          </div>
+          <div className="carousel-item">
+            <div className="col-lg-3 col-md-12 d-block w-100">
+              <div className="card-body hostelp shadow">
+                <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
+                <p className="card-text  pb-1 fs-4 fw-bold">Jagadish Chandra Bhawan(Banyan Hall)</p>
+                <p>Kalyani, Nadia, 741235</p>
+              </div>
+            </div>
+            
+          </div>
+          <div className="carousel-item">
+            <div className="col-lg-3 col-md-12 d-block w-100">
+              <div className="card-body hostelp shadow">
+                <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
+                <p className="card-text  pb-1 fs-4 fw-bold">LH-1</p>
+                <p>Kalyani, Nadia, 741235</p>
+              </div>
+            </div>
+            
+          </div>
+          <div className="carousel-item">
+            <div className="col-lg-3 col-md-12 d-block w-100">
+              <div className="card-body hostelp shadow">
+                <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
+                <p className="card-text  pb-1 fs-4 fw-bold">Meghnad Saha Bhawan(PG Hall-3)</p>
+                <p>Kalyani, Nadia, 741235</p>
+              </div>
+            </div>
+            
+          </div>
+          <div className="carousel-item">
+            <div className="col-lg-3 col-md-12 d-block w-100">
+              <div className="card-body hostelp shadow">
+                <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
+                <p className="card-text  pb-1 fs-4 fw-bold">Vivekananda Bhawan(PG Hall-2)</p>
+                <p>Kalyani, Nadia, 741235</p>
+              </div>
+            </div>
+            
+          </div>
+          <div className="carousel-item">
+            <div className="col-lg-3 col-md-12 d-block w-100">
+              <div className="card-body hostelp shadow">
+                <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
+                <p className="card-text  pb-1 fs-4 fw-bold">LH-2</p>
+                <p>Kalyani, Nadia, 741235</p>
+              </div>
+            </div>
+            
           </div>
 
 
 
 
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
         </button>
       </div>
       <Footer />

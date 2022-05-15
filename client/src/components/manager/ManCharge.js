@@ -94,12 +94,12 @@ const Charges = ({ history }) => {
                     
                     <button className="btn btn-primary" onClick={()=>setauditToggler(!auditToggler)}>Add Meal Charge</button>
                 </div> */}
-        <div className="pb-4 pt-3">
+        <div className="p-3">
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0">
               <thead>
                 <tr>
-                  <th>SL no.</th>
+                  <th className="col-1 ">SL no.</th>
                   <th>Date</th>
                   <th>Audit Amount</th>
                   <th>Border Meal</th>
@@ -155,8 +155,7 @@ const Charges = ({ history }) => {
             aria-controls="collapseExample"
           >
             Add Meal Charges
-            <i className="fa fa-caret-down p-1" aria-hidden="true"></i>
-          </button>
+         </button>
         </div>
       </p>
       <div className="collapse" id="collapseExample2">
@@ -191,13 +190,13 @@ const Charges = ({ history }) => {
           <div className="row">
             <div className="col">
               <button
-                className="bton pt-2 me-2 btn-lg  px-4"
+                className="bton pt-2 me-2  px-4"
                 type="submit"
                 onClick={clickSubmitAduditCharge}
               >
                 Add Charge
               </button>
-              <button
+              {/* <button
                 className="bton  btn-lg px-4 pt-2 "
                 type="submit"
                 onClick={(e) => {
@@ -206,7 +205,18 @@ const Charges = ({ history }) => {
                 }}
               >
                 Cancle
-              </button>
+              </button> */}
+              <button
+            className="bton  p-2 pt-2 shadow-sm"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample2"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            Cancel
+           
+          </button>
             </div>
           </div>
         </div>
@@ -215,20 +225,7 @@ const Charges = ({ history }) => {
       {/* <form style={{ display: auditToggler ? '' : 'none' }}>  */}
 
       {/* <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">Add Meal Charge</h4> */}
-      {/* <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="auditedDate">Month</label>
-              <input type="month" className="form-control" name="auditedDate" required="" onChange={handleAuditChange('auditedDate')} value={auditedDate} />        
-            </div> 
-            <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="auditAmount">Meal Charge</label>
-              <input type="Number" className="form-control" name="auditAmount" required="" onChange={handleAuditChange('auditAmount')} value={auditAmount} />        
-            </div>      
-            <div className="row">           
-                <div className="col">
-                  <button className="btn btn-outline-light btn-lg btn-success px-4" type="submit" onClick={clickSubmitAduditCharge} >Add Charge</button>
-                <button className="btn btn-outline-light btn-lg btn-danger ml-2 px-4" type="submit" onClick={(e)=>{e.preventDefault(); setauditToggler(!auditToggler)}} >Cancle</button>
-            </div>
-            </div>       */}
+      
 
       {/* </form> */}
     </>
@@ -241,6 +238,7 @@ const Charges = ({ history }) => {
       {/* <div className="text-end"> 
             <button className="btn btn-primary" onClick={()=>setguestToggler(!guestToggler)}>Update</button>
         </div> */}
+        <div className="p-2">
       <ul className="list-group m-2">
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Morning Charge
@@ -255,7 +253,7 @@ const Charges = ({ history }) => {
           <span className="badge rounded-pill">{grandCharge}</span>
         </li>
       </ul>
-
+      </div>
       {/* </div> */}
     </>
   );
@@ -277,8 +275,7 @@ const Charges = ({ history }) => {
             aria-controls="collapseExample"
           >
             Update charges
-            <i className="fa fa-caret-down p-1" aria-hidden="true"></i>
-          </button>
+         </button>
         </div>
       </p>
       <div className="collapse" id="collapseExample">
@@ -331,36 +328,30 @@ const Charges = ({ history }) => {
           <div className="row">
             <div className="col">
               <button
-                className="bton shadow pt-1 p-2 btn-lg "
-                type="submit"
+                className="bton shadow-sm pt-2 p-2 me-2 px-4"
                 onClick={clickSubmit}
               >
                 Update
               </button>
-            </div>
+              
+           
+            
+            <button
+            className="bton p-2 pt-2 shadow-sm"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            Close
+         </button>
+         </div>
           </div>{" "}
         </div>
       </div>
 
-      {/* <form style={{ display: guestToggler ? '' : 'none' }}> 
-        
-            <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="guestMorMealCharge">Guest Morning Charge</label>
-              <input type="Number" className="form-control" name="guestMorMealCharge" required="" onChange={handleChange('guestMorMealCharge')} value={guestMorMealCharge} />        
-            </div>
-            <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="guestNigMealCharge">Guest Night Charge</label>
-              <input type="Number" className="form-control" name="guestNigMealCharge" required="" onChange={handleChange('guestNigMealCharge')} value={guestNigMealCharge} />        
-            </div>
-            <div className="col form-outline text-start form-white mb-4">
-              <label  className="form-label text-white" htmlFor="grandCharge">Guest Grand Charge</label>
-              <input type="Number" className="form-control" name="grandCharge" required="" onChange={handleChange('grandCharge')} value={grandCharge} />        
-            </div>      
-           <div className="row">           
-                <div className="col">
-                  <button className="btn btn-outline-light btn-lg px-4" type="submit" onClick={clickSubmit} >Update</button>
-                </div>
-            </div>      
+      {/* <form style={{ display: guestToggler ? '' : 'none' }}>               
       
         </form> */}
     </>
@@ -381,9 +372,6 @@ const Charges = ({ history }) => {
           aria-label="Close"
         ></button>
       </div>
-      {/* <div className="alert alert-danger" style={{ display: error || amount.error ? '' : 'none' }}>
-            {error}
-        </div> */}
     </>
   );
 
@@ -416,9 +404,6 @@ const Charges = ({ history }) => {
           aria-label="Close"
         ></button>
       </div>
-      {/* <div className="alert alert-info" style={{ display: amount.success ? '' : 'none' }}>
-         Charge added Successfully
-        </div> */}
     </>
   );
 
@@ -447,7 +432,6 @@ const Charges = ({ history }) => {
           {auditedChargeMealList()}
         </div>
       </ManLayout>
-      {/* <Footer /> */}
     </>
   );
 };

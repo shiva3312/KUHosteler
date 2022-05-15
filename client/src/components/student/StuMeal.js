@@ -86,7 +86,7 @@ const MealAcitvity = ({ history }) => {
         </h1>
         <h3 className="mt-4">Meal activity</h3>
 
-        <section className="shadow">
+        <section className="p-1">
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
               <thead>

@@ -67,7 +67,7 @@ export default function Faq({ history }) {
                       : "none",
                 }}
               >
-                <Link className="nav-link fw-bold" to="/manager/dashboard">
+                <Link className="nav-link text-white" to="/manager/dashboard">
                   Dashboard
                 </Link>
               </li>
@@ -81,7 +81,7 @@ export default function Faq({ history }) {
                       : "none",
                 }}
               >
-                <Link className="nav-link fw-bold" to="/student/home">
+                <Link className="nav-link text-white" to="/student/home">
                   Home
                 </Link>
               </li>
@@ -96,7 +96,7 @@ export default function Faq({ history }) {
                   }
                 >
                   <button
-                    className="pt-1 pb-1 text-white btn btn-outline-light bg-dark fs-6"
+                    className="btn btn-outline-light btn-sm mt-1"
                     type="submit"
                   >
                     Signout
@@ -107,7 +107,7 @@ export default function Faq({ history }) {
                 <li className="nav-item   pt-1">
                   <Link to="/auth/signin">
                     <button
-                      className="pt-1 pb-1 text-white btn btn-outline-light bg-dark   fs-6"
+                      className="btn btn-outline-light btn-sm mt-1"
                       type="submit"
                     >
                       Log In
@@ -130,18 +130,17 @@ export default function Faq({ history }) {
             <ul class="faq-text">
               <li>
                 <div class="question-arrow">
-                  <span class="question"> How to open a account?</span>
+                  <span class="question "> How to open a account?</span>
                   <i class="bx bxs-chevron-down arrow"></i>
                 </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Nostrum, doloribus.
+                <p className="text-start">
+                 Go to Hostel Portal and click on Login Button. After that if You are a new user then click on Sign up button and fill the registration form accordingly.Once the form fill up has been completed, click on submit button. Your request for opening A new account has been sent to Manager. Your account will be activated only after manager approves the request.
                 </p>
                 <span class="line"></span>
               </li>
               <li>
                 <div class="question-arrow">
-                  <span class="question"> How to add guest?</span>
+                  <span class="question"> How to add and delete guest?</span>
                   <i class="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
@@ -164,21 +163,20 @@ export default function Faq({ history }) {
               </li>
               <li>
                 <div class="question-arrow">
-                  <span class="question">
+                  <span class="question text-start">
                     What is the next step after sending request for account
                     opening?
                   </span>
                   <i class="bx bxs-chevron-down arrow"></i>
                 </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Rerum, labore.
+                <p >
+                 After sending request you have to wait untill manager of your hostel approved request. Once approved your account will be activated.
                 </p>
                 <span class="line"></span>
               </li>
               <li>
                 <div class="question-arrow">
-                  <span class="question">
+                  <span class="question text-start">
                     What happen if my account opening request will be rejected?
                   </span>
                   <i class="bx bxs-chevron-down arrow"></i>

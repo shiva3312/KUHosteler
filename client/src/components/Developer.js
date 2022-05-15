@@ -118,12 +118,11 @@ export default function Developer({ history }) {
             <div class="image">
               <img src={jukta} />
             </div>
-            <div class="name_job">JUKTA</div>
-            <div class="name_job">Fornt End Developer</div>
+            <div class="name_job">JUKTA MAITRA</div>
+            <div class="name_job">Student of DETS, Kalyani University(Batch 2018-2022)</div>
             <p>
               {" "}
-              Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit.
-              Ratione disuja doloremque reiciendi nemo.
+             Worked on front end part of this website.
             </p>
             <div class="media-icons">
               <a href="#">

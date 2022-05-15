@@ -48,6 +48,7 @@ const EmployeeListInfo = ({ history }) => {
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Employee Request List
         </h1>
+        <div className="p-2">
         <div className="shadow tbl-header">
           <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
             <thead>
@@ -113,6 +114,7 @@ const EmployeeListInfo = ({ history }) => {
               ))}
             </tbody>
           </table>
+        </div>
         </div>
       </>
     );
