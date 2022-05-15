@@ -77,7 +77,7 @@ export default function ReportBug({ history }) {
         </div>
       </nav>
       <center>
-        <div class="contain">
+        <div class="conta">
           <div class="content">
             <div class="image-box">
               <img src={email} alt="" />
