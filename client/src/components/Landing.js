@@ -121,7 +121,7 @@ export default function Landing({ history }) {
               <div className="content">
                 <h2 className="fs-1 text-uppercase " >Welcome!</h2>
                 <h2> <i className="icon1 fa fa-university pt-2  fs-1"></i></h2>
-                <p className="pt-2 fw-light ">To The Kalyani University Hostel Portal
+                <p className="pt-2 fw-light ">To The Kalyani University Hostel Portal. <br/> <span className="fs-6 dialogue">To The Kalyani University Hostel Portal</span>
                 </p>
 
               </div>
