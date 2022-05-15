@@ -3,6 +3,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import Faq from "./components/Faq";
+import OurVision from "./components/OurVision";
+import MealTable from "./components/MealTable";
+import SuggestFeature from "./components/SuggestFeature";
 import HelpDesk from "./components/HelpDesk";
 import ReportBug from "./components/ReportBug";
 import Developer from "./components/Developer";
@@ -45,9 +48,13 @@ const Routes = () => {
         <Route path="/auth/signup" exact component={Signup} />
         <Route path="/user/info" exact component={InfoPage} />
         <Route path="/user/Faq" exact component={Faq} />
+        <Route path="/user/AboutHostel" exact component={AboutHostel} />
         <Route path="/user/HelpDesk" exact component={HelpDesk} />
         <Route path="/user/ReportBug" exact component={ReportBug} />
         <Route path="/user/Developer" exact component={Developer} />
+        <Route path="/user/MealTable" exact component={MealTable} />
+        <Route path="/user/OurVision" exact component={OurVision} />
+        <Route path="/user/SuggestFeature" exact component={SuggestFeature} />
         <Route
           path="/user/forgotpassword/:userId/:token"
           exact

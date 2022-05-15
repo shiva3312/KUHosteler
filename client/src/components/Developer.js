@@ -79,8 +79,8 @@ export default function Developer({ history }) {
           </div>
         </div>
       </nav>
-      <center>
-        <div class="container">
+      <center class="bgch">
+        <div class="cont">
           <div class="box">
             <div class="image">
               <img src={shivam} />

@@ -36,8 +36,8 @@ export default function Footer() {
               </h5>
               <ul className="heading card-text">
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    About Us
+                  <Link to="/user/AboutHostel" className="text-white text-decoration-none">
+                    About Hostel
                   </Link>{" "}
                 </li>
                 <li>
@@ -45,12 +45,12 @@ export default function Footer() {
                     to="/user/Developer"
                     className="text-white text-decoration-none"
                   >
-                    Contact Us
+                    Our Developer
                   </Link>{" "}
                 </li>
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    Support Us
+                  <Link to="/user/OurVision" className="text-white text-decoration-none">
+                    OurVision
                   </Link>{" "}
                 </li>
               </ul>
@@ -61,7 +61,7 @@ export default function Footer() {
               </h5>
               <ul className="heading card-text">
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
+                  <Link to="/user/SuggestFeature" className="text-white text-decoration-none">
                     Suggest Feature
                   </Link>{" "}
                 </li>
@@ -90,16 +90,16 @@ export default function Footer() {
               </h5>
               <ul className="heading  card-text">
                 <li>
-                  <Link to="" className="text-white text-decoration-none">
-                    About App
-                  </Link>{" "}
-                </li>
-                <li>
                   <Link
                     to="/user/HelpDesk"
                     className="text-white text-decoration-none"
                   >
                     Help Desk
+                  </Link>{" "}
+                </li>
+                <li>
+                  <Link to="/user/MealTable" className="text-white text-decoration-none">
+                    MealTable
                   </Link>{" "}
                 </li>
               </ul>
