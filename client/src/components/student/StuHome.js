@@ -38,7 +38,7 @@ const UserDashboard = ({ history }) => {
     return (
       <>
         <div className=" pb-3 pt-3 mt-3 mb-4 th">
-          <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
+          <h4 className="shadow card-head pt-2 pb-2 bg text-light text-center">
             PIE CHART
           </h4>
           <Pie
@@ -89,7 +89,7 @@ const UserDashboard = ({ history }) => {
   const userInfo = () => {
     return (
       <div className=" pb-5 pt-3 mt-3 ms-auto th">
-        <h4 className="shadow card-head pt-2 pb-2 mb-3 gradiant text-light text-center">
+        <h4 className="shadow card-head pt-2 pb-2 mb-3 bg text-light text-center">
           USER INFORMATION
         </h4>
         <ul className="con shadow p-2 ">

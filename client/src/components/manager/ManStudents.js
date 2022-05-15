@@ -201,11 +201,12 @@ const StudentListInfo = ({ history }) => {
     return (
       <>
         <h1 className="m-4">Student Request List</h1>
+        <div className="p-2">
         <div className="shadow tbl-header">
           <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
             <thead>
               <tr>
-                <th>SL</th>
+                <th className="th1 col-1 sl">SL</th>
                 <th>Picture</th>
                 <th>Name</th>
                 {/* <th>Room No.</th> */}
@@ -222,7 +223,7 @@ const StudentListInfo = ({ history }) => {
               {students.map((student, i) => (
                 <>
                   <tr key={i}>
-                    <td>{i + 1}</td>
+                    <td className="col-1 th1 sl">{i + 1}</td>
                     <td>
                       <ShowImage
                         user={student}
@@ -639,6 +640,7 @@ const StudentListInfo = ({ history }) => {
               ))}
             </tbody>
           </table>
+        </div>
         </div>
       </>
     );
