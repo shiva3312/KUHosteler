@@ -479,10 +479,10 @@ color: #17c0eb
     padding: 15px;
 } 
 
- table td {
+ /* table td {
     border: 1px solid #00000017; 
      padding: 10px 15px;
-} 
+}  */
  table>tbody>tr>td>img {
     display: inline-block;
     width: 60px;
@@ -490,7 +490,8 @@ color: #17c0eb
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid #fff;
-    box-shadow: 0 2px 6px #0003;
+    
+    box-shadow: 0 10px 10px rgba(122, 16, 16, 0.2);
 } 
  /*[data-toggle="toggle"]{
 	display: none;
@@ -520,15 +521,15 @@ color: #17c0eb
 .action_btn>a:hover {
     box-shadow: 0 3px 8px #0003;
 }*/
-table>tbody>tr {
+/* table>tbody>tr {
     background-color: rgb(177, 249, 249);
     transition: 0.3s ease-in-out;
 }
 table>tbody>tr:nth-child(even) {
     background-color: rgba(147, 222, 243, 0.902);
-}
+} */
 table>tbody>tr:hover{
-    filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.133));
+    filter: drop-shadow(0px 2px 6px rgba(15, 68, 82, 0.424));
 } 
 
 /* about hostel */

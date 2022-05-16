@@ -190,7 +190,9 @@ h1{
     table-layout: fixed; 
   }
  .border{
-     border-bottom-left-radius: 20px;
+     border-radius:50%;
+     background-color: #a9e5ea;
+     padding:5px;
  }
  
  
@@ -316,11 +318,7 @@ h1{
     font-weight: 500;
     background:linear-gradient(#91ced2,#469aa1);
 }
-.fa-check, .fa-user, .fa-close:hover{
-    cursor:pointer;
-    background-color: #8ac3c7;
-    
-}
+
 .fa-user:hover{
     cursor:pointer;
     background-color: #8ac3c7;
@@ -330,6 +328,10 @@ h1{
     cursor:pointer;
     background-color: #8ac3c7;
     
+}
+.fa-trash:hover{
+    cursor:pointer;
+    background-color: #8ac3c7;
 }
 .fa-check:hover{
     cursor:pointer;

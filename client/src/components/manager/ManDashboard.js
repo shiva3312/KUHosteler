@@ -259,7 +259,7 @@ const AdminDashboard = ({ history }) => {
                       {" "}
                       <span className="sm">
                                 <i
-                                  className="fa fa-check text-success border fa-lg pe-2 ps-2" data-bs-toggle="tooltip" title="Accept"
+                                  className="fa fa-check text-success border fa-lg pe-1 ps-1" data-bs-toggle="tooltip" title="Accept"
                                   onClick={() =>clickSubmit(student._id, 2)}
                                 ></i>
                               </span>
@@ -520,7 +520,7 @@ const AdminDashboard = ({ history }) => {
                                            
                       <span className="sm">
                                 <i
-                                  className="ms-1 fa fa-check text-success border fa-lg " data-bs-toggle="tooltip" title="Accept"
+                                  className=" fa fa-check text-success border fa-lg " data-bs-toggle="tooltip" title="Accept"
                                   onClick={() => changeGeustMealStatus(guest._id, guest.holderId, 1)}
                                 ></i>
                               </span>
