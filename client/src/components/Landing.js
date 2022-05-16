@@ -27,7 +27,7 @@ export default function Landing({ history }) {
             className=" collapse navbar-collapse ps-2"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav ms-auto ">
+            <ul className="navbar-nav text-start ms-auto ">
               <li className="nav-item ">
                 <Link className="nav-link text-white " to="#">
                   About

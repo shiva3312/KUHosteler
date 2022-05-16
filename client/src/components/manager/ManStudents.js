@@ -219,10 +219,10 @@ const StudentListInfo = ({ history }) => {
         </div>
         <div className="shadow tbl-content">
           <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
-            <tbody>
+           
               {students.map((student, i) => (
                 <>
-                  <tr key={i}>
+                  <thead key={i}>
                     <td className="col-1 th1 sl">{i + 1}</td>
                     <td>
                       <ShowImage
@@ -513,7 +513,7 @@ const StudentListInfo = ({ history }) => {
                     </td>
 
                     {/* All action will be shown here  */}
-                  </tr>
+                  </thead>
                   <tr
                     className="collapse"
                     id="collapseExample"
@@ -638,7 +638,7 @@ const StudentListInfo = ({ history }) => {
                   </tr>
                 </>
               ))}
-            </tbody>
+          
           </table>
         </div>
         </div>

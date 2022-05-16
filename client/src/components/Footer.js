@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="footer ">
-        <div className="bg-dark card">
+        <div className="bg-dark card mb-0">
           <div className="row ">
             <div className="col-md-4 col-sm-4 col-xs-4 ">
               <div className="footer-text pull-left">
@@ -20,7 +20,7 @@ export default function Footer() {
                   {" "}
                   <i className="fa fa-facebook-official fa-lg"></i>{" "}
                   <i className="fa fa-instagram fa-lg"></i>{" "}
-                   <i className="fa fa-facebook"></i>{" "}
+                   <i className="fa fa-youtube fa-lg"></i>{" "}
                 </div>
               </div>
             </div>
