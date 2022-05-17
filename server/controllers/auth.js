@@ -12,6 +12,7 @@ const Admin = require('../models/admin');
 const nodemailer = require("nodemailer");
 const {google} = require("googleapis");
 const JWT_SECRET = "some super serect";
+const sharp = require('sharp');
 
 
 
@@ -158,7 +159,7 @@ exports.signin = (req, res) => {
                 error: 'Email and password dont match'
             });
         }
-        
+        ``
         // generate a signed token with user id and secret
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRETE);
         // persist the token as 't' in cookie with expiry date
@@ -245,56 +246,60 @@ exports.getAllHostedUnHostedHostel=(req, res)=>{
       }
     })
   }
-  
-exports.uploadPic = (req, res) => {
-    // requested userId can be found using  ...  req.profile._id
-    const userId = req.profile._id;
+ 
+exports.uploadPic =  (req, res) => {
+  // requested userId can be found using  ...  req.profile._id
+  const userId = req.profile._id; 
 
+  // write code to set image data..`
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
+  form.parse(req, (err, fields, files) => {
+      if (err) {
+          return res.status(400).json({
+              error: 'Image could not be uploaded'
+          });
+      }
     
-    // write code to set image data..`
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, (err, fields, files) => {
-        if (err) {
-            return res.status(400).json({
-                error: 'Image could not be uploaded'
-            });
-        }
-      
+     
+    if(files.image == undefined){
+      return res.json({error: "Please upload an image"})
+    }
 
-        // 1kb = 1000
-        // 1mb = 1000000
-      if (files.image) {
-            // console.log("FILES image: ", files.image);
-            if (files.image.size > 1000000) {
-                return res.status(400).json({
-                    error: 'Image should be less than 1mb in size'
-                });
-            }
+      // 1kb = 1000
+      // 1mb = 1000000
+    if (files.image) {
 
-            console.log("data file here",fs.readFileSync(files.image.path));
-            console.log("content type here ",files.image.type);
+      // if image size is greater than 1mb then image can't be uploaded
+          // console.log("FILES image: ", files.image);
+          // if (files.image.size > 1000000) {
+          //     return res.status(400).json({
+          //         error: 'Image should be less than 1mb in size'
+          //     });
+          // }
+          
+      // compressing the image data
+      sharp(files.image.path)
+      .resize(200)
+      .toBuffer()
+      .then( data => {          
 
-            const newImg = {
-                data :fs.readFileSync(files.image.path),
-                contentType: files.image.type
-            }
-
-            User.findOneAndUpdate({_id : userId } , {$set:{
-                "image.data" : fs.readFileSync(files.image.path),
-                "image.contentType": files.image.type
-            }},(err , result)=>{
-                if(err){
-                    console.log(err);
-                }else {
-                    return res.status(300).json({
-                        info: 'successfully saved'
-                       });
-                }
-            });
-           
-        }
-    });  
+        User.findOneAndUpdate({_id : userId } , {$set:{
+          "image.data" : data,
+          "image.contentType": files.image.type
+      }},(err , result)=>{
+          if(err){
+              console.log(err);
+          }else {
+              return res.status(300).json({
+                  info: 'successfully saved'
+                 });
+          }
+      });
+      })
+      .catch( err => { console.log("something went wrong") });
+}
+  });  
 };
 
 exports.resetPassword = (req,res,next) => {

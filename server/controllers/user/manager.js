@@ -36,62 +36,58 @@ exports.read = (req, res) => {
 };
 
 exports.allstudents = (req, res) => {
-  User.find(
-    { hostelName: req.profile.hostelName, profileType: 0 },
-    (err, users) => {
+  User.find({ hostelName: req.profile.hostelName, profileType: 0 })
+    .select("fname lname membership department messStatus hostelId active_guest_list")
+    .exec((err, users) => {
       if (err || !users) {
         return res.json({ error: "Somthing went wrong" });
       } else {
-        return res.json({ students: users });
+        res.json({ students: users });
       }
-      1;
-    }
-  );
+    });
 };
 
 exports.allemployee = (req, res) => {
-  User.find(
-    { hostelName: req.profile.hostelName, profileType: 2 },
-    (err, users) => {
+  User.find({ hostelName: req.profile.hostelName, profileType: 2 })
+    .select("fname lname membership salary ")
+    .exec((err, users) => {
       if (err || !users) {
         return res.json({ error: "Somthing went wrong" });
       } else {
-        return res.json({ users: users });
+        console.log(users);
+        res.json({ users: users });
       }
-    }
-  );
+    });
 };
 
 exports.allReqList = (req, res) => {
-  User.find(
-    {
-      hostelName: req.profile.hostelName,
-      profileType: 0,
-      $or: [{ membership: 0 }, { membership: 5 }],
-    },
-    (err, students) => {
+  User.find({
+    hostelName: req.profile.hostelName,
+    profileType: 0,
+    $or: [{ membership: 0 }, { membership: 5 }],
+  })
+    .select("fname lname membership department gender")
+    .exec((err, students) => {
       if (err || !students) {
         return res.json({ error: "Somthing went wrong with students List" });
       } else {
-        User.find(
-          {
-            hostelName: req.profile.hostelName,
-            profileType: 2,
-            $or: [{ membership: 0 }, { membership: 5 }],
-          },
-          (err, employees) => {
+        User.find({
+          hostelName: req.profile.hostelName,
+          profileType: 2,
+          $or: [{ membership: 0 }, { membership: 5 }],
+        })
+          .select("fname lname membership gender")
+          .exec((err, employees) => {
             if (err || !employees) {
               return res.json({
                 error: "Somthing went wrong with employee list",
               });
             } else {
-              return res.json({ employees, students });
+               res.json({ employees, students });
             }
-          }
-        );
+          });
       }
-    }
-  );
+    });
 };
 
 exports.studpayRecord = (req, res) => {

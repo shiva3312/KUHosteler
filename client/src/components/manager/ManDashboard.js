@@ -53,7 +53,7 @@ const AdminDashboard = ({ history }) => {
 
     user.mealInfoList.forEach((rec) => {
       perheadCharge.push(rec.perheadCharge);
-      months.push(rec.auditedDate);
+      months.push(rec.auditedDate.slice(4,7) + " " + rec.auditedDate.slice(-4));
       totalFine.push(rec.totalFine);
       totalMeal.push(rec.totalMeal);
       totalGuest.push(rec.mealCountList.guestMor + rec.mealCountList.guestNig);
