@@ -167,7 +167,7 @@ export default function Landing({ history }) {
       <h1 className="fw-bold hostclr">Our Hostels</h1>
 
 
-      <div className="host row hostclr">
+      <div className="host row m-1 hostclr"data-aos="fade-up" data-aos-delay="200">
         <div className="col-4 ">
           <div className="card-body m-2 shadow">
             <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
@@ -192,7 +192,7 @@ export default function Landing({ history }) {
         </div>
 
       </div>
-      <div className="host row hostclr">
+      <div className="host row m-1 hostclr">
         <div className="col-4 ">
           <div className="card-body m-2 shadow">
             <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
@@ -302,6 +302,37 @@ export default function Landing({ history }) {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+      <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+   
+      <div class="container shadow">
+
+<div class="row">
+  <div class="col-lg-6 video-box">
+    <img src="assets/img/why-us.jpg" class="img-fluid" alt=""/>
+    <Link to="https://youtu.be/3VtmBLFlvGg" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></Link>
+  </div>
+
+  <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+
+    <div class="icon-box">
+      <div class="icon"><i class="fa fa-building"></i></div>
+      <h4 class="title"><Link to="">59th Hall Day & Reunion</Link></h4>
+      <p class="description">Each year a reunion or hall day is celebrated at the hostel.</p>
+    </div>
+
+    <div class="icon-box">
+      <div class="icon"><i class="fa fa-gift"></i></div>
+      <h4 class="title"><Link to="">Youtube Page</Link></h4>
+      <p class="description">Our youtube page has got a virtual campus view for you to experience our hostel virtually.</p>
+    </div>
+
+  </div>
+  
+</div>
+
+
+</div>
+</section>
       <Footer />
     </div>
   );
