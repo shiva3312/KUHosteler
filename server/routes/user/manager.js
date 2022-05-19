@@ -84,7 +84,7 @@ router.put("/setCharges/:userId" ,setCharges);
 router.put("/addAuditCharges/:userId" ,addAuditCharges);
 router.put("/addFineOrDepositMoney/:userId" ,addFineOrDepositMoney);
 router.put("/setboundtime/:userId" ,setboundtime)
-router.put("/setstudetnHostelId/:stuId/:userId",setstudetnHostelId);
+router.put("/setstudetnHostelId/:userId",setstudetnHostelId);
 router.put("/setting/theme/:userId",theme);
 
 

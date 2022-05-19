@@ -429,25 +429,19 @@ exports.fchangeMealStatus = (req, res) => {
   });
 };
 
-exports.setstudetnHostelId = (req, res) => {
-  User.findOne({ _id: req.body._id }, (err, user) => {
-    if (err || !user) {
-      return res.json({
-        error: "Something went wrong",
-      });
-    } else {
-      user.hostelId = req.body.hostelId;
-      user.save((err, result) => {
-        if (err) return res.json({ error: err });
-        else {
-          return res.json({
-            status: "Meal Button Disabled sucessfully",
-            info: result.messStatus,
-          });
-        }
-      });
-    }
-  });
+exports.setstudetnHostelId = (req, res)=> {
+  const userId = req.body.stuId;
+  const hostelId = req.body.hostelId;
+  User.findOneAndUpdate({ _id: userId,},{ $set: { "hostelId": hostelId } }, function (err, result){
+      if (err) {
+        return res.json({ error: err });
+      } else {
+
+        return res.json({
+         info : "Hostel id updated successfully"
+        });
+      }
+    });
 };
 
 exports.updateMembershipStatus = (req, res) => {

@@ -369,15 +369,15 @@ export const setboundtime = (userId, token, status) => {
     .catch((err) => console.log(err));
 };
 
-export const setstudetnHostelId = (userId, token, stuId, status) => {
-  return fetch(`${API}/manager/setstudetnHostelId/${stuId}/${userId}`, {
+export const setstudetnHostelId = (userId, stuId, hostelId, token) => {
+  return fetch(`${API}/manager/setstudetnHostelId/${userId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ status }),
+    body: JSON.stringify({ stuId , hostelId }),
   })
     .then((response) => {
       return response.json();

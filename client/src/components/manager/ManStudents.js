@@ -8,6 +8,7 @@ import {
   updateMembershipStatus,
   fchangeMealStatus,
   addFineOrDepositMoney,
+  setstudetnHostelId,
 } from "./ManApi";
 
 const StudentListInfo = ({ history }) => {
@@ -25,20 +26,30 @@ const StudentListInfo = ({ history }) => {
   const [selectedUser, setselectedUser] = useState(null);
   const [toggler, setToggler] = useState(false);
   const [reRender, setReRender] = useState(false);
-
+  
   const { fine, deposit, reason, error, success } = values;
-
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
 
-  const viewDetails =(stuId)=>{   
+  // call setHostelId function to set hostelId to any user
+  const setHostelId  = (stuId, hostelId) =>{
+    setstudetnHostelId(user._id , stuId , hostelId, token).then((data)=>{      
+      if(data.error){
+        setValues({...values , error: "Hostel Id did not updated"});
+      }else {
+        console.log(data.info);
+        setValues({...values , success:"Successfully updated"});
+      }
+    });
+  }
+
+  // ftech data of givent stuId and set the records into selectedUser
+  const viewDetails =(stuId)=>{
     getStudentprofile(stuId ,user._id, token ).then((data)=>{
       if(data.error){    
         setValues({ ...values, error:true });
-      }else{
-        setselectedUser(data);
-            }
+      }else{ setselectedUser(data); }
     });
   }
 
@@ -275,6 +286,7 @@ const StudentListInfo = ({ history }) => {
                         aria-expanded="false"
                         aria-controls="collapseExample"
                         onClick={(e) => {
+                          
                         }}
                       >
                         Take Action
@@ -661,7 +673,7 @@ const StudentListInfo = ({ history }) => {
         className="container-fluid pb-5"
         history={history}
       >
-        <div>        
+        <div>  
           {showError()}
           {showSuccess()}
           {chargeForm()}
