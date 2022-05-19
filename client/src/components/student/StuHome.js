@@ -38,9 +38,10 @@ const UserDashboard = ({ history }) => {
     return (
       <>
         <div className=" pb-3 pt-3 mt-3 mb-4 th">
-          <h4 className="shadow card-head pt-2 pb-2 bg text-light text-center">
+          <h4 className="shadow-sm card-head pt-2 pb-2 bg text-light text-center">
             PIE CHART
           </h4>
+          <div className="con shadow">
           <Pie
             data={{
               labels: ["OFF", "M/N", "M", "N"],
@@ -82,6 +83,7 @@ const UserDashboard = ({ history }) => {
             // }}
           />
         </div>
+        </div>
       </>
     );
   };
@@ -89,111 +91,74 @@ const UserDashboard = ({ history }) => {
   const userInfo = () => {
     return (
       <div className=" pb-5 pt-3 mt-3 ms-auto th">
-        <h4 className="shadow card-head pt-2 pb-2 mb-3 bg text-light text-center">
+        <h4 className="shadow-sm card-head pt-2 pb-2 mb-3 bg text-light text-center">
           USER INFORMATION
         </h4>
         <ul className="con shadow p-2 ">
-          <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-4 ps-0 pe-0">Name</div>
             <div className="col-8 ps-0 pe-0">
               : {studData.fname} {user.lname}
             </div>
           </li>
-          {studData.messStatus == 0 || studData.messStatus == 1 ? (
-            <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3 ">
+          {studData.messStatus === 0 || studData.messStatus === 1 ? (
+            <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3 ">
               <div className="col-4 ps-0 pe-0">Meal Status</div>
               <div className="col-8 ps-0 pe-0">
-                {" "}
                 :<span className="fw-bold text-secondary"> DISABLE</span>
               </div>
             </li>
-          ) : studData.messStatus == 2 ? (
-            <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3 ">
+          ) : studData.messStatus === 2 ? (
+            <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3 ">
               <div className="col-4 ps-0 pe-0">Meal Status</div>
               <div className="col-8 ps-0 pe-0">
                 : <span className="fw-bold text-success"> ON</span>
               </div>
             </li>
           ) : (
-            <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3 ">
+            <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3 ">
               <div className="col-4 ps-0 pe-0">Meal Status</div>
               <div className="col-8 ps-0 pe-0">
                 : <span className="fw-bold text-danger"> OFF</span>
               </div>
             </li>
           )}
-          {/* <li className="dt ps-3 list-group text-white p-2 shadow ms-5 me-5 m-3">
-                      {studData.profileType === 1 ? "Admin" : "Registered User"}
-                  </li> */}
-          <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-4 ps-0 pe-0">User Id</div>
             <div className="col-8 ps-0 pe-0">: {studData.email}</div>
           </li>
-          <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-4 ps-0 pe-0">Room No</div>
             <div className="col-8 ps-0 pe-0">: {user.roomNo}</div>
           </li>
-          <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-4 ps-0 pe-0">Hostel Id</div>
             <div className="col-8 ps-0 pe-0">: {user.hostelId}</div>
           </li>
-          <li className="dt ps-2 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-4 ps-0 pe-0">Bio</div>
             <div className="col-8 ps-0 pe-0">
               : r adipisicing elit. Numquam que, non?
             </div>
           </li>
         </ul>
-      </div>
-
-      //         <table >
-      //   <tr>
-      //     <th>Name:</th>
-      //     <td>{studData.fname} {user.lname}</td>
-      //   </tr>
-      //   <tr>
-      //     <th>Meal Status:</th>
-      //     {
-      //                      studData.messStatus == 0 || studData.messStatus==1 ? <td text-danger>Disable</td>:
-      //                        studData.messStatus == 2 ?  <td className="list-group-item text-success">ON</td> : <td className="list-group-item text-danager">OFF</td>
-      //              }
-      //   </tr>
-      //   <tr>
-      //   <th>Email:</th>
-      //   <td>{studData.email}</td>
-      //   </tr>
-      //   <tr>
-      //   <th>ProfileType:</th>
-      //   <td>{studData.profileType === 1 ? "Admin" : "Registered User"} </td>
-      //   </tr>
-      // </table>
+      </div>    
     );
   };
 
   return (
     <>
       <StuLayout history={history}>
-        {/* show your content in this div */}
-
-        <div className="row rowstu ">
-          {/* <div className="wrapper"> */}
-          <div className="col-md-6 ">
-            {" "}
+     <div className="row rowstu ">
+        <div className="col-md-6 text-box fadeUp animate">
             {userInfo()}
-            {/* <div  className="col mb-0">{userInfo()}</div> */}
-          </div>
+         </div>
           <div className="col-md-1 ">
-           
-          </div>
-          {/* <div class="middle"></div>     */}
-          {/* if i remove middle then it looks like parallel */}
-          <div className="col-md-5 ">
-            {" "}
+         </div>
+         <div className="col-md-5 text-box fadeUp animate">
             {showPieChart()}
-            {/* <div  className="col mb-0">{showPieChart()}</div> */}
-          </div>
+         </div>
         </div>
-        {/* </div> */}
       </StuLayout>
       <Footer />
     </>

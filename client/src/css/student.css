@@ -53,6 +53,13 @@ body {
 .bg{
     background: hsl(184, 73%, 35%);
 }
+
+@media (max-width:571px)
+{
+.bg{
+    font-size: 16px;
+}
+}
 .text{
     
     background-image:linear-gradient(to right,#388087,#6FB3B8);
@@ -120,8 +127,10 @@ body {
         width:100%;
     }
     .social>i {
-        padding: 1%;
-        font-size: 15px
+        padding: 2%;
+        margin: 1px;
+        font-size: 16px
+       
     }
     .social>i:hover {
        
@@ -225,11 +234,11 @@ h1{
     padding: 6px 6px;
     text-align: center;
     vertical-align:middle;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 15px;
     background-color: #fff;
     color: grey;
-    border-bottom: solid 1px rgb(171, 168, 168);
+    border-bottom: solid 1px rgb(171, 168, 168,0.2);
   }
   .status{
     margin:50px;
@@ -246,17 +255,18 @@ h1{
 }
   @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
   @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap);
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap);
   body{
     /* background: linear-gradient(#6FB3B8,#C2EDCE); */
     /* background: linear-gradient(to right, rgb(96, 36, 235),rgb(156, 10, 156)); */
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Open+Sans','Roboto', sans-serif;
   }
   section{
     margin: 50px;
     margin-bottom: 70px;
     margin-top: 10px;
   }
-  @media (max-width: 590px) {
+  @media (max-width: 625px) {
       section{
           margin:15px;
           margin-bottom: 50px;
@@ -267,8 +277,8 @@ h1{
         padding:8px 8px;
     }
     td{
-        font-size: 11px;
-        padding:0px 6px ;
+        font-size: 12px;
+        padding:3px 6px ;
         
     }
     h1{
@@ -304,6 +314,7 @@ h1{
 
 .con{
     background-color: #F6F6F2;
+    font-size:15px;
 }
 @media (max-width:591px)
 {
@@ -367,9 +378,9 @@ h1{
    
  } 
 
-.row{
+/* .row{
     border-radius: 12px;
-}
+} */
 /*button css*/
 
 .bton{
@@ -451,4 +462,17 @@ h1{
 .check:hover{
    color: #6FB3B8;
     
+}
+.pd{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+@media (max-width:1024px)
+{
+    .pd{
+        padding-left:10px ;
+        padding-right: 10px;
+        
+
+    }
 }

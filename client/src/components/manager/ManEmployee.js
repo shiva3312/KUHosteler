@@ -43,7 +43,7 @@ const EmployeeListInfo = ({ history }) => {
 
   const emploeyeeList = () => {
     return (
-      <>
+      <div className="text-box fadeUp animate">
         <h1 className="p-2 text-start border-bottom">
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Employee Request List
@@ -116,7 +116,7 @@ const EmployeeListInfo = ({ history }) => {
           </table>
         </div>
         </div>
-      </>
+      </div>
     );
   };
 

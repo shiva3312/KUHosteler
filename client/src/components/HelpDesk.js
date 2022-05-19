@@ -20,12 +20,12 @@ export default function ReportBug({ history }) {
   // }, []);
   return (
     <>
-      <nav className=" navbar navbar-expand-lg p-2 navbar-light bg-white ">
+       <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
         <div className="container-fluid">
-          <h3 className="ps-5 fs-1 text fw-bold">KuHosteler</h3>
+          <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
 
           <button
-            className="navbar-toggler"
+            className=" navbar-toggler drkgrn"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -33,32 +33,61 @@ export default function ReportBug({ history }) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon drkgrn"></span>
           </button>
 
           <div
-            className="collapse navbar-collapse ps-5"
+            className=" collapse navbar-collapse ps-2"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav ms-auto ">
-              <li className="nav-item ps-3 px-3">
-                <Link className="nav-link fw-bold" to="/student/abouthostel">
+            <ul className="navbar-nav text-start ms-auto ">
+              <li className="nav-item ">
+                <Link className="nav-link text-white " to="#">
                   About
                 </Link>
               </li>
-              <li className="nav-item ps-3 px-3">
-                <Link className="nav-link fw-bold" to="#">
+              <li className="nav-item ">
+                <Link className="nav-link text-white" to="#">
                   Contact
                 </Link>
               </li>
-              <li className="nav-item ps-3 px-3">
-                <Link className="nav-link fw-bold" to="#">
+              <li className="nav-item  ">
+                <Link className="nav-link text-white" to="#">
                   Support
+                </Link>
+              </li>
+              <li
+                className="nav-item ps-3 px-3"
+                style={{
+                  display:
+                    isAuthenticated() &&
+                      isAuthenticated().user.profileType === 1
+                      ? ""
+                      : "none",
+                }}
+              >
+                <Link className="nav-link text-white" to="/manager/dashboard">
+                  Dashboard
+                </Link>
+              </li>
+              <li
+                className="nav-item ps-3 px-3"
+                style={{
+                  display:
+                    isAuthenticated() &&
+                      isAuthenticated().user.profileType === 0
+                      ? ""
+                      : "none",
+                }}
+              >
+                <Link className="nav-link text-white" to="/student/home">
+                  Home
                 </Link>
               </li>
               {isAuthenticated() && (
                 <Link
-                  className="nav-item ps-3 px-3 pt-1"
+                  className="nav-item  pt-1"
+                  to=""
                   onClick={() =>
                     signout(() => {
                       history.push("/");
@@ -66,7 +95,7 @@ export default function ReportBug({ history }) {
                   }
                 >
                   <button
-                    className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6"
+                    className=" btn btn-outline-light btn-sm mt-1"
                     type="submit"
                   >
                     Signout
@@ -74,10 +103,10 @@ export default function ReportBug({ history }) {
                 </Link>
               )}
               {!isAuthenticated() && (
-                <li className="nav-item ps-3 px-3 pt-1">
+                <li className="nav-item   pt-1">
                   <Link to="/auth/signin">
                     <button
-                      className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6"
+                      className="btn btn-outline-light btn-sm mt-1"
                       type="submit"
                     >
                       Log In

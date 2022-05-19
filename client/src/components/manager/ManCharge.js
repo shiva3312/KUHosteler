@@ -145,7 +145,7 @@ const Charges = ({ history }) => {
         &nbsp;Audit Meal Charge
       </h1>
       <p>
-        <div className="mt-1 text-end">
+        <div className="mt-1 me-2 text-end">
           <button
             className="bton  p-2 pt-2 shadow-sm"
             type="button"
@@ -265,7 +265,7 @@ const Charges = ({ history }) => {
         &nbsp;Guest Meal Charge
       </h1>
       <p>
-        <div className="mt-1 text-end">
+        <div className="mt-1 me-2 text-end">
           <button
             className="bton p-2 pt-2 shadow-sm"
             type="button"
@@ -421,7 +421,7 @@ const Charges = ({ history }) => {
         className="container-fluid pb-4"
         history={history}
       >
-        <div className="row">
+        <div className="row text-box fadeUp animate">
           {JSON.stringify(amount)}
           {showSuccess()}
           {showError()}

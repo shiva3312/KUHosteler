@@ -270,6 +270,7 @@ width:10px;
     display: none;
   }
 }
+
 .dashcount:hover{
   background: linear-gradient(45deg, rgba(74,180,175,1) 0%, rgba(224,254,253,1) 100%);
 }
@@ -300,3 +301,44 @@ width:10px;
     display: none;
   }
 }
+
+.text-box{
+-webkit-animation-delay: 0.2s;
+-moz-animation-delay: 0.2s;
+animation-delay: 0.2s;
+
+}
+    .animate{
+      -webkit-animation-duration: 0.5s;
+      animation-duration: 0.5s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+    @keyframes fadeUp {
+      from{
+        opacity:0.2;
+        /* -webkit-transform: translate3d(0.2,50%,0.2); */
+        /* transform: translate3d(0,100%,0); */
+      }
+      to{
+        opacity: 1;
+        /* -webkit-transform:none; */
+        /* transform:none; */
+      }
+    }
+    .fadeUp{
+      -webkit-animation-name: fadeUp;
+      animation-name: fadeUp;
+    }
+    @-webkit-keyframes fadeUp{
+      from{
+        opacity:0;
+        -webkit-transform: translate3d(0,100%,0);
+        transform: translate3d(0,100%,0);
+      }
+      to{
+        opacity: 1;
+        -webkit-transform:none;
+        transform:none;
+      }
+    }

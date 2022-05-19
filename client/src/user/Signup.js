@@ -242,7 +242,7 @@ const Signup = () => {
           <div className="container py-3">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-8">
-                <div className="th card-body register text-center shadow-lg">
+                <div className="th card-body register text-center shadow-lg text-box animate fadeUp">
                   <div className="mb-md-5 mt-md-4 pb-2">
                     <h2 className="fw-bold mb-2 text-uppercase text-white">
                       Register as{" "}
