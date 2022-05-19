@@ -23,7 +23,6 @@ import ManCharge from "./components/manager/ManCharge";
 import ManEmployee from "./components/manager/ManEmployee";
 import ManMeal from "./components/manager/ManMeal";
 import ManNotice from "./components/manager/ManNotice";
-import ManStuProfile from "./components/manager/ManStuProfile";
 import ManStudents from "./components/manager/ManStudents";
 import AboutHostel from "./components/AboutHostel";
 //student route
@@ -78,11 +77,6 @@ const Routes = () => {
           exact
           component={ManEmployee}
         />
-        <ManagerRoute
-          path="/manager/studpayRecord/:stuId/:userId"
-          exact
-          component={ManStuProfile}
-        />
         <ManagerRoute path="/manager/notice" exact component={ManNotice} />
         <ManagerRoute
           path="/manager/abouthostel"
@@ -90,12 +84,6 @@ const Routes = () => {
           component={AboutHostel}
         />
         <ManagerRoute path="/manager/charges" exact component={ManCharge} />
-        <ManagerRoute
-          path="/manager/studentprofile/:stuId/:userId"
-          exact
-          component={ManStuProfile}
-        />
-
         {/*student GetRoute */}
         <PrivateRoute path="/student/home" exact component={StuHome} />
         <PrivateRoute

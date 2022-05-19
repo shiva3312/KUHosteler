@@ -159,9 +159,9 @@ exports.signin = (req, res) => {
                 error: 'Email and password dont match'
             });
         }
-        ``
+        
         // generate a signed token with user id and secret
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRETE);
+        const token = jwt.sign({ _id: user._id , profileType : user.profileType }, process.env.JWT_SECRETE);
         // persist the token as 't' in cookie with expiry date
         res.cookie('t', token, { expire: new Date() + 9999 });
         // return response with user and token to frontend client
@@ -178,13 +178,10 @@ exports.signout = (req, res) => {
 exports.requireSignin = expressJwt({
     secret: process.env.JWT_SECRETE,
     userProperty: 'auth'
-   
-
-
 });
 
 exports.isAuth = (req, res, next) => {
-    let user = req.profile && req.auth && req.profile._id == req.auth._id;
+  let user = req.profile && req.auth && (req.auth.profileType == 1||req.profile._id == req.auth._id);
     if (!user) {
         return res.status(403).json({
             error: 'Access denied'
@@ -202,8 +199,6 @@ exports.isManager = (req, res, next) => {
     next();
 };
 
-
-
 exports.isDev = (req, res, next) => {
     if (req.profile.profileType != 3) {
         return res.status(403).json({
@@ -212,8 +207,6 @@ exports.isDev = (req, res, next) => {
     }
     next();
 };
-
-
 
 exports.getAllcode=(req, res)=>{
     Admin.findOne({}, (err, admin)=>{
@@ -226,8 +219,6 @@ exports.getAllcode=(req, res)=>{
     })
   }
   
-
-    
 exports.getAllHostedUnHostedHostel=(req, res)=>{
     var hostedHostels =[];   
     boundTime.find({}, (err, registerHostels)=>{

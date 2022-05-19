@@ -3,6 +3,7 @@ import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
 import ShowImage from "../ShowImage";
 import {
+  getStudentprofile,
   getAllstudents,
   updateMembershipStatus,
   fchangeMealStatus,
@@ -19,7 +20,9 @@ const StudentListInfo = ({ history }) => {
     error: false,
     success: false,
   });
-  const [selectedUserId, setselectedUserId] = useState(null);
+  //  when the button is triggered for {getStudentData} first {selectUser } will hold {id}
+  //  then {getStudentData} will be called up and this function will set the selected student record
+  const [selectedUser, setselectedUser] = useState(null);
   const [toggler, setToggler] = useState(false);
   const [reRender, setReRender] = useState(false);
 
@@ -29,6 +32,16 @@ const StudentListInfo = ({ history }) => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
 
+  const viewDetails =(stuId)=>{   
+    getStudentprofile(stuId ,user._id, token ).then((data)=>{
+      if(data.error){    
+        setValues({ ...values, error:true });
+      }else{
+        setselectedUser(data);
+            }
+    });
+  }
+
   const clickSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, error: false });
@@ -36,7 +49,7 @@ const StudentListInfo = ({ history }) => {
       fine,
       reason,
       deposit,
-      selectedUserId,
+      selectedUser,
     }).then((data) => {
       if (data.error) {
         setValues({
@@ -54,7 +67,6 @@ const StudentListInfo = ({ history }) => {
         });
       }
     });
-
     setToggler(!toggler);
   };
 
@@ -167,10 +179,6 @@ const StudentListInfo = ({ history }) => {
     setReRender(!reRender);
   };
 
-  const viewDetails = (stuId) => {
-    return <></>;
-  };
-
   useEffect(() => {
     loadUsers();
   }, [reRender, toggler]);
@@ -267,15 +275,14 @@ const StudentListInfo = ({ history }) => {
                         aria-expanded="false"
                         aria-controls="collapseExample"
                         onClick={(e) => {
-                        
-                          setselectedUserId(student._id);
                         }}
                       >
                         Take Action
                       </button>
                      <span> <i className="ms-1 fa fa-eye text-primary border fa-lg " data-bs-toggle="modal"  title="view profile" data-bs-target="#staticBackdrop"   onClick={(e) => {
                           e.preventDefault();
-                          setselectedUserId(student._id);
+                          setselectedUser(student._id);
+                          viewDetails(student._id);
                         }}></i></span>
 
 
@@ -518,7 +525,7 @@ const StudentListInfo = ({ history }) => {
                     className="collapse"
                     id="collapseExample"
                     style={{
-                      display: student._id === selectedUserId ? "" : "none",
+                      display: student._id === selectedUser ? "" : "none",
                     }}
                   >
                     <tr className="bg-dark">
@@ -571,7 +578,7 @@ const StudentListInfo = ({ history }) => {
                           data-bs-toggle="modal"
                           data-bs-target="#exampleModal"
                           onClick={() => {
-                            setselectedUserId(student._id);
+                            setselectedUser(student._id);
                           }}
                         >
                           Add Fine
@@ -608,7 +615,7 @@ const StudentListInfo = ({ history }) => {
                           data-bs-toggle="modal"
                           data-bs-target="#exampleModal"
                           onClick={() => {
-                            setselectedUserId(student._id);
+                            setselectedUser(student._id);
                           }}
                         >
                           Pay
@@ -629,7 +636,7 @@ const StudentListInfo = ({ history }) => {
                         <button
                           type="submit"
                           className="btn btn-dark  "
-                          onClick={() => setselectedUserId(null)}
+                          onClick={() => setselectedUser(null)}
                         >
                           Close
                         </button>
@@ -654,8 +661,7 @@ const StudentListInfo = ({ history }) => {
         className="container-fluid pb-5"
         history={history}
       >
-        <div>
-          {JSON.stringify(selectedUserId)}
+        <div>        
           {showError()}
           {showSuccess()}
           {chargeForm()}

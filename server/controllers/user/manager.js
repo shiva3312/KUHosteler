@@ -16,14 +16,14 @@ var current_date12 = current_date.toLocaleString();
 // GET ROUTE funtions .............
 
 exports.userById = async (req, res, next, id) => {
-  await User.findById(id).exec((err, user) => {
+  await User.findById(id).select('-image').exec((err, user) => {
     if (err || !user) {
       return res.status(400).json({
         error: "User not found",
       });
     }
+   
     req.profile = user;
-
     next();
   });
 };
@@ -31,7 +31,6 @@ exports.userById = async (req, res, next, id) => {
 exports.read = (req, res) => {
   req.profile.hashed_password = undefined;
   req.profile.salt = undefined;
-  req.profile.image = undefined;
   return res.json(req.profile);
 };
 
@@ -54,7 +53,6 @@ exports.allemployee = (req, res) => {
       if (err || !users) {
         return res.json({ error: "Somthing went wrong" });
       } else {
-        console.log(users);
         res.json({ users: users });
       }
     });
@@ -110,16 +108,6 @@ exports.abouthostel = (req, res) => {
   return res.json({ abouthostel: req.profile.abouthostel });
 };
 
-exports.getStudentprofile = (req, res) => {
-  User.findOne({ _id: req.body.studId }, (err, users) => {
-    if (err || !users) {
-      return res.json({ error: "Somthing went wrong" });
-    } else {
-      return res.josn({ users: users });
-    }
-  });
-};
-
 exports.getCharges = (req, res) => {
   return res.json({
     guestMorMealCharge: req.profile.guestMorMealCharge,
@@ -143,7 +131,6 @@ exports.getPreparedMealList = (req, res) => {
 };
 
 exports.getAllGuest = (req, res) => {
-  console.log("here is the request send to bakend", req.profile.hostelName);
   User.find({ hostelName: req.profile.hostelName }, (err, users) => {
     if (err || !users) {
       return res.json({ error: "Somthing went wrong" });
@@ -254,7 +241,6 @@ exports.addAuditCharges = (req, res) => {
   const auditedDate =
     d.toDateString().slice(4, 7) + " " + d.toDateString().slice(11, 15);
 
-  console.log("date --------", req.body, d, auditedDate);
   User.findOne({ _id: req.profile._id }, (err, manager) => {
     if (err || !manager) {
       return res.json({
@@ -265,7 +251,7 @@ exports.addAuditCharges = (req, res) => {
       manager.mealInfoList.forEach((rec) => {
         if (rec.auditedDate == auditedDate) {
           recId = rec._id;
-          console.log(rec._id);
+         
         }
       });
 
@@ -317,7 +303,6 @@ exports.addFineOrDepositMoney = (req, res) => {
   const fine = req.body.fine;
   const reason = req.body.reason;
   const deposit = req.body.deposit;
-  console.log("working ", req.body);
   User.findById(userId, (err, user) => {
     if (err || !user) {
       return res.status(400).json({ error: "User Not Found" });
@@ -492,7 +477,6 @@ exports.updateGuestMealStatus = (req, res) => {
     },
     function (err, result) {
       if (err) {
-        console.log(result);
         return res.json({ error: err });
       } else {
         return res.json({ info: result });
