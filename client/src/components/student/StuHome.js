@@ -150,12 +150,12 @@ const UserDashboard = ({ history }) => {
     <>
       <StuLayout history={history}>
      <div className="row rowstu ">
-        <div className="col-md-6 ">
+        <div className="col-md-6 text-box fadeUp animate">
             {userInfo()}
          </div>
           <div className="col-md-1 ">
          </div>
-         <div className="col-md-5 ">
+         <div className="col-md-5 text-box fadeUp animate">
             {showPieChart()}
          </div>
         </div>

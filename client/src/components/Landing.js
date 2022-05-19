@@ -6,7 +6,7 @@ import { signout, isAuthenticated } from "../auth/index.js";
 export default function Landing({ history }) {
   return (
 
-    <div>
+    <div className="text-box fadeUp animate">
       <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
         <div className="container-fluid">
           <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
@@ -167,9 +167,9 @@ export default function Landing({ history }) {
       <h1 className="fw-bold hostclr">Our Hostels</h1>
 
 
-      <div className="host row m-1 hostclr"data-aos="fade-up" data-aos-delay="200">
+      <div className="host row m-1 hostclr">
         <div className="col-4 ">
-          <div className="card-body m-2 shadow">
+          <div className="card-body m-2 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
             <p className="card-text fw-bold fs-5 pb-1 ">PG Hall-1</p>
             <p>Kalyani, Nadia, 741235 </p>
@@ -177,14 +177,14 @@ export default function Landing({ history }) {
         </div>
 
         <div className="col-4">
-          <div className="card-body m-2 shadow">
+          <div className="card-body m-2 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-5 fw-bold">Radhakrishnan Bhawan(BT MENS)</p>
             <p>B-13, Central Park, Kalyani, 741235 </p>
           </div>
         </div>
         <div className="col-4">
-          <div className="card-body m-2 shadow">
+          <div className="card-body m-2 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-5 fw-bold ">Jagadish Chandra Bhawan(Banyan Hall)</p>
             <p>Kalyani, Nadia, 741235 </p>
@@ -194,7 +194,7 @@ export default function Landing({ history }) {
       </div>
       <div className="host row m-1 hostclr">
         <div className="col-4 ">
-          <div className="card-body m-2 shadow">
+          <div className="card-body m-2 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
             <p className="card-text fw-bold fs-5 pb-1 ">LH-1</p>
             <p>Kalyani, Nadia, 741235 </p>
@@ -202,14 +202,14 @@ export default function Landing({ history }) {
         </div>
 
         <div className="col-4">
-          <div className="card-body m-2 shadow">
+          <div className="card-body m-2 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg" className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-5 fw-bold">Meghnad Saha Bhawan(PG Hall-3)</p>
             <p>Kalyani, Nadia, 741235 </p>
           </div>
         </div>
         <div className="col-4">
-          <div className="card-body m-2 shadow">
+          <div className="card-body m-2 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg" className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-5 fw-bold ">Vivekananda Bhawan(PG Hall-2)</p>
             <p>Kalyani, Nadia, 741235 </p>
@@ -221,7 +221,7 @@ export default function Landing({ history }) {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <div className="col-lg-3 col-md-12 d-block w-100">
-              <div className="card-body hostelp shadow">
+              <div className="card-body hostelp shadow-sm">
                 <img src="https://cdn.pixabay.com/photo/2017/09/28/11/10/the-university-2795163_960_720.jpg" className="card-img-top" alt="..." />
                 <p className="card-text  pb-1 fs-5 fw-bold">PG Hall-1</p>
                 <p>Kalyani, Nadia, 741235 </p>
@@ -302,9 +302,9 @@ export default function Landing({ history }) {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+      <section class="why-us section-bg" >
    
-      <div class="container shadow">
+      <div class="container shadow mt-4">
 
 <div class="row">
   <div class="col-lg-6 video-box">

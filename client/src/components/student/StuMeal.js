@@ -91,7 +91,7 @@ const MealAcitvity = ({ history }) => {
             <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
               <thead>
                 <tr>
-                  <th>SL</th>
+                  <th className="col-1">SL</th>
                   <th>Date</th>
                   <th>Mess status</th>
                   <th>Moring Charge</th>
@@ -100,12 +100,12 @@ const MealAcitvity = ({ history }) => {
               </thead>
             </table>
           </div>
-          <div className="tbl-content">
+          <div className="shadow tbl-content">
             <table cellPadding="0" cellSpacing="0" border="0">
               <tbody>
                 {user.activity.map((rec, i) => (
                   <tr key={i}>
-                    <td>{i + 1}</td>
+                    <td className="col-1">{i + 1}</td>
                     <td>{rec.date.slice(0, 15)}</td>
                     <td>{rec.mess_status}</td>
                     <td>{rec.morning_charge}</td>
@@ -125,7 +125,7 @@ const MealAcitvity = ({ history }) => {
       <StuLayout history={history}>
         {/* show your content in this div */}
 
-        <div className="col mb-0">{mealAcitvity()}</div>
+        <div className="col mb-0 text-box fadeUp animate">{mealAcitvity()}</div>
       </StuLayout>
       <Footer />
     </>

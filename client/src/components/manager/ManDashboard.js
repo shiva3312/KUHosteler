@@ -133,13 +133,13 @@ const AdminDashboard = ({ history }) => {
     return (
       
       
-      <div >
+      <div className="text-box fadeUp animate">
           
    
           {hour>=12?hour>=16?<h2 className="welcome p-1 pt-3">Good Evening, {user.fname} {user.lname}</h2> : <h2 className="welcome p-1 pt-3">Good Afternoon, {user.fname} {user.lname}</h2>:<h2 className="welcome p-1 pt-3">Good Morning, {user.fname} {user.lname}</h2>}
         <h2 className="p-1 text pb-3">Welcome</h2>
          
-        <div >
+        <div className="text-box fadeUp animate">
           <div className="row cnt">
             <div className="col-3">
               <div className="card-body dashcount m-2 bg-white shadow">
@@ -390,7 +390,7 @@ const AdminDashboard = ({ history }) => {
           data: [...auditinfo.perheadCharge],
           fill: true,
           lineTension: 0.35,
-          backgroundColor: "rgba(75,192,192,0.2)",
+          backgroundColor: "rgba(75,100,192,0.2)",
           borderColor: "rgba(75,192,192,1)",
         },
         {
@@ -410,7 +410,7 @@ const AdminDashboard = ({ history }) => {
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Meal Charge Report
         </h1>
-        <div className="card mb-3 shadow-lg">
+        <div className="card mb-3 shadow-sm">
           <Line data={data} />
         </div>
       </>
@@ -649,8 +649,7 @@ const AdminDashboard = ({ history }) => {
           {staffReqList()}
           {activatedGuest()}
           {listedGuest()}
-
-          {mealChargeLineChart()}
+         {mealChargeLineChart()}
           {countLineChart()}
         </div>
       </ManLayout>

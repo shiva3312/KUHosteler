@@ -35,7 +35,7 @@ const AuditedMealChargeList = ({ history }) => {
                 <tr>
                   <th>SL no.</th>
                   <th>Date</th>
-                  <th>Audit Amount</th>
+                  <th>Audit Amt.</th>
                   <th>Paid</th>
                   <th>Fine</th>
                   <th>Due </th>
@@ -49,7 +49,7 @@ const AuditedMealChargeList = ({ history }) => {
                 {stuData.paymentRecord.map((rec, i) => (
                   <tr key={i}>
                     <td>{i + 1}</td>
-                    <td>{rec.auditDate.slice(0, 15)}</td>
+                    <td>{rec.auditDate.slice(4, 15)}</td>
                     <td>{rec.auditAmount}</td>
                     <td>{rec.paid}</td>
                     <td>{rec.totalFine}</td>
@@ -81,7 +81,7 @@ const AuditedMealChargeList = ({ history }) => {
       <StuLayout history={history}>
         {/* show your content in this div */}
 
-        <div className="col mb-0">{auditedChargeMealList()}</div>
+        <div className="col mb-0 text-box fadeUp animate">{auditedChargeMealList()}</div>
       </StuLayout>
       <Footer />
     </>

@@ -313,8 +313,8 @@ const AddGuest = ({ history }) => {
       <StuLayout history={history}>
         {showSuccess()}
         {showError()}
-        <div>{addGuestForm()}</div>
-        <div>{getAllGuest()}</div>
+        <div className="text-box fadeUp animate">{addGuestForm()}</div>
+        <div className="text-box fadeUp animate">{getAllGuest()}</div>
       </StuLayout>
       <Footer />
     </>

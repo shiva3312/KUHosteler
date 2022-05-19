@@ -10,11 +10,11 @@ const BasicInfo = ({ history }) => {
   const { user } = isAuthenticated();
   const basicInfo = () => {
     return (
-      <div className=" pt-3 mt-3 pb-4 th ">
+      <div className=" pt-3 mt-3 pb-4 th text-box fadeUp animate">
         <h4 className="shadow card-head pt-2 pb-2 bg text-light text-center">
           BASIC DETAILS
         </h4>
-        <ul className=" p-2 shadow">
+        <ul className="con p-2 shadow">
           <li className=" ps-3 shadow-sm row text-secondary p-2 ms-4 me-4 m-3">
             <div className="col-5 ps-0">Profile Type</div>
             <div className="col-7">
@@ -57,7 +57,7 @@ const BasicInfo = ({ history }) => {
   };
   const eduInfo = () => {
     return (
-      <div className=" pt-3 mt-3 pb-4 th ">
+      <div className=" pt-3 mt-3 pb-4 th text-box fadeUp animate">
         <h4 className="shadow card-head pt-2 pb-2 bg text-light text-center">
           EDUCATIONAL DETAILS
         </h4>

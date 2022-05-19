@@ -189,7 +189,7 @@ const TodayMealList = ({ history }) => {
         className="container-fluid"
         history={history}
       >
-        <div className="row">
+        <div className="row text-box fadeUp animate">
           {countMeal()}
           {getBorderMealList()}
           {getGuestMealList()}

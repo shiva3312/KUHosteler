@@ -8,40 +8,104 @@ export default function MealTable({history})
        {
         return(
  <>
-            <nav className=" navbar navbar-expand-lg p-2 navbar-light bg-white ">
-             <div className="container-fluid">
-            <h3 className="ps-5 fs-1 text fw-bold">KuHosteler</h3>
+            <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
+        <div className="container-fluid">
+          <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
 
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                 <span className="navbar-toggler-icon"></span>
-            </button>
-          
-             <div className="collapse navbar-collapse ps-5" id="navbarSupportedContent">
-                <ul className="navbar-nav ms-auto ">                            
-                    <li className="nav-item ps-3 px-3">
-                        <Link className="nav-link fw-bold" to="/student/abouthostel">About</Link>
-                    </li>
-                    <li className="nav-item ps-3 px-3">
-                        <Link className="nav-link fw-bold" to="#">Contact</Link>
-                    </li>
-                    <li className="nav-item ps-3 px-3">
-                        <Link className="nav-link fw-bold" to="#">Support</Link>
-                    </li>
-                    {isAuthenticated() && (                       
-                        <Link className="nav-item ps-3 px-3 pt-1"  onClick={() => signout(() => { history.push("/"); }) } >
-                        <button className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6" type="submit">Signout</button>
-                        </Link>
-                     )}
-                     {!isAuthenticated() &&(
-                        <li className="nav-item ps-3 px-3 pt-1">
-                        <Link to="/auth/signin"><button className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6" type="submit">Log In</button></Link>
-                        </li>
-                    )}
-                                        
-                 </ul>
-            </div>
+          <button
+            className=" navbar-toggler drkgrn"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon drkgrn"></span>
+          </button>
+
+          <div
+            className=" collapse navbar-collapse ps-2"
+            id="navbarSupportedContent"
+          >
+            <ul className="navbar-nav text-start ms-auto ">
+              <li className="nav-item ">
+                <Link className="nav-link text-white " to="#">
+                  About
+                </Link>
+              </li>
+              <li className="nav-item ">
+                <Link className="nav-link text-white" to="#">
+                  Contact
+                </Link>
+              </li>
+              <li className="nav-item  ">
+                <Link className="nav-link text-white" to="#">
+                  Support
+                </Link>
+              </li>
+              <li
+                className="nav-item ps-3 px-3"
+                style={{
+                  display:
+                    isAuthenticated() &&
+                      isAuthenticated().user.profileType === 1
+                      ? ""
+                      : "none",
+                }}
+              >
+                <Link className="nav-link text-white" to="/manager/dashboard">
+                  Dashboard
+                </Link>
+              </li>
+              <li
+                className="nav-item ps-3 px-3"
+                style={{
+                  display:
+                    isAuthenticated() &&
+                      isAuthenticated().user.profileType === 0
+                      ? ""
+                      : "none",
+                }}
+              >
+                <Link className="nav-link text-white" to="/student/home">
+                  Home
+                </Link>
+              </li>
+              {isAuthenticated() && (
+                <Link
+                  className="nav-item  pt-1"
+                  to=""
+                  onClick={() =>
+                    signout(() => {
+                      history.push("/");
+                    })
+                  }
+                >
+                  <button
+                    className=" btn btn-outline-light btn-sm mt-1"
+                    type="submit"
+                  >
+                    Signout
+                  </button>
+                </Link>
+              )}
+              {!isAuthenticated() && (
+                <li className="nav-item   pt-1">
+                  <Link to="/auth/signin">
+                    <button
+                      className="btn btn-outline-light btn-sm mt-1"
+                      type="submit"
+                    >
+                      Log In
+                    </button>
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
-     </nav>
+      </nav>
      <center>
      <h1 class="tit">MEAL MENU</h1>
      <div class="table_respons">

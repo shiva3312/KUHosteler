@@ -6,8 +6,9 @@ export default function Footer() {
     <footer>
       <div className="footer mb-0">
         <div className="row pt-2 p-2">
-          <div className="col-md-4  ">
-            <div className="mt-2 footer-links mb-0 pb-1">
+        <div className="col-md-1 "></div>
+          <div className="col-md-4 ">
+            <div className="mt-2  footer-links mb-0 pb-1">
               <h2> KuHosteler</h2>
             </div>
             <p> ducimus consectetur hic quae ea pariatur illo. Kalyani University's hostel management website </p>
@@ -19,7 +20,7 @@ export default function Footer() {
               <i className="fa fa-youtube fa-lg border1"></i>
             </div>
           </div>
-          <div className="col-md-1 "></div>
+          <div className="col-md-1 space1"></div>
           <div className="ft1 col-md-2 col-sm-2 col-xs-2 footer-links">
             <h5 className="pt-3 ps-1">About</h5>
             <ul >

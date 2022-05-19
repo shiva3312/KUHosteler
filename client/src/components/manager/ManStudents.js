@@ -200,9 +200,9 @@ const StudentListInfo = ({ history }) => {
   const studentList = () => {
     return (
       <>
-        <h1 className="m-4">Student Request List</h1>
-        <div className="p-2">
-        <div className="shadow tbl-header">
+        <h1 className="m-4 text-box animate fadeUp ">Student Request List</h1>
+        <div className="p-2 text-box animate fadeUp">
+        <div className="shadow tbl-header ">
           <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
             <thead>
               <tr>
@@ -217,7 +217,7 @@ const StudentListInfo = ({ history }) => {
             </thead>
           </table>
         </div>
-        <div className="shadow tbl-content">
+        <div className="shadow tbl-content text-box">
           <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
            
               {students.map((student, i) => (

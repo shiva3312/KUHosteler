@@ -53,6 +53,13 @@ body {
 .bg{
     background: hsl(184, 73%, 35%);
 }
+
+@media (max-width:571px)
+{
+.bg{
+    font-size: 16px;
+}
+}
 .text{
     
     background-image:linear-gradient(to right,#388087,#6FB3B8);
@@ -227,11 +234,11 @@ h1{
     padding: 6px 6px;
     text-align: center;
     vertical-align:middle;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 15px;
     background-color: #fff;
     color: grey;
-    border-bottom: solid 1px rgb(171, 168, 168);
+    border-bottom: solid 1px rgb(171, 168, 168,0.2);
   }
   .status{
     margin:50px;
@@ -259,7 +266,7 @@ h1{
     margin-bottom: 70px;
     margin-top: 10px;
   }
-  @media (max-width: 590px) {
+  @media (max-width: 625px) {
       section{
           margin:15px;
           margin-bottom: 50px;
@@ -270,8 +277,8 @@ h1{
         padding:8px 8px;
     }
     td{
-        font-size: 11px;
-        padding:0px 6px ;
+        font-size: 12px;
+        padding:3px 6px ;
         
     }
     h1{
