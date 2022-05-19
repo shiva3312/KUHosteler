@@ -28,7 +28,7 @@ const AuditedMealChargeList = ({ history }) => {
       <>
         <h1 className="text-start ms-4 me-4 mb-4 border-bottom">
           <i className="fa fa-angle-double-right "></i>Payment Record</h1>
-        <section className="shadow">
+        <section className="shadow mt-5">
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0">
               <thead>

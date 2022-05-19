@@ -32,7 +32,7 @@ const BasicInfo = ({ history }) => {
           </li>
           <li className="  ps-3 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Email Account</div>
-            <div className="col-7">: {user.email}</div>
+            <div className="col-7 ">:{user.email}</div>
           </li>
           <li className="  ps-3 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Membership</div>
@@ -120,22 +120,26 @@ const BasicInfo = ({ history }) => {
       <StuLayout history={history}>
         {/* show your content in this div */}
         <div className="row rowstu">
+     
           {/* <div className="wrapper"> */}
-          <div className="col-md-6 ">
+          <div className="col-md-6 pd ">
             {" "}
             {basicInfo()}
             {/* <div  className="col mb-0">{userInfo()}</div> */}
           </div>
-          {/* <div class="middle"></div>     */}
+              
           {/* if i remove middle then it looks like parallel */}
-          <div className="col-md-6 ">
+          <div className="col-md-6 pd">
             {" "}
             {eduInfo()}
             {/* <div  className="col mb-0">{showPieChart()}</div> */}
           </div>
+         
         </div>
         <div className="row rowstu">
-          <div className="col md-6">{constactInfo()}</div>
+          <div className="col-md-1"></div>
+          <div className="col md-6 pd text-box fadeUp animate">{constactInfo()}</div>
+          <div className="col-md-1"></div>
         </div>
       </StuLayout>
       <Footer />

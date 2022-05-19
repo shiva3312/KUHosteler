@@ -88,8 +88,8 @@ const EmpBasicInfo = ({ history }) => {
     <>
       <EmpLayout history={history}>
         <div className="row m-3">
-          <div className="col-md-6 "> {basicInfo()}</div>
-          <div className="col md-6">{constactInfo()}</div>
+          <div className="col-md-6 pd"> {basicInfo()}</div>
+          <div className="col md-6 pd">{constactInfo()}</div>
         </div>
       </EmpLayout>
       <Footer />

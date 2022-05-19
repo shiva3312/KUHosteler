@@ -111,10 +111,10 @@ export default function Footer() {
         </div>
       </div>
       <div className="row footer-bottom pb-2 ">
-        <div class="copyright">
+        <div className="copyright">
           &copy; Copyright <strong><span>Kuhosteler</span></strong>. All Rights Reserved
         </div>
-        <div class="credits pb-1">
+        <div className="credits pb-1">
           Designed by Anonymous
         </div>
       </div>

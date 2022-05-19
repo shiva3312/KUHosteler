@@ -302,28 +302,28 @@ export default function Landing({ history }) {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      <section class="why-us section-bg" >
+      <section className="why-us section-bg" >
    
-      <div class="container shadow mt-4">
+      <div className="container shadow mt-4">
 
-<div class="row">
-  <div class="col-lg-6 video-box">
-    <img src="assets/img/why-us.jpg" class="img-fluid" alt=""/>
-    <Link to="https://youtu.be/3VtmBLFlvGg" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></Link>
+<div className="row">
+  <div className="col-lg-6 video-box">
+    <img src="assets/img/why-us.jpg" className="img-fluid" alt=""/>
+    <Link to="https://youtu.be/3VtmBLFlvGg" className="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></Link>
   </div>
 
-  <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+  <div className="col-lg-6 d-flex flex-column justify-content-center p-5">
 
-    <div class="icon-box">
-      <div class="icon"><i class="fa fa-building"></i></div>
-      <h4 class="title"><Link to="">59th Hall Day & Reunion</Link></h4>
-      <p class="description">Each year a reunion or hall day is celebrated at the hostel.</p>
+    <div className="icon-box">
+      <div className="icon"><i className="fa fa-building"></i></div>
+      <h4 className="title"><Link to="">59th Hall Day & Reunion</Link></h4>
+      <p className="description">Each year a reunion or hall day is celebrated at the hostel.</p>
     </div>
 
-    <div class="icon-box">
-      <div class="icon"><i class="fa fa-gift"></i></div>
-      <h4 class="title"><Link to="">Youtube Page</Link></h4>
-      <p class="description">Our youtube page has got a virtual campus view for you to experience our hostel virtually.</p>
+    <div className="icon-box">
+      <div className="icon"><i className="fa fa-gift"></i></div>
+      <h4 className="title"><Link to="">Youtube Page</Link></h4>
+      <p className="description">Our youtube page has got a virtual campus view for you to experience our hostel virtually.</p>
     </div>
 
   </div>
