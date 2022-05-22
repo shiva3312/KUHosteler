@@ -49,10 +49,10 @@ export default function Landing({ history }) {
               <li
                 className="nav-item "
                 style={{
-                  display: isAuthenticated() ? "" : "none",
+                  display: isAuthenticated() && isAuthenticated().user.membership === 2 ? "" : "none",
                 }}
               >
-                <Link className="nav-link text-white" to="/user/mealList">
+                <Link className="nav-link text-white" to="/user/meallist">
                   Meal List
                 </Link>
               </li>
@@ -77,7 +77,7 @@ export default function Landing({ history }) {
                 style={{
                   display:
                     isAuthenticated() &&
-                    isAuthenticated().user.profileType === 2
+                    (isAuthenticated().user.profileType === 2) && isAuthenticated().user.membership === 2
                       ? ""
                       : "none",
                 }}
@@ -92,7 +92,7 @@ export default function Landing({ history }) {
                 style={{
                   display:
                     isAuthenticated() &&
-                    isAuthenticated().user.profileType === 0
+                    isAuthenticated().user.profileType === 0  && isAuthenticated().user.membership === 2
                       ? ""
                       : "none",
                 }}
