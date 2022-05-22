@@ -3,49 +3,80 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { signout, isAuthenticated } from "../../auth/index.js";
 import ShowImage from "../ShowImage.js";
-import "../../css/global.css";
-
-import "../../css/student.css";
 
 const StuLayout = ({ className, children, history }) => {
   const { user } = isAuthenticated();
 
   return (
     <>
-      <div className="gradiant">
-        <nav className="navbar navbar-light ">
-          <div className="container-fluid ">
-            <h3 className="ps-3 m-1  text-white">KuHosteler</h3>
-            <div className="d-flex justify-content-end"></div>
-            {isAuthenticated() && (
-              <Link
-                className="nav-item ps-3 px-3 pt-1"
-                to={"/"}
-                onClick={() =>
-                  signout(() => {
-                    history.push("/auth/signin");
-                  })
-                }
-              >
-                <button
-                  className="pt-1 pb-1 btn btn-outline-light fw-bold"
-                  type="submit"
-                >
-                  Signout
-                </button>
-              </Link>
-            )}
+      <div className="text-box  animate">
+        <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
+          <div className="container-fluid">
+            <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
+
+            <button
+              className=" navbar-toggler drkgrn"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon drkgrn"></span>
+            </button>
+
+            <div className=" d-flex justify-content-end"></div>
+            <div
+              className=" collapse navbar-collapse ps-2"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav text-start ms-auto ">
+                <li className="nav-item ">
+                  <Link className="nav-link text-white" to="/">
+                    Home
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/user/mealList">
+                    Meal List
+                  </Link>
+                </li>
+
+                <li className="nav-item  ">
+                  <Link className="nav-link text-white" to="/user/blog">
+                    Blog
+                  </Link>
+                </li>
+
+                {isAuthenticated() && (
+                  <Link
+                    className="nav-item ps-3 px-3 pt-1"
+                    to={"/"}
+                    onClick={() =>
+                      signout(() => {
+                        history.push("/auth/signin");
+                      })
+                    }
+                  >
+                    <button
+                      className="pt-1 pb-1 btn btn-outline-light fw-bold"
+                      type="submit"
+                    >
+                      Signout
+                    </button>
+                  </Link>
+                )}
+              </ul>
+            </div>
           </div>
         </nav>
         <div className="bg-white shadow-sm  overflow-hidden">
           <div className="ps-4 pt-4 pb-0 pe-4 cover">
             <div className="media align-items-end profile-head">
               <div className="profile ps-3 mr-5 mt-4 ">
-                <ShowImage
-                  user={user}
-                
-                  ClassName="img mb-2 img-thumbnail"
-                />
+                <ShowImage user={user} ClassName="img mb-2 img-thumbnail" />
               </div>
             </div>
           </div>
@@ -54,11 +85,14 @@ const StuLayout = ({ className, children, history }) => {
               <h4 className="media mt-0 mb-0">
                 {user.fname} {user.lname}
               </h4>
-   <p className="small mb-4">{user.department}</p>
+              <p className="small mb-4">{user.department}</p>
             </div>
           </div>
           <nav className="nav-link justify-content-center p-2 mt-5 navbar  fs-6">
-            <Link className=" navbar-brand fs-6 pe-2 ps-2" to="/student/home">
+            <Link
+              className=" navbar-brand fs-6 pe-2 ps-2"
+              to="/student/profile"
+            >
               <span className="text1">HOME</span>
               <span className="icon">
                 <i className=" fa fa-home fa-md pe-2 ps-2"></i>

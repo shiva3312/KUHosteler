@@ -85,7 +85,7 @@ const Routes = () => {
         />
         <ManagerRoute path="/manager/charges" exact component={ManCharge} />
         {/*student GetRoute */}
-        <PrivateRoute path="/student/home" exact component={StuHome} />
+        <PrivateRoute path="/student/profile" exact component={StuHome} />
         <PrivateRoute
           path="/student/basicInfo"
           exact
@@ -95,7 +95,7 @@ const Routes = () => {
         <PrivateRoute path="/student/meal" exact component={StuMeal} />
         <PrivateRoute path="/student/records" exact component={StuRecords} />
 
-        <PrivateRoute path="/employee/home" exact component={EmpDashboard} />
+        <PrivateRoute path="/employee/profile" exact component={EmpDashboard} />
         <PrivateRoute
           path="/employee/basicinfo"
           exact
