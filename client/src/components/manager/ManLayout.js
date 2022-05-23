@@ -76,7 +76,7 @@ const Layout = ({
           </li>
           <li className="side p-3 mt-5">
             <Link
-             
+             to="/"
               className="out text-decoration-none"
             >
               <span className="fa fa-lg fa-sign-out"></span>
@@ -146,7 +146,7 @@ const Layout = ({
           </li>
           <li className="side p-3 mt-5">
             <Link
-             
+             to="/"
               className="out text-decoration-none"
             >
               <span className="fa fa-lg fa-sign-out"></span>

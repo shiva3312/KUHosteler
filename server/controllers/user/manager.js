@@ -68,7 +68,7 @@ exports.allReqList = (req, res) => {
     profileType: 0,
     $or: [{ membership: 0 }, { membership: 5 }],
   })
-    .select("fname lname membership department gender")
+    .select("fname lname membership department gender createdAt selfPhNo")
     .exec((err, students) => {
       if (err || !students) {
         return res.json({ error: "Somthing went wrong with students List" });
@@ -78,7 +78,7 @@ exports.allReqList = (req, res) => {
           profileType: 2,
           $or: [{ membership: 0 }, { membership: 5 }],
         })
-          .select("fname lname membership gender")
+          .select("fname lname membership gender createdAt selfPhNo")
           .exec((err, employees) => {
             if (err || !employees) {
               return res.json({

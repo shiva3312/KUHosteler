@@ -207,7 +207,7 @@ export default function Landing({ history }) {
                     stories with everyone
                   </span>
                 </p>
-                <p style={{ fontSize: "13px" }}>
+                <div style={{ fontSize: "13px" }}>
                   <div className="text-start social mt-2 mb-3 text-center">
                     <Link
                       to={{
@@ -244,7 +244,7 @@ export default function Landing({ history }) {
                       <i className="fa fa-twitter fa-lg h5"></i>
                     </Link>
                   </div>
-                </p>
+                </div>
               </div>
             </div>
           </div>

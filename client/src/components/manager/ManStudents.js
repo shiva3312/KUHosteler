@@ -89,7 +89,7 @@ const StudentListInfo = ({ history }) => {
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -315,7 +315,7 @@ const StudentListInfo = ({ history }) => {
                         //                   id="staticBackdrop"
                         //                   data-bs-backdrop="static"
                         //                   data-bs-keyboard="false"
-                        //                   tabindex="-1"
+                        //                   tabIndex="-1"
                         //                   aria-labelledby="staticBackdropLabel"
                         //                   aria-hidden="true"
                         //                 >

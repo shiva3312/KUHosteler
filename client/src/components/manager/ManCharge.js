@@ -144,7 +144,7 @@ const Charges = ({ history }) => {
         <i className="fa fa-angle-double-right"></i>
         &nbsp;Audit Meal Charge
       </h1>
-      <p>
+      <div>
         <div className="mt-1 me-2 text-end">
           <button
             className="bton  p-2 pt-2 shadow-sm"
@@ -157,7 +157,7 @@ const Charges = ({ history }) => {
             Add Meal Charges
          </button>
         </div>
-      </p>
+      </div>
       <div className="collapse" id="collapseExample2">
         <div className="card card-body">
           <h4 className="text-secondary pt-2 pb-2 ">Add Meal Charge</h4>
@@ -264,7 +264,7 @@ const Charges = ({ history }) => {
         <i className="fa fa-angle-double-right"></i>
         &nbsp;Guest Meal Charge
       </h1>
-      <p>
+      <div>
         <div className="mt-1 me-2 text-end">
           <button
             className="bton p-2 pt-2 shadow-sm"
@@ -277,7 +277,7 @@ const Charges = ({ history }) => {
             Update charges
          </button>
         </div>
-      </p>
+      </div>
       <div className="collapse" id="collapseExample">
         <div className="card card-body">
           <div className="col form-outline text-start form-white mb-4">
