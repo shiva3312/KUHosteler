@@ -15,6 +15,7 @@ import UpLoadPhoto from "./user/PicUploading";
 import Landing from "./components/Landing";
 import ManagerRoute from "./auth/ManagerRoute";
 import PrivateRoute from "./auth/PrivateRoute";
+import PageNotFound from "./components/PageNotFound"
 
 // manager route
 
@@ -27,7 +28,6 @@ import ManStudents from "./components/manager/ManStudents";
 import AboutHostel from "./components/AboutHostel";
 //student route
 import StuHome from "./components/student/StuHome";
-import StuMyprofile from "./components/student/StuMyprofile";
 import StuBasicInfo from "./components/student/StuBasicInfo";
 import StuGuest from "./components/student/StuGuest";
 import StuMeal from "./components/student/StuMeal";
@@ -42,6 +42,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
+      
         <Route path="/" exact component={Landing} />
         <Route path="/auth/signin" exact component={Signin} />
         <Route path="/auth/signup" exact component={Signup} />
@@ -107,12 +108,14 @@ const Routes = () => {
           component={EmpTodayMealList}
         />
 
-        {/* global Route */}
+        {/* global  */}
         <PrivateRoute
           path="/manager/preparedMealList"
           exact
           component={ManMeal}
         />
+        <Route path="*" component={PageNotFound} />
+
       </Switch>
     </BrowserRouter>
   );
