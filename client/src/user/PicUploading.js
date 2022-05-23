@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Redirect, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect} from "react-router-dom";
 import "../css/global.css";
 import { isAuthenticated, uploadpic } from "../auth";
 
@@ -46,10 +46,11 @@ const UpLoadimage = () => {
   };
 
   const picUploadForm = () => (
-    <form className="mb-3" onSubmit={clickSubmit}>
-      <h4>Post image</h4>
+    <form className="mb-3 text-center mt-5" onSubmit={clickSubmit}>
+      <h4 className="display-6 mb-4">Upload image</h4>
+      <p>Please select an image</p>
       <div className="form-group">
-        <label className="btn btn-secondary">
+        <label className="btn btn-secondary ">
           <input
             onChange={handleChange("image")}
             type="file"
@@ -59,7 +60,7 @@ const UpLoadimage = () => {
         </label>
       </div>
 
-      <button className="btn btn-outline-primary">Upload Profile</button>
+      <button className="btn btn-outline-primary mt-3">Upload Profile</button>
     </form>
   );
 
