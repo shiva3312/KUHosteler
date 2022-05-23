@@ -37,12 +37,12 @@ const StuLayout = ({ className, children, history }) => {
                     Home
                   </Link>
                 </li>
-
+                {user.membership ===2 && (
                 <li className="nav-item">
                   <Link className="nav-link text-white" to="/user/mealList">
                     Meal List
                   </Link>
-                </li>
+                </li>)}
 
                 <li className="nav-item  ">
                   <Link className="nav-link text-white" to="/user/blog">
