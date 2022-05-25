@@ -39,6 +39,18 @@ body {
     padding:2px;
     margin:2px;
 }
+@media(max-width:340px)
+{
+   h4{
+       font-size: 20px;
+   }
+}
+@media(max-width:330px)
+{
+   h4{
+       font-size: 18px;
+   }
+}
 
 @media (max-width:420px){
    .imge{
@@ -49,6 +61,13 @@ body {
 }
 .media-body{
     padding-left: 15rem;
+}
+@media (max-width:572px)
+{
+   .media-body{
+    padding-left: 1rem;
+    padding-right: 1rem;
+   }
 }
 .bg{
     background: hsl(184, 73%, 35%);
@@ -79,12 +98,13 @@ body {
         font-size: smaller; 
     }
   }
-@media only screen and (max-width: 574px) {
+
+
+@media (max-width: 574px) {
       .media-body{
-         margin-top: 20px;
-         padding-top: 56px;
-         padding-left: 90px;
-         padding-right: 90px; 
+      
+         padding-top: 76px;
+        
       }
       .social
       {
@@ -96,17 +116,15 @@ body {
       }
 
       .media, .small{
-          text-align: center;
-          
+          text-align: center;       
       }
       .small{
-          font-size: small;
+          font-size: medium;
       }
       .heading{
           text-align: center;
       }
     }
-
     hr {
         border-width: 3px;
     }
@@ -129,8 +147,7 @@ body {
     .social>i {
         padding: 2%;
         margin: 1px;
-        font-size: 16px
-       
+        font-size: 16px  
     }
     .social>i:hover {
        
@@ -165,11 +182,25 @@ body {
          
         }
     }
+ 
     @media (min-width: 551px) {
        .icon {
             display: none;
         }
     }  
+    @media (max-width:345px)
+    {
+        .icon{
+            font-size: 14px;
+        }
+    }
+    @media (max-width:335px)
+    {
+        .icon{
+            font-size: 12px;
+            
+        }
+    }
     .text1{
         font-weight:600;   
     }
@@ -243,6 +274,12 @@ h1{
   .status{
     margin:50px;
 }
+@media(max-width:340px)
+{
+    .status{
+        font-size: small;
+    }
+}
 
 .rowstu{
     margin:22px;
@@ -266,29 +303,33 @@ h1{
     margin-bottom: 70px;
     margin-top: 10px;
   }
+
+  @media(min-width:626px)
+  {
+      h1{
+          font-size:27px;
+      }
+  }
   @media (max-width: 625px) {
       section{
           margin:15px;
           margin-bottom: 50px;
       }
-  
     th{
         font-size: 13px;
         padding:8px 8px;
     }
     td{
         font-size: 12px;
-        padding:3px 6px ;
-        
+        padding:3px 6px ;   
     }
     h1{
         font-size:large;
     }
     h3{
-        display: none;
+        /* display: none; */
         font-size: medium;
     }
-
     .status{
         margin: 20px;
     }
@@ -299,7 +340,6 @@ h1{
     }
 }
   /* for custom scrollbar for webkit browser*/
-  
   ::-webkit-scrollbar {
       width: 6px;
   } 
@@ -311,7 +351,6 @@ h1{
       box-shadow: inset;
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
   }
-
 .con{
     background-color: #F6F6F2;
     font-size:15px;
@@ -329,16 +368,13 @@ h1{
     font-weight: 500;
     background:linear-gradient(#91ced2,#469aa1);
 }
-
 .fa-user:hover{
     cursor:pointer;
     background-color: #8ac3c7;
-    
 }
 .fa-eye:hover{
     cursor:pointer;
     background-color: #8ac3c7;
-    
 }
 .fa-trash:hover{
     cursor:pointer;
@@ -347,42 +383,30 @@ h1{
 .fa-check:hover{
     cursor:pointer;
     background-color: #8ac3c7;
-    
 }
 .fa-trash-o:hover{
     cursor: pointer;
     background-color: #8ac3c7;
-   
 }
 @media (min-width: 590px) {
     .fa-trash-o {
          display: none;
      }     
-   
  } 
-    
-   
- 
  .table-border{
-     padding: 10px;
-    
+     padding: 10px; 
      background-color:#d3e9f5 ;
  } 
-
-
  @media (max-width: 450px) {
    .meal
    { 
     font-size: 11px;
    }
-   
  } 
-
 /* .row{
     border-radius: 12px;
 } */
 /*button css*/
-
 .bton{
     display:inline-flex;
     height:45px;
@@ -395,8 +419,7 @@ h1{
     color:#fff;
     font-size:16px;
     font-weight:500;
-    cursor:pointer;
-    
+    cursor:pointer;   
 }
 @media (max-width:600px){
  .bton{
@@ -404,17 +427,14 @@ h1{
      font-size: 14px;
  }   
 }
-
 @media (max-width:400px){
     .bton{
         font-size: 12px;
     }
 }
-
 .bton:hover{
     background: #4b989f;
-    color: #fff;
-  
+    color: #fff; 
 }
 .bton:active{
     background:#4b989f ;
@@ -434,9 +454,7 @@ h1{
     color: #fff;
     font-size:1.5em;
     background: #4b989f;
-    
 }
-
 /*modal css*/
 .modal-body{
     font-weight: 600;
@@ -448,20 +466,15 @@ h1{
 }
 .modal-footer{
     background:#C2EDCE;
-
 }
 .check{
- 
     font-size: 1.7em;
     color: #388087;
     border: none;
     background-color: #F6F6F2;
-  
 }
-
 .check:hover{
-   color: #6FB3B8;
-    
+   color: #6FB3B8;   
 }
 .pd{
     padding-left: 3rem;
@@ -472,7 +485,5 @@ h1{
     .pd{
         padding-left:10px ;
         padding-right: 10px;
-        
-
     }
 }

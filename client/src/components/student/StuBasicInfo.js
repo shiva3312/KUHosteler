@@ -45,7 +45,7 @@ const BasicInfo = ({ history }) => {
               )}
             </div>
           </li>
-          <li className="  ps-3 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
+          <li className="ps-3 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Hostel Name</div>
             <div className="col-7">: {user.hostelName.toUpperCase()}</div>
           </li>

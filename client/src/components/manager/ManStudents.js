@@ -49,7 +49,10 @@ const StudentListInfo = ({ history }) => {
     getStudentprofile(stuId ,user._id, token ).then((data)=>{
       if(data.error){    
         setValues({ ...values, error:true });
-      }else{ setselectedUser(data); }
+      }else{ setselectedUser(data);
+        return{}
+      
+      }
     });
   }
 
@@ -291,7 +294,7 @@ const StudentListInfo = ({ history }) => {
                       >
                         Take Action
                       </button>
-                     <span> <i className="ms-1 fa fa-eye text-primary border fa-lg " data-bs-toggle="modal"  title="view profile" data-bs-target="#staticBackdrop"   onClick={(e) => {
+                     <span> <i className="ms-1 fa fa-eye text-primary border fa-lg " data-bs-toggle=""  title="view profile" data-bs-target="#staticBackdrop"   onClick={(e) => {
                           e.preventDefault();
                           setselectedUser(student._id);
                           viewDetails(student._id);
@@ -301,7 +304,7 @@ const StudentListInfo = ({ history }) => {
 
 {/* <!-- Modal --> */}
 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div className="modal-dialog  modal-fullscreen-xxl-down">
+  <div className="modal-dialog ">
     <div className="modal-content">
       <div className="modal-header">
         <h5 className="modal-title" id="staticBackdropLabel">Student Details..</h5>

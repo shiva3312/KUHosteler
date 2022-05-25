@@ -57,7 +57,7 @@ const StuLayout = ({ className, children, history }) => {
    <p className="small mb-4">{user.department}</p>
             </div>
           </div>
-          <nav className="nav-link justify-content-center p-2 mt-5 navbar  fs-6">
+          <nav className="nav-link justify-content-center p-2 pt-4 navbar  fs-6">
             <Link className=" navbar-brand fs-6 pe-2 ps-2" to="/student/home">
               <span className="text1">HOME</span>
               <span className="icon">
