@@ -171,9 +171,9 @@ const Signin = () => {
       } else if (user && user.profileType === 1) {
         return <Redirect to="/manager/dashboard" />;
       } else if (user && user.profileType === 0) {
-        return <Redirect to="/student/home" />;
+        return <Redirect to="/student/profile" />;
       } else if (user && user.profileType === 2) {
-        return <Redirect to="/employee/home" />;
+        return <Redirect to="/employee/profile" />;
       }
     } else if (isAuthenticated()) {
       console.log("it is ruuning in authentication");
@@ -181,11 +181,11 @@ const Signin = () => {
     }
   };
   const showForgetPassword = () => (
-  
     <div className="modalBackground th ">
       <div className="modalContainer ">
         <div className="dt titleCloseBtn ">
-          <button className="btn pt-0"
+          <button
+            className="btn pt-0"
             onClick={() => {
               setShowForget(false);
             }}
@@ -220,7 +220,6 @@ const Signin = () => {
         </form>
       </div>
     </div>
-   
   );
 
   return (

@@ -16,16 +16,18 @@ var current_date12 = current_date.toLocaleString();
 // GET ROUTE funtions .............
 
 exports.userById = async (req, res, next, id) => {
-  await User.findById(id).select('-image').exec((err, user) => {
-    if (err || !user) {
-      return res.status(400).json({
-        error: "User not found",
-      });
-    }
-   
-    req.profile = user;
-    next();
-  });
+  await User.findById(id)
+    .select("-image")
+    .exec((err, user) => {
+      if (err || !user) {
+        return res.status(400).json({
+          error: "User not found",
+        });
+      }
+
+      req.profile = user;
+      next();
+    });
 };
 
 exports.read = (req, res) => {
@@ -36,10 +38,12 @@ exports.read = (req, res) => {
 
 exports.allstudents = (req, res) => {
   User.find({ hostelName: req.profile.hostelName, profileType: 0 })
-    .select("fname lname membership department messStatus hostelId active_guest_list")
+    .select(
+      "fname lname membership department messStatus hostelId active_guest_list"
+    )
     .exec((err, users) => {
       if (err || !users) {
-        return res.json({ error: "Somthing went wrong" });
+        return res.json({ error: "Unable to load student " });
       } else {
         res.json({ students: users });
       }
@@ -64,7 +68,7 @@ exports.allReqList = (req, res) => {
     profileType: 0,
     $or: [{ membership: 0 }, { membership: 5 }],
   })
-    .select("fname lname membership department gender")
+    .select("fname lname membership department gender createdAt selfPhNo")
     .exec((err, students) => {
       if (err || !students) {
         return res.json({ error: "Somthing went wrong with students List" });
@@ -74,14 +78,14 @@ exports.allReqList = (req, res) => {
           profileType: 2,
           $or: [{ membership: 0 }, { membership: 5 }],
         })
-          .select("fname lname membership gender")
+          .select("fname lname membership gender createdAt selfPhNo")
           .exec((err, employees) => {
             if (err || !employees) {
               return res.json({
                 error: "Somthing went wrong with employee list",
               });
             } else {
-               res.json({ employees, students });
+              res.json({ employees, students });
             }
           });
       }
@@ -251,7 +255,6 @@ exports.addAuditCharges = (req, res) => {
       manager.mealInfoList.forEach((rec) => {
         if (rec.auditedDate == auditedDate) {
           recId = rec._id;
-         
         }
       });
 
@@ -429,19 +432,22 @@ exports.fchangeMealStatus = (req, res) => {
   });
 };
 
-exports.setstudetnHostelId = (req, res)=> {
+exports.setstudetnHostelId = (req, res) => {
   const userId = req.body.stuId;
   const hostelId = req.body.hostelId;
-  User.findOneAndUpdate({ _id: userId,},{ $set: { "hostelId": hostelId } }, function (err, result){
+  User.findOneAndUpdate(
+    { _id: userId },
+    { $set: { hostelId: hostelId } },
+    function (err, result) {
       if (err) {
         return res.json({ error: err });
       } else {
-
         return res.json({
-         info : "Hostel id updated successfully"
+          info: "Hostel id updated successfully",
         });
       }
-    });
+    }
+  );
 };
 
 exports.updateMembershipStatus = (req, res) => {
