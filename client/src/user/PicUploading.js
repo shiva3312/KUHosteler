@@ -47,19 +47,19 @@ const UpLoadimage = () => {
 
   const picUploadForm = () => (
     <>
-    <div className="gradiant uploadscreen">
+    <div className=" uploadscreen">
     <form  className="p-0 m-0" onSubmit={clickSubmit}>
       <div className="row m-1 d-flex justify-content-center align-items-center h-100">
           <div className=" col-lg-6">
-            <div className="card-body p-4 text-center upload1 shadow-lg text-box animate fadeUp">
+            <div className="card-body p-4 text-center upload1 shadow-sm text-box animate fadeUp">
               <div className="upload ">
-              <h2 className="fw-bold  mb-2 text-uppercase">
+              <h2 className="fw-bold  mb-2 ">
                  <i className=" fa fa-cloud-upload fw-bold upld"></i>
                 </h2>
-               <h2 className="fw-bold mb-2 text-uppercase upld text">
+               <h2 className="fw-bold mb-2 text-uppercase welcome">
                   Upload Image
                 </h2>
-                <p className="text mb-5">
+                <p className="upld mb-5">
                 Please select an image
                 </p>
                 <div className="disp1 row">
@@ -119,7 +119,7 @@ const UpLoadimage = () => {
 
   const showError = () => (
     <div
-      className="alert alert-danger"
+      className="alert alert-danger mb-0"
       style={{ display: error ? "" : "none" }}
     >
       {error}
@@ -128,7 +128,7 @@ const UpLoadimage = () => {
 
   const showSuccess = () => (
     <div
-      className="alert alert-info"
+      className="alert alert-info mb-0"
       style={{ display: success ? "" : "none" }}
     >
       <h2>{`${success}`} is created!</h2>
@@ -137,7 +137,7 @@ const UpLoadimage = () => {
 
   const showUpLoading = () =>
     uploading && (
-      <div className="alert alert-success">
+      <div className="alert alert-success mb-0">
         <h2>Loading...</h2>
       </div>
     );

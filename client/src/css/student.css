@@ -20,7 +20,7 @@
   
 }
 .gradiant{
-    background: linear-gradient(to left,#afd9dc,#65ccd6,rgb(15, 159, 139));
+    background: linear-gradient(to left,#98edf3,#5ddde9,rgb(42, 212, 190));
    
 }
 body {
@@ -412,7 +412,7 @@ h1{
     height:45px;
     padding:0;
     border-radius: 3px;
-    background:#6FB3B8;
+    background:rgb(41, 87, 89);
     border:none;
     outline:none;
     overflow:hidden;

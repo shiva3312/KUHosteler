@@ -337,7 +337,7 @@ body {
   font-size: 70px;
 }
 .upld{
-  background-image:linear-gradient(#44c6cf,#88ebf4);
+  background-image:linear-gradient(#44c6cf,rgb(23, 56, 58));
   background-size: 100%;
   background-clip: none;
   -webkit-background-clip: text;
@@ -346,13 +346,13 @@ body {
 }
 
 .upload1{
-  background-image: linear-gradient(#e1eeef,#b7ebe5);
- 
+  background-image:linear-gradient(rgb(226, 244, 248),rgb(237, 243, 237),rgb(220, 233, 236));
+
 }
 .upload{
   border-style: dashed;
-  border-width: 2px;
-  border-color: #44c6cf;
+  border-width: 1.5px;
+  border-color: rgb(41, 87, 89);
   margin:10px;
   padding: 15px;
   padding-top: 3rem;
@@ -361,7 +361,7 @@ body {
 
 }
 .btn-upload{
-  background:#6FB3B8;
+  background:rgb(23, 56, 58);
    color: white;
 }
 .uploadscreen{
@@ -412,4 +412,31 @@ body {
   .disp3{
     display: none;
   }
+}
+
+.topic1{
+  font-size: 45px;
+  font-weight: 600;
+  color: #133548;
+}
+
+.topic2{
+  font-size: 35px;
+  color:#307f86;
+}
+
+.imge1{
+  height:100px;
+  
+  width:100px;
+  border-radius: 50px;
+  padding:0px;
+  border-width: 3px;
+  border-color:#84878895;
+  
+  /* margin:0px; */
+}
+
+.sf{
+  background-image:linear-gradient(rgb(227, 233, 235),rgb(237, 243, 237));
 }

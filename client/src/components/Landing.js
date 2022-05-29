@@ -6,12 +6,12 @@ import { signout, isAuthenticated } from "../auth/index.js";
 export default function Landing({ history }) {
   return (
     <div className="text-box fadeUp animate">
-      <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
+      <nav className=" navbar navbar-expand-lg bg-dark navbar-light">
         <div className="container-fluid">
           <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
 
           <button
-            className=" navbar-toggler drkgrn"
+            className=" navbar-toggler th"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -19,10 +19,10 @@ export default function Landing({ history }) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon drkgrn"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className=" d-flex justify-content-end"></div>
+          {/* <div className=" d-flex justify-content-end"></div> */}
           <div
             className=" collapse navbar-collapse ps-2"
             id="navbarSupportedContent"
