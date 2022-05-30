@@ -70,7 +70,8 @@ export default function Footer() {
               <li><i className="fa fa-angle-right fa-lg pe-1"></i>
                 <Link to="/user/HelpDesk" className="text-white text-decoration-none"> Help Desk</Link>
               </li>
-               { isAuthenticated() &&  isAuthenticated().user.mebership ===2 &&(                
+              
+               { isAuthenticated() &&  isAuthenticated().user.membership ===2 &&(                
                 <li><i className="fa fa-angle-right fa-lg pe-1"></i>
                   <Link to="/user/MealTable" className="text-white text-decoration-none"> Meal List</Link>
                 </li>   
