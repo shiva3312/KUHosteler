@@ -86,73 +86,37 @@ const StudentListInfo = ({ history }) => {
   const chargeForm = () => (
     <>
       {/* // <!-- Modal --> */}
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
                 Enter Amount Here
               </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <button   type="button" className="btn-close"  data-bs-dismiss="modal"  aria-label="Close"></button>
             </div>
             <div className="modal-body">
               <div className="col form-outline text-start form-white mb-4">
                 <label className="form-label " htmlFor="deposit">
                   Deposit
                 </label>
-                <input
-                  type="Number"
-                  className="form-control"
-                  name="deposit"
-                  required=""
-                  onChange={handleChange("deposit")}
-                  value={deposit}
-                />
+                <input type="Number"className="form-control"name="deposit"required=""onChange={handleChange("deposit")}value={deposit} />
               </div>
               <div className="col form-outline text-start form-white mb-4">
                 <label className="form-label" htmlFor="fine">
                   Fine
                 </label>
-                <input
-                  type="Number"
-                  className="form-control"
-                  name="fine"
-                  required=""
-                  onChange={handleChange("fine")}
-                  value={fine}
-                />
+                <input type="Number"className="form-control"name="fine"required=""onChange={handleChange("fine")}value={fine}/>
               </div>
               <div className="col form-outline text-start form-white mb-4">
                 <label className="form-label " htmlFor="reason">
                   Reason
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="reason"
-                  required=""
-                  onChange={handleChange("reason")}
-                  value={reason}
-                />
+                <input type="text" className="form-control" name="reason" required=""onChange={handleChange("reason")}value={reason}/>
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-outline-secondary fw-bold btn px-4"
-                type="submit"
-                onClick={clickSubmit}
-              >
+              <button className="btn btn-outline-secondary fw-bold btn px-4"type="submit"onClick={clickSubmit}>
                 Update
               </button>
             </div>
@@ -181,6 +145,11 @@ const StudentListInfo = ({ history }) => {
         console.log(data.error);
       } else {
         console.log(data.info);
+        if (selectedUser !== null) {
+          if (status === 2)
+            selectedUser.membership = 3;
+          else selectedUser.membership = 2;
+        }
       }
     });
     setReRender(!reRender);
@@ -199,6 +168,7 @@ const StudentListInfo = ({ history }) => {
   useEffect(() => {
     console.log("useEffect runs");
     loadUsers();
+    console.log(students);
   }, [reRender, toggler]);
 
   const showError = () => (
@@ -226,7 +196,7 @@ const StudentListInfo = ({ history }) => {
   const studentList = () => {
     return (
       <>
-        <h1 className="m-4 text-box animate fadeUp ">Student Request List</h1>
+        <h1 className="m-4 text-box animate fadeUp ">All Student List</h1>
         <div className="p-2">
           <div className="shadow tbl-header ">
             <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
@@ -235,7 +205,6 @@ const StudentListInfo = ({ history }) => {
                   <th className="th1 col-1 sl">SL</th>
                   <th>Picture</th>
                   <th>Name</th>
-                  {/* <th>Room No.</th> */}
                   <th>Membership</th>
                   <th>Meal</th>
                   <th>Action</th>
@@ -250,499 +219,321 @@ const StudentListInfo = ({ history }) => {
                   <thead key={i}>
                     <td className="col-1 th1 sl">{i + 1}</td>
                     <td>
-                      <ShowImage
-                        user={student}
-                        Width="10px"
-                        ClassName="img1 img-thumbnail"
-                      />
+                      <ShowImage user={student}  ClassName="img2 " />
                     </td>
                     <td>
                       {student.fname} {student.lname}
                     </td>
-                    {/* <td>{student.roomNo}</td> */}
-
                     {student.membership === 2 ? (
-                      <td className="text-center  text-dark align-middle">
+                      <td className="text-center   align-middle">
+                      <span className="text-center badge rounded-pill bg-info">
                         Border
+                        </span>
                       </td>
                     ) : (
-                      <td className="text-center  text-dark align-middle">
-                        Ex Border
+                      <td className="text-center  align-middle">
+                         <span className="badge rounded-pill bg-danger">
+                        Ex-Border
+                        </span>
                       </td>
                     )}
                     {student.messStatus > 1 ? (
-                      <td className="text-center  text-dark align-middle">
+                      <td className="text-center   align-middle">
+                        <span className="badge rounded-pill bg-info">
                         ON
+                        </span>
                       </td>
                     ) : (
-                      <td className="text-center  text-dark align-middle">
+                      <td className="text-center   align-middle">
+                        <span className="badge rounded-pill bg-danger">
                         OFF
+                        </span>
                       </td>
                     )}
 
                     <td className="text-center">
-                      {/* <button type="button" className="btn btn-success" data-toggle="primary"  onClick={(e)=>{e.preventDefault(); setAction(!action);}} >Take Action (drop down)
-                                 </button> */}
-                      <button
-                        className="btn-sm btn-primary"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseExample"
-                        aria-expanded="false"
-                        aria-controls="collapseExample"
-                        onClick={(e) => { e.preventDefault(); setselectedUser(student._id); }}
-                      >
-                        Take Action
-                      </button>
                       <span>
                         {" "}
-                        <i
-                          className="ms-1 fa fa-eye text-primary border fa-lg "
-                          data-bs-toggle="modal"
-                          title="view profile"
-                          data-bs-target="#staticBackdrop" ari-expanded="false"
-                          onClick={(e) => { e.preventDefault();
+                        <i className="ms-1 fa fa-eye text-primary border fa-lg " data-bs-toggle="modal" title="view profile" data-bs-target="#staticBackdrop"
+                          onClick={() => {
                             setselectedUser(student._id);
+                            console.log(selectedUser);
                             viewDetails(student._id);
                           }}
-                         
-
                         ></i>
                       </span>
 
                       {/* -----------------------this modal start here--------------------------------  */}
-                      {
-                        <div
-                          className="modal fade"
-                          id="staticBackdrop"
-                          data-bs-backdrop="static"
-                          data-bs-keyboard="false"
-                          tabIndex="-1"
-                          aria-labelledby="staticBackdropLabel"
-                          aria-hidden="true"  style={{
-                      display: student._id === selectedUser ? "" : "none",
-                    }}
-                        >
-                          <h1> {student._id.fname} </h1>
-                          <div className="modal-dialog  modal-fullscreen-xxl-down" 
-                             >
+
+                      {selectedUser === null ? <></> : <>{
+
+                        <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
+                          aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+                          <div className="modal-dialog  modal-fullscreen-xxl-down">
                             <div className="modal-content">
                               <div className="modal-header">
-                                <h5
-                                  className="modal-title"
-                                  id="staticBackdropLabel"
-                                >
-                                  Student Details..
-                                </h5>
-                                <button
-                                  type="button"
-                                  className="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                ></button>
+                                <h5>Student Detail</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                               </div>
-                              <div className="modal-body student " id="staticBackdrop" 
-                       >
-                                <div className="row ">
-                                  <div className="col-5">
-                                    <div className="">
-                                      <ShowImage
-                                        user={student}
-                                        ClassName=" img1 mb-2 img-thumbnail"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="col-7 mt-3 text-start">
-                                    <h2 className="  text-uppercase">
-                                      {student.fname} {student.lname}
-                                    </h2>
-                                    <p className="fst-italic fw-light ">
-                                      Student of
-                                      <h2 className="fs-5 fst-normal">
-                                        {student.department}{" "}
-                                      </h2>
-                                      <p className="fst-italic fw-light ">
-                                        from
-                                        <h2 className="fs-6 fst-normal">
-                                          student.session{" "}
-                                        </h2>
-                                      </p>
-                                    </p>
-                                  </div>
-                                </div>
-                                <div className="border-bottom">
-                                  <h2 className="p-3 pb-0 text-uppercase student text-start">
-                                    &emsp;Basic Details
-                                  </h2>
-                                </div>
-                                <div className=" row m-3 basic1">
-                                  <div className="col-1"></div>
-                                  <div className="col-4 text-start">
-                                    Date of Birth:
-                                  </div>
-                                  <div className="col-7 text-start">
-                                    {student.dob}
-                                  </div>
-                                </div>
-                                <div className=" row m-3 basic1">
-                                  <div className="col-1"></div>
-                                  <div className="col-4 text-start">Sex:</div>
-                                  <div className="col-7 text-start">
-                                    {student.gender}
-                                  </div>
-                                </div>
-                                <div className=" row m-3 basic1">
-                                  <div className="col-1"></div>
-                                  <div className="col-4 text-start">Phone:</div>
-                                  <div className="col-7 text-start">
-                                    {student.phNo}
-                                  </div>
-                                </div>
-                                <div className=" row m-3 basic1">
-                                  <div className="col-1"></div>
-                                  <div className="col-4 text-start">Email:</div>
-                                  <div className="col-7 text-start">
-                                    {student.email}
-                                  </div>
-                                </div>
-                                <div className=" row m-3 basic1">
-                                  <div className="col-1"></div>
-                                  <div className="col-4 text-start">
-                                    Hostel Id:
-                                  </div>
-                                  <div className="col-7 text-start">
-                                    {student.hostelid}
-                                  </div>
-                                </div>
-                                <div className=" row m-3 basic1">
-                                  <div className="col-1"></div>
-                                  <div className="col-4 text-start">Room No:</div>
-                                  <div className="col-7 text-start">
-                                    {student.roomNo}
-                                  </div>
-                                </div>
-                                <div className=" row m-3 basic1">
-                                  <div className="col-1"></div>
-                                  <div className="col-4 text-start">Address:</div>
-                                  <div className="col-7 text-start">
-                                    {student.address}
-                                  </div>
-                                </div>
-                                <div className="border-bottom">
-                                  <h2 className="p-3 pb-0 text-uppercase student text-start">
-                                    &emsp;Status
-                                  </h2>
-                                </div>
-                                <div className="row m-3 basic1 text-start">
-                                  <div className="col-1"></div>
-                                  <div className="col-4">Membership Status</div>
-                                  <div className="col-6">
-                                    <div key={i}>
-                                      {student.membership === 2 ? (
-                                        <div>
-                                          {" "}
-                                          <button
-                                            type="submit"
-                                            className="btn-sm btn-success "
-                                            onClick={() =>
-                                              toggleMembership(student._id, 3)
-                                            }
-                                          >
-                                            Border
-                                          </button>
-                                        </div>
-                                      ) : (
-                                        <div>
-                                          {" "}
-                                          <button
-                                            type="submit"
-                                            className="btn-sm btn-danger "
-                                            onClick={() =>
-                                              toggleMembership(student._id, 2)
-                                            }
-                                          >
-                                            Ex Border
-                                          </button>
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="row m-3 basic1 text-start">
-                                  <div className="col-1"></div>
-                                  <div className="col-4">Meal Status</div>
-                                  <div className="col-6 ">
-                                    {" "}
-                                    {student.messStatus > 1 ? (
-                                      <div>
-                                        {" "}
-                                        <button
-                                          type="submit"
-                                          className="btn-sm btn-danger  "
-                                          onClick={() =>
-                                            toggleMeal(student._id, 0)
-                                          }
-                                        >
-                                          OFF
-                                        </button>
-                                      </div>
-                                    ) : (
-                                      <div>
-                                        {" "}
-                                        <button
-                                          type="submit"
-                                          className="btn-sm btn-success  "
-                                          onClick={() =>
-                                            toggleMeal(student._id, 2)
-                                          }
-                                        >
-                                          ON
-                                        </button>
-                                      </div>
-                                    )}
-                                  </div>
-                                </div>
-                                <div className="border-bottom">
-                                  <h2 className="p-3 pb-0 text-uppercase student text-start">
-                                    &emsp;Charges
-                                  </h2>
-                                </div>
-                                <div className="row m-3 basic1 text-start">
-                                  <div className="col-1"></div>
-                                  <div className="col-4">Paid Amount:</div>
-                                  <div className="col-6">{ }</div>
-                                </div>
-                                <div className="row m-3 basic1 text-start">
-                                  <div className="col-1"></div>
-                                  <div className="col-4">Due Amount:</div>
-                                  <div className="col-6">{ } </div>
-                                </div>
-                                <div className="row m-3 basic1 text-start">
-                                  <div className="col-1"></div>
-                                  <div className="col-9">
-                                    <button
-                                      className="btn-sm btn-primary mb-2"
-                                      type="button"
-                                      data-bs-toggle="collapse"
-                                      data-bs-target="#collapseExample1"
-                                      aria-expanded="false"
-                                      aria-controls="collapseExample"
-                                    >
-                                      Pay
-                                    </button>
-                                    <div
-                                      className="collapse"
-                                      id="collapseExample1"
-                                    >
-                                      <div className="card card-body">
-                                        <div className="text-end">
-                                          <button
-                                            type="button"
-                                            className="text-end btn-close"
-                                            data-bs-dismiss="collapse"
-                                            aria-label="Close"
-                                          ></button>
-                                        </div>
-                                        <div className="row">
-                                          <div className="col-6 form-outline text-start form-white mb-2">
-                                            <label
-                                              className="form-label "
-                                              htmlFor="deposit"
-                                            >
-                                              Deposit
-                                            </label>
-                                            <input
-                                              type="Number"
-                                              className="form-control"
-                                              name="deposit"
-                                              required=""
-                                              onChange={handleChange("deposit")}
-                                              value={deposit}
-                                            />
-                                          </div>
-                                          <div className="col-6 form-outline text-start form-white mb-2">
-                                            <label
-                                              className="form-label"
-                                              htmlFor="fine"
-                                            >
-                                              Fine
-                                            </label>
-                                            <input
-                                              type="Number"
-                                              className="form-control"
-                                              name="fine"
-                                              required=""
-                                              onChange={handleChange("fine")}
-                                              value={fine}
-                                            />
+                              <div className="modal-body student">
+                                <div className="container">
+                                  <div className="main-body">
+                                    <div className="row gutters-sm">
+                                      <div className="col-md-4 mb-3">
+                                        <div className="card ">
+                                          <div className="card-body">
+                                            <div className="d-flex flex-column align-items-center text-center">
+                                              <div>
+                                                <ShowImage user={selectedUser} ClassName=" img mb-2 img-thumbnail" />
+                                              </div>
+                                              <div className="mt-3">
+                                                <h4>{selectedUser.fname} {selectedUser.lname}</h4>
+                                                <p className="text-secondary mb-1">{selectedUser.department}</p>
+                                                <p className="text-muted font-size-sm">{selectedUser.session}</p>
+                                              </div>
+                                            </div>
                                           </div>
                                         </div>
-                                        <div className="col form-outline text-start form-white mb-4">
-                                          <label
-                                            className="form-label "
-                                            htmlFor="reason"
-                                          >
-                                            Reason
-                                          </label>
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            name="reason"
-                                            required=""
-                                            onChange={handleChange("reason")}
-                                            value={reason}
-                                          />
+                                        <div className="card mt-3">
+                                          <ul className="list-group list-group-flush">
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                              <h6 className="mb-0">Hostel Name</h6>
+                                              <span className="text-secondary">{selectedUser.hostelName}</span>
+                                            </li>
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                              <h6 className="mb-0">Hostel Id</h6>
+                                              <span className="text-secondary">{selectedUser.hostelId}</span>
+                                            </li>
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                              <h6 className="mb-0">Room No</h6>
+                                              <span className="text-secondary">{selectedUser.roomNo}</span>
+                                            </li>
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                              <h6 className="mb-0">Membership </h6>
+                                              {selectedUser.membership === 2 ? (
+                                                <div> 
+                                                  <span type="submit" className="badge rounded-pill bg-info "
+                                                    onClick={() =>  toggleMembership(selectedUser._id, 3)
+                                                    }> Border
+                                                  </span>
+                                                </div>
+                                              ) : (
+                                                <div>
+                                                  <span type="submit"className="badge rounded-pill bg-danger " onClick={() =>
+                                                      toggleMembership(selectedUser._id, 2)}>Ex Border
+                                                  </span>
+                                                </div>
+                                              )}
+                                            </li>
+                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                              <h6 className="mb-0">Meal status</h6>
+                                              {selectedUser.messStatus > 1 ? (
+                                                <div>
+                                                  <span type="submit"className="badge rounded-pill bg-danger "
+                                                    onClick={() => toggleMeal(selectedUser._id, 0)} >
+                                                    Deactivated
+                                                  </span>
+                                                </div>
+                                              ) : (
+                                                <div>
+                                                  <span type="submit" className="badge rounded-pill bg-info " 
+                                                  onClick={() => toggleMeal(selectedUser._id, 2)}>Activated</span>
+                                                </div>
+                                                // <button
+                                                //     type="submit"
+                                                //     className="btn btn-success  "
+                                                //     onClick={() => toggleMeal(student._id, 2)}
+                                                //   >
+                                                //     Activated
+                                                //   </button>
+
+                                              )}
+                                            </li>
+                                          </ul>
                                         </div>
-                                        <div className="col-12 text-end">
-                                          <button
-                                            className="btn-sm btn-outline-secondary fw-bold btn px-4"
-                                            type="submit"
-                                            onClick={clickSubmit}
-                                          >
-                                            Update
-                                          </button>
+                                      </div>
+                                      <div className="col-md-8">
+                                        <div className="card mb-3">
+                                          <div className="card-body text-dark">
+                                            <div className="row ">
+                                              <div className="col-sm-3">
+                                                <h6 className="mb-0 ">Full Name</h6>
+                                              </div>
+                                              <div className="col-sm-9 text-secondary">
+                                                {selectedUser.fname} {selectedUser.lname}
+                                              </div>
+                                            </div>
+                                            <hr />
+                                            <div className="row">
+                                              <div className="col-sm-3">
+                                                <h6 className="mb-0">Email</h6>
+                                              </div>
+                                              <div className="col-sm-9 text-secondary">
+                                                {selectedUser.email}
+                                              </div>
+                                            </div>
+                                            <hr />
+                                            <div className="row">
+                                              <div className="col-sm-3">
+                                                <h6 className="mb-0">Phone</h6>
+                                              </div>
+                                              <div className="col-sm-9 text-secondary">
+                                                {selectedUser.selfPhNo}
+                                              </div>
+                                            </div>
+                                            <hr />
+                                            <div className="row">
+                                              <div className="col-sm-3">
+                                                <h6 className="mb-0">Gender</h6>
+                                              </div>
+                                              <div className="col-sm-9 text-secondary">
+                                                {selectedUser.gender}
+                                              </div>
+                                            </div>
+                                            <hr />
+                                            <div className="row">
+                                              <div className="col-sm-3">
+                                                <h6 className="mb-0">Address</h6>
+                                              </div>
+                                              <div className="col-sm-9 text-secondary">
+                                                {selectedUser.address}
+                                              </div>
+                                            </div>
+                                            <hr />
+                                          </div>
+                                        </div>
+                                        <div className="row gutters-sm">
+                                          <div className="col-sm-12 mb-3">
+                                            <div className="card h-100">
+                                              <div className="card-body">
+                                                <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">Payment &nbsp;</i>Record</h6>                                            
+                                                <button className="d-flex btn text-light btn-info1 mb-2 "type="button"data-bs-toggle="collapse"data-bs-target="#collapseExample1"
+                                                  aria-expanded="false" aria-controls="collapseExample">
+                                                  Add Payment
+                                                </button>
+                                                <div className="collapse" id="collapseExample1" >
+                                                  <div className="card card-body">
+                                                    <div className="row">
+                                                      <div className="col-6 form-outline text-start form-white mb-2">
+                                                        <label className="form-label "htmlFor="deposit">
+                                                          Deposit
+                                                        </label>
+                                                        <input type="Number"className="form-control" name="deposit" required=""
+                                                        onChange={handleChange("deposit")} value={deposit}/>
+                                                      </div>
+                                                      <div className="col-6 form-outline text-start form-white mb-2">
+                                                        <label className="form-label" htmlFor="fine">
+                                                          Fine
+                                                        </label>
+                                                        <input type="Number"className="form-control"name="fine"required=""
+                                                         onChange={handleChange("fine")} value={fine} />
+                                                      </div>
+                                                    </div>
+                                                    <div className="col form-outline text-start form-white mb-4">
+                                                      <label className="form-label "htmlFor="reason" >
+                                                        Reason
+                                                      </label>
+                                                      <input type="text" className="form-control"name="reason"required=""
+                                                        onChange={handleChange("reason")}
+                                                        value={reason}/>
+                                                    </div>
+                                                    <div className="col-12 text-end">
+                                                      <button className="btn-sm btn-outline-info fw-bold btn px-4 me-1"type="submit" onClick={clickSubmit}>
+                                                        Update
+                                                      </button>
+                                                      <button className="btn-sm btn-outline-info fw-bold btn px-4"type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseExample1"aria-expanded="false" aria-controls="collapseExample">
+                                                        Close
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                                <div className="mt-5 pt-5 border-bottom"></div>
+                                {/* <div className="row m-3 basic1 text-start">
+                                                  <div className="col-1"></div>
+                                                  <div className="col-4">Membership Status</div>
+                                                  <div className="col-6">
+                                                    <div key={i}>
+                                                      {student.membership === 2 ? (
+                                                        <div>
+                                                          {" "}
+                                                          <button
+                                                            type="submit"
+                                                            className="btn-sm btn-success "
+                                                            onClick={() =>
+                                                              toggleMembership(student._id, 3)
+                                                            }
+                                                          >
+                                                            Border
+                                                          </button>
+                                                        </div>
+                                                      ) : (
+                                                        <div>
+                                                          {" "}
+                                                          <button
+                                                            type="submit"
+                                                            className="btn-sm btn-danger "
+                                                            onClick={() =>
+                                                              toggleMembership(student._id, 2)
+                                                            }
+                                                          >
+                                                            Ex Border
+                                                          </button>
+                                                        </div>
+                                                      )}
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div className="row m-3 basic1 text-start">
+                                                  <div className="col-1"></div>
+                                                  <div className="col-4">Meal Status</div>
+                                                  <div className="col-6 ">
+                                                    {" "}
+                                                    {student.messStatus > 1 ? (
+                                                      <div>
+                                                        {" "}
+                                                        <button
+                                                          type="submit"
+                                                          className="btn-sm btn-danger  "
+                                                          onClick={() =>
+                                                            toggleMeal(student._id, 0)
+                                                          }
+                                                        >
+                                                          OFF
+                                                        </button>
+                                                      </div>
+                                                    ) : (
+                                                      <div>
+                                                        {" "}
+                                                        <button
+                                                          type="submit"
+                                                          className="btn-sm btn-success  "
+                                                          onClick={() =>
+                                                            toggleMeal(student._id, 2)
+                                                          }
+                                                        >
+                                                          ON
+                                                        </button>
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                </div> */}
+
                               </div>
-                              {/* <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" className="btn btn-primary">Understood</button>
-                        </div> */}
                             </div>
                           </div>
                         </div>
-                      }
+                      }</>}
                       {/* -----------------------this modal ends here--------------------------------  */}
                     </td>
-
-                    {/* All action will be shown here  */}
                   </thead>
-                  <tr
-                    className="collapse"
-                    id="collapseExample"
-                    style={{
-                      display: student._id === selectedUser ? "" : "none",
-                    }}
-                  >
-                    <tr className="bg-dark">
-                      <th className="align-middle text-center text-light h5 p-3">
-                        Membership
-                      </th>
-                      <th className="align-middle text-center text-light h5">
-                        Fine
-                      </th>
-                      <th className="align-middle text-center text-light h5">
-                        Meal
-                      </th>
-                      <th className="align-middle text-center text-light h5">
-                        Payment
-                      </th>
-                      <th className="align-middle text-center text-light h5">
-                        View profile
-                      </th>
-                    </tr>
-
-                    <tr className="table-warning" key={i}>
-                      <td>{student.fname}</td>
-                      {student.membership === 2 ? (
-                        <td className="text-center">
-                          {" "}
-                          <button
-                            type="submit"
-                            className="btn btn-success "
-                            onClick={() => toggleMembership(student._id, 3)}
-                          >
-                            Border
-                          </button>
-                        </td>
-                      ) : (
-                        <td className="text-center">
-                          {" "}
-                          <button
-                            type="submit"
-                            className="btn btn-danger "
-                            onClick={() => toggleMembership(student._id, 2)}
-                          >
-                            Ex Border
-                          </button>
-                        </td>
-                      )}
-                      <td className="text-center text-dark align-middle">
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          onClick={() => {
-                            setselectedUser(student._id);
-                          }}
-                        >
-                          Add Fine
-                        </button>
-                      </td>
-
-                      {student.messStatus > 1 ? (
-                        <td className="text-center">
-                          {" "}
-                          <button
-                            type="submit"
-                            className="btn btn-danger  "
-                            onClick={() => toggleMeal(student._id, 0)}
-                          >
-                            Turn OFF
-                          </button>
-                        </td>
-                      ) : (
-                        <td className="text-center">
-                          {" "}
-                          <button
-                            type="submit"
-                            className="btn btn-success  "
-                            onClick={() => toggleMeal(student._id, 2)}
-                          >
-                            Turn ON
-                          </button>
-                        </td>
-                      )}
-                      <td className="text-center text-dark align-middle">
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          onClick={() => {
-                            setselectedUser(student._id);
-                          }}
-                        >
-                          Pay
-                        </button>
-                      </td>
-                      <td className="text-center text-dark align-middle">
-                        {" "}
-                        <button
-                          type="submit"
-                          className="btn btn-success  "
-                          onClick={() => toggleMeal(student._id)}
-                        >
-                          View ( drop Down )
-                        </button>
-                      </td>
-                      <td className="text-center text-dark align-middle">
-                        {" "}
-                        <button
-                          type="submit"
-                          className="btn btn-dark  "
-                          onClick={() => setselectedUser(null)}
-                        >
-                          Close
-                        </button>
-                      </td>
-                    </tr>
-                  </tr>
                 </>
               ))}
             </table>
