@@ -227,7 +227,7 @@ const StudentListInfo = ({ history }) => {
     return (
       <>
         <h1 className="m-4 text-box animate fadeUp ">Student Request List</h1>
-        <div className="p-2 text-box animate fadeUp">
+        <div className="p-2">
           <div className="shadow tbl-header ">
             <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
               <thead>
@@ -283,331 +283,338 @@ const StudentListInfo = ({ history }) => {
                     <td className="text-center">
                       {/* <button type="button" className="btn btn-success" data-toggle="primary"  onClick={(e)=>{e.preventDefault(); setAction(!action);}} >Take Action (drop down)
                                  </button> */}
-                      {/* <button
+                      <button
                         className="btn-sm btn-primary"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#collapseExample"
                         aria-expanded="false"
                         aria-controls="collapseExample"
-                        onClick={(e) => {}}
+                        onClick={(e) => { e.preventDefault(); setselectedUser(student._id); }}
                       >
                         Take Action
-                      </button> */}
+                      </button>
                       <span>
                         {" "}
                         <i
                           className="ms-1 fa fa-eye text-primary border fa-lg "
                           data-bs-toggle="modal"
                           title="view profile"
-                          data-bs-target="#staticBackdrop"
-                          onClick={() => {
+                          data-bs-target="#staticBackdrop" ari-expanded="false"
+                          onClick={(e) => { e.preventDefault();
                             setselectedUser(student._id);
                             viewDetails(student._id);
                           }}
+                         
+
                         ></i>
                       </span>
 
                       {/* -----------------------this modal start here--------------------------------  */}
                       {
-                        //                   <div
-                        //                   className="modal fade"
-                        //                   id="staticBackdrop"
-                        //                   data-bs-backdrop="static"
-                        //                   data-bs-keyboard="false"
-                        //                   tabIndex="-1"
-                        //                   aria-labelledby="staticBackdropLabel"
-                        //                   aria-hidden="true"
-                        //                 >
-                        //                   <div className="modal-dialog  modal-fullscreen-xxl-down">
-                        //                     <div className="modal-content">
-                        //                       <div className="modal-header">
-                        //                         <h5
-                        //                           className="modal-title"
-                        //                           id="staticBackdropLabel"
-                        //                         >
-                        //                           Student Details..
-                        //                         </h5>
-                        //                         <button
-                        //                           type="button"
-                        //                           className="btn-close"
-                        //                           data-bs-dismiss="modal"
-                        //                           aria-label="Close"
-                        //                         ></button>
-                        //                       </div>
-                        //                       <div className="modal-body student">
-                        //                         <div className="row ">
-                        //                           <div className="col-5">
-                        //                             <div className="">
-                        //                               <ShowImage
-                        //                                 user={student}
-                        //                                 ClassName=" img1 mb-2 img-thumbnail"
-                        //                               />
-                        //                             </div>
-                        //                           </div>
-                        //                           <div className="col-7 mt-3 text-start   ">
-                        //                             <h2 className="  text-uppercase">
-                        //                               {student.fname} {student.lname}
-                        //                             </h2>
-                        //                             <p className="fst-italic fw-light ">
-                        //                               Student of
-                        //                               <h2 className="fs-5 fst-normal">
-                        //                                 {student.department}{" "}
-                        //                               </h2>
-                        //                               <p className="fst-italic fw-light ">
-                        //                                 from
-                        //                                 <h2 className="fs-6 fst-normal">
-                        //                                   student.session{" "}
-                        //                                 </h2>
-                        //                               </p>
-                        //                             </p>
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className="border-bottom">
-                        //                           <h2 className="p-3 pb-0 text-uppercase student text-start">
-                        //                             &emsp;Basic Details
-                        //                           </h2>
-                        //                         </div>
-                        //                         <div className=" row m-3 basic1">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4 text-start">
-                        //                             Date of Birth:
-                        //                           </div>
-                        //                           <div className="col-7 text-start">
-                        //                             {student.dob}
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className=" row m-3 basic1">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4 text-start">Sex:</div>
-                        //                           <div className="col-7 text-start">
-                        //                             {student.gender}
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className=" row m-3 basic1">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4 text-start">Phone:</div>
-                        //                           <div className="col-7 text-start">
-                        //                             {student.phNo}
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className=" row m-3 basic1">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4 text-start">Email:</div>
-                        //                           <div className="col-7 text-start">
-                        //                             {student.email}
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className=" row m-3 basic1">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4 text-start">
-                        //                             Hostel Id:
-                        //                           </div>
-                        //                           <div className="col-7 text-start">
-                        //                             {student.hostelid}
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className=" row m-3 basic1">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4 text-start">Room No:</div>
-                        //                           <div className="col-7 text-start">
-                        //                             {student.roomNo}
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className=" row m-3 basic1">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4 text-start">Address:</div>
-                        //                           <div className="col-7 text-start">
-                        //                             {student.address}
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className="border-bottom">
-                        //                           <h2 className="p-3 pb-0 text-uppercase student text-start">
-                        //                             &emsp;Status
-                        //                           </h2>
-                        //                         </div>
-                        //                         <div className="row m-3 basic1 text-start">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4">Membership Status</div>
-                        //                           <div className="col-6">
-                        //                             <div key={i}>
-                        //                               {student.membership === 2 ? (
-                        //                                 <div>
-                        //                                   {" "}
-                        //                                   <button
-                        //                                     type="submit"
-                        //                                     className="btn-sm btn-success "
-                        //                                     onClick={() =>
-                        //                                       toggleMembership(student._id, 3)
-                        //                                     }
-                        //                                   >
-                        //                                     Border
-                        //                                   </button>
-                        //                                 </div>
-                        //                               ) : (
-                        //                                 <div>
-                        //                                   {" "}
-                        //                                   <button
-                        //                                     type="submit"
-                        //                                     className="btn-sm btn-danger "
-                        //                                     onClick={() =>
-                        //                                       toggleMembership(student._id, 2)
-                        //                                     }
-                        //                                   >
-                        //                                     Ex Border
-                        //                                   </button>
-                        //                                 </div>
-                        //                               )}
-                        //                             </div>
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className="row m-3 basic1 text-start">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4">Meal Status</div>
-                        //                           <div className="col-6 ">
-                        //                             {" "}
-                        //                             {student.messStatus > 1 ? (
-                        //                               <div>
-                        //                                 {" "}
-                        //                                 <button
-                        //                                   type="submit"
-                        //                                   className="btn-sm btn-danger  "
-                        //                                   onClick={() =>
-                        //                                     toggleMeal(student._id, 0)
-                        //                                   }
-                        //                                 >
-                        //                                   OFF
-                        //                                 </button>
-                        //                               </div>
-                        //                             ) : (
-                        //                               <div>
-                        //                                 {" "}
-                        //                                 <button
-                        //                                   type="submit"
-                        //                                   className="btn-sm btn-success  "
-                        //                                   onClick={() =>
-                        //                                     toggleMeal(student._id, 2)
-                        //                                   }
-                        //                                 >
-                        //                                   ON
-                        //                                 </button>
-                        //                               </div>
-                        //                             )}
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className="border-bottom">
-                        //                           <h2 className="p-3 pb-0 text-uppercase student text-start">
-                        //                             &emsp;Charges
-                        //                           </h2>
-                        //                         </div>
-                        //                         <div className="row m-3 basic1 text-start">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4">Paid Amount:</div>
-                        //                           <div className="col-6">{}</div>
-                        //                         </div>
-                        //                         <div className="row m-3 basic1 text-start">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-4">Due Amount:</div>
-                        //                           <div className="col-6">{} </div>
-                        //                         </div>
-                        //                         <div className="row m-3 basic1 text-start">
-                        //                           <div className="col-1"></div>
-                        //                           <div className="col-9">
-                        //                             <button
-                        //                               className="btn-sm btn-primary mb-2"
-                        //                               type="button"
-                        //                               data-bs-toggle="collapse"
-                        //                               data-bs-target="#collapseExample1"
-                        //                               aria-expanded="false"
-                        //                               aria-controls="collapseExample"
-                        //                             >
-                        //                               Pay
-                        //                             </button>
-                        //                             <div
-                        //                               className="collapse"
-                        //                               id="collapseExample1"
-                        //                             >
-                        //                               <div className="card card-body">
-                        //                                 <div className="text-end">
-                        //                                   <button
-                        //                                     type="button"
-                        //                                     className="text-end btn-close"
-                        //                                     data-bs-dismiss="collapse"
-                        //                                     aria-label="Close"
-                        //                                   ></button>
-                        //                                 </div>
-                        //                                 <div className="row">
-                        //                                   <div className="col-6 form-outline text-start form-white mb-2">
-                        //                                     <label
-                        //                                       className="form-label "
-                        //                                       htmlFor="deposit"
-                        //                                     >
-                        //                                       Deposit
-                        //                                     </label>
-                        //                                     <input
-                        //                                       type="Number"
-                        //                                       className="form-control"
-                        //                                       name="deposit"
-                        //                                       required=""
-                        //                                       onChange={handleChange("deposit")}
-                        //                                       value={deposit}
-                        //                                     />
-                        //                                   </div>
-                        //                                   <div className="col-6 form-outline text-start form-white mb-2">
-                        //                                     <label
-                        //                                       className="form-label"
-                        //                                       htmlFor="fine"
-                        //                                     >
-                        //                                       Fine
-                        //                                     </label>
-                        //                                     <input
-                        //                                       type="Number"
-                        //                                       className="form-control"
-                        //                                       name="fine"
-                        //                                       required=""
-                        //                                       onChange={handleChange("fine")}
-                        //                                       value={fine}
-                        //                                     />
-                        //                                   </div>
-                        //                                 </div>
-                        //                                 <div className="col form-outline text-start form-white mb-4">
-                        //                                   <label
-                        //                                     className="form-label "
-                        //                                     htmlFor="reason"
-                        //                                   >
-                        //                                     Reason
-                        //                                   </label>
-                        //                                   <input
-                        //                                     type="text"
-                        //                                     className="form-control"
-                        //                                     name="reason"
-                        //                                     required=""
-                        //                                     onChange={handleChange("reason")}
-                        //                                     value={reason}
-                        //                                   />
-                        //                                 </div>
-                        //                                 <div className="col-12 text-end">
-                        //                                   <button
-                        //                                     className="btn-sm btn-outline-secondary fw-bold btn px-4"
-                        //                                     type="submit"
-                        //                                     onClick={clickSubmit}
-                        //                                   >
-                        //                                     Update
-                        //                                   </button>
-                        //                                 </div>
-                        //                               </div>
-                        //                             </div>
-                        //                           </div>
-                        //                         </div>
-                        //                         <div className="mt-5 pt-5 border-bottom"></div>
-                        //                       </div>
-                        //                       {/* <div className="modal-footer">
-                        //   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        //   <button type="button" className="btn btn-primary">Understood</button>
-                        // </div> */}
-                        //                     </div>
-                        //                   </div>
-                        //                 </div>
+                        <div
+                          className="modal fade"
+                          id="staticBackdrop"
+                          data-bs-backdrop="static"
+                          data-bs-keyboard="false"
+                          tabIndex="-1"
+                          aria-labelledby="staticBackdropLabel"
+                          aria-hidden="true"  style={{
+                      display: student._id === selectedUser ? "" : "none",
+                    }}
+                        >
+                          <h1> {student._id.fname} </h1>
+                          <div className="modal-dialog  modal-fullscreen-xxl-down" 
+                             >
+                            <div className="modal-content">
+                              <div className="modal-header">
+                                <h5
+                                  className="modal-title"
+                                  id="staticBackdropLabel"
+                                >
+                                  Student Details..
+                                </h5>
+                                <button
+                                  type="button"
+                                  className="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div className="modal-body student " id="staticBackdrop" 
+                       >
+                                <div className="row ">
+                                  <div className="col-5">
+                                    <div className="">
+                                      <ShowImage
+                                        user={student}
+                                        ClassName=" img1 mb-2 img-thumbnail"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="col-7 mt-3 text-start">
+                                    <h2 className="  text-uppercase">
+                                      {student.fname} {student.lname}
+                                    </h2>
+                                    <p className="fst-italic fw-light ">
+                                      Student of
+                                      <h2 className="fs-5 fst-normal">
+                                        {student.department}{" "}
+                                      </h2>
+                                      <p className="fst-italic fw-light ">
+                                        from
+                                        <h2 className="fs-6 fst-normal">
+                                          student.session{" "}
+                                        </h2>
+                                      </p>
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="border-bottom">
+                                  <h2 className="p-3 pb-0 text-uppercase student text-start">
+                                    &emsp;Basic Details
+                                  </h2>
+                                </div>
+                                <div className=" row m-3 basic1">
+                                  <div className="col-1"></div>
+                                  <div className="col-4 text-start">
+                                    Date of Birth:
+                                  </div>
+                                  <div className="col-7 text-start">
+                                    {student.dob}
+                                  </div>
+                                </div>
+                                <div className=" row m-3 basic1">
+                                  <div className="col-1"></div>
+                                  <div className="col-4 text-start">Sex:</div>
+                                  <div className="col-7 text-start">
+                                    {student.gender}
+                                  </div>
+                                </div>
+                                <div className=" row m-3 basic1">
+                                  <div className="col-1"></div>
+                                  <div className="col-4 text-start">Phone:</div>
+                                  <div className="col-7 text-start">
+                                    {student.phNo}
+                                  </div>
+                                </div>
+                                <div className=" row m-3 basic1">
+                                  <div className="col-1"></div>
+                                  <div className="col-4 text-start">Email:</div>
+                                  <div className="col-7 text-start">
+                                    {student.email}
+                                  </div>
+                                </div>
+                                <div className=" row m-3 basic1">
+                                  <div className="col-1"></div>
+                                  <div className="col-4 text-start">
+                                    Hostel Id:
+                                  </div>
+                                  <div className="col-7 text-start">
+                                    {student.hostelid}
+                                  </div>
+                                </div>
+                                <div className=" row m-3 basic1">
+                                  <div className="col-1"></div>
+                                  <div className="col-4 text-start">Room No:</div>
+                                  <div className="col-7 text-start">
+                                    {student.roomNo}
+                                  </div>
+                                </div>
+                                <div className=" row m-3 basic1">
+                                  <div className="col-1"></div>
+                                  <div className="col-4 text-start">Address:</div>
+                                  <div className="col-7 text-start">
+                                    {student.address}
+                                  </div>
+                                </div>
+                                <div className="border-bottom">
+                                  <h2 className="p-3 pb-0 text-uppercase student text-start">
+                                    &emsp;Status
+                                  </h2>
+                                </div>
+                                <div className="row m-3 basic1 text-start">
+                                  <div className="col-1"></div>
+                                  <div className="col-4">Membership Status</div>
+                                  <div className="col-6">
+                                    <div key={i}>
+                                      {student.membership === 2 ? (
+                                        <div>
+                                          {" "}
+                                          <button
+                                            type="submit"
+                                            className="btn-sm btn-success "
+                                            onClick={() =>
+                                              toggleMembership(student._id, 3)
+                                            }
+                                          >
+                                            Border
+                                          </button>
+                                        </div>
+                                      ) : (
+                                        <div>
+                                          {" "}
+                                          <button
+                                            type="submit"
+                                            className="btn-sm btn-danger "
+                                            onClick={() =>
+                                              toggleMembership(student._id, 2)
+                                            }
+                                          >
+                                            Ex Border
+                                          </button>
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="row m-3 basic1 text-start">
+                                  <div className="col-1"></div>
+                                  <div className="col-4">Meal Status</div>
+                                  <div className="col-6 ">
+                                    {" "}
+                                    {student.messStatus > 1 ? (
+                                      <div>
+                                        {" "}
+                                        <button
+                                          type="submit"
+                                          className="btn-sm btn-danger  "
+                                          onClick={() =>
+                                            toggleMeal(student._id, 0)
+                                          }
+                                        >
+                                          OFF
+                                        </button>
+                                      </div>
+                                    ) : (
+                                      <div>
+                                        {" "}
+                                        <button
+                                          type="submit"
+                                          className="btn-sm btn-success  "
+                                          onClick={() =>
+                                            toggleMeal(student._id, 2)
+                                          }
+                                        >
+                                          ON
+                                        </button>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="border-bottom">
+                                  <h2 className="p-3 pb-0 text-uppercase student text-start">
+                                    &emsp;Charges
+                                  </h2>
+                                </div>
+                                <div className="row m-3 basic1 text-start">
+                                  <div className="col-1"></div>
+                                  <div className="col-4">Paid Amount:</div>
+                                  <div className="col-6">{ }</div>
+                                </div>
+                                <div className="row m-3 basic1 text-start">
+                                  <div className="col-1"></div>
+                                  <div className="col-4">Due Amount:</div>
+                                  <div className="col-6">{ } </div>
+                                </div>
+                                <div className="row m-3 basic1 text-start">
+                                  <div className="col-1"></div>
+                                  <div className="col-9">
+                                    <button
+                                      className="btn-sm btn-primary mb-2"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#collapseExample1"
+                                      aria-expanded="false"
+                                      aria-controls="collapseExample"
+                                    >
+                                      Pay
+                                    </button>
+                                    <div
+                                      className="collapse"
+                                      id="collapseExample1"
+                                    >
+                                      <div className="card card-body">
+                                        <div className="text-end">
+                                          <button
+                                            type="button"
+                                            className="text-end btn-close"
+                                            data-bs-dismiss="collapse"
+                                            aria-label="Close"
+                                          ></button>
+                                        </div>
+                                        <div className="row">
+                                          <div className="col-6 form-outline text-start form-white mb-2">
+                                            <label
+                                              className="form-label "
+                                              htmlFor="deposit"
+                                            >
+                                              Deposit
+                                            </label>
+                                            <input
+                                              type="Number"
+                                              className="form-control"
+                                              name="deposit"
+                                              required=""
+                                              onChange={handleChange("deposit")}
+                                              value={deposit}
+                                            />
+                                          </div>
+                                          <div className="col-6 form-outline text-start form-white mb-2">
+                                            <label
+                                              className="form-label"
+                                              htmlFor="fine"
+                                            >
+                                              Fine
+                                            </label>
+                                            <input
+                                              type="Number"
+                                              className="form-control"
+                                              name="fine"
+                                              required=""
+                                              onChange={handleChange("fine")}
+                                              value={fine}
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="col form-outline text-start form-white mb-4">
+                                          <label
+                                            className="form-label "
+                                            htmlFor="reason"
+                                          >
+                                            Reason
+                                          </label>
+                                          <input
+                                            type="text"
+                                            className="form-control"
+                                            name="reason"
+                                            required=""
+                                            onChange={handleChange("reason")}
+                                            value={reason}
+                                          />
+                                        </div>
+                                        <div className="col-12 text-end">
+                                          <button
+                                            className="btn-sm btn-outline-secondary fw-bold btn px-4"
+                                            type="submit"
+                                            onClick={clickSubmit}
+                                          >
+                                            Update
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="mt-5 pt-5 border-bottom"></div>
+                              </div>
+                              {/* <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" className="btn btn-primary">Understood</button>
+                        </div> */}
+                            </div>
+                          </div>
+                        </div>
                       }
                       {/* -----------------------this modal ends here--------------------------------  */}
                     </td>
@@ -640,7 +647,7 @@ const StudentListInfo = ({ history }) => {
                     </tr>
 
                     <tr className="table-warning" key={i}>
-                      <td>{student.dob}</td>
+                      <td>{student.fname}</td>
                       {student.membership === 2 ? (
                         <td className="text-center">
                           {" "}

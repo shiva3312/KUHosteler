@@ -46,11 +46,25 @@ const UpLoadimage = () => {
   };
 
   const picUploadForm = () => (
-    <form className="mb-3 text-center mt-5" onSubmit={clickSubmit}>
-      <h4 className="display-6 mb-4">Upload image</h4>
-      <p>Please select an image</p>
-      <div className="form-group">
-        <label className="btn btn-secondary ">
+    <>
+    <div className=" uploadscreen">
+    <form  className="p-0 m-0" onSubmit={clickSubmit}>
+      <div className="row m-1 d-flex justify-content-center align-items-center h-100">
+          <div className=" col-lg-6">
+            <div className="card-body p-4 text-center upload1 shadow-sm text-box animate fadeUp">
+              <div className="upload ">
+              <h2 className="fw-bold  mb-2 ">
+                 <i className=" fa fa-cloud-upload fw-bold upld"></i>
+                </h2>
+               <h2 className="fw-bold mb-2 text-uppercase welcome">
+                  Upload Image
+                </h2>
+                <p className="upld mb-5">
+                Please select an image
+                </p>
+                <div className="disp1 row">
+                <div className="col-9 form-group">
+        <label className="btn btn-upload ">
           <input
             onChange={handleChange("image")}
             type="file"
@@ -59,14 +73,53 @@ const UpLoadimage = () => {
           />
         </label>
       </div>
-
-      <button className="btn btn-outline-primary mt-3">Upload Profile</button>
+      <div className="col-3 ">
+      <button className="bton text-light">
+       <span className="button__text">Upload</span>
+           </button>
+      </div>
+      </div>
+       <div className="disp2  p-0">
+        <label className="btn btn-upload ">
+          <input
+            onChange={handleChange("image")}
+            type="file"
+            name="image"
+            accept="image/*" className="fs-small"
+          />
+        </label>
+      </div>
+      <div className="disp3 card p-0">
+        <label className="btn btn-upload ">
+          <input
+            onChange={handleChange("image")}
+            type="file"
+            name="image"
+            accept="image/*" className="fs-small"
+          />
+        </label>
+      </div>
+      <div className="disp p-1">
+      <button className="bton text-light">
+       <span className="button__text">Upload</span>
+           </button>
+      
+      </div>
+      
+              </div>
+             
+            </div>
+          </div>
+        </div>
+    
     </form>
+  </div>
+</>
   );
 
   const showError = () => (
     <div
-      className="alert alert-danger"
+      className="alert alert-danger mb-0"
       style={{ display: error ? "" : "none" }}
     >
       {error}
@@ -75,7 +128,7 @@ const UpLoadimage = () => {
 
   const showSuccess = () => (
     <div
-      className="alert alert-info"
+      className="alert alert-info mb-0"
       style={{ display: success ? "" : "none" }}
     >
       <h2>{`${success}`} is created!</h2>
@@ -84,7 +137,7 @@ const UpLoadimage = () => {
 
   const showUpLoading = () =>
     uploading && (
-      <div className="alert alert-success">
+      <div className="alert alert-success mb-0">
         <h2>Loading...</h2>
       </div>
     );

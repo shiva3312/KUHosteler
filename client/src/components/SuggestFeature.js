@@ -105,11 +105,43 @@ export default function SuggestFeature({history})
             </ul>
           </div>
         </div>
-      </nav>
-     <center>
+      </nav> 
+     
+      <div className="container pt-5 mt-3 mb-5 pb-3">
+        <div className="row ps-5 pe-5 ">
+         <div className="card ps-5 sf">
+         <div class="topic1 ps-5">HAVE A BETTER SUGGESTION<br/> IN MIND? </div>
+          <div className=" col-5 ps-5"><img src={id} height="100px" width="100px"alt=""/>
+              </div>
+          <div class="topic2 pt-4 ps-5">Share With Us!</div>
+          </div>
+         
+          <div className="col-5 pt-5 text-end">
+            <img src="https://static.vecteezy.com/system/resources/previews/004/105/877/original/self-education-owl-reading-books-isolated-smart-character-cartoon-bird-with-glasses-studying-illustration-owl-get-education-learning-reading-free-vector.jpg" className="imge1 img-thumbnail shadow"alt=".."/>
+          </div>
+          <div className="col-7 pt-5 mt-3 ps-0">
+          <div class="mb-3">
+            
+  <input type="name" class="shadow-sm form-control" id="exampleFormControlInput2" placeholder="name"/>
+</div>
+          <div class="mb-3">
+  <input type="email" class="shadow-sm form-control" id="exampleFormControlInput1" placeholder="email"/>
+</div>
+
+<div class="mb-3">
+  <textarea class="shadow-sm form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Your Suggestion"></textarea>
+</div>
+<button type="submit" class="btn btn-dark">Submit</button>
+          </div>
+          </div>
+      </div>
+      
+
+
+     {/* <center>
                 <div class="conta">
               <div class="content">
-              <div class="image-box">
+              <div class="">
               <img src={id} alt=""/>
                  </div>
              <form action="#">
@@ -132,7 +164,7 @@ export default function SuggestFeature({history})
        </form>
           </div>
         </div>
-</center>
+</center> */}
   
   
              <Footer />
