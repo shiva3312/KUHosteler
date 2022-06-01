@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import "../css/global.css";
 import { isAuthenticated, uploadpic } from "../auth";
 
@@ -47,74 +47,62 @@ const UpLoadimage = () => {
 
   const picUploadForm = () => (
     <>
-    <div className=" uploadscreen">
-    <form  className="p-0 m-0" onSubmit={clickSubmit}>
-      <div className="row m-1 d-flex justify-content-center align-items-center h-100">
-          <div className=" col-lg-6">
-            <div className="card-body p-4 text-center upload1 shadow-sm text-box animate fadeUp">
-              <div className="upload ">
-              <h2 className="fw-bold  mb-2 ">
-                 <i className=" fa fa-cloud-upload fw-bold upld"></i>
-                </h2>
-               <h2 className="fw-bold mb-2 text-uppercase welcome">
-                  Upload Image
-                </h2>
-                <p className="upld mb-5">
-                Please select an image
-                </p>
-                <div className="disp1 row">
-                <div className="col-9 form-group">
-        <label className="btn btn-upload ">
-          <input
-            onChange={handleChange("image")}
-            type="file"
-            name="image"
-            accept="image/*"
-          />
-        </label>
-      </div>
-      <div className="col-3 ">
-      <button className="bton text-light">
-       <span className="button__text">Upload</span>
-           </button>
-      </div>
-      </div>
-       <div className="disp2  p-0">
-        <label className="btn btn-upload ">
-          <input
-            onChange={handleChange("image")}
-            type="file"
-            name="image"
-            accept="image/*" className="fs-small"
-          />
-        </label>
-      </div>
-      <div className="disp3 card p-0">
-        <label className="btn btn-upload ">
-          <input
-            onChange={handleChange("image")}
-            type="file"
-            name="image"
-            accept="image/*" className="fs-small"
-          />
-        </label>
-      </div>
-      <div className="disp p-1">
-      <button className="bton text-light">
-       <span className="button__text">Upload</span>
-           </button>
-      
-      </div>
-      
+      <div className="pt-3 upload1 pb-5 ">
+        <form className="p-0 m-0" onSubmit={clickSubmit}>
+          <div className="row m-1 d-flex justify-content-center align-items-center h-100">
+
+            <div className=" col-lg-6 mb-5">
+              <div className="text-center ">
+                <img src="https://banner.uclipart.com/20200111/fob/baby-animal-baby-shower-giraffe-giraffidae.png" height="120px" width="120px" alt=".." />
               </div>
-             
+              <div className="card-body p-4 text-center upload1 shadow text-box animate fadeUp">
+                <div className="upload ">
+                  <h2 className="fw-bold  mb-2 ">
+                    <i className=" fa fa-cloud-upload fw-bold upld"></i>
+                  </h2>
+                  <h2 className="fw-bold mb-2 text-uppercase text-secondary">
+                    Upload Image
+                  </h2>
+                  <p className="text-secondary mb-5">
+                    Please select an image
+                  </p>
+                  <div className="disp1 row">
+                    <div className="col-9 form-group">
+                      <label className="btn btn-upload shadow ">
+                        <input onChange={handleChange("image")} type="file" name="image" accept="image/*" />
+                      </label>
+                    </div>
+                    <div className="col-3 ">
+                      <button className="btn btn-info1 text-light shadow">
+                        Upload
+                      </button>
+                    </div>
+                  </div>
+                  <div className="disp2  p-0">
+                    <label className="btn btn-upload shadow">
+                      <input onChange={handleChange("image")} type="file" name="image" accept="image/*" className="fs-small" />
+                    </label>
+                  </div>
+                  <div className="disp3 card p-0">
+                    <label className="btn btn-upload shadow">
+                      <input onChange={handleChange("image")} type="file" name="image" accept="image/*" className="fs-small" />
+                    </label>
+                  </div>
+                  <div className="disp p-1">
+                    <button className="btn btn-info1 text-light shadow">
+                      Upload
+                    </button>
+
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
-        </div>
-    
-    </form>
-  </div>
-</>
+
+        </form>
+      </div>
+    </>
   );
 
   const showError = () => (

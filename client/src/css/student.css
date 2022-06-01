@@ -243,7 +243,7 @@ h1{
 
    }
   .tbl-content{
-    height:300px;
+    height:400px;
     overflow-x:auto;
     margin-top: 0px;
    border-bottom-left-radius: 12px;
@@ -461,7 +461,8 @@ h1{
     background: #F6F6F2;
 }
 .modal-header{
-    background:#388087;
+    background:#4b989f;
+    border: none;
     color:#fff;
 }
 .modal-footer{

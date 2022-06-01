@@ -337,7 +337,7 @@ body {
   font-size: 70px;
 }
 .upld{
-  background-image:linear-gradient(#44c6cf,rgb(23, 56, 58));
+  background-image:linear-gradient(#5ae0ea,hsl(184, 73%, 35%));
   background-size: 100%;
   background-clip: none;
   -webkit-background-clip: text;
@@ -352,7 +352,7 @@ body {
 .upload{
   border-style: dashed;
   border-width: 1.5px;
-  border-color: rgb(41, 87, 89);
+  border-color: hsl(184, 73%, 35%);
   margin:10px;
   padding: 15px;
   padding-top: 3rem;
@@ -361,21 +361,15 @@ body {
 
 }
 .btn-upload{
-  background:rgb(23, 56, 58);
+  background:hsl(184, 73%, 35%);
    color: white;
+ 
+  
 }
-.uploadscreen{
 
-  padding: 7rem;
-}
 @media(max-width:765px)
 {
-  .uploadscreen{
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 50px;
-
-  }
+  
   .disp1{
     display: none;
   }
@@ -418,11 +412,40 @@ body {
   font-size: 45px;
   font-weight: 600;
   color: #133548;
+  padding-left: 2rem;
 }
 
 .topic2{
   font-size: 35px;
   color:#307f86;
+  padding-left: 2rem;;
+}
+
+@media (max-width:756px)
+{
+  .topic1{
+    font-size:40px;
+    padding-left: 0px;
+  }
+  .topic2{
+    font-size: 30px;
+    padding-left: 0;;
+  }
+
+}
+
+@media (max-width:456px)
+{
+  .topic1{
+    font-size:30px;
+    padding-left: 0px;
+  }
+  .topic2{
+    font-size: 20px;
+    padding-left: 0;
+  }
+ 
+
 }
 
 .imge1{
@@ -437,6 +460,24 @@ body {
   /* margin:0px; */
 }
 
+@media (max-width:790px)
+{
+  .imge1{
+    height:80px;
+    width:80px;
+  }
+}
+@media (max-width:390px)
+{
+  .imge1{
+    height:70px;
+    width:70px;
+  }
+}
+
 .sf{
   background-image:linear-gradient(rgb(227, 233, 235),rgb(237, 243, 237));
+}
+.btn-info1{
+  background-color: hsl(184, 73%, 35%);
 }

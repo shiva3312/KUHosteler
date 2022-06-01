@@ -110,28 +110,28 @@ export default function SuggestFeature({history})
       <div className="container pt-5 mt-3 mb-5 pb-3">
         <div className="row ps-5 pe-5 ">
          <div className="card ps-5 sf">
-         <div class="topic1 ps-5">HAVE A BETTER SUGGESTION<br/> IN MIND? </div>
-          <div className=" col-5 ps-5"><img src={id} height="100px" width="100px"alt=""/>
+         <div className="topic1 ">HAVE A BETTER SUGGESTION<br/> IN MIND? </div>
+          <div className=" col-5 topic1"><img src={id} height="100px" width="100px"alt=""/>
               </div>
-          <div class="topic2 pt-4 ps-5">Share With Us!</div>
+          <div className="topic2 pt-4">Share With Us!</div>
           </div>
          
-          <div className="col-5 pt-5 text-end">
+          <div className="col-3 pt-5 ps-0 pe-0 text-center">
             <img src="https://static.vecteezy.com/system/resources/previews/004/105/877/original/self-education-owl-reading-books-isolated-smart-character-cartoon-bird-with-glasses-studying-illustration-owl-get-education-learning-reading-free-vector.jpg" className="imge1 img-thumbnail shadow"alt=".."/>
           </div>
-          <div className="col-7 pt-5 mt-3 ps-0">
-          <div class="mb-3">
+          <div className="text-center col-9 pt-5 mt-3 ps-0 ">
+          <div className="mb-3">
             
-  <input type="name" class="shadow-sm form-control" id="exampleFormControlInput2" placeholder="name"/>
+  <input type="name" className="shadow-sm form-control" id="exampleFormControlInput2" placeholder="name"/>
 </div>
-          <div class="mb-3">
-  <input type="email" class="shadow-sm form-control" id="exampleFormControlInput1" placeholder="email"/>
+          <div className="mb-3">
+  <input type="email" className="shadow-sm form-control" id="exampleFormControlInput1" placeholder="email"/>
 </div>
 
-<div class="mb-3">
-  <textarea class="shadow-sm form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Your Suggestion"></textarea>
+<div className="mb-3">
+  <textarea className="shadow-sm form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Your Suggestion"></textarea>
 </div>
-<button type="submit" class="btn btn-dark">Submit</button>
+<button type="submit" className="btn btn-dark">Submit</button>
           </div>
           </div>
       </div>
@@ -139,26 +139,26 @@ export default function SuggestFeature({history})
 
 
      {/* <center>
-                <div class="conta">
-              <div class="content">
-              <div class="">
+                <div className="conta">
+              <div className="content">
+              <div className="">
               <img src={id} alt=""/>
                  </div>
              <form action="#">
-                <div class="topic">GIVE US A BETTER SUGGESTION</div>
-               <div class="input-box">
+                <div className="topic">GIVE US A BETTER SUGGESTION</div>
+               <div className="input-box">
                <input type="text" required/>
                 <label>Enter your name</label>
               </div>
-             <div class="input-box">
+             <div className="input-box">
                  <input type="text" required/>
                 <label>Decribe about the change</label>
              </div>
-              <div class="message-box">
+              <div className="message-box">
               <textarea></textarea>
               <label>How we will do this change</label>
            </div>
-                <div class="input-box">
+                <div className="input-box">
                <input type="submit" value="Send Message"/>
            </div>
        </form>
