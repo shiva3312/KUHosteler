@@ -1,0 +1,236 @@
+ [
+    {
+        "departmentName" : "Department of Engineering and technological studies",
+        "subject": "DETS",
+        "course" : "Engineering",
+        "courseDuration" : "4 years"
+    },
+    {
+        "departmentName" : "Department of Bengali",
+        "subject": "Bengali",
+        "course" : "MA",
+        "courseDuration" : "2 years"
+    },
+    {
+        "departmentName" : "Department of English",
+        "subject": "English",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Hindi",
+        "subject": "Hindi",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of History",
+        "subject": "History",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Sanskrit",
+        "subject": "Sanskrit",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Political Science",
+        "subject": "Political Science",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Philosophy",
+        "subject": "Philosophy",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Economics",
+        "subject": "Economics",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Sociology",
+        "subject": "Sociology",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Folklore",
+        "subject": "Folklore",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Commerce",
+        "subject": "Commerce",
+        "course" : "MCom",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Library & Information science",
+        "subject": "Library 7 information Science",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Adult Education and extension",
+        "subject": "Adult Education and extension",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Rural Studies",
+        "subject": "Rural Studies",
+        "course" : "MA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Botany",
+        "subject": "Botany",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Chemistry",
+        "subject": "Chemistry",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Environmental Science",
+        "subject": "EVS",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Mathematics",
+        "subject": "Maths",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Microbiology",
+        "subject": "Microbiology",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Physics",
+        "subject": "Physics",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Physiology",
+        "subject": "Physiology",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Statistics",
+        "subject": "Statistics",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Statistics",
+        "subject": "Statistics Integrated",
+        "course" : "MSc Integrated",
+        "courseDuration" : "5 years"  
+    },
+    {
+        "departmentName" : "Department of Zoology",
+        "subject": "Zoology",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Biochemistry",
+        "subject": "Biochemistry",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Biophysics",
+        "subject": "Biophysics",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Molecular Biology & Biotechnology",
+        "subject": "Biotechnology",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Geography",
+        "subject": "Geography",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Environmental Management",
+        "subject": "Environmental Management",
+        "course" : "MSc",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Communication Engineering",
+        "subject": "Communication Engineering",
+        "course" : "MTech",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Communication Engineering",
+        "subject": "Communication Engineering",
+        "course" : "MTech",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Master of Business Administration",
+        "subject": "Business Administration",
+        "course" : "MBA",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Computer Science and Engineering",
+        "subject": "Computer Science & Engineering",
+        "course" : "MCA",
+        "courseDuration" : "3 years"  
+    },
+    {
+        "departmentName" : "Department of Computer Science and Engineering",
+        "subject": "Computer Science and Engineering",
+        "course" : "MTech",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Education",
+        "subject": "Education",
+        "course" : "BeD",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Physical Education",
+        "subject": "Education",
+        "course" : "Med",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Physical Education",
+        "subject": "Physical Education",
+        "course" : "BPeD",
+        "courseDuration" : "2 years"  
+    },
+    {
+        "departmentName" : "Department of Physical Education",
+        "subject": "Physical Education",
+        "course" : "MPeD",
+        "courseDuration" : "2 years"  
+    }
+]

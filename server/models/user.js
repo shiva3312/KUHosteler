@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema(
     hashed_password: String,
     salt: String,
     hostelName: { type: String, default: null },
-    department: { type: String, default: null },
     hostelTag: { type: String, default: null }, //diff type of tag ( maintanance , mess-prefect... etc)
     roomNo: { type: Number, default: 0 },
     gender: { type: String, default: null },
@@ -33,6 +32,7 @@ const userSchema = new mongoose.Schema(
       session: String, // Ex 2018-22
       course: { type: String, default: null },
       subject: { type: String, default: null },
+      department: { type: String, default: null },
       semester: { type: String, default: null },
     },
     //contact

@@ -94,8 +94,8 @@ const MealAcitvity = ({ history }) => {
                   <th className="col-1">SL</th>
                   <th>Date</th>
                   <th>Mess status</th>
-                  <th>Moring Charge</th>
-                  <th>Night Charge</th>
+                  {/* <th>Moring Charge</th>
+                  <th>Night Charge</th> */}
                 </tr>
               </thead>
             </table>
@@ -108,8 +108,8 @@ const MealAcitvity = ({ history }) => {
                     <td className="col-1">{i + 1}</td>
                     <td>{rec.date.slice(0, 15)}</td>
                     <td>{rec.mess_status}</td>
-                    <td>{rec.morning_charge}</td>
-                    <td>{rec.night_charge}</td>
+                    {/* <td>{rec.morning_charge}</td>
+                    <td>{rec.night_charge}</td> */}
                   </tr>
                 ))}
               </tbody>

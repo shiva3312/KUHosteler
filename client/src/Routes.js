@@ -60,7 +60,7 @@ const Routes = () => {
           exact
           component={UpdatePassword}
         />
-        <PrivateRoute path="/user/uploadphoto" exact component={UpLoadPhoto} />
+        <Route path="/user/uploadphoto" exact component={UpLoadPhoto} />
 
         {/*manager GetRoute */}
         <ManagerRoute

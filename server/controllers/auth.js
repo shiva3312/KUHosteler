@@ -13,7 +13,7 @@ const nodemailer = require("nodemailer");
 const {google} = require("googleapis");
 const JWT_SECRET = "some super serect";
 const sharp = require('sharp');
-
+const courseDb = require('../dbs/KuCourseDb.json')
 
 
 
@@ -33,7 +33,7 @@ exports.userById = async (req, res, next, id) => {
     };
 
 exports.image = (req, res, next) => {
-    if (req.profile.image.data) {
+    if(req.profile.image.data){
         res.set('Content-Type', req.profile.image.contentType);
         return res.send(req.profile.image.data);
     }
@@ -58,8 +58,27 @@ exports.signup = (req, res) => {
     if(req.body.profileType == 1){
         req.body.membership= 2;
     }
+
+    // saving eduation details of student
+    if(req.body.profileType === 0){
+      
+      courseDb.forEach((course)=>{
+        if(course.departmentName === req.body.department){
+        const education = {
+          university: 'University of kalyani',
+          session : req.body.session,
+          course: course.course,
+          subject: course.subject,
+          department: course.departmentName,
+          semester: "",
+        }
+        console.log('saving part finished ', education )
+        req.body.education = education;
+      }        
+      })
+    }
     const user = new User(req.body);
-    console.log("req.body", req.body);
+
     user.save((err, user) => {
         if (err) {
             return res.status(400).json({

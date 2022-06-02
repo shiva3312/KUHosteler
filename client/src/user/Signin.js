@@ -163,16 +163,19 @@ const Signin = () => {
       if (!user.image.data) {
         return <Redirect to="/user/uploadphoto" />;
       } else if (
-        (user && user.profileType !== 1 && user.membership == 0) ||
-        user.membership == 4 ||
-        user.membership == 5
+        (user && user.profileType !== 1 && user.membership === 0) ||
+        user.membership === 4 ||
+        user.membership === 5
       ) {
         return <Redirect to="/user/info" />;
-      } else if (user && user.profileType === 1) {
+      } 
+      else if (user && user.profileType === 1) {
         return <Redirect to="/manager/dashboard" />;
-      } else if (user && user.profileType === 0) {
+      } 
+      else if (user && user.profileType === 0) {
         return <Redirect to="/student/profile" />;
-      } else if (user && user.profileType === 2) {
+      } 
+      else if (user && user.profileType === 2) {
         return <Redirect to="/employee/profile" />;
       }
     } else if (isAuthenticated()) {

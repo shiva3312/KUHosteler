@@ -85,7 +85,7 @@ const StuLayout = ({ className, children, history }) => {
               <h4 className="media mt-0 mb-0">
                 {user.fname} {user.lname}
               </h4>
-              <p className="small mb-4">{user.department}</p>
+              <p className="small mb-4">{user.education.department}</p>
             </div>
           </div>
           <nav className="nav-link justify-content-center p-2 mt-5 navbar  fs-6">

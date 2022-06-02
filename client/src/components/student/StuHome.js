@@ -42,47 +42,52 @@ const UserDashboard = ({ history }) => {
             PIE CHART
           </h4>
           <div className="con shadow">
-          <Pie
-            data={{
-              labels: ["OFF", "M/N", "M", "N"],
+            <Pie
+              data={{
+                labels: ["OFF", "M/N", "M", "N"],
 
-              datasets: [
-                {
-                  label: "# of votes",
-                  data: [
-                    mealCount.off,
-                    mealCount.on,
-                    mealCount.mor,
-                    mealCount.mor,
-                  ],
-                  backgroundColor: ["#efb8ef", "#781a78", "#e27ce2", "#491049"],
+                datasets: [
+                  {
+                    label: "# of votes",
+                    data: [
+                      mealCount.off,
+                      mealCount.on,
+                      mealCount.mor,
+                      mealCount.mor,
+                    ],
+                    backgroundColor: [
+                      "#efb8ef",
+                      "#781a78",
+                      "#e27ce2",
+                      "#491049",
+                    ],
 
-                  borderColor: ["white", "white", "white", "white"],
-                  borderWidth: 3,
-                },
-              ],
-            }}
-            height={750}
-            width={750}
-            // options={{
-            //   maintainAspectRatio: false,
-            //   scales: {
-            //     yAxes: [
-            //       {
-            //         ticks: {
-            //           beginAtZero: true,
-            //         },
-            //       },
-            //     ],
-            //   },
-            //   legend: {
-            //     labels: {
-            //       fontSize: 25,
-            //     },
-            //   },
-            // }}
-          />
-        </div>
+                    borderColor: ["white", "white", "white", "white"],
+                    borderWidth: 3,
+                  },
+                ],
+              }}
+              height={750}
+              width={750}
+              // options={{
+              //   maintainAspectRatio: false,
+              //   scales: {
+              //     yAxes: [
+              //       {
+              //         ticks: {
+              //           beginAtZero: true,
+              //         },
+              //       },
+              //     ],
+              //   },
+              //   legend: {
+              //     labels: {
+              //       fontSize: 25,
+              //     },
+              //   },
+              // }}
+            />
+          </div>
         </div>
       </>
     );
@@ -100,6 +105,14 @@ const UserDashboard = ({ history }) => {
             <div className="col-8 ps-0 pe-0">
               : {studData.fname} {user.lname}
             </div>
+          </li>
+          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
+            <div className="col-4 ps-0 pe-0">User Id</div>
+            <div className="col-8 ps-0 pe-0">: {studData.email}</div>
+          </li>
+          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
+            <div className="col-4 ps-0 pe-0">Hostel Id</div>
+            <div className="col-8 ps-0 pe-0">: {user.hostelId}</div>
           </li>
           {studData.messStatus === 0 || studData.messStatus === 1 ? (
             <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3 ">
@@ -124,16 +137,8 @@ const UserDashboard = ({ history }) => {
             </li>
           )}
           <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
-            <div className="col-4 ps-0 pe-0">User Id</div>
-            <div className="col-8 ps-0 pe-0">: {studData.email}</div>
-          </li>
-          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-4 ps-0 pe-0">Room No</div>
             <div className="col-8 ps-0 pe-0">: {user.roomNo}</div>
-          </li>
-          <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
-            <div className="col-4 ps-0 pe-0">Hostel Id</div>
-            <div className="col-8 ps-0 pe-0">: {user.hostelId}</div>
           </li>
           <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-4 ps-0 pe-0">Bio</div>
@@ -142,22 +147,19 @@ const UserDashboard = ({ history }) => {
             </div>
           </li>
         </ul>
-      </div>    
+      </div>
     );
   };
 
   return (
     <>
       <StuLayout history={history}>
-     <div className="row rowstu ">
-        <div className="col-md-6 text-box fadeUp animate">
-            {userInfo()}
-         </div>
-          <div className="col-md-1 ">
-         </div>
-         <div className="col-md-5 text-box fadeUp animate">
+        <div className="row rowstu ">
+          <div className="col-md-6 text-box fadeUp animate">{userInfo()}</div>
+          <div className="col-md-1 "></div>
+          <div className="col-md-5 text-box fadeUp animate">
             {showPieChart()}
-         </div>
+          </div>
         </div>
       </StuLayout>
       <Footer />
