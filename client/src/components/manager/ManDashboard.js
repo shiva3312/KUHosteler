@@ -89,8 +89,8 @@ const AdminDashboard = ({ history }) => {
     });
   };
 
-  const clickSubmit = (memeberId, status) => {
-    updateMembershipStatus(user._id, token, {
+  const clickSubmit = async (memeberId, status) => {
+    await updateMembershipStatus(user._id, token, {
       memId: memeberId,
       status: status,
     }).then((data) => {
@@ -103,8 +103,8 @@ const AdminDashboard = ({ history }) => {
     setrenderOnchange(!rederOnchange);
   };
 
-  const changeGeustMealStatus = (guestId, userId, status) => {
-    updateGuestMealStatus(user._id, token, { guestId, userId, status }).then(
+  const changeGeustMealStatus =async (guestId, userId, status) => {
+    await updateGuestMealStatus(user._id, token, { guestId, userId, status }).then(
       (data) => {
         if (data.error) {
           console.log(data.error);
@@ -116,8 +116,8 @@ const AdminDashboard = ({ history }) => {
     setrenderOnchange(!rederOnchange);
   };
 
-  const deleteGuest = (guestId, userId) => {
-    removeGuest(user._id, token, { guestId, userId }).then((data) => {
+  const deleteGuest = async (guestId, userId) => {
+   await removeGuest(user._id, token, { guestId, userId }).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -136,7 +136,7 @@ const AdminDashboard = ({ history }) => {
       <div className="text-box fadeUp animate">
           
    
-          {hour>=12?hour>=16?<h2 className="welcome p-1 pt-3">Good Evening, {user.fname} {user.lname}</h2> : <h2 className="welcome p-1 pt-3">Good Afternoon, {user.fname} {user.lname}</h2>:<h2 className="welcome p-1 pt-3">Good Morning, {user.fname} {user.lname}</h2>}
+        {hour>=12?hour>=16?<h2 className="welcome p-1 pt-3">Good Evening, {user.fname} {user.lname}</h2> : <h2 className="welcome p-1 pt-3">Good Afternoon, {user.fname} {user.lname}</h2>:<h2 className="welcome p-1 pt-3">Good Morning, {user.fname} {user.lname}</h2>}
         <h2 className="p-1 text pb-3">Welcome</h2>
          
         <div className="text-box fadeUp animate">

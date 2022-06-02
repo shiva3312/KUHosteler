@@ -302,7 +302,7 @@ exports.addAuditCharges = (req, res) => {
 
 //addFineOrDepositMoney
 exports.addFineOrDepositMoney = (req, res) => {
-  const userId = req.body.selectedUserId;
+  const userId = req.body.stuId;
   const fine = req.body.fine;
   const reason = req.body.reason;
   const deposit = req.body.deposit;
@@ -450,10 +450,10 @@ exports.setstudetnHostelId = (req, res) => {
   );
 };
 
-exports.updateMembershipStatus = (req, res) => {
+exports.updateMembershipStatus =  (req, res) => {
   const status = req.body.values.status;
   const userId = req.body.values.memId;
-  User.findById({ _id: userId }, (err, user) => {
+   User.findById({ _id: userId }, (err, user) => {
     if (err || !user) return res.json({ error: "Something went wrong" });
     user.membership = status;
     user.save((err, result) => {

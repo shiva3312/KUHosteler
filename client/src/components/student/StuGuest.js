@@ -26,10 +26,10 @@ const AddGuest = ({ history }) => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
 
-  const clickSubmit = (event) => {
+  const clickSubmit = async (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
-    addGuest(user._id, token, values).then((data) => {
+   await addGuest(user._id, token, values).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -48,8 +48,8 @@ const AddGuest = ({ history }) => {
     });
   };
 
-  const deleteguest = (guestId) => {
-    deleteGuest(stuData._id, token, { guestId: guestId }).then((data) => {
+  const deleteguest =  async (guestId) => {
+  await  deleteGuest(stuData._id, token, { guestId: guestId }).then((data) => {
       if (error) console.log(data.error);
       else console.log(data.info);
     });

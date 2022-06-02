@@ -48,11 +48,11 @@ const Charges = ({ history }) => {
     setAmount({ ...amount, error: false, [name]: event.target.value });
   };
 
-  const clickSubmit = (event) => {
+  const clickSubmit = async (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
 
-    setCharges(user._id, token, values).then((data) => {
+   await setCharges(user._id, token, values).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -69,11 +69,11 @@ const Charges = ({ history }) => {
     });
   };
 
-  const clickSubmitAduditCharge = (event) => {
+  const clickSubmitAduditCharge = async (event) => {
     event.preventDefault();
     setAmount({ ...amount, error: false });
 
-    addAuditCharges(user._id, token, amount).then((data) => {
+   await addAuditCharges(user._id, token, amount).then((data) => {
       if (data.error) {
         setAmount({ ...amount, error: data.error, success: false });
       } else {

@@ -33,8 +33,8 @@ const StudentListInfo = ({ history }) => {
   };
 
   // call setHostelId function to set hostelId to any user
-  const setHostelId = (stuId, hostelId) => {
-    setstudetnHostelId(user._id, stuId, hostelId, token).then((data) => {
+  const setHostelId = async (stuId, hostelId) => {
+    await setstudetnHostelId(user._id, stuId, hostelId, token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: "Hostel Id did not updated" });
       } else {
@@ -45,8 +45,8 @@ const StudentListInfo = ({ history }) => {
   };
 
   // ftech data of givent stuId and set the records into selectedUser
-  const viewDetails = (stuId) => {
-    getStudentprofile(stuId, user._id, token).then((data) => {
+  const viewDetails = async (stuId) => {
+    await getStudentprofile(stuId, user._id, token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: true });
       } else {
@@ -55,18 +55,22 @@ const StudentListInfo = ({ history }) => {
     });
   };
 
-  const clickSubmit = (e) => {
+  const clickSubmit =  (e) => {
+    const stuId = selectedUser._id;
+    console.log("info here ",stuId , token);
     e.preventDefault();
     setValues({ ...values, error: false });
     addFineOrDepositMoney(user._id, token, {
       fine,
       reason,
       deposit,
-      selectedUser,
+      stuId,
     }).then((data) => {
       if (data.error) {
         setValues({
-          ...values,
+          fine: 0,
+          deposit: 0,
+          reason: "",
           success: false,
           error: true,
         });
@@ -76,55 +80,13 @@ const StudentListInfo = ({ history }) => {
           deposit: 0,
           reason: "",
           error: "",
-          success: true,
+          success: data.info,
         });
       }
     });
     setToggler(!toggler);
   };
 
-  const chargeForm = () => (
-    <>
-      {/* // <!-- Modal --> */}
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Enter Amount Here
-              </h5>
-              <button   type="button" className="btn-close"  data-bs-dismiss="modal"  aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-              <div className="col form-outline text-start form-white mb-4">
-                <label className="form-label " htmlFor="deposit">
-                  Deposit
-                </label>
-                <input type="Number"className="form-control"name="deposit"required=""onChange={handleChange("deposit")}value={deposit} />
-              </div>
-              <div className="col form-outline text-start form-white mb-4">
-                <label className="form-label" htmlFor="fine">
-                  Fine
-                </label>
-                <input type="Number"className="form-control"name="fine"required=""onChange={handleChange("fine")}value={fine}/>
-              </div>
-              <div className="col form-outline text-start form-white mb-4">
-                <label className="form-label " htmlFor="reason">
-                  Reason
-                </label>
-                <input type="text" className="form-control" name="reason" required=""onChange={handleChange("reason")}value={reason}/>
-              </div>
-            </div>
-            <div className="modal-footer">
-              <button className="btn btn-outline-secondary fw-bold btn px-4"type="submit"onClick={clickSubmit}>
-                Update
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
 
   const loadUsers = () => {
     getAllstudents(user._id, token).then((data) => {
@@ -136,8 +98,8 @@ const StudentListInfo = ({ history }) => {
     });
   };
 
-  const toggleMembership = (stuId, status) => {
-    updateMembershipStatus(user._id, token, {
+  const toggleMembership = async (stuId, status) => {
+    await updateMembershipStatus(user._id, token, {
       memId: stuId,
       status: status,
     }).then((data) => {
@@ -145,30 +107,25 @@ const StudentListInfo = ({ history }) => {
         console.log(data.error);
       } else {
         console.log(data.info);
-        if (selectedUser !== null) {
-          if (status === 2)
-            selectedUser.membership = 3;
-          else selectedUser.membership = 2;
-        }
+        setValues({ ...values, success: data.info });
       }
     });
     setReRender(!reRender);
   };
 
-  const toggleMeal = (stuId, status) => {
-    fchangeMealStatus(user._id, token, { stuId: stuId, status: status }).then(
-      (data) => {
-        if (data.error) console.log(data.error);
-        else console.log(data.info);
-      }
-    );
+  const toggleMeal = async (stuId, status) => {
+    await fchangeMealStatus(user._id, token, {
+      stuId: stuId,
+      status: status,
+    }).then((data) => {
+      if (data.error) console.log(data.error);
+      else console.log(data.info);
+    });
     setReRender(!reRender);
   };
 
   useEffect(() => {
-    console.log("useEffect runs");
     loadUsers();
-    console.log(students);
   }, [reRender, toggler]);
 
   const showError = () => (
@@ -188,7 +145,7 @@ const StudentListInfo = ({ history }) => {
         className="alert alert-info"
         style={{ display: success ? "" : "none" }}
       >
-        Charge updated Successfully
+        {success}
       </div>
     </>
   );
@@ -219,232 +176,372 @@ const StudentListInfo = ({ history }) => {
                   <thead key={i}>
                     <td className="col-1 th1 sl">{i + 1}</td>
                     <td>
-                      <ShowImage user={student}  ClassName="img2 " />
+                      <ShowImage user={student} ClassName="img2 " />
                     </td>
                     <td>
                       {student.fname} {student.lname}
                     </td>
                     {student.membership === 2 ? (
                       <td className="text-center   align-middle">
-                      <span className="text-center badge rounded-pill bg-info">
-                        Border
-                        </span>
+                        <div>
+                          <span
+                            type="submit"
+                            className="badge rounded-pill bg-info "
+                            onClick={() => toggleMembership(student._id, 3)}
+                          >
+                            {" "}
+                            Border
+                          </span>
+                        </div>
                       </td>
                     ) : (
                       <td className="text-center  align-middle">
-                         <span className="badge rounded-pill bg-danger">
-                        Ex-Border
-                        </span>
+                        <div>
+                          <span
+                            type="submit"
+                            className="badge rounded-pill bg-danger "
+                            onClick={() => toggleMembership(student._id, 2)}
+                          >
+                            {" "}
+                            Ex-Border
+                          </span>
+                        </div>
                       </td>
                     )}
+
                     {student.messStatus > 1 ? (
                       <td className="text-center   align-middle">
-                        <span className="badge rounded-pill bg-info">
-                        ON
-                        </span>
+                        <div>
+                          <span
+                            type="submit"
+                            className="badge rounded-pill bg-danger "
+                            onClick={() => toggleMeal(student._id, 0)}
+                          >
+                            Turn off
+                          </span>
+                        </div>
                       </td>
                     ) : (
                       <td className="text-center   align-middle">
-                        <span className="badge rounded-pill bg-danger">
-                        OFF
-                        </span>
+                        <span
+                            type="submit"
+                            className="badge rounded-pill bg-success "
+                            onClick={() => toggleMeal(student._id, 2)}
+                          >
+                            Turn on
+                          </span>
                       </td>
                     )}
 
                     <td className="text-center">
                       <span>
                         {" "}
-                        <i className="ms-1 fa fa-eye text-primary border fa-lg " data-bs-toggle="modal" title="view profile" data-bs-target="#staticBackdrop"
+                        <i
+                          className="ms-1 fa fa-eye text-primary border fa-lg "
+                          data-bs-toggle="modal"
+                          title="view profile"
+                          data-bs-target="#staticBackdrop"
                           onClick={() => {
                             setselectedUser(student._id);
-                            console.log(selectedUser);
                             viewDetails(student._id);
                           }}
                         ></i>
                       </span>
 
-                      {/* -----------------------this modal start here--------------------------------  */}
+                      {/* -----------------------View Student profile modal start here--------------------------------  */}
 
-                      {selectedUser === null ? <></> : <>{
-
-                        <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
-                          aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-                          <div className="modal-dialog  modal-fullscreen-xxl-down">
-                            <div className="modal-content">
-                              <div className="modal-header">
-                                <h5>Student Detail</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-                              </div>
-                              <div className="modal-body student">
-                                <div className="container">
-                                  <div className="main-body">
-                                    <div className="row gutters-sm">
-                                      <div className="col-md-4 mb-3">
-                                        <div className="card ">
-                                          <div className="card-body">
-                                            <div className="d-flex flex-column align-items-center text-center">
-                                              <div>
-                                                <ShowImage user={selectedUser} ClassName=" img mb-2 img-thumbnail" />
-                                              </div>
-                                              <div className="mt-3">
-                                                <h4>{selectedUser.fname} {selectedUser.lname}</h4>
-                                                <p className="text-secondary mb-1">{selectedUser.department}</p>
-                                                <p className="text-muted font-size-sm">{selectedUser.session}</p>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div className="card mt-3">
-                                          <ul className="list-group list-group-flush">
-                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                              <h6 className="mb-0">Hostel Name</h6>
-                                              <span className="text-secondary">{selectedUser.hostelName}</span>
-                                            </li>
-                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                              <h6 className="mb-0">Hostel Id</h6>
-                                              <span className="text-secondary">{selectedUser.hostelId}</span>
-                                            </li>
-                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                              <h6 className="mb-0">Room No</h6>
-                                              <span className="text-secondary">{selectedUser.roomNo}</span>
-                                            </li>
-                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                              <h6 className="mb-0">Membership </h6>
-                                              {selectedUser.membership === 2 ? (
-                                                <div> 
-                                                  <span type="submit" className="badge rounded-pill bg-info "
-                                                    onClick={() =>  toggleMembership(selectedUser._id, 3)
-                                                    }> Border
-                                                  </span>
-                                                </div>
-                                              ) : (
-                                                <div>
-                                                  <span type="submit"className="badge rounded-pill bg-danger " onClick={() =>
-                                                      toggleMembership(selectedUser._id, 2)}>Ex Border
-                                                  </span>
-                                                </div>
-                                              )}
-                                            </li>
-                                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                              <h6 className="mb-0">Meal status</h6>
-                                              {selectedUser.messStatus > 1 ? (
-                                                <div>
-                                                  <span type="submit"className="badge rounded-pill bg-danger "
-                                                    onClick={() => toggleMeal(selectedUser._id, 0)} >
-                                                    Deactivated
-                                                  </span>
-                                                </div>
-                                              ) : (
-                                                <div>
-                                                  <span type="submit" className="badge rounded-pill bg-info " 
-                                                  onClick={() => toggleMeal(selectedUser._id, 2)}>Activated</span>
-                                                </div>
-                                                // <button
-                                                //     type="submit"
-                                                //     className="btn btn-success  "
-                                                //     onClick={() => toggleMeal(student._id, 2)}
-                                                //   >
-                                                //     Activated
-                                                //   </button>
-
-                                              )}
-                                            </li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                      <div className="col-md-8">
-                                        <div className="card mb-3">
-                                          <div className="card-body text-dark">
-                                            <div className="row ">
-                                              <div className="col-sm-3">
-                                                <h6 className="mb-0 ">Full Name</h6>
-                                              </div>
-                                              <div className="col-sm-9 text-secondary">
-                                                {selectedUser.fname} {selectedUser.lname}
-                                              </div>
-                                            </div>
-                                            <hr />
-                                            <div className="row">
-                                              <div className="col-sm-3">
-                                                <h6 className="mb-0">Email</h6>
-                                              </div>
-                                              <div className="col-sm-9 text-secondary">
-                                                {selectedUser.email}
-                                              </div>
-                                            </div>
-                                            <hr />
-                                            <div className="row">
-                                              <div className="col-sm-3">
-                                                <h6 className="mb-0">Phone</h6>
-                                              </div>
-                                              <div className="col-sm-9 text-secondary">
-                                                {selectedUser.selfPhNo}
-                                              </div>
-                                            </div>
-                                            <hr />
-                                            <div className="row">
-                                              <div className="col-sm-3">
-                                                <h6 className="mb-0">Gender</h6>
-                                              </div>
-                                              <div className="col-sm-9 text-secondary">
-                                                {selectedUser.gender}
-                                              </div>
-                                            </div>
-                                            <hr />
-                                            <div className="row">
-                                              <div className="col-sm-3">
-                                                <h6 className="mb-0">Address</h6>
-                                              </div>
-                                              <div className="col-sm-9 text-secondary">
-                                                {selectedUser.address}
-                                              </div>
-                                            </div>
-                                            <hr />
-                                          </div>
-                                        </div>
+                      {selectedUser === null ? (
+                        <></>
+                      ) : (
+                        <>
+                          {
+                            <div
+                              className="modal fade"
+                              id="staticBackdrop"
+                              data-bs-backdrop="static"
+                              data-bs-keyboard="false"
+                              tabIndex="-1"
+                              aria-labelledby="staticBackdropLabel"
+                              aria-hidden="true"
+                            >
+                              <div className="modal-dialog  modal-fullscreen-xxl-down">
+                                <div className="modal-content">
+                                  <div className="modal-header">
+                                    <h5>Student Detail</h5>
+                                    <button
+                                      type="button"
+                                      className="btn-close"
+                                      data-bs-dismiss="modal"
+                                      aria-label="Close"
+                                    ></button>
+                                  </div>
+                                  <div className="modal-body student">
+                                    <div className="container">
+                                      <div className="main-body">
                                         <div className="row gutters-sm">
-                                          <div className="col-sm-12 mb-3">
-                                            <div className="card h-100">
+                                          <div className="col-md-4 mb-3">
+                                            <div className="card ">
                                               <div className="card-body">
-                                                <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">Payment &nbsp;</i>Record</h6>                                            
-                                                <button className="d-flex btn text-light btn-info1 mb-2 "type="button"data-bs-toggle="collapse"data-bs-target="#collapseExample1"
-                                                  aria-expanded="false" aria-controls="collapseExample">
-                                                  Add Payment
-                                                </button>
-                                                <div className="collapse" id="collapseExample1" >
-                                                  <div className="card card-body">
-                                                    <div className="row">
-                                                      <div className="col-6 form-outline text-start form-white mb-2">
-                                                        <label className="form-label "htmlFor="deposit">
-                                                          Deposit
-                                                        </label>
-                                                        <input type="Number"className="form-control" name="deposit" required=""
-                                                        onChange={handleChange("deposit")} value={deposit}/>
-                                                      </div>
-                                                      <div className="col-6 form-outline text-start form-white mb-2">
-                                                        <label className="form-label" htmlFor="fine">
-                                                          Fine
-                                                        </label>
-                                                        <input type="Number"className="form-control"name="fine"required=""
-                                                         onChange={handleChange("fine")} value={fine} />
-                                                      </div>
+                                                <div className="d-flex flex-column align-items-center text-center">
+                                                  <div>
+                                                   
+                                                    <ShowImage
+                                                      user={selectedUser}
+                                                      ClassName=" img mb-2 img-thumbnail"
+                                                    />
+                                                  </div>
+                                                  <div className="mt-3">
+                                                    <h4>
+                                                      {selectedUser.fname}{" "}
+                                                      {selectedUser.lname}
+                                                    </h4>
+                                                    <p className="text-secondary mb-1">
+                                                      {selectedUser.department}
+                                                    </p>
+                                                    <p className="text-muted font-size-sm">
+                                                      {selectedUser.session}
+                                                    </p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div className="card mt-3">
+                                              <ul className="list-group list-group-flush">
+                                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                  <h6 className="mb-0">
+                                                    Hostel Name
+                                                  </h6>
+                                                  <span className="text-secondary">
+                                                    {selectedUser.hostelName}
+                                                  </span>
+                                                </li>
+                                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                  <h6 className="mb-0">
+                                                    Hostel Id
+                                                  </h6>
+                                                  <span className="text-secondary">
+                                                    {selectedUser.hostelId}
+                                                  </span>
+                                                </li>
+                                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                  <h6 className="mb-0">
+                                                    Room No
+                                                  </h6>
+                                                  <span className="text-secondary">
+                                                    {selectedUser.roomNo}
+                                                  </span>
+                                                </li>
+                                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                  <h6 className="mb-0">
+                                                    Membership{" "}
+                                                  </h6>
+                                                  {selectedUser.membership ===
+                                                  2 ? (
+                                                    <div>
+                                                      <span className="badge rounded-pill bg-info ">
+                                                        Border{" "}
+                                                      </span>
                                                     </div>
-                                                    <div className="col form-outline text-start form-white mb-4">
-                                                      <label className="form-label "htmlFor="reason" >
-                                                        Reason
-                                                      </label>
-                                                      <input type="text" className="form-control"name="reason"required=""
-                                                        onChange={handleChange("reason")}
-                                                        value={reason}/>
+                                                  ) : (
+                                                    <div>
+                                                      <span className="badge rounded-pill bg-danger ">
+                                                        {" "}
+                                                        Ex-Border{" "}
+                                                      </span>
                                                     </div>
-                                                    <div className="col-12 text-end">
-                                                      <button className="btn-sm btn-outline-info fw-bold btn px-4 me-1"type="submit" onClick={clickSubmit}>
-                                                        Update
-                                                      </button>
-                                                      <button className="btn-sm btn-outline-info fw-bold btn px-4"type="button" data-bs-toggle="collapse"
-                                                        data-bs-target="#collapseExample1"aria-expanded="false" aria-controls="collapseExample">
-                                                        Close
-                                                      </button>
+                                                  )}
+                                                </li>
+                                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                                  <h6 className="mb-0">
+                                                    Meal status
+                                                  </h6>
+                                                  {selectedUser.messStatus >
+                                                  0 ? (
+                                                    <div>
+                                                      <span
+                                                        type="submit"
+                                                        className="badge rounded-pill bg-danger ">
+                                                        Deactivated
+                                                      </span>
+                                                    </div>
+                                                  ) : (
+                                                    <div>
+                                                      <span
+                                                        type="submit"
+                                                        className="badge rounded-pill bg-info " >
+                                                        Activated
+                                                      </span>
+                                                    </div>
+
+                                                  )}
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                          <div className="col-md-8">
+                                            <div className="card mb-3">
+                                              <div className="card-body text-dark">
+                                                <div className="row ">
+                                                  <div className="col-sm-3">
+                                                    <h6 className="mb-0 ">
+                                                      Full Name
+                                                    </h6>
+                                                  </div>
+                                                  <div className="col-sm-9 text-secondary">
+                                                    {selectedUser.fname}{" "}
+                                                    {selectedUser.lname}
+                                                  </div>
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                  <div className="col-sm-3">
+                                                    <h6 className="mb-0">
+                                                      Email
+                                                    </h6>
+                                                  </div>
+                                                  <div className="col-sm-9 text-secondary">
+                                                    {selectedUser.email}
+                                                  </div>
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                  <div className="col-sm-3">
+                                                    <h6 className="mb-0">
+                                                      Phone
+                                                    </h6>
+                                                  </div>
+                                                  <div className="col-sm-9 text-secondary">
+                                                    {selectedUser.selfPhNo}
+                                                  </div>
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                  <div className="col-sm-3">
+                                                    <h6 className="mb-0">
+                                                      Gender
+                                                    </h6>
+                                                  </div>
+                                                  <div className="col-sm-9 text-secondary">
+                                                    {selectedUser.gender}
+                                                  </div>
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                  <div className="col-sm-3">
+                                                    <h6 className="mb-0">
+                                                      Address
+                                                    </h6>
+                                                  </div>
+                                                  <div className="col-sm-9 text-secondary">
+                                                    {selectedUser.address}
+                                                  </div>
+                                                </div>
+                                                <hr />
+                                              </div>
+                                            </div>
+                                            <div className="row gutters-sm">
+                                              <div className="col-sm-12 mb-3">
+                                                <div className="card h-100">
+                                                  <div className="card-body">
+                                                    <h6 className="d-flex align-items-center mb-3">
+                                                      <i className="material-icons text-info mr-2">
+                                                        Payment &nbsp;
+                                                      </i>
+                                                      Record
+                                                    </h6>
+                                                    <button
+                                                      className="d-flex btn text-light btn-info1 mb-2 "
+                                                      type="button"
+                                                      data-bs-toggle="collapse"
+                                                      data-bs-target="#collapseExample1"
+                                                      aria-expanded="false"
+                                                      aria-controls="collapseExample"
+                                                    >
+                                                      Add Payment
+                                                    </button>
+                                                    <div
+                                                      className="collapse"
+                                                      id="collapseExample1"
+                                                    >
+                                                      <div className="card card-body">
+                                                        <div className="row">
+                                                          <div className="col-6 form-outline text-start form-white mb-2">
+                                                            <label
+                                                              className="form-label "
+                                                              htmlFor="deposit"
+                                                            >
+                                                              Deposit
+                                                            </label>
+                                                            <input
+                                                              type="Number"
+                                                              className="form-control"
+                                                              name="deposit"
+                                                              required=""
+                                                              onChange={handleChange(
+                                                                "deposit"
+                                                              )}
+                                                              value={deposit}
+                                                            />
+                                                          </div>
+                                                          <div className="col-6 form-outline text-start form-white mb-2">
+                                                            <label
+                                                              className="form-label"
+                                                              htmlFor="fine"
+                                                            >
+                                                              Fine
+                                                            </label>
+                                                            <input
+                                                              type="Number"
+                                                              className="form-control"
+                                                              name="fine"
+                                                              required=""
+                                                              onChange={handleChange(
+                                                                "fine"
+                                                              )}
+                                                              value={fine}
+                                                            />
+                                                          </div>
+                                                        </div>
+                                                        <div className="col form-outline text-start form-white mb-4">
+                                                          <label
+                                                            className="form-label "
+                                                            htmlFor="reason"
+                                                          >
+                                                            Reason
+                                                          </label>
+                                                          <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            name="reason"
+                                                            required=""
+                                                            onChange={handleChange(
+                                                              "reason"
+                                                            )}
+                                                            value={reason}
+                                                          />
+                                                        </div>
+                                                        <div className="col-12 text-end">
+                                                          <button
+                                                            className="btn-sm btn-outline-info fw-bold btn px-4 me-1"
+                                                            type="submit"
+                                                            onClick={
+                                                              clickSubmit
+                                                            }
+                                                          >
+                                                            Update
+                                                          </button>
+                                                          <button
+                                                            className="btn-sm btn-outline-info fw-bold btn px-4"
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseExample1"
+                                                            aria-expanded="false"
+                                                            aria-controls="collapseExample"
+                                                          >
+                                                            Close
+                                                          </button>
+                                                        </div>
+                                                      </div>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -454,9 +551,9 @@ const StudentListInfo = ({ history }) => {
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
-                                {/* <div className="row m-3 basic1 text-start">
+
+                                    {/* all action on student will be taken here  */}
+                                    {/* <div className="row m-3 basic1 text-start">
                                                   <div className="col-1"></div>
                                                   <div className="col-4">Membership Status</div>
                                                   <div className="col-6">
@@ -526,12 +623,15 @@ const StudentListInfo = ({ history }) => {
                                                   </div>
                                                 </div> */}
 
+                                    {/* action part ends here  */}
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      }</>}
-                      {/* -----------------------this modal ends here--------------------------------  */}
+                          }
+                        </>
+                      )}
+                      {/* -----------------------View Student profile modal ends here--------------------------------  */}
                     </td>
                   </thead>
                 </>
@@ -554,7 +654,6 @@ const StudentListInfo = ({ history }) => {
         <div>
           {showError()}
           {showSuccess()}
-          {chargeForm()}
           {studentList()}
         </div>
       </ManLayout>

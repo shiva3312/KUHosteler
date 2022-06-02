@@ -15,10 +15,10 @@ const MealAcitvity = ({ history }) => {
     });
   }, []);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     // update with ? you should send category name otherwise what to update?
-    messActivity(user._id, token);
+   await messActivity(user._id, token);
     if (mealStatus == 2) setMealStatus((mealStatus = 3));
     else setMealStatus((mealStatus = 2));
   };
