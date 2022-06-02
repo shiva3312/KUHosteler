@@ -114,15 +114,14 @@ const Charges = ({ history }) => {
               <tbody>
                 {manager.mealInfoList.map((rec, i) => (
                   <tr
-                    style={{ display: rec.auditAmount ? "" : "none" }}
+                    style={{ display: rec.perheadCharge ? "" : "none" }}
                     key={i}
                   >
                     <td>{i + 1}</td>
                     <td>{rec.auditedDate.slice(0, 15)}</td>
                     <td>{rec.perheadCharge}</td>
                     <td>
-                      {rec.mealCountList.borderMor +
-                        rec.mealCountList.borderNig}
+                      {rec.mealCountList.borderMor + rec.mealCountList.borderNig}
                     </td>
                     <td>
                       {rec.mealCountList.guestMor + rec.mealCountList.guestNig}
@@ -242,15 +241,15 @@ const Charges = ({ history }) => {
       <ul className="list-group m-2">
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Morning Charge
-          <span className="badge  rounded-pill">{guestMorMealCharge}</span>
+          <span className="badge  rounded-pill text-secondary">{guestMorMealCharge}</span>
         </li>
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Night Charge
-          <span className="badge rounded-pill">{guestNigMealCharge}</span>
+          <span className="badge rounded-pill text-secondary">{guestNigMealCharge}</span>
         </li>
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Grand Charge
-          <span className="badge rounded-pill">{grandCharge}</span>
+          <span className="badge rounded-pill text-secondary">{grandCharge}</span>
         </li>
       </ul>
       </div>

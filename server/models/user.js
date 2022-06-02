@@ -82,6 +82,9 @@ const userSchema = new mongoose.Schema(
       },
     ],
 
+    guestMorMealCharge: Number,
+    guestNigMealCharge: Number,
+    grandCharge: Number,
     //active Guest list
     active_guest_list: [
       {
