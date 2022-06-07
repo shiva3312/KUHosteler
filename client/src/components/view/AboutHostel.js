@@ -1,18 +1,17 @@
 import React, { useState , useEffect } from "react";
-import Footer from "./Footer";
-import {signout , isAuthenticated} from '../auth/index.js'
+import Footer from "../Footer";
+import {signout , isAuthenticated} from '../../auth/index.js'
 import {Link} from 'react-router-dom'
-import '../css/arpan.css'
-import reunion from './image/reunion.jpg'
-import reunion2 from './image/reunion2.jpg'
-import reunion3 from './image/reunion3.jpg'
-import ku from './image/ku.jpg'
-import bt from './image/bt.jpg'
-import BTMENS from './image/BTMENS.jpg'
-import user2 from './image/user2.jpg'
-import provc from './image/provc.jpg'
-import VC from './image/VC.jpg'
-import chan from './image/chan.jpg'
+import '../../css/arpan.css'
+import reunion from '../../image/events/reunion.jpg'
+import reunion2 from '../../image/events/reunion2.jpg'
+import reunion3 from '../../image/events/reunion3.jpg'
+import ku from '../../image/ku.jpg'
+import bt from '../../image/hostels/bt.jpg'
+import BTMENS from '../../image/hostels//btmens.jpg'
+import provc from '../../image/provc.jpg'
+import VC from '../../image/VC.jpg'
+import chan from '../../image/chan.jpg'
 export default function AboutHostel({history}) 
        {
       //    useEffect(() => {
@@ -100,8 +99,8 @@ export default function AboutHostel({history})
                       : "none",
                 }}
               >
-                <Link className="nav-link text-white" to="/student/home">
-                  Home
+                <Link className="nav-link text-white" to="/student/profile">
+                  Profile
                 </Link>
               </li>
               {isAuthenticated() && (

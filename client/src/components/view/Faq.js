@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Footer from "./Footer";
-import { signout, isAuthenticated } from "../auth/index.js";
+import Footer from "../Footer";
+import { signout, isAuthenticated } from "../../auth/index.js";
 import { Link } from "react-router-dom";
-import imamain from "./image/imgmain.png";
-import "../css/arpan.css";
+import imamain from "../../image/imgmain.png";
+import "../../css/arpan.css";
 export default function Faq({ history }) {
   useEffect(() => {
     let li = document.querySelectorAll(".faq-text li");
@@ -81,8 +81,8 @@ export default function Faq({ history }) {
                       : "none",
                 }}
               >
-                <Link className="nav-link text-white" to="/student/home">
-                  Home
+                <Link className="nav-link text-white" to="/student/profile">
+                  Profile
                 </Link>
               </li>
               {isAuthenticated() && (

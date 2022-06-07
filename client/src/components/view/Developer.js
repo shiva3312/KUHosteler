@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Footer from "./Footer";
-import { signout, isAuthenticated } from "../auth/index.js";
+import Footer from "../Footer";
+import { signout, isAuthenticated } from "../../auth/index.js";
 import { Link } from "react-router-dom";
-// import imamain from './image/imgmain.png'
-import arpan from "./image/arpan.jpg";
-import shivam from "./image/shivam.jpg";
-import jukta from "./image/jukta.jpg";
-import "../css/arpan.css";
+// import imamain from '../image/imgmain.png'
+import arpan from "../../image/developers/arpan.jpg";
+import shivam from "../../image/developers/shivam.jpg";
+import jukta from "../../image/developers/jukta.jpg";
+import "../../css/arpan.css";
 export default function Developer({ history }) {
   return (
     <>
@@ -70,8 +70,8 @@ export default function Developer({ history }) {
                       : "none",
                 }}
               >
-                <Link className="nav-link text-white" to="/student/home">
-                  Home
+                <Link className="nav-link text-white" to="/student/profile">
+                  Profile
                 </Link>
               </li>
               {isAuthenticated() && (

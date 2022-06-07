@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Footer from "./Footer";
-import { signout, isAuthenticated } from "../auth/index.js";
+import Footer from "../Footer";
+import { signout, isAuthenticated } from "../../auth/index.js";
 import { Link } from "react-router-dom";
-import "../css/arpan.css";
-import user from './image/user2.jpg'
-import electric from './image/electric.png'
+import "../../css/arpan.css";
+import user from '../../image/user2.jpg'
+import electric from '../../image/electric.png'
 export default function ReportBug({ history }) {
   // useEffect(() => {
   //   let li= document.querySelectorAll(".labels");
@@ -80,8 +80,8 @@ export default function ReportBug({ history }) {
                       : "none",
                 }}
               >
-                <Link className="nav-link text-white" to="/student/home">
-                  Home
+                <Link className="nav-link text-white" to="/student/profile">
+                  Profile
                 </Link>
               </li>
               {isAuthenticated() && (

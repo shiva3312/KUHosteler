@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import {signout , isAuthenticated} from '../auth/index.js'
 import {Link} from 'react-router-dom'
 import '../css/arpan.css'
-import meal from './image/meal.png'
+import meal from '../image/meal.png'
 export default function MealTable({history}) 
        {
         return(

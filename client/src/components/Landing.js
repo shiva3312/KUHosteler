@@ -2,6 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import { signout, isAuthenticated } from "../auth/index.js";
+import LH1 from '../image/hostels/lh1.jpg'
+import LH2 from '../image/hostels/lh2.jpg'
+import PG1 from '../image/hostels/pg1.jpg'
+import PG2 from '../image/hostels/pg2.jpg'
+import PG3 from '../image/hostels/pg3.jpg'
+import Banyan from '../image/hostels/banyan.jpg'
+import Btmens from '../image/hostels/btmens.jpg'
+
 
 export default function Landing({ history }) {
   return (
@@ -281,7 +289,7 @@ export default function Landing({ history }) {
         <div className="col-4 ">
           <div className="card-body m-2 shadow-sm">
             <img
-              src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg"
+              src={PG1}
               className="card-img-top"
               alt="..."
             />
@@ -293,7 +301,7 @@ export default function Landing({ history }) {
         <div className="col-4">
           <div className="card-body m-2 shadow-sm ">
             <img
-              src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg"
+              src={Btmens}
               className="card-img-top"
               alt="..."
             />
@@ -308,7 +316,7 @@ export default function Landing({ history }) {
         <div className="col-4">
           <div className="card-body m-2 shadow-sm">
             <img
-              src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg"
+              src={Banyan}
               className="card-img-top"
               alt="..."
             />
@@ -323,7 +331,7 @@ export default function Landing({ history }) {
         <div className="col-4 ">
           <div className="card-body m-2 shadow-sm">
             <img
-              src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg"
+              src={LH1}
               className="card-img-top"
               alt="..."
             />
@@ -335,7 +343,7 @@ export default function Landing({ history }) {
         <div className="col-4">
           <div className="card-body m-2 shadow-sm">
             <img
-              src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg"
+              src={PG3}
               className="card-img-top"
               alt="..."
             />
@@ -348,7 +356,7 @@ export default function Landing({ history }) {
         <div className="col-4">
           <div className="card-body m-2 shadow-sm">
             <img
-              src="https://cdn.pixabay.com/photo/2021/02/10/11/05/castle-6001720_960_720.jpg"
+              src={PG2}
               className="card-img-top"
               alt="..."
             />
@@ -369,7 +377,7 @@ export default function Landing({ history }) {
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow-sm">
                 <img
-                  src="https://cdn.pixabay.com/photo/2017/09/28/11/10/the-university-2795163_960_720.jpg"
+                  src={PG1}
                   className="card-img-top"
                   alt="..."
                 />
@@ -384,7 +392,7 @@ export default function Landing({ history }) {
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
                 <img
-                  src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg"
+                  src={Btmens}
                   className="card-img-top"
                   alt="..."
                 />
@@ -401,7 +409,7 @@ export default function Landing({ history }) {
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
                 <img
-                  src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg"
+                  src={Banyan}
                   className="card-img-top"
                   alt="..."
                 />
@@ -416,7 +424,7 @@ export default function Landing({ history }) {
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
                 <img
-                  src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg"
+                  src= {LH1}
                   className="card-img-top"
                   alt="..."
                 />
@@ -429,7 +437,7 @@ export default function Landing({ history }) {
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
                 <img
-                  src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg"
+                  src={PG3}
                   className="card-img-top"
                   alt="..."
                 />
@@ -444,7 +452,7 @@ export default function Landing({ history }) {
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
                 <img
-                  src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg"
+                  src={PG2}
                   className="card-img-top"
                   alt="..."
                 />
@@ -459,7 +467,7 @@ export default function Landing({ history }) {
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
                 <img
-                  src="https://cdn.pixabay.com/photo/2015/10/09/10/29/green-979055_960_720.jpg"
+                  src={LH2}
                   className="card-img-top"
                   alt="..."
                 />
@@ -494,7 +502,7 @@ export default function Landing({ history }) {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      <section className="why-us section-bg">
+      {/* <section className="why-us section-bg">
         <div className="container shadow mt-4">
           <div className="row">
             <div className="col-lg-6 video-box">
@@ -535,7 +543,7 @@ export default function Landing({ history }) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <Footer />
     </div>
   );

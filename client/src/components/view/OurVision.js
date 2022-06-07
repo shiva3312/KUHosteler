@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Footer from "./Footer";
-import { signout, isAuthenticated } from "../auth/index.js";
-import { Link } from "react-router-dom";
-import "../css/arpan.css";
-import email from "./image/email.png";
-export default function ReportBug({ history }) {
-  return (
-    <>
-       <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
+import React, { useState , useEffect } from "react";
+import Footer from "../Footer";
+import {signout , isAuthenticated} from '../../auth/index.js'
+import {Link} from 'react-router-dom'
+import '../../css/arpan.css'
+import vision from '../../image/VISION.png'
+export default function OurVision({history}) 
+       {
+        return(
+ <>
+            <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
         <div className="container-fluid">
           <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
 
@@ -67,8 +68,8 @@ export default function ReportBug({ history }) {
                       : "none",
                 }}
               >
-                <Link className="nav-link text-white" to="/student/home">
-                  Home
+                <Link className="nav-link text-white" to="/student/profile">
+                  Profile
                 </Link>
               </li>
               {isAuthenticated() && (
@@ -105,35 +106,22 @@ export default function ReportBug({ history }) {
           </div>
         </div>
       </nav>
-      <center>
-        <div class="conta">
-          <div class="content">
-            <div class="image-box">
-              <img src={email} alt="" />
-            </div>
-            <form action="#">
-              <div class="topic">REPORT ANY BUG</div>
-              <div class="input-box">
-                <input type="text" required />
-                <label>Enter your name</label>
-              </div>
-              <div class="input-box">
-                <input type="text" required />
-                <label>Enter your email</label>
-              </div>
-              <div class="message-box">
-                <textarea></textarea>
-                <label>Enter your message</label>
-              </div>
-              <div class="input-box">
-                <input type="submit" value="Send Message" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </center>
+     <center>
+         
+     <div class="accordion">
+    <div class="image-box">
+      <img src={vision} />
+    </div>
+    <div class="accordion-text">
+      <div class="title">OUR VISION</div>
+      <p class="faq-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus eius dicta a voluptates sit deleniti autem error eos totam nisi neque voluptates sit deleniti autem error eos totam nisi neque.
+            </p>
 
-      <Footer />
-    </>
-  );
-}
+    </div>
+  </div>
+ </center>
+  
+             <Footer />
+ </>
+        )};

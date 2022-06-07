@@ -136,6 +136,17 @@ const UserDashboard = ({ history }) => {
               </div>
             </li>
           )}
+            <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3 ">
+            <div className="col-4 ps-0 pe-0">Membership</div>
+            <div className="col-8 ps-0 pe-0">
+              :{" "}
+              {user.membership === 2 ? (
+                <span className="text-success fw-bold "> Activated</span>
+              ) : (
+                <span className="text-danger fw-bold"> Deactivated</span>
+              )}
+            </div>
+          </li>
           <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-4 ps-0 pe-0">Room No</div>
             <div className="col-8 ps-0 pe-0">: {user.roomNo}</div>

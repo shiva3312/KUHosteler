@@ -2,20 +2,20 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
-import Faq from "./components/Faq";
-import OurVision from "./components/OurVision";
+import Faq from "./components/view/Faq";
+import OurVision from "./components/view/OurVision";
 import MealTable from "./components/MealTable";
-import SuggestFeature from "./components/SuggestFeature";
-import HelpDesk from "./components/HelpDesk";
-import ReportBug from "./components/ReportBug";
-import Developer from "./components/Developer";
+import SuggestFeature from "./components/view/SuggestFeature";
+import HelpDesk from "./components/view/HelpDesk";
+import ReportBug from "./components/view/ReportBug";
+import Developer from "./components/view/Developer";
 import UpdatePassword from "./user/ForgotPassword";
 import InfoPage from "./user/InfoPage";
 import UpLoadPhoto from "./user/PicUploading";
 import Landing from "./components/Landing";
 import ManagerRoute from "./auth/ManagerRoute";
 import PrivateRoute from "./auth/PrivateRoute";
-import PageNotFound from "./components/PageNotFound"
+import PageNotFound from "./components/view/PageNotFound"
 
 // manager route
 
@@ -25,7 +25,7 @@ import ManEmployee from "./components/manager/ManEmployee";
 import ManMeal from "./components/manager/ManMeal";
 import ManNotice from "./components/manager/ManNotice";
 import ManStudents from "./components/manager/ManStudents";
-import AboutHostel from "./components/AboutHostel";
+import AboutHostel from "./components/view/AboutHostel";
 //student route
 import StuHome from "./components/student/StuHome";
 import StuBasicInfo from "./components/student/StuBasicInfo";
