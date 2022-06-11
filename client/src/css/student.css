@@ -294,8 +294,6 @@ h1{
   @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap);
   @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap);
   body{
-    /* background: linear-gradient(#6FB3B8,#C2EDCE); */
-    /* background: linear-gradient(to right, rgb(96, 36, 235),rgb(156, 10, 156)); */
     font-family: 'Open+Sans','Roboto', sans-serif;
   }
   section{
@@ -327,7 +325,7 @@ h1{
         font-size:large;
     }
     h3{
-        /* display: none; */
+       
         font-size: medium;
     }
     .status{
@@ -403,10 +401,7 @@ h1{
     font-size: 11px;
    }
  } 
-/* .row{
-    border-radius: 12px;
-} */
-/*button css*/
+
 .bton{
     display:inline-flex;
     height:45px;
