@@ -110,7 +110,6 @@
     margin-left:60px;
   }
   #sidebar-toggle:checked ~ .main-content header{
-  /* padding-right: 5rem; */
   left:60px;
   
   }
@@ -126,8 +125,6 @@
     top:0;
     left:0;
     background: linear-gradient(45deg, rgb(45, 105, 102) 0%, rgb(122, 240, 236) 100%);
-    /* background-color:#388087; */
-  
     z-index:100;
     color:#fff;
     overflow-y:auto;
@@ -174,9 +171,7 @@
   .container1{
     margin-top:57px;
  }
- .badge{
-  /* background: #3facb6; */
-}
+
 .badge1{
   
   background: rgb(178, 13, 13);
@@ -224,9 +219,6 @@
   font-size:30px; 
 }
 .student{
-  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-  /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
- /* color: #388087; */
  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .basic{
@@ -328,13 +320,11 @@ animation-delay: 0.2s;
     @keyframes fadeUp {
       from{
         opacity:0.2;
-        /* -webkit-transform: translate3d(0.2,50%,0.2); */
-        /* transform: translate3d(0,100%,0); */
+       
       }
       to{
         opacity: 1;
-        /* -webkit-transform:none; */
-        /* transform:none; */
+       
       }
     }
     .fadeUp{
