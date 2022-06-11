@@ -174,6 +174,7 @@ const StudentListInfo = ({ history }) => {
               {students.map((student, i) => (
                 <>
                   <thead key={i}>
+                    <tr>
                     <td className="col-1 th1 sl">{i + 1}</td>
                     <td>
                       <ShowImage user={student} ClassName="img2 " />
@@ -633,6 +634,7 @@ const StudentListInfo = ({ history }) => {
                       )}
                       {/* -----------------------View Student profile modal ends here--------------------------------  */}
                     </td>
+                    </tr>
                   </thead>
                 </>
               ))}

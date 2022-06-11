@@ -120,73 +120,73 @@ export default function Faq({ history }) {
         </div>
       </nav>
       <center>
-        <div class="accordion">
-          <div class="image-box">
+        <div className="accordion">
+          <div className="image-box">
             <img src={imamain} />
           </div>
-          <div class="accordion-text">
-            <div class="title">FAQ</div>
-            <ul class="faq-text">
+          <div className="accordion-text">
+            <div className="title">FAQ</div>
+            <ul className="faq-text">
               <li>
-                <div class="question-arrow">
-                  <span class="question"> How to open a account?</span>
-                  <i class="bx bxs-chevron-down arrow"></i>
+                <div className="question-arrow">
+                  <span className="question"> How to open a account?</span>
+                  <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Nostrum, doloribus.
                 </p>
-                <span class="line"></span>
+                <span className="line"></span>
               </li>
               <li>
-                <div class="question-arrow">
-                  <span class="question"> How to add guest?</span>
-                  <i class="bx bxs-chevron-down arrow"></i>
+                <div className="question-arrow">
+                  <span className="question"> How to add guest?</span>
+                  <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
                   JavaScript is a text-based programming language used both on
                   the client-side and server-side that allows you to make web
                   pages interactive
                 </p>
-                <span class="line"></span>
+                <span className="line"></span>
               </li>
               <li>
-                <div class="question-arrow">
-                  <span class="question"> How to delete guest?</span>
-                  <i class="bx bxs-chevron-down arrow"></i>
+                <div className="question-arrow">
+                  <span className="question"> How to delete guest?</span>
+                  <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non,
                   necessitatibus.
                 </p>
-                <span class="line"></span>
+                <span className="line"></span>
               </li>
               <li>
-                <div class="question-arrow">
-                  <span class="question">
+                <div className="question-arrow">
+                  <span className="question">
                     What is the next step after sending request for account
                     opening?
                   </span>
-                  <i class="bx bxs-chevron-down arrow"></i>
+                  <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Rerum, labore.
                 </p>
-                <span class="line"></span>
+                <span className="line"></span>
               </li>
               <li>
-                <div class="question-arrow">
-                  <span class="question">
+                <div className="question-arrow">
+                  <span className="question">
                     What happen if my account opening request will be rejected?
                   </span>
-                  <i class="bx bxs-chevron-down arrow"></i>
+                  <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Saepe, repudiandae!
                 </p>
-                <span class="line"></span>
+                <span className="line"></span>
               </li>
             </ul>
           </div>

@@ -106,26 +106,26 @@ export default function ReportBug({ history }) {
         </div>
       </nav>
       <center>
-        <div class="conta">
-          <div class="content">
-            <div class="image-box">
+        <div className="conta">
+          <div className="content">
+            <div className="image-box">
               <img src={email} alt="" />
             </div>
             <form action="#">
-              <div class="topic">REPORT ANY BUG</div>
-              <div class="input-box">
+              <div className="topic">REPORT ANY BUG</div>
+              <div className="input-box">
                 <input type="text" required />
                 <label>Enter your name</label>
               </div>
-              <div class="input-box">
+              <div className="input-box">
                 <input type="text" required />
                 <label>Enter your email</label>
               </div>
-              <div class="message-box">
+              <div className="message-box">
                 <textarea></textarea>
                 <label>Enter your message</label>
               </div>
-              <div class="input-box">
+              <div className="input-box">
                 <input type="submit" value="Send Message" />
               </div>
             </form>

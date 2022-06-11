@@ -7,6 +7,7 @@ import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../../auth";
 import Footer from "../Footer";
+import ShowImage from "../ShowImage";
 
 const Layout = ({
   title = "Title",
@@ -25,7 +26,8 @@ const Layout = ({
     </div>
     <div className="col-2 bg-white">
      <div>
-       <img src="https://cdn.pixabay.com/photo/2017/09/28/11/10/the-university-2795163_960_720.jpg" className="imge img-thumbnail border-rounded" alt="" />
+      {/* <ShowImage user={isAuthenticated().user} /> */}
+       <img src="https://cdn.pixabay.com/photo/2017/09/28/11/10/the-university-2795163_960_720.jpg" className="imge img-thumbnail border-rounded" alt="Not found Image" />
      </div>
     </div>
     </div>

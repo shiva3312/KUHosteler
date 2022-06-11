@@ -148,10 +148,12 @@ const TodayMealList = ({ history }) => {
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0">
               <thead>
+                <tr>
                 <th>Serial No.</th>
                 <th>Name</th>
                 <th> Guest Holder</th>
                 <th> Guest Type</th>
+                </tr>
               </thead>
             </table>
           </div>

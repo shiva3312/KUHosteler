@@ -33,7 +33,6 @@ export const messActivity = (userId, token) => {
 };
 
 export const addGuest = (userId, token, values) => {
-  console.log(values);
   return fetch(`${API}/student/addguest/${userId}`, {
     method: "POST",
     headers: {

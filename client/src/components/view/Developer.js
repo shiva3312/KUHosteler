@@ -108,52 +108,52 @@ export default function Developer({ history }) {
           </div>
         </div>
       </nav>
-      <center class="bgch">
-        <div class="cont">
-          <div class="box">
-            <div class="image">
+      <center className="bgch">
+        <div className="cont">
+          <div className="box">
+            <div className="image">
               <img src={shivam} />
             </div>
-            <div class="name_job">SHIVAM</div>
-            <div class="name_job">Full Stack Developer</div>
+            <div className="name_job">SHIVAM</div>
+            <div className="name_job">Full Stack Developer</div>
             <p>
               {" "}
               Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit.
               Ratione disuja doloremque reiciendi nemo.
             </p>
-            <div class="media-icons">
+            <div className="media-icons">
               <a href="#">
                 {" "}
-                <i class="fab fa-facebook-f"></i>{" "}
+                <i className="fab fa-facebook-f"></i>{" "}
               </a>
               <a href="#">
                 {" "}
-                <i class="fab fa-twitter"></i>{" "}
+                <i className="fab fa-twitter"></i>{" "}
               </a>
               <a href="#">
                 {" "}
-                <i class="fab fa-instagram"></i>{" "}
+                <i className="fab fa-instagram"></i>{" "}
               </a>
               <a href="#">
                 {" "}
-                <i class="fab fa-linkedin-in"></i>{" "}
+                <i className="fab fa-linkedin-in"></i>{" "}
               </a>
             </div>
-            <div class="btns">
+            <div className="btns">
               <button>Read More</button>
             </div>
           </div>
-          <div class="box">
-            <div class="image">
+          <div className="box">
+            <div className="image">
               <img src={jukta} />
             </div>
-            <div class="name_job">JUKTA</div>
-            <div class="name_job">Student of DETS, Kalyani University(Batch:2018-2022)</div>
+            <div className="name_job">JUKTA</div>
+            <div className="name_job">Student of DETS, Kalyani University(Batch:2018-2022)</div>
             <p>
               {" "}
               Worked on Front end part
             </p>
-            <div class="media-icons">
+            <div className="media-icons">
               <a href="#">
                 <i className="fab fa-facebook-f"></i>
               </a>
@@ -167,22 +167,22 @@ export default function Developer({ history }) {
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
-            <div class="btns">
+            <div className="btns">
               <button>Read More </button>
             </div>
           </div>
-          <div class="box">
-            <div class="image">
+          <div className="box">
+            <div className="image">
               <img src={arpan} />
             </div>
-            <div class="name_job">ARPAN</div>
-            <div class="name_job">Fornt End Developer</div>
+            <div className="name_job">ARPAN</div>
+            <div className="name_job">Fornt End Developer</div>
             <p>
               {" "}
               Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit.
               Ratione disuja doloremque reiciendi nemo.
             </p>
-            <div class="media-icons">
+            <div className="media-icons">
               <a href="#">
                 <i className="fab fa-facebook-f"></i>
               </a>
@@ -196,7 +196,7 @@ export default function Developer({ history }) {
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
-            <div class="btns">
+            <div className="btns">
               <button>Read More</button>
             </div>
           </div>

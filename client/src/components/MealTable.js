@@ -107,17 +107,17 @@ export default function MealTable({history})
         </div>
       </nav>
      <center>
-     <h1 class="tit">MEAL MENU</h1>
-     <div class="table_respons">
+     <h1 className="tit">MEAL MENU</h1>
+     <div className="table_respons">
      
-     <table class="t1">
-      <thead class="t1_thead">
+     <table className="t1">
+      <thead className="t1_thead">
         <tr>
-          <th class="thnew">Sl</th>
-          <th class="thnew">Image</th>
-          <th class="thnew">Day</th>
-          <th class="thnew">Morning-Menu</th>
-          <th class="thnew">Night-Menu</th>
+          <th className="thnew">Sl</th>
+          <th className="thnew">Image</th>
+          <th className="thnew">Day</th>
+          <th className="thnew">Morning-Menu</th>
+          <th className="thnew">Night-Menu</th>
         </tr>
       </thead>
 

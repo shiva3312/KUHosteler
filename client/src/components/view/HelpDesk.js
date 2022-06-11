@@ -118,17 +118,17 @@ export default function ReportBug({ history }) {
           </div>
         </div>
       </nav>
-      <h1 class="tit">{}HELP DESK</h1>
-      <div class="table_respons">
+      <h1 className="tit">{}HELP DESK</h1>
+      <div className="table_respons">
             
-    <table class="t1">
-      <thead class="t1_thead">
+    <table className="t1">
+      <thead className="t1_thead">
         <tr>
-          <th class="thnew">Sl</th>
-          <th class="thnew">Image</th>
-          <th class="thnew">Name</th>
-          <th class="thnew">Phone</th>
-          <th class="thnew">Designation</th>
+          <th className="thnew">Sl</th>
+          <th className="thnew">Image</th>
+          <th className="thnew">Name</th>
+          <th className="thnew">Phone</th>
+          <th className="thnew">Designation</th>
         </tr>
       </thead>
 
@@ -185,16 +185,16 @@ export default function ReportBug({ history }) {
           <td>Library Assistant</td>
         </tr>
       </tbody>
-      <tbody class="labels">
+      <tbody className="labels">
 			<tr>
-				<td colspan="5">
-				<label class="badge bg-danger text-wrap ">PREFECT</label>
+				<td colSpan="5">
+				<label className="badge bg-danger text-wrap ">PREFECT</label>
 					{/* <input type="checkbox" name="management" id="management" data-toggle="toggle"/> */}
-          {/* <i class="bx bxs-chevron-down arrow"></i> */}
+          {/* <i className="bx bxs-chevron-down arrow"></i> */}
 				</td>
 			</tr>
 		</tbody>
-		<tbody class="hide">
+		<tbody className="hide">
 			<tr>
 			<td>01</td>
       <td><img src={user}/></td>
@@ -239,22 +239,22 @@ export default function ReportBug({ history }) {
           <td>Maintenance Prefect</td>
 			</tr>
       </tbody>
-      <tbody class="labels">
+      <tbody className="labels">
 			<tr>
-				<td colspan="5">
-					<label class="badge bg-danger text-wrap">Electrical Office</label>
+				<td colSpan="5">
+					<label className="badge bg-danger text-wrap">Electrical Office</label>
 					{/* <input type="checkbox" name="management" id="management" data-toggle="toggle"/> */}
-          {/* <i class="bx bxs-chevron-down arrow"></i> */}
+          {/* <i className="bx bxs-chevron-down arrow"></i> */}
 				</td>
 			</tr>
 		</tbody>
-    <thead class="t1_thead">
+    <thead className="t1_thead">
         <tr>
-          <th class="thnew">Sl</th>
-          <th class="thnew">Image</th>
-          <th class="thnew">Electric Provider</th>
-          <th class="thnew">Help Line No</th>
-          <th class="thnew">Consumer Id</th>
+          <th className="thnew">Sl</th>
+          <th className="thnew">Image</th>
+          <th className="thnew">Electric Provider</th>
+          <th className="thnew">Help Line No</th>
+          <th className="thnew">Consumer Id</th>
         </tr>
       </thead>
       <tbody>

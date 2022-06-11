@@ -108,13 +108,13 @@ export default function OurVision({history})
       </nav>
      <center>
          
-     <div class="accordion">
-    <div class="image-box">
+     <div className="accordion">
+    <div className="image-box">
       <img src={vision} />
     </div>
-    <div class="accordion-text">
-      <div class="title">OUR VISION</div>
-      <p class="faq-text">
+    <div className="accordion-text">
+      <div className="title">OUR VISION</div>
+      <p className="faq-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus eius dicta a voluptates sit deleniti autem error eos totam nisi neque voluptates sit deleniti autem error eos totam nisi neque.
             </p>
 

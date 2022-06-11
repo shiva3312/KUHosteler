@@ -137,46 +137,46 @@ export default function AboutHostel({history})
           </div>
         </div>
       </nav>
-     <center class="bgch">
-     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+     <center className="bgch">
+     <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src={ku} class="d-block w-100" alt="..."/>
-            <div class="carousel-caption">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img src={ku} className="d-block w-100" alt="..."/>
+            <div className="carousel-caption">
               <h5>WELCOME TO KALYANI UNIVERSITY</h5>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
                              
             </div>
           </div>
-          <div class="carousel-item">
-            <img src={bt} class="d-block w-100" alt="..."/>
-            <div class="carousel-caption">
+          <div className="carousel-item">
+            <img src={bt} className="d-block w-100" alt="..."/>
+            <div className="carousel-caption">
               <h5>START YOUR CAREER WITH OUR CAMPUS</h5>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
                               
             </div>
           </div>
-          <div class="carousel-item">
-            <img src={BTMENS} class="d-block w-100" alt="..."/>
-            <div class="carousel-caption">
+          <div className="carousel-item">
+            <img src={BTMENS} className="d-block w-100" alt="..."/>
+            <div className="carousel-caption">
               <h5>HOSTEL LIFE</h5>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
                               
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
         </button>
       </div>  
      
@@ -187,41 +187,41 @@ export default function AboutHostel({history})
 
 
     <section >
-          <div class="container">
-            <div class="cont">
+          <div className="container">
+            <div className="cont">
             
-      <div class="box">
-      <div class="image">
+      <div className="box">
+      <div className="image">
          <img src={chan}/>
         </div>
-        <div class="name_job">Shri Jagdeep Dhankhar</div>
-        <div class="name_job">Chancellor</div>
+        <div className="name_job">Shri Jagdeep Dhankhar</div>
+        <div className="name_job">Chancellor</div>
         <p> Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit. Ratione disuja doloremque reiciendi nemo.</p>
-        <div class="btns">
+        <div className="btns">
           <button>Read More</button>
         </div>
       </div>
       
-      <div class="box">
-        <div class="image">
+      <div className="box">
+        <div className="image">
           <img src={VC}/>
         </div>
-        <div class="name_job">Dr. Manas Kumar Sanyal</div>
-        <div class="name_job">Vice Chancellor</div>
+        <div className="name_job">Dr. Manas Kumar Sanyal</div>
+        <div className="name_job">Vice Chancellor</div>
         <p> Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit. Ratione disuja doloremque reiciendi nemo.</p>
-        <div class="btns">
+        <div className="btns">
           <button>Read More </button>
         </div>
       </div>
       
-      <div class="box">
-        <div class="image">
+      <div className="box">
+        <div className="image">
         <img src={provc}/>
         </div>
-        <div class="name_job">Prof. Dr Goutam Paul</div>
-        <div class="name_job">Pro Vice Chancellor</div>
+        <div className="name_job">Prof. Dr Goutam Paul</div>
+        <div className="name_job">Pro Vice Chancellor</div>
         <p> Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit. Ratione disuja doloremque reiciendi nemo.</p>
-        <div class="btns">
+        <div className="btns">
           <button>Read More</button>
         </div>
       </div>
@@ -234,16 +234,16 @@ export default function AboutHostel({history})
 
 
       <section>
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-4 col-md-12 col-12">
+          <div className="container">
+              <div className="row">
+                  <div className="col-lg-4 col-md-12 col-12">
 
-                      <div class="about-img">
-                          <img src={ku} alt="" class="img-fluid"/>
+                      <div className="about-img">
+                          <img src={ku} alt="" className="img-fluid"/>
                       </div>
                   </div>
-                  <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
-                      <div class="about-text">
+                  <div className="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+                      <div className="about-text">
                             <h2>We Provide the Best Quality <br/> Services Ever</h2>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
                             
@@ -253,38 +253,38 @@ export default function AboutHostel({history})
           </div>
       </section> 
       <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-header text-center pb-5">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="section-header text-center pb-5">
                         <h2>Our Events</h2>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-md-12 col-lg-4 ">
-                    <div class="card text-light text-center bg-white pb-2 bgch2 ">
-                        <div class="card-body text-dark ">
-                          <div class="img-area mb-4">
-                              <img src={reunion} class="img-fluid" alt=""/>
+            <div className="row">
+                <div className="col-12 col-md-12 col-lg-4 ">
+                    <div className="card text-light text-center bg-white pb-2 bgch2 ">
+                        <div className="card-body text-dark ">
+                          <div className="img-area mb-4">
+                              <img src={reunion} className="img-fluid" alt=""/>
                           </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-12 col-lg-4">
-                    <div class="card text-light text-center bg-white pb-2 bgch2 ">
-                        <div class="card-body text-dark">
-                          <div class="img-area mb-4">
-                          <img src={reunion2} class="img-fluid" alt=""/>
+                <div className="col-12 col-md-12 col-lg-4">
+                    <div className="card text-light text-center bg-white pb-2 bgch2 ">
+                        <div className="card-body text-dark">
+                          <div className="img-area mb-4">
+                          <img src={reunion2} className="img-fluid" alt=""/>
                           </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-12 col-lg-4">
-                    <div class="card text-light text-center bg-white pb-2 bgch2 ">
-                        <div class="card-body text-dark">
-                          <div class="img-area mb-4">
-                          <img src={reunion3} class="img-fluid" alt=""/>
+                <div className="col-12 col-md-12 col-lg-4">
+                    <div className="card text-light text-center bg-white pb-2 bgch2 ">
+                        <div className="card-body text-dark">
+                          <div className="img-area mb-4">
+                          <img src={reunion3} className="img-fluid" alt=""/>
                           </div>
                         </div>
                     </div>
@@ -292,47 +292,47 @@ export default function AboutHostel({history})
             </div>
         </div>
       </section>
-      <section class="services section-padding" id="services">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="section-header text-center pb-5">
+      <section className="services section-padding" id="services">
+          <div className="container">
+              <div className="row">
+                  <div className="col-md-12">
+                      <div className="section-header text-center pb-5">
                           <h2>Our Services</h2>
                          
                       </div>
                   </div>
               </div>
-              <div class="row">
-                <div class="col-12 col-md-12 col-lg-4 ">
+              <div className="row">
+                <div className="col-12 col-md-12 col-lg-4 ">
                
-                    <div class="card text-white text-center bg-dark pb-2">
-                        <div class="card-body">
-                            <i class="bi bi-laptop"></i>
-                            <h3 class="card-title">TOTAL STUDENT</h3>
-                            <p class="lead text-warning">150</p>
-                            {/* <button class="btn bg-warning text-dark">Read More</button> */}
+                    <div className="card text-white text-center bg-dark pb-2">
+                        <div className="card-body">
+                            <i className="bi bi-laptop"></i>
+                            <h3 className="card-title">TOTAL STUDENT</h3>
+                            <p className="lead text-warning">150</p>
+                            {/* <button className="btn bg-warning text-dark">Read More</button> */}
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-12 col-lg-4 ">
+                <div className="col-12 col-md-12 col-lg-4 ">
                 
-                    <div class="card text-white text-center bg-dark pb-2">
-                        <div class="card-body">
-                            <i class="bi bi-laptop"></i>
-                            <h3 class="card-title">TOTAL ROOM</h3>
-                            <p class="lead text-warning">35</p>
-                            {/* <button class="btn bg-warning text-dark">Read More</button> */}
+                    <div className="card text-white text-center bg-dark pb-2">
+                        <div className="card-body">
+                            <i className="bi bi-laptop"></i>
+                            <h3 className="card-title">TOTAL ROOM</h3>
+                            <p className="lead text-warning">35</p>
+                            {/* <button className="btn bg-warning text-dark">Read More</button> */}
                         </div>
                     </div>
                 </div>
-                  <div class="col-12 col-md-12 col-lg-4 ">
+                  <div className="col-12 col-md-12 col-lg-4 ">
                
-                      <div class="card text-white text-center bg-dark pb-2">
-                          <div class="card-body">
-                            <i class="bi bi-journal"></i>
-                              <h3 class="card-title">ROOM CHARGE</h3>
-                              <p class="lead text-warning">₹1200</p>
-                              {/* <button class="btn bg-warning text-dark">Read More</button> */}
+                      <div className="card text-white text-center bg-dark pb-2">
+                          <div className="card-body">
+                            <i className="bi bi-journal"></i>
+                              <h3 className="card-title">ROOM CHARGE</h3>
+                              <p className="lead text-warning">₹1200</p>
+                              {/* <button className="btn bg-warning text-dark">Read More</button> */}
                           </div>
                       </div>
                   </div>
