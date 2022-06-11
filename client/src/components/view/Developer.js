@@ -108,100 +108,72 @@ export default function Developer({ history }) {
           </div>
         </div>
       </nav>
-      <center className="bgch">
-        <div className="cont">
-          <div className="box">
-            <div className="image">
-              <img src={shivam} />
-            </div>
-            <div className="name_job">SHIVAM</div>
-            <div className="name_job">Full Stack Developer</div>
-            <p>
-              {" "}
-              Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit.
-              Ratione disuja doloremque reiciendi nemo.
-            </p>
-            <div className="media-icons">
-              <a href="#">
-                {" "}
-                <i className="fab fa-facebook-f"></i>{" "}
-              </a>
-              <a href="#">
-                {" "}
-                <i className="fab fa-twitter"></i>{" "}
-              </a>
-              <a href="#">
-                {" "}
-                <i className="fab fa-instagram"></i>{" "}
-              </a>
-              <a href="#">
-                {" "}
-                <i className="fab fa-linkedin-in"></i>{" "}
-              </a>
-            </div>
-            <div className="btns">
-              <button>Read More</button>
+      <main id="main">
+      <div className="section-title mt-3 pt-3">
+            <h2>Our Team</h2>
+          </div>
+   <div className="team mb-5" >
+      <div className="container p-2">
+        <div className="row ">
+          <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div className="member">
+              <div className="member-img">
+                <img src={shivam} className="img-fluid" alt=""/>
+                <div className="social1">
+                  <Link to=""><i className="fa fa-facebook"></i></Link>
+                  <Link to=""><i className="fa fa-instagram"></i></Link>
+                  <Link to=""><i className="fa fa-linkedin"></i></Link>
+                </div>
+              </div>
+              <div className="member-info">
+                <h4>Shivam Chaurasiya</h4>
+                <span>Full Stack Developer</span>
+                <p>Animi est delectus alias quam repellendus nihil nobis dolor. Est sapiente occaecati et dolore. Omnis aut ut nesciunt explicabo qui. Eius nam deleniti ut omnis repudiandae perferendis qui. Neque non quidem sit sed pariatur quia modi ea occaecati. Incidunt ea non est corporis in.</p>
+              </div>
             </div>
           </div>
-          <div className="box">
-            <div className="image">
-              <img src={jukta} />
-            </div>
-            <div className="name_job">JUKTA</div>
-            <div className="name_job">Student of DETS, Kalyani University(Batch:2018-2022)</div>
-            <p>
-              {" "}
-              Worked on Front end part
-            </p>
-            <div className="media-icons">
-              <a href="#">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-            <div className="btns">
-              <button>Read More </button>
+          <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div className="member">
+              <div className="member-img">
+                <img src={jukta} className="img-fluid" alt=""/>
+                <div className="social1">
+                <Link to=""><i className="fa fa-facebook"></i></Link>
+                  <Link to=""><i className="fa fa-instagram"></i></Link>
+                  <Link to=""><i className="fa fa-linkedin"></i></Link>
+                </div>
+              </div>
+              <div className="member-info">
+                <h4>Jukta Maitra</h4>
+                <span>Front End Developer</span>
+                <p>I am a student of Kalyani University, Department of Engineering & Technological Studies.I am beginner in Web Development.With my basic knowledge I have tried to design this website.I wish to update it and make it more userfriendly in future with my gained knowledge.</p>
+              </div>
             </div>
           </div>
-          <div className="box">
-            <div className="image">
-              <img src={arpan} />
-            </div>
-            <div className="name_job">ARPAN</div>
-            <div className="name_job">Fornt End Developer</div>
-            <p>
-              {" "}
-              Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit.
-              Ratione disuja doloremque reiciendi nemo.
-            </p>
-            <div className="media-icons">
-              <a href="#">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-            <div className="btns">
-              <button>Read More</button>
+
+
+          <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div className="member">
+              <div className="member-img">
+                <img src={arpan} className="img-fluid" alt=""/>
+                <div className="social1">
+                <Link to=""><i className="fa fa-facebook"></i></Link>
+                  <Link to=""><i className="fa fa-instagram"></i></Link>
+                  <Link to=""><i className="fa fa-linkedin"></i></Link>
+                </div>
+              </div>
+              <div className="member-info">
+                <h4>Arpan Pal</h4>
+                <span>Front End Developer</span>
+                <p>Sint qui cupiditate. Asperiores fugit impedit aspernatur et mollitia. Molestiae qui placeat labore assumenda id qui nesciunt quo reprehenderit. Rem dolores similique quis soluta culpa enim quia ratione ea.</p>
+              </div>
             </div>
           </div>
         </div>
-      </center>
+
+      </div>
+    </div>
+    </main>
+     
 
       <Footer />
     </>
