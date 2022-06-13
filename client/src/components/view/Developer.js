@@ -120,15 +120,27 @@ export default function Developer({ history }) {
               <div className="member-img">
                 <img src={shivam} className="img-fluid" alt=""/>
                 <div className="social1">
-                  <Link to=""><i className="fa fa-facebook"></i></Link>
-                  <Link to=""><i className="fa fa-instagram"></i></Link>
-                  <Link to=""><i className="fa fa-linkedin"></i></Link>
+                  <Link 
+                    to={{ pathname: "https://www.facebook.com/kingcobra196" }} 
+                    target="_blank">
+                    <i className="fa fa-facebook"></i>
+                  </Link>
+                  <Link 
+                    to={{  pathname: "https://www.instagram.com/cshivam718/?hl=en" }} 
+                    target="_blank">
+                    <i className="fa fa-instagram"></i>
+                  </Link>
+                  <Link 
+                    to={{  pathname: "https://www.linkedin.com/in/shivam-chaurasia-093844190/"  }}
+                    target="_blank">
+                    <i className="fa fa-linkedin"></i>
+                  </Link>
                 </div>
               </div>
               <div className="member-info">
                 <h4>Shivam Chaurasiya</h4>
                 <span>Full Stack Developer</span>
-                <p>Animi est delectus alias quam repellendus nihil nobis dolor. Est sapiente occaecati et dolore. Omnis aut ut nesciunt explicabo qui. Eius nam deleniti ut omnis repudiandae perferendis qui. Neque non quidem sit sed pariatur quia modi ea occaecati. Incidunt ea non est corporis in.</p>
+                <p>I am a rising sophomore at University of Kalyani majoring in Information Technology and a very enthusiastic MERN stack developer. I started my journey as coder who loves coding and now heading towards being a passionate developer, contributing and creating fascinating projects on open source platforms. I am eager to work more on open source platforms , adding further new compelling projects to my list and want to enhance myself as a perfectionist developer .</p>
               </div>
             </div>
           </div>
@@ -137,9 +149,21 @@ export default function Developer({ history }) {
               <div className="member-img">
                 <img src={jukta} className="img-fluid" alt=""/>
                 <div className="social1">
-                <Link to=""><i className="fa fa-facebook"></i></Link>
-                  <Link to=""><i className="fa fa-instagram"></i></Link>
-                  <Link to=""><i className="fa fa-linkedin"></i></Link>
+                  <Link 
+                    to={{ pathname: "#" }} 
+                    target="_blank">
+                    <i className="fa fa-facebook"></i>
+                  </Link>
+                  <Link 
+                    to={{  pathname: "#" }} 
+                    target="_blank">
+                    <i className="fa fa-instagram"></i>
+                  </Link>
+                  <Link 
+                    to={{  pathname: "#"  }}
+                    target="_blank">
+                    <i className="fa fa-linkedin"></i>
+                  </Link>
                 </div>
               </div>
               <div className="member-info">
@@ -156,9 +180,21 @@ export default function Developer({ history }) {
               <div className="member-img">
                 <img src={arpan} className="img-fluid" alt=""/>
                 <div className="social1">
-                <Link to=""><i className="fa fa-facebook"></i></Link>
-                  <Link to=""><i className="fa fa-instagram"></i></Link>
-                  <Link to=""><i className="fa fa-linkedin"></i></Link>
+                  <Link 
+                    to={{ pathname: "#" }} 
+                    target="_blank">
+                    <i className="fa fa-facebook"></i>
+                  </Link>
+                  <Link 
+                    to={{  pathname: "#" }} 
+                    target="_blank">
+                    <i className="fa fa-instagram"></i>
+                  </Link>
+                  <Link 
+                    to={{  pathname: "#"  }}
+                    target="_blank">
+                    <i className="fa fa-linkedin"></i>
+                  </Link>
                 </div>
               </div>
               <div className="member-info">
