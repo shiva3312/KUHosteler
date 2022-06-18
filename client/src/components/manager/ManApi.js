@@ -152,20 +152,7 @@ export const getCharges = (userId, token) => {
     .catch((err) => console.log(err));
 };
 
-export const getStudentprofile = (stuId, userId, token) => {
-  return fetch(`${API}/manager/studentprofile/${stuId}/${userId}`, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .catch((err) => console.log(err));
-};
+
 
 export const getPreparedMealList = (userId, token) => {
   return fetch(`${API}/manager/preparedMealList/${userId}`, {
@@ -207,6 +194,23 @@ export const sethelpSection = (userId, token, records) => {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ records }),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+export const getStudentprofile = (stuId, userId, token) => {
+  return fetch(`${API}/student/read/${stuId}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   })
     .then((response) => {
       return response.json();
@@ -365,15 +369,15 @@ export const setboundtime = (userId, token, status) => {
     .catch((err) => console.log(err));
 };
 
-export const setstudetnHostelId = (userId, token, stuId, status) => {
-  return fetch(`${API}/manager/setstudetnHostelId/${stuId}/${userId}`, {
+export const setstudetnHostelId = (userId, stuId, hostelId, token) => {
+  return fetch(`${API}/manager/setstudetnHostelId/${userId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ status }),
+    body: JSON.stringify({ stuId , hostelId }),
   })
     .then((response) => {
       return response.json();

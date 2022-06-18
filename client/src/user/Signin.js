@@ -51,7 +51,7 @@ const Signin = () => {
           <div className="container  py-5">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-md-12 col-lg-6">
-                <div className="card-body p-5 text-center th shadow-lg">
+                <div className="card-body p-5 text-center th shadow-lg text-box animate fadeUp">
                   <div className="mb-md-5 mt-md-4 pb-2">
                     <h2 className="fw-bold mb-2 text-uppercase text-white">
                       Login
@@ -163,17 +163,20 @@ const Signin = () => {
       if (!user.image.data) {
         return <Redirect to="/user/uploadphoto" />;
       } else if (
-        (user && user.profileType !== 1 && user.membership == 0) ||
-        user.membership == 4 ||
-        user.membership == 5
+        (user && user.profileType !== 1 && user.membership === 0) ||
+        user.membership === 4 ||
+        user.membership === 5
       ) {
         return <Redirect to="/user/info" />;
-      } else if (user && user.profileType === 1) {
+      } 
+      else if (user && user.profileType === 1) {
         return <Redirect to="/manager/dashboard" />;
-      } else if (user && user.profileType === 0) {
-        return <Redirect to="/student/home" />;
-      } else if (user && user.profileType === 2) {
-        return <Redirect to="/employee/home" />;
+      } 
+      else if (user && user.profileType === 0) {
+        return <Redirect to="/student/profile" />;
+      } 
+      else if (user && user.profileType === 2) {
+        return <Redirect to="/employee/profile" />;
       }
     } else if (isAuthenticated()) {
       console.log("it is ruuning in authentication");
@@ -181,11 +184,11 @@ const Signin = () => {
     }
   };
   const showForgetPassword = () => (
-  
     <div className="modalBackground th ">
       <div className="modalContainer ">
         <div className="dt titleCloseBtn ">
-          <button className="btn pt-0"
+          <button
+            className="btn pt-0"
             onClick={() => {
               setShowForget(false);
             }}
@@ -220,7 +223,6 @@ const Signin = () => {
         </form>
       </div>
     </div>
-   
   );
 
   return (

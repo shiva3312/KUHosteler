@@ -48,11 +48,11 @@ const Charges = ({ history }) => {
     setAmount({ ...amount, error: false, [name]: event.target.value });
   };
 
-  const clickSubmit = (event) => {
+  const clickSubmit = async (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
 
-    setCharges(user._id, token, values).then((data) => {
+   await setCharges(user._id, token, values).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -69,11 +69,11 @@ const Charges = ({ history }) => {
     });
   };
 
-  const clickSubmitAduditCharge = (event) => {
+  const clickSubmitAduditCharge = async (event) => {
     event.preventDefault();
     setAmount({ ...amount, error: false });
 
-    addAuditCharges(user._id, token, amount).then((data) => {
+   await addAuditCharges(user._id, token, amount).then((data) => {
       if (data.error) {
         setAmount({ ...amount, error: data.error, success: false });
       } else {
@@ -114,15 +114,14 @@ const Charges = ({ history }) => {
               <tbody>
                 {manager.mealInfoList.map((rec, i) => (
                   <tr
-                    style={{ display: rec.auditAmount ? "" : "none" }}
+                    style={{ display: rec.perheadCharge ? "" : "none" }}
                     key={i}
                   >
                     <td>{i + 1}</td>
                     <td>{rec.auditedDate.slice(0, 15)}</td>
                     <td>{rec.perheadCharge}</td>
                     <td>
-                      {rec.mealCountList.borderMor +
-                        rec.mealCountList.borderNig}
+                      {rec.mealCountList.borderMor + rec.mealCountList.borderNig}
                     </td>
                     <td>
                       {rec.mealCountList.guestMor + rec.mealCountList.guestNig}
@@ -144,8 +143,8 @@ const Charges = ({ history }) => {
         <i className="fa fa-angle-double-right"></i>
         &nbsp;Audit Meal Charge
       </h1>
-      <p>
-        <div className="mt-1 text-end">
+      <div>
+        <div className="mt-1 me-2 text-end">
           <button
             className="bton  p-2 pt-2 shadow-sm"
             type="button"
@@ -157,7 +156,7 @@ const Charges = ({ history }) => {
             Add Meal Charges
          </button>
         </div>
-      </p>
+      </div>
       <div className="collapse" id="collapseExample2">
         <div className="card card-body">
           <h4 className="text-secondary pt-2 pb-2 ">Add Meal Charge</h4>
@@ -242,15 +241,15 @@ const Charges = ({ history }) => {
       <ul className="list-group m-2">
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Morning Charge
-          <span className="badge  rounded-pill">{guestMorMealCharge}</span>
+          <span className="badge  rounded-pill text-secondary">{guestMorMealCharge}</span>
         </li>
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Night Charge
-          <span className="badge rounded-pill">{guestNigMealCharge}</span>
+          <span className="badge rounded-pill text-secondary">{guestNigMealCharge}</span>
         </li>
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Guest Grand Charge
-          <span className="badge rounded-pill">{grandCharge}</span>
+          <span className="badge rounded-pill text-secondary">{grandCharge}</span>
         </li>
       </ul>
       </div>
@@ -264,8 +263,8 @@ const Charges = ({ history }) => {
         <i className="fa fa-angle-double-right"></i>
         &nbsp;Guest Meal Charge
       </h1>
-      <p>
-        <div className="mt-1 text-end">
+      <div>
+        <div className="mt-1 me-2 text-end">
           <button
             className="bton p-2 pt-2 shadow-sm"
             type="button"
@@ -277,7 +276,7 @@ const Charges = ({ history }) => {
             Update charges
          </button>
         </div>
-      </p>
+      </div>
       <div className="collapse" id="collapseExample">
         <div className="card card-body">
           <div className="col form-outline text-start form-white mb-4">
@@ -421,7 +420,7 @@ const Charges = ({ history }) => {
         className="container-fluid pb-4"
         history={history}
       >
-        <div className="row">
+        <div className="row text-box fadeUp animate">
           {JSON.stringify(amount)}
           {showSuccess()}
           {showError()}

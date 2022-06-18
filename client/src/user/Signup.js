@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, Link } from "react-router-dom";
+import CourseDb from "../db/KuCourseDB.json";
+
 import "../css/global.css";
 import {
   signup,
@@ -23,7 +25,7 @@ const Signup = () => {
     lname: "",
     email: "",
     password: "",
-    department: "",
+    department: "Department of Engineering and technological studies",
     roomNo: "",
     religion: "Hindu",
     session: "",
@@ -37,7 +39,6 @@ const Signup = () => {
     dob: "",
     error: "",
     avatar: "",
-
     success: false,
     redirectToReferrer: false,
   });
@@ -139,7 +140,7 @@ const Signup = () => {
             lname: "",
             email: "",
             password: "",
-            department: "",
+            department: "Department of Engineering and technological studies",
             religion: "Hindu",
             session: "",
             roomNo: "",
@@ -242,7 +243,7 @@ const Signup = () => {
           <div className="container py-3">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-8">
-                <div className="th card-body register text-center shadow-lg">
+                <div className="th card-body register text-center shadow-lg text-box animate fadeUp">
                   <div className="mb-md-5 mt-md-4 pb-2">
                     <h2 className="fw-bold mb-2 text-uppercase text-white">
                       Register as{" "}
@@ -473,15 +474,22 @@ const Signup = () => {
                       >
                         Department
                       </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="department"
-                        placeholder="Ex. Department of Engineering and Technological Studies"
-                        required={true}
-                        onChange={handleChange("department")}
-                        value={department}
-                      />
+                      <select
+                          id="department"
+                          className="form-control"
+                          name="department"
+                          required={true}
+                          onChange={handleChange("department")}
+                          value={department}
+                        >
+                          {CourseDb &&
+                            CourseDb.map((course, i) => (
+                              <option key={i} value={course.departmentName}>
+                                {course.departmentName}
+                              </option>
+                            ))}
+                        </select>
+
                     </div>
 
                     <div className="row">

@@ -15,10 +15,10 @@ const MealAcitvity = ({ history }) => {
     });
   }, []);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     // update with ? you should send category name otherwise what to update?
-    messActivity(user._id, token);
+   await messActivity(user._id, token);
     if (mealStatus == 2) setMealStatus((mealStatus = 3));
     else setMealStatus((mealStatus = 2));
   };
@@ -91,25 +91,25 @@ const MealAcitvity = ({ history }) => {
             <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-2">
               <thead>
                 <tr>
-                  <th>SL</th>
+                  <th className="col-1">SL</th>
                   <th>Date</th>
                   <th>Mess status</th>
-                  <th>Moring Charge</th>
-                  <th>Night Charge</th>
+                  {/* <th>Moring Charge</th>
+                  <th>Night Charge</th> */}
                 </tr>
               </thead>
             </table>
           </div>
-          <div className="tbl-content">
+          <div className="shadow tbl-content">
             <table cellPadding="0" cellSpacing="0" border="0">
               <tbody>
                 {user.activity.map((rec, i) => (
                   <tr key={i}>
-                    <td>{i + 1}</td>
+                    <td className="col-1">{i + 1}</td>
                     <td>{rec.date.slice(0, 15)}</td>
                     <td>{rec.mess_status}</td>
-                    <td>{rec.morning_charge}</td>
-                    <td>{rec.night_charge}</td>
+                    {/* <td>{rec.morning_charge}</td>
+                    <td>{rec.night_charge}</td> */}
                   </tr>
                 ))}
               </tbody>
@@ -125,7 +125,7 @@ const MealAcitvity = ({ history }) => {
       <StuLayout history={history}>
         {/* show your content in this div */}
 
-        <div className="col mb-0">{mealAcitvity()}</div>
+        <div className="col mb-0 text-box fadeUp animate">{mealAcitvity()}</div>
       </StuLayout>
       <Footer />
     </>

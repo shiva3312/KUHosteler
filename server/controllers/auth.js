@@ -12,7 +12,8 @@ const Admin = require('../models/admin');
 const nodemailer = require("nodemailer");
 const {google} = require("googleapis");
 const JWT_SECRET = "some super serect";
-
+const sharp = require('sharp');
+const courseDb = require('../dbs/KuCourseDb.json')
 
 
 
@@ -32,7 +33,7 @@ exports.userById = async (req, res, next, id) => {
     };
 
 exports.image = (req, res, next) => {
-    if (req.profile.image.data) {
+    if(req.profile.image.data){
         res.set('Content-Type', req.profile.image.contentType);
         return res.send(req.profile.image.data);
     }
@@ -57,8 +58,27 @@ exports.signup = (req, res) => {
     if(req.body.profileType == 1){
         req.body.membership= 2;
     }
+
+    // saving eduation details of student
+    if(req.body.profileType === 0){
+      
+      courseDb.forEach((course)=>{
+        if(course.departmentName === req.body.department){
+        const education = {
+          university: 'University of kalyani',
+          session : req.body.session,
+          course: course.course,
+          subject: course.subject,
+          department: course.departmentName,
+          semester: "",
+        }
+        console.log('saving part finished ', education )
+        req.body.education = education;
+      }        
+      })
+    }
     const user = new User(req.body);
-    console.log("req.body", req.body);
+
     user.save((err, user) => {
         if (err) {
             return res.status(400).json({
@@ -145,28 +165,28 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
     // find the user based on email   
     const { email, password } = req.body;
-    User.findOne({ email }, (err, user) => {
-        if (err || !user) {
-            return res.status(400).json({
-                error: 'User with that email does not exist. Please signup'
-            });
-        }
-        // if user is found make sure the email and password match
-        // create authenticate method in user model
-        if (!user.authenticate(password)) {
-            return res.status(401).json({
-                error: 'Email and password dont match'
-            });
-        }
-        
-        // generate a signed token with user id and secret
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRETE);
-        // persist the token as 't' in cookie with expiry date
-        res.cookie('t', token, { expire: new Date() + 9999 });
-        // return response with user and token to frontend client
+    User.findOne({ email })
+    .exec( (err, user) => {
+      if (err || !user) {
+          return res.status(400).json({
+              error: 'User with that email does not exist. Please signup'
+          });
+      }
+      // if user is found make sure the email and password match
+      // create authenticate method in user model
+      if (!user.authenticate(password)) {
+          return res.status(401).json({
+              error: 'Email and password dont match'
+          });
+      }        
+      // generate a signed token with user id and secret
+      const token = jwt.sign({ _id: user._id , profileType : user.profileType, membership:user.membership }, process.env.JWT_SECRETE);
+      // persist the token as 't' in cookie with expiry date
+      res.cookie('t', token, { expire: new Date() + 9999 });
+      // return response with user and token to frontend client
      
-        return res.json({ token, user });
-    });
+      return res.json({ token, user });
+  });
 };
 
 exports.signout = (req, res) => {
@@ -177,13 +197,10 @@ exports.signout = (req, res) => {
 exports.requireSignin = expressJwt({
     secret: process.env.JWT_SECRETE,
     userProperty: 'auth'
-   
-
-
 });
 
 exports.isAuth = (req, res, next) => {
-    let user = req.profile && req.auth && req.profile._id == req.auth._id;
+  let user = req.profile && req.auth && (req.auth.profileType == 1||req.profile._id == req.auth._id);
     if (!user) {
         return res.status(403).json({
             error: 'Access denied'
@@ -201,8 +218,6 @@ exports.isManager = (req, res, next) => {
     next();
 };
 
-
-
 exports.isDev = (req, res, next) => {
     if (req.profile.profileType != 3) {
         return res.status(403).json({
@@ -211,8 +226,6 @@ exports.isDev = (req, res, next) => {
     }
     next();
 };
-
-
 
 exports.getAllcode=(req, res)=>{
     Admin.findOne({}, (err, admin)=>{
@@ -225,8 +238,6 @@ exports.getAllcode=(req, res)=>{
     })
   }
   
-
-    
 exports.getAllHostedUnHostedHostel=(req, res)=>{
     var hostedHostels =[];   
     boundTime.find({}, (err, registerHostels)=>{
@@ -245,56 +256,60 @@ exports.getAllHostedUnHostedHostel=(req, res)=>{
       }
     })
   }
-  
-exports.uploadPic = (req, res) => {
-    // requested userId can be found using  ...  req.profile._id
-    const userId = req.profile._id;
+ 
+exports.uploadPic =  (req, res) => {
+  // requested userId can be found using  ...  req.profile._id
+  const userId = req.profile._id; 
 
+  // write code to set image data..`
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
+  form.parse(req, (err, fields, files) => {
+      if (err) {
+          return res.status(400).json({
+              error: 'Image could not be uploaded'
+          });
+      }
     
-    // write code to set image data..`
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, (err, fields, files) => {
-        if (err) {
-            return res.status(400).json({
-                error: 'Image could not be uploaded'
-            });
-        }
-      
+     
+    if(files.image == undefined){
+      return res.json({error: "Please upload an image"})
+    }
 
-        // 1kb = 1000
-        // 1mb = 1000000
-      if (files.image) {
-            // console.log("FILES image: ", files.image);
-            if (files.image.size > 1000000) {
-                return res.status(400).json({
-                    error: 'Image should be less than 1mb in size'
-                });
-            }
+      // 1kb = 1000
+      // 1mb = 1000000
+    if (files.image) {
 
-            console.log("data file here",fs.readFileSync(files.image.path));
-            console.log("content type here ",files.image.type);
+      // if image size is greater than 1mb then image can't be uploaded
+          // console.log("FILES image: ", files.image);
+          // if (files.image.size > 1000000) {
+          //     return res.status(400).json({
+          //         error: 'Image should be less than 1mb in size'
+          //     });
+          // }
+          
+      // compressing the image data
+      sharp(files.image.path)
+      .resize(200)
+      .toBuffer()
+      .then( data => {          
 
-            const newImg = {
-                data :fs.readFileSync(files.image.path),
-                contentType: files.image.type
-            }
-
-            User.findOneAndUpdate({_id : userId } , {$set:{
-                "image.data" : fs.readFileSync(files.image.path),
-                "image.contentType": files.image.type
-            }},(err , result)=>{
-                if(err){
-                    console.log(err);
-                }else {
-                    return res.status(300).json({
-                        info: 'successfully saved'
-                       });
-                }
-            });
-           
-        }
-    });  
+        User.findOneAndUpdate({_id : userId } , {$set:{
+          "image.data" : data,
+          "image.contentType": files.image.type
+      }},(err , result)=>{
+          if(err){
+              console.log(err);
+          }else {
+              return res.status(300).json({
+                  info: 'successfully saved'
+                 });
+          }
+      });
+      })
+      .catch( err => { console.log("something went wrong") });
+}
+  });  
 };
 
 exports.resetPassword = (req,res,next) => {

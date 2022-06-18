@@ -26,10 +26,10 @@ const AddGuest = ({ history }) => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
 
-  const clickSubmit = (event) => {
+  const clickSubmit = async (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
-    addGuest(user._id, token, values).then((data) => {
+   await addGuest(user._id, token, values).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -48,8 +48,8 @@ const AddGuest = ({ history }) => {
     });
   };
 
-  const deleteguest = (guestId) => {
-    deleteGuest(stuData._id, token, { guestId: guestId }).then((data) => {
+  const deleteguest =  async (guestId) => {
+  await  deleteGuest(stuData._id, token, { guestId: guestId }).then((data) => {
       if (error) console.log(data.error);
       else console.log(data.info);
     });
@@ -177,7 +177,7 @@ const AddGuest = ({ history }) => {
         <div
           className="modal fade"
           id="exampleModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
@@ -189,14 +189,14 @@ const AddGuest = ({ history }) => {
                 </h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
               <div className="modal-body text-secondary">
                 <div className="mb-3" id="addguest">
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Name
                   </label>
                   <input
@@ -210,7 +210,7 @@ const AddGuest = ({ history }) => {
                   />
                 </div>
                 <div className="row">
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     From
                   </label>
                   <div className="col-6 mb-3">
@@ -235,7 +235,7 @@ const AddGuest = ({ history }) => {
                   </div>
                 </div>
                 <div className="row">
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     To
                   </label>
                   <div className="col-6 mb-3">
@@ -313,8 +313,8 @@ const AddGuest = ({ history }) => {
       <StuLayout history={history}>
         {showSuccess()}
         {showError()}
-        <div>{addGuestForm()}</div>
-        <div>{getAllGuest()}</div>
+        <div className="">{addGuestForm()}</div>
+        <div className="text-box fadeUp animate">{getAllGuest()}</div>
       </StuLayout>
       <Footer />
     </>

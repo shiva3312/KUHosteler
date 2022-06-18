@@ -10,12 +10,12 @@ const EmpBasicInfo = ({ history }) => {
   const { user } = isAuthenticated();
   const basicInfo = () => {
     return (
-      <div className=" pt-5 card mt-3 pb-5 th ">
-        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
+      <div className=" pt-5 mt-3 pb-5 th ">
+        <h4 className="shadow card-head pt-2 pb-2 bg text-light text-center">
           BASIC DETAILS
         </h4>
-        <ul className=" con shadow">
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+        <ul className=" con p-2 shadow">
+          <li className="ps-3 row text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0">Profile Type</div>
             <div className="col-7">
               :{" "}
@@ -26,15 +26,15 @@ const EmpBasicInfo = ({ history }) => {
                 : "Employee"}
             </div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className="ps-3 row text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Date of birth</div>
             <div className="col-7">: {user.dob}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className="ps-3 row text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Email Account</div>
             <div className="col-7">: {user.email}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className="ps-3 row text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Membership</div>
             <div className="col-7">
               :{" "}
@@ -45,7 +45,7 @@ const EmpBasicInfo = ({ history }) => {
               )}
             </div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className=" ps-3 row text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Hostel Name</div>
             <div className="col-7">: {user.hostelName.toUpperCase()}</div>
           </li>
@@ -58,21 +58,21 @@ const EmpBasicInfo = ({ history }) => {
 
   const constactInfo = () => {
     return (
-      <div className="pt-5 mt-3 card pb-5 th">
-        <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">
+      <div className="pt-5 mt-5 ms-auto pb-5 th">
+        <h4 className="shadow-sm card-head pt-2 pb-2 mb-3 bg  text-light text-center">
           CONTACT DETAILS
         </h4>
-        <ul className="con shadow">
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+        <ul className="con shadow p-2">
+          <li className=" ps-2 row text-secondary p-2 shadow-sm  ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Home Address</div>
             <div className="col-7">: {user.address}</div>
           </li>
 
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className=" ps-3 row text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 ps-0 pe-0">Phone No</div>
             <div className="col-7 pe-0">: {user.selfPhNo}</div>
           </li>
-          <li className="dt ps-3 row text-white p-2 shadow ms-4 me-4 m-3">
+          <li className="ps-3 row text-secondary p-2 shadow-sm ms-4 me-4 m-3">
             <div className="col-5 pe-0 ps-0">Alternate Mob No.</div>
             <div className="col-7 pe-0">: {user.gPhNo}</div>
           </li>
@@ -88,8 +88,8 @@ const EmpBasicInfo = ({ history }) => {
     <>
       <EmpLayout history={history}>
         <div className="row m-3">
-          <div className="col-md-6 "> {basicInfo()}</div>
-          <div className="col md-6">{constactInfo()}</div>
+          <div className="col-md-6 pd"> {basicInfo()}</div>
+          <div className="col md-6 pd">{constactInfo()}</div>
         </div>
       </EmpLayout>
       <Footer />

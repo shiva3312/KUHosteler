@@ -2,19 +2,20 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
-import Faq from "./components/Faq";
-import OurVision from "./components/OurVision";
+import Faq from "./components/view/Faq";
+import OurVision from "./components/view/OurVision";
 import MealTable from "./components/MealTable";
-import SuggestFeature from "./components/SuggestFeature";
-import HelpDesk from "./components/HelpDesk";
-import ReportBug from "./components/ReportBug";
-import Developer from "./components/Developer";
+import SuggestFeature from "./components/view/SuggestFeature";
+import HelpDesk from "./components/view/HelpDesk";
+import ReportBug from "./components/view/ReportBug";
+import Developer from "./components/view/Developer";
 import UpdatePassword from "./user/ForgotPassword";
 import InfoPage from "./user/InfoPage";
 import UpLoadPhoto from "./user/PicUploading";
 import Landing from "./components/Landing";
 import ManagerRoute from "./auth/ManagerRoute";
 import PrivateRoute from "./auth/PrivateRoute";
+import PageNotFound from "./components/view/PageNotFound"
 
 // manager route
 
@@ -23,12 +24,10 @@ import ManCharge from "./components/manager/ManCharge";
 import ManEmployee from "./components/manager/ManEmployee";
 import ManMeal from "./components/manager/ManMeal";
 import ManNotice from "./components/manager/ManNotice";
-import ManStuProfile from "./components/manager/ManStuProfile";
 import ManStudents from "./components/manager/ManStudents";
-import AboutHostel from "./components/AboutHostel";
+import AboutHostel from "./components/view/AboutHostel";
 //student route
 import StuHome from "./components/student/StuHome";
-import StuMyprofile from "./components/student/StuMyprofile";
 import StuBasicInfo from "./components/student/StuBasicInfo";
 import StuGuest from "./components/student/StuGuest";
 import StuMeal from "./components/student/StuMeal";
@@ -43,6 +42,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
+      
         <Route path="/" exact component={Landing} />
         <Route path="/auth/signin" exact component={Signin} />
         <Route path="/auth/signup" exact component={Signup} />
@@ -60,7 +60,7 @@ const Routes = () => {
           exact
           component={UpdatePassword}
         />
-        <PrivateRoute path="/user/uploadphoto" exact component={UpLoadPhoto} />
+        <Route path="/user/uploadphoto" exact component={UpLoadPhoto} />
 
         {/*manager GetRoute */}
         <ManagerRoute
@@ -78,11 +78,6 @@ const Routes = () => {
           exact
           component={ManEmployee}
         />
-        <ManagerRoute
-          path="/manager/studpayRecord/:stuId/:userId"
-          exact
-          component={ManStuProfile}
-        />
         <ManagerRoute path="/manager/notice" exact component={ManNotice} />
         <ManagerRoute
           path="/manager/abouthostel"
@@ -90,14 +85,8 @@ const Routes = () => {
           component={AboutHostel}
         />
         <ManagerRoute path="/manager/charges" exact component={ManCharge} />
-        <ManagerRoute
-          path="/manager/studentprofile/:stuId/:userId"
-          exact
-          component={ManStuProfile}
-        />
-
         {/*student GetRoute */}
-        <PrivateRoute path="/student/home" exact component={StuHome} />
+        <PrivateRoute path="/student/profile" exact component={StuHome} />
         <PrivateRoute
           path="/student/basicInfo"
           exact
@@ -107,7 +96,7 @@ const Routes = () => {
         <PrivateRoute path="/student/meal" exact component={StuMeal} />
         <PrivateRoute path="/student/records" exact component={StuRecords} />
 
-        <PrivateRoute path="/employee/home" exact component={EmpDashboard} />
+        <PrivateRoute path="/employee/profile" exact component={EmpDashboard} />
         <PrivateRoute
           path="/employee/basicinfo"
           exact
@@ -119,12 +108,14 @@ const Routes = () => {
           component={EmpTodayMealList}
         />
 
-        {/* global Route */}
+        {/* global  */}
         <PrivateRoute
           path="/manager/preparedMealList"
           exact
           component={ManMeal}
         />
+        <Route path="*" component={PageNotFound} />
+
       </Switch>
     </BrowserRouter>
   );

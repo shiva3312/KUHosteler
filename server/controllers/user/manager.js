@@ -16,82 +16,80 @@ var current_date12 = current_date.toLocaleString();
 // GET ROUTE funtions .............
 
 exports.userById = async (req, res, next, id) => {
-  await User.findById(id).exec((err, user) => {
-    if (err || !user) {
-      return res.status(400).json({
-        error: "User not found",
-      });
-    }
-    req.profile = user;
+  await User.findById(id)
+    .select("-image")
+    .exec((err, user) => {
+      if (err || !user) {
+        return res.status(400).json({
+          error: "User not found",
+        });
+      }
 
-    next();
-  });
+      req.profile = user;
+      next();
+    });
 };
 
 exports.read = (req, res) => {
   req.profile.hashed_password = undefined;
   req.profile.salt = undefined;
-  req.profile.image = undefined;
   return res.json(req.profile);
 };
 
 exports.allstudents = (req, res) => {
-  User.find(
-    { hostelName: req.profile.hostelName, profileType: 0 },
-    (err, users) => {
+  User.find({ hostelName: req.profile.hostelName, profileType: 0 })
+    .select(
+      "fname lname membership department messStatus hostelId active_guest_list"
+    )
+    .exec((err, users) => {
       if (err || !users) {
-        return res.json({ error: "Somthing went wrong" });
+        return res.json({ error: "Unable to load student " });
       } else {
-        return res.json({ students: users });
+        res.json({ students: users });
       }
-      1;
-    }
-  );
+    });
 };
 
 exports.allemployee = (req, res) => {
-  User.find(
-    { hostelName: req.profile.hostelName, profileType: 2 },
-    (err, users) => {
+  User.find({ hostelName: req.profile.hostelName, profileType: 2 })
+    .select("fname lname membership salary ")
+    .exec((err, users) => {
       if (err || !users) {
         return res.json({ error: "Somthing went wrong" });
       } else {
-        return res.json({ users: users });
+        res.json({ users: users });
       }
-    }
-  );
+    });
 };
 
 exports.allReqList = (req, res) => {
-  User.find(
-    {
-      hostelName: req.profile.hostelName,
-      profileType: 0,
-      $or: [{ membership: 0 }, { membership: 5 }],
-    },
-    (err, students) => {
+  User.find({
+    hostelName: req.profile.hostelName,
+    profileType: 0,
+    $or: [{ membership: 0 }, { membership: 5 }],
+  })
+    .select("fname lname membership department gender createdAt selfPhNo")
+    .exec((err, students) => {
       if (err || !students) {
         return res.json({ error: "Somthing went wrong with students List" });
       } else {
-        User.find(
-          {
-            hostelName: req.profile.hostelName,
-            profileType: 2,
-            $or: [{ membership: 0 }, { membership: 5 }],
-          },
-          (err, employees) => {
+        User.find({
+          hostelName: req.profile.hostelName,
+          profileType: 2,
+          $or: [{ membership: 0 }, { membership: 5 }],
+        })
+          .select("fname lname membership gender createdAt selfPhNo")
+          .exec((err, employees) => {
             if (err || !employees) {
               return res.json({
                 error: "Somthing went wrong with employee list",
               });
             } else {
-              return res.json({ employees, students });
+              res.json({ employees, students });
             }
-          }
-        );
+          });
       }
-    }
-  );
+    });
 };
 
 exports.studpayRecord = (req, res) => {
@@ -112,16 +110,6 @@ exports.notice = (req, res) => {
 };
 exports.abouthostel = (req, res) => {
   return res.json({ abouthostel: req.profile.abouthostel });
-};
-
-exports.getStudentprofile = (req, res) => {
-  User.findOne({ _id: req.body.studId }, (err, users) => {
-    if (err || !users) {
-      return res.json({ error: "Somthing went wrong" });
-    } else {
-      return res.josn({ users: users });
-    }
-  });
 };
 
 exports.getCharges = (req, res) => {
@@ -147,7 +135,6 @@ exports.getPreparedMealList = (req, res) => {
 };
 
 exports.getAllGuest = (req, res) => {
-  console.log("here is the request send to bakend", req.profile.hostelName);
   User.find({ hostelName: req.profile.hostelName }, (err, users) => {
     if (err || !users) {
       return res.json({ error: "Somthing went wrong" });
@@ -258,7 +245,6 @@ exports.addAuditCharges = (req, res) => {
   const auditedDate =
     d.toDateString().slice(4, 7) + " " + d.toDateString().slice(11, 15);
 
-  console.log("date --------", req.body, d, auditedDate);
   User.findOne({ _id: req.profile._id }, (err, manager) => {
     if (err || !manager) {
       return res.json({
@@ -269,7 +255,6 @@ exports.addAuditCharges = (req, res) => {
       manager.mealInfoList.forEach((rec) => {
         if (rec.auditedDate == auditedDate) {
           recId = rec._id;
-          console.log(rec._id);
         }
       });
 
@@ -317,11 +302,10 @@ exports.addAuditCharges = (req, res) => {
 
 //addFineOrDepositMoney
 exports.addFineOrDepositMoney = (req, res) => {
-  const userId = req.body.selectedUserId;
+  const userId = req.body.stuId;
   const fine = req.body.fine;
   const reason = req.body.reason;
   const deposit = req.body.deposit;
-  console.log("working ", req.body);
   User.findById(userId, (err, user) => {
     if (err || !user) {
       return res.status(400).json({ error: "User Not Found" });
@@ -449,30 +433,27 @@ exports.fchangeMealStatus = (req, res) => {
 };
 
 exports.setstudetnHostelId = (req, res) => {
-  User.findOne({ _id: req.body._id }, (err, user) => {
-    if (err || !user) {
-      return res.json({
-        error: "Something went wrong",
-      });
-    } else {
-      user.hostelId = req.body.hostelId;
-      user.save((err, result) => {
-        if (err) return res.json({ error: err });
-        else {
-          return res.json({
-            status: "Meal Button Disabled sucessfully",
-            info: result.messStatus,
-          });
-        }
-      });
+  const userId = req.body.stuId;
+  const hostelId = req.body.hostelId;
+  User.findOneAndUpdate(
+    { _id: userId },
+    { $set: { hostelId: hostelId } },
+    function (err, result) {
+      if (err) {
+        return res.json({ error: err });
+      } else {
+        return res.json({
+          info: "Hostel id updated successfully",
+        });
+      }
     }
-  });
+  );
 };
 
-exports.updateMembershipStatus = (req, res) => {
+exports.updateMembershipStatus =  (req, res) => {
   const status = req.body.values.status;
   const userId = req.body.values.memId;
-  User.findById({ _id: userId }, (err, user) => {
+   User.findById({ _id: userId }, (err, user) => {
     if (err || !user) return res.json({ error: "Something went wrong" });
     user.membership = status;
     user.save((err, result) => {
@@ -496,7 +477,6 @@ exports.updateGuestMealStatus = (req, res) => {
     },
     function (err, result) {
       if (err) {
-        console.log(result);
         return res.json({ error: err });
       } else {
         return res.json({ info: result });

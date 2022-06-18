@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
 import { getPreparedMealList } from "./ManApi";
+import ShowImage from "../ShowImage";
 
 var d = new Date();
 var utc = d.getTime() + d.getTimezoneOffset() * 60000;
@@ -35,7 +36,7 @@ const TodayMealList = ({ history }) => {
     });
   }, []);
 
-  const countMeal = () => {
+  const countMeal =  () => {
     const officalGuestCount = 0;
     mealList.guestMealList.forEach((guest) => {
       if (guest.guestType == 1) officalGuestCount++;
@@ -53,21 +54,21 @@ const TodayMealList = ({ history }) => {
           <ul className=" list-group shadow">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Border meal
-              <span className="badge  rounded-pill">
+              <span className="badge  rounded-pill  text-dark">
                 {mealList.borderMealList.length}
               </span>
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Guest meal
-              <span className="badge  rounded-pill">{normalGuestCount}</span>
+              <span className="badge  rounded-pill  text-dark">{normalGuestCount}</span>
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Official Guest meal
-              <span className="badge  rounded-pill">{officalGuestCount}</span>
+              <span className="badge  rounded-pill  text-dark">{officalGuestCount}</span>
             </li>
             <li className="total text-secondary fw-bold list-group-item d-flex justify-content-between align-items-center">
               Total
-              <span className="badge  rounded-pill">
+              <span className="badge  rounded-pill text-dark">
                 {mealList.borderMealList.length +
                   normalGuestCount +
                   officalGuestCount}
@@ -109,14 +110,14 @@ const TodayMealList = ({ history }) => {
                 {mealList.borderMealList.map((student, i) => (
                   <tr className="" key={i}>
                     <td>{i + 1}</td>
-                    <td>
+                    <td className="th1">
                       {" "}
-                      <img
-                        className="img mb-2 img-thumbnail"
-                        src={student.avatar}
-                        alt="..."
-                        width="75"
-                      />
+                      <ShowImage
+                        user={student}
+                        Width="50px"
+                        Height="50px"
+                        ClassName=" img1  img-thumbnail"
+                      />{" "}
                     </td>
                     <td>
                       {student.fname} {student.lname}
@@ -147,10 +148,12 @@ const TodayMealList = ({ history }) => {
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0">
               <thead>
+                <tr>
                 <th>Serial No.</th>
                 <th>Name</th>
                 <th> Guest Holder</th>
                 <th> Guest Type</th>
+                </tr>
               </thead>
             </table>
           </div>
@@ -189,7 +192,7 @@ const TodayMealList = ({ history }) => {
         className="container-fluid"
         history={history}
       >
-        <div className="row">
+        <div className="row text-box fadeUp animate">
           {countMeal()}
           {getBorderMealList()}
           {getGuestMealList()}

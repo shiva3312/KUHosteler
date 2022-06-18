@@ -49,8 +49,6 @@ router.put("/resendreq/:userId", resendreq);
 
 router.put("/setting/theme/:userId", theme);
 router.put("/updateguest/:userId" ,updateguest)
-
-
 router.post("/removeguest/:userId" , removeguest);
 
 router.param('userId',userById);

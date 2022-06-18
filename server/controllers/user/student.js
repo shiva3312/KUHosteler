@@ -10,21 +10,22 @@ current_date = new Date(utc + 3600000 * +5.5);
 var current_date12 = current_date.toLocaleString();
 
 exports.userById = (req, res, next, id) => {
-  User.findById(id).exec((err, user) => {
-    if (err || !user) {
-      return res.status(400).json({
-        error: "User not found",
-      });
-    }
-    req.profile = user;
-    next();
-  });
+  User.findById(id)
+    .select("-image")
+    .exec((err, user) => {
+      if (err || !user) {
+        return res.status(400).json({
+          error: "User not found",
+        });
+      }
+      req.profile = user;
+      next();
+    });
 };
 
 exports.read = (req, res) => {
   req.profile.hashed_password = undefined;
   req.profile.salt = undefined;
-  req.profile.image = undefined;
   return res.json(req.profile);
 };
 

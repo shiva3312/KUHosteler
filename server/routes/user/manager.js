@@ -10,6 +10,7 @@ const {
 
  const {
     userById,
+    stuById,
 
     // GET ROUTER function
     read,
@@ -62,7 +63,6 @@ router.get("/helpSection/:userId" ,gethelpSection);
 router.get("/notice/:userId", notice);
 router.get("/abouthostel/:userId",abouthostel);
 router.get("/getCharges/:userId" ,getCharges);
-router.get("studentprofile/:stuId/:userId",getStudentprofile);
 router.get("/preparedMealList/:userId" , getPreparedMealList);
 router.get("/getallguest/:userId" , getAllGuest);
 
@@ -70,8 +70,6 @@ router.get("/getallguest/:userId" , getAllGuest);
 // router.post("/socialpost/:userId",socialpost);
 // router.post("/annonymouspost/:userId",annonymouspost);
 router.post("/sethelpSection/:userId",sethelpSection);
-
-
 
 // router.put("/editProfile/:userId",editProfile);
 router.put("/meal/activateAcoount/:stuId/:userId",updateMembershipStatus);
@@ -86,10 +84,10 @@ router.put("/setCharges/:userId" ,setCharges);
 router.put("/addAuditCharges/:userId" ,addAuditCharges);
 router.put("/addFineOrDepositMoney/:userId" ,addFineOrDepositMoney);
 router.put("/setboundtime/:userId" ,setboundtime)
-router.put("/setstudetnHostelId/:stuId/:userId",setstudetnHostelId);
+router.put("/setstudetnHostelId/:userId",setstudetnHostelId);
 router.put("/setting/theme/:userId",theme);
 
-router.param('userId', userById);
 
+router.param('userId', userById);
 
 module.exports = router;

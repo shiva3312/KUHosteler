@@ -3,7 +3,7 @@
     transform: translateY(5rem)
 }
 .cover {
-    background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg");
+    background-image: url("https://source.unsplash.com/1600x900/");
     background-size:cover;
     background-repeat: no-repeat;
 }
@@ -20,7 +20,7 @@
   
 }
 .gradiant{
-    background: linear-gradient(to left,#afd9dc,#65ccd6,rgb(15, 159, 139));
+    background: linear-gradient(to left,#98edf3,#5ddde9,rgb(42, 212, 190));
    
 }
 body {
@@ -39,6 +39,18 @@ body {
     padding:2px;
     margin:2px;
 }
+@media(max-width:340px)
+{
+   h4{
+       font-size: 20px;
+   }
+}
+@media(max-width:330px)
+{
+   h4{
+       font-size: 18px;
+   }
+}
 
 @media (max-width:420px){
    .imge{
@@ -50,8 +62,22 @@ body {
 .media-body{
     padding-left: 15rem;
 }
+@media (max-width:572px)
+{
+   .media-body{
+    padding-left: 1rem;
+    padding-right: 1rem;
+   }
+}
 .bg{
     background: hsl(184, 73%, 35%);
+}
+
+@media (max-width:571px)
+{
+.bg{
+    font-size: 16px;
+}
 }
 .text{
     
@@ -72,12 +98,13 @@ body {
         font-size: smaller; 
     }
   }
-@media only screen and (max-width: 574px) {
+
+
+@media (max-width: 574px) {
       .media-body{
-         margin-top: 20px;
-         padding-top: 56px;
-         padding-left: 90px;
-         padding-right: 90px; 
+      
+         padding-top: 76px;
+        
       }
       .social
       {
@@ -89,17 +116,15 @@ body {
       }
 
       .media, .small{
-          text-align: center;
-          
+          text-align: center;       
       }
       .small{
-          font-size: small;
+          font-size: medium;
       }
       .heading{
           text-align: center;
       }
     }
-
     hr {
         border-width: 3px;
     }
@@ -120,8 +145,9 @@ body {
         width:100%;
     }
     .social>i {
-        padding: 1%;
-        font-size: 15px
+        padding: 2%;
+        margin: 1px;
+        font-size: 16px  
     }
     .social>i:hover {
        
@@ -156,11 +182,25 @@ body {
          
         }
     }
+ 
     @media (min-width: 551px) {
        .icon {
             display: none;
         }
     }  
+    @media (max-width:345px)
+    {
+        .icon{
+            font-size: 14px;
+        }
+    }
+    @media (max-width:335px)
+    {
+        .icon{
+            font-size: 12px;
+            
+        }
+    }
     .text1{
         font-weight:600;   
     }
@@ -203,7 +243,7 @@ h1{
 
    }
   .tbl-content{
-    height:300px;
+    height:400px;
     overflow-x:auto;
     margin-top: 0px;
    border-bottom-left-radius: 12px;
@@ -225,14 +265,20 @@ h1{
     padding: 6px 6px;
     text-align: center;
     vertical-align:middle;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 15px;
     background-color: #fff;
     color: grey;
-    border-bottom: solid 1px rgb(171, 168, 168);
+    border-bottom: solid 1px rgb(171, 168, 168,0.2);
   }
   .status{
     margin:50px;
+}
+@media(max-width:340px)
+{
+    .status{
+        font-size: small;
+    }
 }
 
 .rowstu{
@@ -246,39 +292,42 @@ h1{
 }
   @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
   @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap);
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap);
   body{
-    /* background: linear-gradient(#6FB3B8,#C2EDCE); */
-    /* background: linear-gradient(to right, rgb(96, 36, 235),rgb(156, 10, 156)); */
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Open+Sans','Roboto', sans-serif;
   }
   section{
     margin: 50px;
     margin-bottom: 70px;
     margin-top: 10px;
   }
-  @media (max-width: 590px) {
+
+  @media(min-width:626px)
+  {
+      h1{
+          font-size:27px;
+      }
+  }
+  @media (max-width: 625px) {
       section{
           margin:15px;
           margin-bottom: 50px;
       }
-  
     th{
         font-size: 13px;
         padding:8px 8px;
     }
     td{
-        font-size: 11px;
-        padding:0px 6px ;
-        
+        font-size: 12px;
+        padding:3px 6px ;   
     }
     h1{
         font-size:large;
     }
     h3{
-        display: none;
+       
         font-size: medium;
     }
-
     .status{
         margin: 20px;
     }
@@ -289,7 +338,6 @@ h1{
     }
 }
   /* for custom scrollbar for webkit browser*/
-  
   ::-webkit-scrollbar {
       width: 6px;
   } 
@@ -301,9 +349,9 @@ h1{
       box-shadow: inset;
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
   }
-
 .con{
     background-color: #F6F6F2;
+    font-size:15px;
 }
 @media (max-width:591px)
 {
@@ -318,16 +366,13 @@ h1{
     font-weight: 500;
     background:linear-gradient(#91ced2,#469aa1);
 }
-
 .fa-user:hover{
     cursor:pointer;
     background-color: #8ac3c7;
-    
 }
 .fa-eye:hover{
     cursor:pointer;
     background-color: #8ac3c7;
-    
 }
 .fa-trash:hover{
     cursor:pointer;
@@ -336,56 +381,40 @@ h1{
 .fa-check:hover{
     cursor:pointer;
     background-color: #8ac3c7;
-    
 }
 .fa-trash-o:hover{
     cursor: pointer;
     background-color: #8ac3c7;
-   
 }
 @media (min-width: 590px) {
     .fa-trash-o {
          display: none;
      }     
-   
  } 
-    
-   
- 
  .table-border{
-     padding: 10px;
-    
+     padding: 10px; 
      background-color:#d3e9f5 ;
  } 
-
-
  @media (max-width: 450px) {
    .meal
    { 
     font-size: 11px;
    }
-   
  } 
-
-.row{
-    border-radius: 12px;
-}
-/*button css*/
 
 .bton{
     display:inline-flex;
     height:45px;
     padding:0;
     border-radius: 3px;
-    background:#6FB3B8;
+    background:rgb(41, 87, 89);
     border:none;
     outline:none;
     overflow:hidden;
     color:#fff;
     font-size:16px;
     font-weight:500;
-    cursor:pointer;
-    
+    cursor:pointer;   
 }
 @media (max-width:600px){
  .bton{
@@ -393,17 +422,14 @@ h1{
      font-size: 14px;
  }   
 }
-
 @media (max-width:400px){
     .bton{
         font-size: 12px;
     }
 }
-
 .bton:hover{
     background: #4b989f;
-    color: #fff;
-  
+    color: #fff; 
 }
 .bton:active{
     background:#4b989f ;
@@ -423,32 +449,37 @@ h1{
     color: #fff;
     font-size:1.5em;
     background: #4b989f;
-    
 }
-
 /*modal css*/
 .modal-body{
     font-weight: 600;
     background: #F6F6F2;
 }
 .modal-header{
-    background:#388087;
+    background:#4b989f;
+    border: none;
     color:#fff;
 }
 .modal-footer{
     background:#C2EDCE;
-
 }
 .check{
- 
     font-size: 1.7em;
     color: #388087;
     border: none;
     background-color: #F6F6F2;
-  
 }
-
 .check:hover{
-   color: #6FB3B8;
-    
+   color: #6FB3B8;   
+}
+.pd{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+@media (max-width:1024px)
+{
+    .pd{
+        padding-left:10px ;
+        padding-right: 10px;
+    }
 }

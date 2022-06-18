@@ -10,7 +10,7 @@ import "../../css/student.css";
 const EmpLayout = ({
     className,
     children,
-   history
+    history
 }) => {
 
  const {user} = isAuthenticated();
@@ -20,10 +20,10 @@ return(
 
     <>   
 
-    <div className="gradient">
+    <div className="gradiant">
     <nav className="navbar navbar-light ">
         <div className="container-fluid ">
-            <h3 className="ps-5  text-white">KuHosteler</h3>
+            <h3 className="ps-3 m-1  text-white">KuHosteler</h3>
             <div className="d-flex justify-content-end"></div>
             {isAuthenticated() && (
                 <Link className="nav-item ps-3 px-3 pt-1" to={"/"}  onClick={() => signout(() => { history.push("/auth/signin"); }) } >
@@ -48,7 +48,7 @@ return(
                     <p className="small mb-4">{user.department}</p>
                 </div>
             </div>
-            <nav className="nav-link justify-content-center p-2 mt-5 navbar bg-dark fs-6">
+            <nav className="nav-link justify-content-center p-2 mt-5 navbar fs-6">
                               
                                 <Link className=" navbar-brand fs-6 pe-2 ps-2" to="/employee/home" ><span className="text1">Home</span>
                                  <span className="icon">

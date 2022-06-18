@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Footer from "./Footer";
-import { signout, isAuthenticated } from "../auth/index.js";
+import Footer from "../Footer";
+import { signout, isAuthenticated } from "../../auth/index.js";
 import { Link } from "react-router-dom";
-import "../css/arpan.css";
-import user from './image/user2.jpg'
-import electric from './image/electric.png'
+import "../../css/arpan.css";
+import user from '../../image/user2.jpg'
+import electric from '../../image/electric.png'
 export default function ReportBug({ history }) {
   // useEffect(() => {
   //   let li= document.querySelectorAll(".labels");
@@ -20,12 +20,12 @@ export default function ReportBug({ history }) {
   // }, []);
   return (
     <>
-      <nav className=" navbar navbar-expand-lg p-2 navbar-light bg-white ">
+       <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
         <div className="container-fluid">
-          <h3 className="ps-5 fs-1 text fw-bold">KuHosteler</h3>
+          <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
 
           <button
-            className="navbar-toggler"
+            className=" navbar-toggler drkgrn"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -33,32 +33,61 @@ export default function ReportBug({ history }) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon drkgrn"></span>
           </button>
 
           <div
-            className="collapse navbar-collapse ps-5"
+            className=" collapse navbar-collapse ps-2"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav ms-auto ">
-              <li className="nav-item ps-3 px-3">
-                <Link className="nav-link fw-bold" to="/student/abouthostel">
+            <ul className="navbar-nav text-start ms-auto ">
+              <li className="nav-item ">
+                <Link className="nav-link text-white " to="#">
                   About
                 </Link>
               </li>
-              <li className="nav-item ps-3 px-3">
-                <Link className="nav-link fw-bold" to="#">
+              <li className="nav-item ">
+                <Link className="nav-link text-white" to="#">
                   Contact
                 </Link>
               </li>
-              <li className="nav-item ps-3 px-3">
-                <Link className="nav-link fw-bold" to="#">
+              <li className="nav-item  ">
+                <Link className="nav-link text-white" to="#">
                   Support
+                </Link>
+              </li>
+              <li
+                className="nav-item ps-3 px-3"
+                style={{
+                  display:
+                    isAuthenticated() &&
+                      isAuthenticated().user.profileType === 1
+                      ? ""
+                      : "none",
+                }}
+              >
+                <Link className="nav-link text-white" to="/manager/dashboard">
+                  Dashboard
+                </Link>
+              </li>
+              <li
+                className="nav-item ps-3 px-3"
+                style={{
+                  display:
+                    isAuthenticated() &&
+                      isAuthenticated().user.profileType === 0
+                      ? ""
+                      : "none",
+                }}
+              >
+                <Link className="nav-link text-white" to="/student/profile">
+                  Profile
                 </Link>
               </li>
               {isAuthenticated() && (
                 <Link
-                  className="nav-item ps-3 px-3 pt-1"
+                  className="nav-item  pt-1"
+                  to=""
                   onClick={() =>
                     signout(() => {
                       history.push("/");
@@ -66,7 +95,7 @@ export default function ReportBug({ history }) {
                   }
                 >
                   <button
-                    className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6"
+                    className=" btn btn-outline-light btn-sm mt-1"
                     type="submit"
                   >
                     Signout
@@ -74,10 +103,10 @@ export default function ReportBug({ history }) {
                 </Link>
               )}
               {!isAuthenticated() && (
-                <li className="nav-item ps-3 px-3 pt-1">
+                <li className="nav-item   pt-1">
                   <Link to="/auth/signin">
                     <button
-                      className="pt-1 pb-1 btn-dark  btn-sm px-2 bg fw-bold text-white fs-6"
+                      className="btn btn-outline-light btn-sm mt-1"
                       type="submit"
                     >
                       Log In
@@ -89,17 +118,17 @@ export default function ReportBug({ history }) {
           </div>
         </div>
       </nav>
-      <h1 class="tit">{}HELP DESK</h1>
-      <div class="table_respons">
+      <h1 className="tit">{}HELP DESK</h1>
+      <div className="table_respons">
             
-    <table class="t1">
-      <thead class="t1_thead">
+    <table className="t1">
+      <thead className="t1_thead">
         <tr>
-          <th class="thnew">Sl</th>
-          <th class="thnew">Image</th>
-          <th class="thnew">Name</th>
-          <th class="thnew">Phone</th>
-          <th class="thnew">Designation</th>
+          <th className="thnew">Sl</th>
+          <th className="thnew">Image</th>
+          <th className="thnew">Name</th>
+          <th className="thnew">Phone</th>
+          <th className="thnew">Designation</th>
         </tr>
       </thead>
 
@@ -156,16 +185,16 @@ export default function ReportBug({ history }) {
           <td>Library Assistant</td>
         </tr>
       </tbody>
-      <tbody class="labels">
+      <tbody className="labels">
 			<tr>
-				<td colspan="5">
-				<label class="badge bg-danger text-wrap ">PREFECT</label>
+				<td colSpan="5">
+				<label className="badge bg-danger text-wrap ">PREFECT</label>
 					{/* <input type="checkbox" name="management" id="management" data-toggle="toggle"/> */}
-          {/* <i class="bx bxs-chevron-down arrow"></i> */}
+          {/* <i className="bx bxs-chevron-down arrow"></i> */}
 				</td>
 			</tr>
 		</tbody>
-		<tbody class="hide">
+		<tbody className="hide">
 			<tr>
 			<td>01</td>
       <td><img src={user}/></td>
@@ -210,22 +239,22 @@ export default function ReportBug({ history }) {
           <td>Maintenance Prefect</td>
 			</tr>
       </tbody>
-      <tbody class="labels">
+      <tbody className="labels">
 			<tr>
-				<td colspan="5">
-					<label class="badge bg-danger text-wrap">Electrical Office</label>
+				<td colSpan="5">
+					<label className="badge bg-danger text-wrap">Electrical Office</label>
 					{/* <input type="checkbox" name="management" id="management" data-toggle="toggle"/> */}
-          {/* <i class="bx bxs-chevron-down arrow"></i> */}
+          {/* <i className="bx bxs-chevron-down arrow"></i> */}
 				</td>
 			</tr>
 		</tbody>
-    <thead class="t1_thead">
+    <thead className="t1_thead">
         <tr>
-          <th class="thnew">Sl</th>
-          <th class="thnew">Image</th>
-          <th class="thnew">Electric Provider</th>
-          <th class="thnew">Help Line No</th>
-          <th class="thnew">Consumer Id</th>
+          <th className="thnew">Sl</th>
+          <th className="thnew">Image</th>
+          <th className="thnew">Electric Provider</th>
+          <th className="thnew">Help Line No</th>
+          <th className="thnew">Consumer Id</th>
         </tr>
       </thead>
       <tbody>
