@@ -221,7 +221,8 @@ exports.pushMealRecords = async (
   hostelName,
   guestMorCharge,
   guestNigCharge,
-  grandCharge
+  grandCharge,
+  shift
 ) => {
   var morCharge = 0;
   var nigCharge = 0;
@@ -233,14 +234,11 @@ exports.pushMealRecords = async (
       membership: 2,
     },
     function (err, Allstudent) {
-      console.log(Allstudent);
       var curr_date = current_date.toString();
       var push_date = curr_date.slice(0, 15);
       Allstudent.forEach(function (student) {
-        console.log("each student getting access");
         ///////////////////////////////////////////////// MORNING ////////////////////////////////////////////////////////////
-        if (0) {
-          console.log("moringing loop runs ");
+        if (shift === "morning") {
           //if current boarder has mess_status on then push morning charnge else set morning charge 0
           var morning_charge = 0;
           var meal_status;
@@ -270,7 +268,7 @@ exports.pushMealRecords = async (
               current_date.getMonth() == date.getMonth();
             var mealshiftValidation =
               guest.mealTime == "morning" || guest.mealTime == "on";
-            console.log(dateValidation + " " + mealshiftValidation);
+
             if (dateValidation && mealshiftValidation) {
               var guestName = guest.name;
               var guestId = guest._id;
@@ -316,12 +314,7 @@ exports.pushMealRecords = async (
               );
             }
           });
-          console.log(newRecord);
           student.activity.push(newRecord);
-          console.log(
-            "--------------------------------New records is saved  ------------------------------------------------"
-          );
-          console.log(newRecord);
           student.save();
         }
 
@@ -334,27 +327,13 @@ exports.pushMealRecords = async (
           var alltodayguest = []; //ager checking all today guest push this in this_day_guest of newRecord
           var allPushedGuest_In_ActiviyRecord = []; // this will temporay hold all current date guest whose morning record pushed
           var pushDate = new Date(push_date);
-          console.log(
-            "-----------------------------------------" +
-              student.name +
-              " ----------------------------------------"
-          );
           var recordFoundLock = 0;
           student.activity.forEach((record, i) => {
             var recordDate = new Date(record.date);
             if (record.date == push_date) {
               recordFoundLock = 1;
 
-              console.log(
-                "-------------------- Status / charges ( In IFF )  ----------------------"
-              );
-              console.log(morCharge);
-              console.log(nigCharge);
-              console.log(guestMorCharge);
-              console.log(guestNigCharge);
-              console.log(record.mess_status + " " + student.messStatus);
               if (record.mess_status == "morning" && student.messStatus == 3) {
-                console.log("In 1st IF");
                 morningCharge = morCharge;
                 mealStatus = "on";
                 nightCharge = nigCharge;
@@ -362,7 +341,6 @@ exports.pushMealRecords = async (
                 record.mess_status == "morning" &&
                 student.messStatus != 3
               ) {
-                console.log("In 2nd IF");
                 morningCharge = morCharge;
                 mealStatus = "morning";
                 nightCharge = 0;
@@ -370,7 +348,6 @@ exports.pushMealRecords = async (
                 record.mess_status == "off" &&
                 student.messStatus == 3
               ) {
-                console.log("In 3rd IF");
                 morningCharge = 0;
                 mealStatus = "night";
                 nightCharge = nigCharge;
@@ -378,8 +355,6 @@ exports.pushMealRecords = async (
                 record.mess_status == "off" &&
                 student.messStatus != 3
               ) {
-                console.log("In 4th IF");
-
                 morningCharge = 0;
                 mealStatus = "off";
                 nightCharge = 0;
@@ -483,10 +458,7 @@ exports.pushMealRecords = async (
           alltodayguest.forEach(function (guest) {
             newRecord.this_day_guest.push(guest);
           });
-          console.log(
-            "--------------------------------New records is saved  ------------------------------------------------"
-          );
-          console.log(newRecord);
+
           student.activity.push(newRecord);
           student.save();
           return;
