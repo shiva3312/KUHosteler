@@ -7,13 +7,14 @@ import { messActivity, read } from "./stuApi";
 
 const MealAcitvity = ({ history }) => {
   const { user, token } = isAuthenticated();
-  var [mealStatus, setMealStatus] = useState(0);
+  var [mealStatus, setMealStatus] = useState(user.messStatus);
 
-  useEffect(() => {
-    read(user._id, token).then((data) => {
+  useEffect(async () => {
+    await read(user._id, token).then((data) => {    
       setMealStatus(data.messStatus);
+      console.log(data);
     });
-  }, []);
+  }, [mealStatus]);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -38,17 +39,18 @@ const MealAcitvity = ({ history }) => {
           
           <div className="  col-9 p-3 ps-3 pe-0 text-start  ">
             MEAL STATUS &emsp;:&emsp;
-            {mealStatus == 0 || mealStatus == 1 ? (
+            {mealStatus <= 1 ? (
               <span className="pt-3 fw-bold  text-secondary">DISABLE</span>
             ) : mealStatus == 2 ? (
-              <span className="pt-3 fw-bold  text-success">ACTIVATED</span>
-            ) : (
               <span className="pt-3  fw-bold de">DEACTIVATED</span>
+              
+            ) : (
+              <span className="pt-3 fw-bold  text-success">ACTIVATED</span>
             )}
           </div>
 
           <div className="col-3  text-end ">
-            {mealStatus == 0 || mealStatus == 1 ? (
+            {mealStatus <= 1 ? (
               <button
                 type="submit"
                 className="bg-white check text-secondary p-2 pt-3 fa fa-lg fa-toggle-off "
@@ -56,15 +58,18 @@ const MealAcitvity = ({ history }) => {
             ) : mealStatus == 2 ? (
               <button
                 type="submit"
-                className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on "
-                onClick={submit}
-              ></button>
-            ) : (
-              <button
-                type="submit"
                 className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-off  "
                 onClick={submit}
               ></button>
+            ) : (
+
+              <button
+                type="submit"
+                className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on "
+                onClick={submit}
+              ></button>
+
+              
             )}
           </div>
 
