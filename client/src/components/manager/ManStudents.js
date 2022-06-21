@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
 import ShowImage from "../ShowImage";
+import Notification from "../Notification";
 import {
   getStudentprofile,
   getAllstudents,
@@ -14,6 +15,7 @@ import {
 const StudentListInfo = ({ history }) => {
   const { user, token } = isAuthenticated();
   const [students, setStudents] = useState([]);
+  const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
   const [values, setValues] = useState({
     fine: 0,
     deposit: 0,
@@ -36,10 +38,11 @@ const StudentListInfo = ({ history }) => {
   const setHostelId = async (stuId, hostelId) => {
     await setstudetnHostelId(user._id, stuId, hostelId, token).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: "Hostel Id did not updated" });
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
       } else {
         console.log(data.info);
-        setValues({ ...values, success: "Successfully updated" });
+        setNotify({isOpen:true, message:'Hostel Id updated' , type:"success"});
+
       }
     });
   };
@@ -48,7 +51,7 @@ const StudentListInfo = ({ history }) => {
   const viewDetails = async (stuId) => {
     await getStudentprofile(stuId, user._id, token).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: true });
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
       } else {
         setselectedUser(data);
       }
@@ -57,7 +60,7 @@ const StudentListInfo = ({ history }) => {
 
   const clickSubmit =  (e) => {
     const stuId = selectedUser._id;
-    console.log("info here ",stuId , token);
+    
     e.preventDefault();
     setValues({ ...values, error: false });
     addFineOrDepositMoney(user._id, token, {
@@ -67,20 +70,22 @@ const StudentListInfo = ({ history }) => {
       stuId,
     }).then((data) => {
       if (data.error) {
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
         setValues({
           fine: 0,
           deposit: 0,
           reason: "",
           success: false,
-          error: true,
+          error: false,
         });
       } else {
+        setNotify({isOpen:true, message:'successfully updated' , type:"success"});
         setValues({
           fine: 0,
           deposit: 0,
           reason: "",
           error: "",
-          success: data.info,
+          success: false,
         });
       }
     });
@@ -103,23 +108,31 @@ const StudentListInfo = ({ history }) => {
       memId: stuId,
       status: status,
     }).then((data) => {
+      
       if (data.error) {
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
         console.log(data.error);
       } else {
+        setNotify({isOpen:true, message:'Membership updated successfully' , type:"success"});
         console.log(data.info);
-        setValues({ ...values, success: data.info });
       }
     });
     setReRender(!reRender);
   };
 
   const toggleMeal = async (stuId, status) => {
+    var notifyMsg = '';
+    if(status<= 3) notifyMsg = "Meal status disabled successfully"
+    else notifyMsg = "Meal status activated successfully"
     await fchangeMealStatus(user._id, token, {
       stuId: stuId,
       status: status,
     }).then((data) => {
+      setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
       if (data.error) console.log(data.error);
-      else console.log(data.info);
+      else{
+        setNotify({isOpen:true, message:notifyMsg , type:"success"});
+        console.log(data.info);}
     });
     setReRender(!reRender);
   };
@@ -654,8 +667,8 @@ const StudentListInfo = ({ history }) => {
         history={history}
       >
         <div>
+        <Notification notify={notify} setNotify={setNotify} />
           {showError()}
-          {showSuccess()}
           {studentList()}
         </div>
       </ManLayout>

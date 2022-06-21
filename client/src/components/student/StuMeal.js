@@ -4,15 +4,16 @@ import { isAuthenticated } from "../../auth";
 import { Link } from "react-router-dom";
 import Footer from "../Footer";
 import { messActivity, read } from "./stuApi";
+import Notification from "../Notification";
 
 const MealAcitvity = ({ history }) => {
   const { user, token } = isAuthenticated();
   var [mealStatus, setMealStatus] = useState(user.messStatus);
+  const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
 
   useEffect(async () => {
     await read(user._id, token).then((data) => {    
       setMealStatus(data.messStatus);
-      console.log(data);
     });
   }, [mealStatus]);
 
@@ -20,8 +21,14 @@ const MealAcitvity = ({ history }) => {
     e.preventDefault();
     // update with ? you should send category name otherwise what to update?
    await messActivity(user._id, token);
-    if (mealStatus == 2) setMealStatus((mealStatus = 3));
-    else setMealStatus((mealStatus = 2));
+    if (mealStatus == 2) {
+      setMealStatus((mealStatus = 3));
+      setNotify({isOpen:true, message:'Meal Turned-On successfylly' , type:"success"});
+    }
+    else {
+      setMealStatus((mealStatus = 2));
+      setNotify({isOpen:true, message:'Meal Turned-Off  successfylly ' , type:"warning"});
+    }
   };
   user.activity.sort(function (a, b) {
     return new Date(b.date) - new Date(a.date);
@@ -129,7 +136,7 @@ const MealAcitvity = ({ history }) => {
     <>
       <StuLayout history={history}>
         {/* show your content in this div */}
-
+        <Notification notify={notify} setNotify={setNotify} />
         <div className="col mb-0 text-box fadeUp animate">{mealAcitvity()}</div>
       </StuLayout>
       <Footer />

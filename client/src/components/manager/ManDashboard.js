@@ -5,6 +5,8 @@ import ShowImage from "../ShowImage";
 import "../../css/manager.css";
 import { Line } from "react-chartjs-2";
 import ConfimDialog from "../ConfimDialog";
+import Notification from "../Notification";
+
 import {
   updateMembershipStatus,
   getAllstudents,
@@ -18,6 +20,7 @@ import {
 const AdminDashboard = ({ history }) => {
   const { user, token } = isAuthenticated();
   const [confirmDialog , setConfirmDialog]= useState({isOpen:false , title:'', subTitle:''});
+  const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
   const [students, setStudents] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [stuReqList, setStuReqList] = useState([]);
@@ -94,21 +97,29 @@ const AdminDashboard = ({ history }) => {
   };
 
   const clickSubmit = async (memeberId, status) => {
+    var notifyMsg ='';
+    if(status===2) notifyMsg='Aprroved Successfully';
+    else if(status ===4) notifyMsg="Rejected successfully";
+    else if(status===1) notifyMsg = "Approved as Official Guest"
+
     setConfirmDialog({...confirmDialog , isOpen:false});
     await updateMembershipStatus(user._id, token, {
       memId: memeberId,
       status: status,
     }).then((data) => {
       if (data.error) {
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
         console.log(data.error);
       } else {
+        setNotify({isOpen:true, message: notifyMsg , type:"success"});
         console.log(data.info);
       }
     });
+   
     setrenderOnchange(!rederOnchange);
   };
 
-  const changeGeustMealStatus = async (guestId, userId, status) => {
+  const changeGuestMealStatus = async (guestId, userId, status) => {
     setConfirmDialog({...confirmDialog , isOpen:false});
     await updateGuestMealStatus(user._id, token, {
       guestId,
@@ -116,8 +127,10 @@ const AdminDashboard = ({ history }) => {
       status,
     }).then((data) => {
       if (data.error) {
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
         console.log(data.error);
       } else {
+        setNotify({isOpen:true, message:'Successful guest approved ' , type:"success"});
         console.log(data.info);
       }
     });
@@ -128,8 +141,10 @@ const AdminDashboard = ({ history }) => {
     setConfirmDialog({...confirmDialog , isOpen:false});
     await removeGuest(user._id, token, { guestId, userId }).then((data) => {
       if (data.error) {
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
         console.log(data.error);
       } else {
+        setNotify({isOpen:true, message:'Successfully guest deleted' , type:"success"});
         console.log(data.info);
       }
     });
@@ -642,7 +657,7 @@ const AdminDashboard = ({ history }) => {
                               isOpen: true,
                               title : "Are you sure to continue",
                               subTitle: "You can't undo this operation",
-                              onConfirm: ()=>{ changeGeustMealStatus(guest._id, guest.holderId, 1)}
+                              onConfirm: ()=>{ changeGuestMealStatus(guest._id, guest.holderId, 1)}
                             })
                            }}
                           
@@ -658,7 +673,7 @@ const AdminDashboard = ({ history }) => {
                               isOpen: true,
                               title : "Are you sure to continue",
                               subTitle: "You can't undo this operation",
-                              onConfirm: ()=>{  changeGeustMealStatus(guest._id, guest.holderId, 1)}
+                              onConfirm: ()=>{  changeGuestMealStatus(guest._id, guest.holderId, 1)}
                             })
                            }}
                          
@@ -758,7 +773,7 @@ const AdminDashboard = ({ history }) => {
                     <td className="th1">{guest.mealDate.slice(3, 15)}</td>
                     <td className="th1">{guest.holderMobNo.slice(3, 13)}</td>
                     {/* <td className="th1">{guest.holderRoomNo}</td> */}
-                    {/* <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGeustMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td> */}
+                    {/* <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGuestMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td> */}
                     <td className="th1">
                       {" "}
                       <span className="sm">
@@ -825,6 +840,7 @@ const AdminDashboard = ({ history }) => {
         history={history}
       >
         <div>
+          <Notification notify={notify} setNotify={setNotify} />
           <ConfimDialog confirmDialog = {confirmDialog} setConfirmDialog = {setConfirmDialog} />
           {basicInfoCards()}
           {studentReqList()}

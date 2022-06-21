@@ -1,6 +1,7 @@
 import React, { useDebugValue, useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
+import Notification from "../Notification";
 import {
   getAllemployees,
   updateMembershipStatus,
@@ -10,6 +11,8 @@ import {
 const EmployeeListInfo = ({ history }) => {
   const { user, token } = isAuthenticated();
   const [employees, setEmployees] = useState([]);
+  const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
+
 
   const [reRender, setReRender] = useState(false);
 
@@ -25,8 +28,10 @@ const EmployeeListInfo = ({ history }) => {
       status: status,
     }).then((data) => {
       if (data.error) {
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
         console.log(data.error);
       } else {
+        setNotify({isOpen:true, message:'Successfully changed membership' , type:"success"});
         console.log(data.info);
       }
     });
@@ -128,6 +133,7 @@ const EmployeeListInfo = ({ history }) => {
         className="container-fluid"
         history={history}
       >
+        <Notification notify={notify} setNotify={setNotify} />
         {emploeyeeList()}
       </ManLayout>
     </>
