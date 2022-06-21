@@ -18,6 +18,7 @@
     "react-icons": "^4.3.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.0",
+    "react-toast-notifications": "^2.5.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -44,5 +45,4 @@
       "last 1 safari version"
     ]
   }
- 
 }
