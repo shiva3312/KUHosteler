@@ -11,13 +11,13 @@ import {
 } from "../auth";
 
 const Signup = () => {
-  const [isCodeVarified, setIsCodeVarified] = useState(0);
+  const [isCodeverified, setIsCodeverified] = useState(0);
   const [codes, setCodes] = useState([]);
   const [hostedHostels, setHostedHostels] = useState([]);
   const [mailOtpStatus, setMailOtpStatus] = useState({
     isOtpsend: false,
     sendOtp: "",
-    varified: false,
+    verified: false,
   });
   const [toggler, setToggler] = useState(0);
   const [values, setValues] = useState({
@@ -69,18 +69,18 @@ const Signup = () => {
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
     if (name === "code") {
-      setIsCodeVarified(false);
+      setIsCodeverified(false);
     }
     if (name === "email") {
       setMailOtpStatus({
         isOtpsend: false,
         otp: "",
         sendOtp: "",
-        varified: false,
+        verified: false,
       });
     }
     if (name === "otp") {
-      setMailOtpStatus({ ...mailOtpStatus, varified: false });
+      setMailOtpStatus({ ...mailOtpStatus, verified: false });
     }
     if (profileType === 0) {
       setToggler(!toggler);
@@ -90,9 +90,9 @@ const Signup = () => {
   const clickSubmit = (event) => {
     var isSignUpPossible = true;
     event.preventDefault();
-    if (!isCodeVarified && profileType == 1) {
+    if (!isCodeverified && profileType == 1) {
       isSignUpPossible = false;
-      setValues({ ...values, error: "code not varified" });
+      setValues({ ...values, error: "code not verified" });
     }
 
     // manger already exist for selected hostel...
@@ -120,11 +120,11 @@ const Signup = () => {
       }
     }
 
-    if (!mailOtpStatus.varified) {
+    if (!mailOtpStatus.verified) {
       isSignUpPossible = false;
       setValues({
         ...values,
-        error: "Mail is not varified. please varify your mail",
+        error: "Mail is not verified. please verify your mail",
       });
     }
 
@@ -162,27 +162,27 @@ const Signup = () => {
     }
   };
 
-  const codeVarification = (event) => {
+  const codeverification = (event) => {
     event.preventDefault();
     var matchfound = false;
     codes.forEach((savedCode) => {
       if (code == savedCode.code) {
-        setIsCodeVarified(true);
+        setIsCodeverified(true);
         matchfound = true;
         setValues({ ...values, success: "Code is applied" });
       }
     });
     if (matchfound === false) {
-      setIsCodeVarified(false);
+      setIsCodeverified(false);
       setValues({ ...values, error: "Code is not correct" });
     }
   };
 
-  const { isOtpsend, sendOtp, varified } = mailOtpStatus;
+  const { isOtpsend, sendOtp, verified } = mailOtpStatus;
 
   const sentOtp = (event) => {
     event.preventDefault();
-    // write code to varify
+    // write code to verify
     let newOTP = (Math.random() + 1).toString(36).substring(7);
     setMailOtpStatus({
       ...mailOtpStatus,
@@ -203,13 +203,13 @@ const Signup = () => {
     // also check if user exit with this mail id ....
   };
 
-  const varifyOTP = (event) => {
+  const verifyOTP = (event) => {
     event.preventDefault();
     console.log("here is the otp".sendOtp, otp);
     if (sendOtp == otp) {
       setMailOtpStatus({
         ...mailOtpStatus,
-        varified: true,
+        verified: true,
         success: "OTP varyfied",
       });
     } else {
@@ -282,14 +282,14 @@ const Signup = () => {
                     >
                       <div className="col    form-outline text-start form-white mb-4">
                         <label className="form-label text-white" htmlFor="code">
-                          Varify Code
+                          verify Code
                         </label>
                         <input
                           type="text"
                           className="form-control"
                           name="code"
                           required={true}
-                          placeholder="Enter varification code"
+                          placeholder="Enter verification code"
                           onChange={handleChange("code")}
                           value={code}
                         />
@@ -297,20 +297,20 @@ const Signup = () => {
                       <div
                         className="col-3 text-center pt-4"
                         style={{
-                          display: code && !isCodeVarified ? "" : "none",
+                          display: code && !isCodeverified ? "" : "none",
                         }}
                       >
                         <button
                           className="btn btn-outline-light btn-sm mt-3 "
                           type="submit"
-                          onClick={codeVarification}
+                          onClick={codeverification}
                         >
-                          varify
+                          verify
                         </button>
                       </div>
                       <div
                         className="col-3 text-center pt-4"
-                        style={{ display: isCodeVarified ? "" : "none" }}
+                        style={{ display: isCodeverified ? "" : "none" }}
                       >
                         <p className="text-success">Verfied</p>
                       </div>
@@ -384,7 +384,7 @@ const Signup = () => {
                           display:
                             otp &&
                             mailOtpStatus.isOtpsend &&
-                            !mailOtpStatus.varified
+                            !mailOtpStatus.verified
                               ? ""
                               : "none",
                         }}
@@ -392,16 +392,16 @@ const Signup = () => {
                         <button
                           className="btn btn-outline-light btn-sm mt-3 "
                           type="submit"
-                          onClick={varifyOTP}
+                          onClick={verifyOTP}
                         >
-                          Varify
+                          verify
                         </button>
                       </div>
 
                       <div
                         className="col-3 text-center pt-4"
                         style={{
-                          display: mailOtpStatus.varified ? "" : "none",
+                          display: mailOtpStatus.verified ? "" : "none",
                         }}
                       >
                         <p className="text-dark">Verfied</p>
@@ -495,7 +495,7 @@ const Signup = () => {
                     <div className="row">
                       <div className="col-lg-6 form-outline text-start form-white mb-4">
                         <label className="form-label text-white" htmlFor="dob">
-                          Date Of Beath
+                          Date Of Birth
                         </label>
                         <input
                           type="date"

@@ -4,6 +4,7 @@ import { isAuthenticated } from "../../auth";
 import ShowImage from "../ShowImage";
 import "../../css/manager.css";
 import { Line } from "react-chartjs-2";
+import ConfimDialog from "../ConfimDialog";
 import {
   updateMembershipStatus,
   getAllstudents,
@@ -16,6 +17,7 @@ import {
 
 const AdminDashboard = ({ history }) => {
   const { user, token } = isAuthenticated();
+  const [confirmDialog , setConfirmDialog]= useState({isOpen:false , title:'', subTitle:''});
   const [students, setStudents] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [stuReqList, setStuReqList] = useState([]);
@@ -92,6 +94,7 @@ const AdminDashboard = ({ history }) => {
   };
 
   const clickSubmit = async (memeberId, status) => {
+    setConfirmDialog({...confirmDialog , isOpen:false});
     await updateMembershipStatus(user._id, token, {
       memId: memeberId,
       status: status,
@@ -106,6 +109,7 @@ const AdminDashboard = ({ history }) => {
   };
 
   const changeGeustMealStatus = async (guestId, userId, status) => {
+    setConfirmDialog({...confirmDialog , isOpen:false});
     await updateGuestMealStatus(user._id, token, {
       guestId,
       userId,
@@ -121,6 +125,7 @@ const AdminDashboard = ({ history }) => {
   };
 
   const deleteGuest = async (guestId, userId) => {
+    setConfirmDialog({...confirmDialog , isOpen:false});
     await removeGuest(user._id, token, { guestId, userId }).then((data) => {
       if (data.error) {
         console.log(data.error);
@@ -272,7 +277,14 @@ const AdminDashboard = ({ history }) => {
                           className="fa fa-check text-success border fa-lg pe-1 ps-1"
                           data-bs-toggle="tooltip"
                           title="Accept"
-                          onClick={() => clickSubmit(student._id, 2)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(student._id, 2)}
+                            })
+                           }}
                         ></i>
                       </span>
                       <span className="sm1">
@@ -280,7 +292,14 @@ const AdminDashboard = ({ history }) => {
                           className="fa fa-check text-success bg-light fa-lg pe-1 ps-1"
                           data-bs-toggle="tooltip"
                           title="Accept"
-                          onClick={() => clickSubmit(student._id, 2)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(student._id, 2)}
+                            })
+                           }}
                         ></i>
                       </span>
                       <span className="sm">
@@ -288,7 +307,14 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-user text-primary border fa-lg pe-2 ps-2 "
                           data-bs-toggle="tooltip"
                           title="Accept as Guest"
-                          onClick={() => clickSubmit(student._id, 1)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(student._id, 1)}
+                            })
+                           }}
                         ></i>
                       </span>
                       <span className="sm1">
@@ -296,7 +322,14 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-user text-primary bg-light fa-lg pe-1 ps-1 "
                           data-bs-toggle="tooltip"
                           title="Accept as Guest"
-                          onClick={() => clickSubmit(student._id, 1)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(student._id, 1)}
+                            })
+                           }}
                         ></i>
                       </span>
                       <span className="sm">
@@ -304,7 +337,14 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-trash text-danger border fa-lg "
                           data-bs-toggle="tooltip"
                           title="Reject"
-                          onClick={() => clickSubmit(student._id, 4)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(student._id, 4)}
+                            })
+                           }}
                         ></i>
                       </span>
                       <span className="sm1">
@@ -312,8 +352,16 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-trash text-danger bg-light fa-lg pe-1 ps-1 "
                           data-bs-toggle="tooltip"
                           title="Reject"
-                          onClick={() => clickSubmit(student._id, 4)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(student._id, 4)}
+                            })
+                           }}
                         ></i>
+                       
                       </span>
                     </td>
                   </tr>
@@ -369,7 +417,15 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-check text-success border fa-lg "
                           data-bs-toggle="tooltip"
                           title="Accept"
-                          onClick={() => clickSubmit(emp._id, 2)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(emp._id, 2)}
+                            })
+                           }}
+                  
                         ></i>
                       </span>
                       <span className="sm1">
@@ -377,7 +433,14 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-check text-success bg-light fa-lg "
                           data-bs-toggle="tooltip"
                           title="Accept"
-                          onClick={() => clickSubmit(emp._id, 2)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(emp._id, 2)}
+                            })
+                           }}
                         ></i>
                       </span>{" "}
                       <span className="sm">
@@ -385,7 +448,14 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-trash text-danger border fa-lg "
                           data-bs-toggle="tooltip"
                           title="Reject"
-                          onClick={() => clickSubmit(emp._id, 4)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(emp._id, 4)}
+                            })
+                           }}
                         ></i>
                       </span>
                       <span className="sm1">
@@ -393,7 +463,14 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-trash text-danger bg-light fa-lg "
                           data-bs-toggle="tooltip"
                           title="Reject"
-                          onClick={() => clickSubmit(emp._id, 4)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ clickSubmit(emp._id, 4)}
+                            })
+                           }}
                         ></i>
                       </span>
                     </td>
@@ -560,9 +637,15 @@ const AdminDashboard = ({ history }) => {
                           className=" fa fa-check text-success border fa-lg "
                           data-bs-toggle="tooltip"
                           title="Accept"
-                          onClick={() =>
-                            changeGeustMealStatus(guest._id, guest.holderId, 1)
-                          }
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ changeGeustMealStatus(guest._id, guest.holderId, 1)}
+                            })
+                           }}
+                          
                         ></i>
                       </span>
                       <span className="sm1">
@@ -570,9 +653,15 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-check text-success bg-light fa-lg "
                           data-bs-toggle="tooltip"
                           title="Accept"
-                          onClick={() =>
-                            changeGeustMealStatus(guest._id, guest.holderId, 1)
-                          }
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{  changeGeustMealStatus(guest._id, guest.holderId, 1)}
+                            })
+                           }}
+                         
                         ></i>
                       </span>{" "}
                       <span className="sm">
@@ -580,7 +669,15 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-trash text-danger border fa-lg "
                           data-bs-toggle="tooltip"
                           title="Reject"
-                          onClick={() => deleteGuest(guest._id, guest.holderId)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{  deleteGuest(guest._id, guest.holderId)}
+                            })
+                           }}
+                     
                         ></i>
                       </span>
                       <span className="sm1">
@@ -588,7 +685,15 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-trash text-danger bg-light fa-lg "
                           data-bs-toggle="tooltip"
                           title="Reject"
-                          onClick={() => deleteGuest(guest._id, guest.holderId)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ deleteGuest(guest._id, guest.holderId)}
+                            })
+                           }}
+                         
                         ></i>
                       </span>
                     </td>
@@ -661,7 +766,15 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-trash text-danger border fa-lg "
                           data-bs-toggle="tooltip"
                           title="Reject"
-                          onClick={() => deleteGuest(guest._id, guest.holderId)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ deleteGuest(guest._id, guest.holderId)}
+                            })
+                           }}
+                          
                         ></i>
                       </span>
                       <span className="sm1">
@@ -669,7 +782,15 @@ const AdminDashboard = ({ history }) => {
                           className="ms-1 fa fa-trash text-danger bg-light fa-lg pe-1 ps-1 "
                           data-bs-toggle="tooltip"
                           title="Reject"
-                          onClick={() => deleteGuest(guest._id, guest.holderId)}
+                          onClick={() => {                            
+                            setConfirmDialog({
+                              isOpen: true,
+                              title : "Are you sure to continue",
+                              subTitle: "You can't undo this operation",
+                              onConfirm: ()=>{ deleteGuest(guest._id, guest.holderId)}
+                            })
+                           }}
+                       
                         ></i>
                       </span>
                       {/* <button
@@ -704,6 +825,7 @@ const AdminDashboard = ({ history }) => {
         history={history}
       >
         <div>
+          <ConfimDialog confirmDialog = {confirmDialog} setConfirmDialog = {setConfirmDialog} />
           {basicInfoCards()}
           {studentReqList()}
           {staffReqList()}

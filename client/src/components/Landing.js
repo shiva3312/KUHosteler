@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import { signout, isAuthenticated } from "../auth/index.js";
-import LH1 from '../image/hostels/lh1.jpg'
-import LH2 from '../image/hostels/lh2.jpg'
-import PG1 from '../image/hostels/pg1.jpg'
-import PG2 from '../image/hostels/pg2.jpg'
-import PG3 from '../image/hostels/pg3.jpg'
-import Banyan from '../image/hostels/banyan.jpg'
-import Btmens from '../image/hostels/btmens.jpg'
-
+import LH1 from "../image/hostels/lh1.jpg";
+import LH2 from "../image/hostels/lh2.jpg";
+import PG1 from "../image/hostels/pg1.jpg";
+import PG2 from "../image/hostels/pg2.jpg";
+import PG3 from "../image/hostels/pg3.jpg";
+import Banyan from "../image/hostels/banyan.jpg";
+import Btmens from "../image/hostels/btmens.jpg";
 
 export default function Landing({ history }) {
   return (
@@ -57,7 +56,10 @@ export default function Landing({ history }) {
               <li
                 className="nav-item "
                 style={{
-                  display: isAuthenticated() && isAuthenticated().user.membership === 2 ? "" : "none",
+                  display:
+                    isAuthenticated() && isAuthenticated().user.membership === 2
+                      ? ""
+                      : "none",
                 }}
               >
                 <Link className="nav-link text-white" to="/user/meallist">
@@ -85,7 +87,8 @@ export default function Landing({ history }) {
                 style={{
                   display:
                     isAuthenticated() &&
-                    (isAuthenticated().user.profileType === 2) && isAuthenticated().user.membership === 2
+                    isAuthenticated().user.profileType === 2 &&
+                    isAuthenticated().user.membership === 2
                       ? ""
                       : "none",
                 }}
@@ -100,7 +103,8 @@ export default function Landing({ history }) {
                 style={{
                   display:
                     isAuthenticated() &&
-                    isAuthenticated().user.profileType === 0  && isAuthenticated().user.membership === 2
+                    isAuthenticated().user.profileType === 0 &&
+                    isAuthenticated().user.membership === 2
                       ? ""
                       : "none",
                 }}
@@ -288,11 +292,7 @@ export default function Landing({ history }) {
       <div className="host row m-1 hostclr">
         <div className="col-4 ">
           <div className="card-body m-2 shadow-sm">
-            <img
-              src={PG1}
-              className="card-img-top"
-              alt="..."
-            />
+            <img src={PG1} className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">PG Hall-1</p>
             <p style={{ fontSize: "13px" }}>Kalyani, Nadia, 741235 </p>
           </div>
@@ -300,11 +300,7 @@ export default function Landing({ history }) {
 
         <div className="col-4">
           <div className="card-body m-2 shadow-sm ">
-            <img
-              src={Btmens}
-              className="card-img-top"
-              alt="..."
-            />
+            <img src={Btmens} className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
               Radhakrishnan Bhawan(BT MENS)
             </p>
@@ -315,11 +311,7 @@ export default function Landing({ history }) {
         </div>
         <div className="col-4">
           <div className="card-body m-2 shadow-sm">
-            <img
-              src={Banyan}
-              className="card-img-top"
-              alt="..."
-            />
+            <img src={Banyan} className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
               Jagadish Chandra Bhawan(Banyan Hall)
             </p>
@@ -330,11 +322,7 @@ export default function Landing({ history }) {
       <div className="host row m-1 hostclr">
         <div className="col-4 ">
           <div className="card-body m-2 shadow-sm">
-            <img
-              src={LH1}
-              className="card-img-top"
-              alt="..."
-            />
+            <img src={LH1} className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">LH-1</p>
             <p style={{ fontSize: "13px" }}>Kalyani, Nadia, 741235 </p>
           </div>
@@ -342,11 +330,7 @@ export default function Landing({ history }) {
 
         <div className="col-4">
           <div className="card-body m-2 shadow-sm">
-            <img
-              src={PG3}
-              className="card-img-top"
-              alt="..."
-            />
+            <img src={PG3} className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
               Meghnad Saha Bhawan(PG Hall-3)
             </p>
@@ -355,11 +339,7 @@ export default function Landing({ history }) {
         </div>
         <div className="col-4">
           <div className="card-body m-2 shadow-sm">
-            <img
-              src={PG2}
-              className="card-img-top"
-              alt="..."
-            />
+            <img src={PG2} className="card-img-top" alt="..." />
             <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
               Vivekananda Bhawan(PG Hall-2)
             </p>
@@ -376,11 +356,7 @@ export default function Landing({ history }) {
           <div className="carousel-item active">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow-sm">
-                <img
-                  src={PG1}
-                  className="card-img-top"
-                  alt="..."
-                />
+                <img src={PG1} className="card-img-top" alt="..." />
                 <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
                   PG Hall-1
                 </p>
@@ -391,11 +367,7 @@ export default function Landing({ history }) {
           <div className="carousel-item">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
-                <img
-                  src={Btmens}
-                  className="card-img-top"
-                  alt="..."
-                />
+                <img src={Btmens} className="card-img-top" alt="..." />
                 <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
                   Radhakrishnan Bhawan(BT MENS)
                 </p>
@@ -408,11 +380,7 @@ export default function Landing({ history }) {
           <div className="carousel-item">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
-                <img
-                  src={Banyan}
-                  className="card-img-top"
-                  alt="..."
-                />
+                <img src={Banyan} className="card-img-top" alt="..." />
                 <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
                   Jagadish Chandra Bhawan(Banyan Hall)
                 </p>
@@ -423,11 +391,7 @@ export default function Landing({ history }) {
           <div className="carousel-item">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
-                <img
-                  src= {LH1}
-                  className="card-img-top"
-                  alt="..."
-                />
+                <img src={LH1} className="card-img-top" alt="..." />
                 <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">LH-1</p>
                 <p style={{ fontSize: "13px" }}>Kalyani, Nadia, 741235</p>
               </div>
@@ -436,11 +400,7 @@ export default function Landing({ history }) {
           <div className="carousel-item">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
-                <img
-                  src={PG3}
-                  className="card-img-top"
-                  alt="..."
-                />
+                <img src={PG3} className="card-img-top" alt="..." />
                 <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
                   Meghnad Saha Bhawan(PG Hall-3)
                 </p>
@@ -451,11 +411,7 @@ export default function Landing({ history }) {
           <div className="carousel-item">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
-                <img
-                  src={PG2}
-                  className="card-img-top"
-                  alt="..."
-                />
+                <img src={PG2} className="card-img-top" alt="..." />
                 <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">
                   Vivekananda Bhawan(PG Hall-2)
                 </p>
@@ -466,11 +422,7 @@ export default function Landing({ history }) {
           <div className="carousel-item">
             <div className="col-lg-3 col-md-12 d-block w-100">
               <div className="card-body hostelp shadow">
-                <img
-                  src={LH2}
-                  className="card-img-top"
-                  alt="..."
-                />
+                <img src={LH2} className="card-img-top" alt="..." />
                 <p className="card-text  pb-1 fs-6 fw-bold  mt-2 mb-0">LH-2</p>
                 <p style={{ fontSize: "13px" }}>Kalyani, Nadia, 741235</p>
               </div>

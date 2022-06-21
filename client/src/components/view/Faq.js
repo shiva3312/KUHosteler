@@ -133,9 +133,29 @@ export default function Faq({ history }) {
                   <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Nostrum, doloribus.
-                </p>
+                <p>
+                  There are three type of profile Manager , Student and Employee </p>
+                 <p>  1. To open account as manager </p>
+                 <p>     Requirment : User should have a code and some general information.</p>
+                 <p>     Procedure : 1. Go to SignUp page </p>
+                 <p>                 2. Select profile type as Manager </p>
+                 <p>                 3. Enter the code and varify</p>
+                 <p>                 4. Enter you email and varify </p>
+                 <p>                 5. Enter you required details </p>
+                 <p>                 6. Register</p>
+                 <p>             Great you created an account as Manager Now SignIn </p>
+
+                 <p>                   7. Goto to signIn page and Enter credential </p>
+                 <p>                   8. if you have not uploaded you pic then upload only one time</p>
+
+                 <p>                   after upload you will redirect to Manager dashboard ...</p>
+
+                 <p>  2. To open account as Student/Employee </p>
+                 <p>   same process but you don't need any code to open account </p>
+                 <p>  If your hostel name is not in hostel list if mean your hostel is not hosted the service  </p>
+                 </p>             
+                            
+                
                 <span className="line"></span>
               </li>
               <li>
@@ -144,9 +164,11 @@ export default function Faq({ history }) {
                   <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
-                  JavaScript is a text-based programming language used both on
-                  the client-side and server-side that allows you to make web
-                  pages interactive
+                <p>  1. Go to you Add Guest page  </p>
+                <p>   2. click on add guest  </p>
+                <p> 3. enter name and starting and ending date (Today and before is invalid date) </p>
+                <p>  4. click add button  </p>
+                <p>  5. Guest is listed and this will be activated when manager varify it</p>
                 </p>
                 <span className="line"></span>
               </li>
@@ -156,8 +178,8 @@ export default function Faq({ history }) {
                   <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non,
-                  necessitatibus.
+                <p>  1. Go to you Add Guest page  </p>
+                <p>   2. click on Delete button   </p>
                 </p>
                 <span className="line"></span>
               </li>
@@ -170,8 +192,7 @@ export default function Faq({ history }) {
                   <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Rerum, labore.
+                <p> If you have created account as Student / Employee then untill manager varify your account you can't become member of the corresponding hostel </p>
                 </p>
                 <span className="line"></span>
               </li>
@@ -183,8 +204,7 @@ export default function Faq({ history }) {
                   <i className="bx bxs-chevron-down arrow"></i>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Saepe, repudiandae!
+                  Contact to your manager
                 </p>
                 <span className="line"></span>
               </li>
