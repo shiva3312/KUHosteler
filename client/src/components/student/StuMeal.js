@@ -23,11 +23,11 @@ const MealAcitvity = ({ history }) => {
    await messActivity(user._id, token);
     if (mealStatus == 2) {
       setMealStatus((mealStatus = 3));
-      setNotify({isOpen:true, message:'Meal Turned-On successfylly' , type:"success"});
+      setNotify({isOpen:true, message:'Meal Turned-On successfully' , type:"success"});
     }
     else {
       setMealStatus((mealStatus = 2));
-      setNotify({isOpen:true, message:'Meal Turned-Off  successfylly ' , type:"warning"});
+      setNotify({isOpen:true, message:'Meal Turned-Off  successfully ' , type:"warning"});
     }
   };
   user.activity.sort(function (a, b) {
@@ -49,10 +49,10 @@ const MealAcitvity = ({ history }) => {
             {mealStatus <= 1 ? (
               <span className="pt-3 fw-bold  text-secondary">DISABLE</span>
             ) : mealStatus == 2 ? (
-              <span className="pt-3  fw-bold de">DEACTIVATED</span>
+              <span className="pt-3 de">DEACTIVATED</span>
               
             ) : (
-              <span className="pt-3 fw-bold  text-success">ACTIVATED</span>
+              <span className="pt-3 fw-bold text-success">ACTIVATED</span>
             )}
           </div>
 
