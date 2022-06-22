@@ -125,14 +125,14 @@ const UserDashboard = ({ history }) => {
             <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3 ">
               <div className="col-4 ps-0 pe-0">Meal Status</div>
               <div className="col-8 ps-0 pe-0">
-                : <span className="fw-bold text-success"> ON</span>
+                : <span className="fw-bold text-danger"> OFF</span>
               </div>
             </li>
           ) : (
             <li className=" ps-2 row  text-secondary p-2 shadow-sm ms-4 me-4 m-3 ">
               <div className="col-4 ps-0 pe-0">Meal Status</div>
               <div className="col-8 ps-0 pe-0">
-                : <span className="fw-bold text-danger"> OFF</span>
+                : <span className="fw-bold text-success"> ON</span>
               </div>
             </li>
           )}
