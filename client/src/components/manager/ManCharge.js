@@ -7,10 +7,13 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
 import { read, setCharges, setboundtime, addAuditCharges } from "./ManApi";
+import Notification from "../Notification";
 
 const Charges = ({ history }) => {
   const { user, token } = isAuthenticated();
   const [manager, setmanager] = useState(user);
+  const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
+
   const [amount, setAmount] = useState({
     auditAmount: 0,
     auditedDate: "",
@@ -54,14 +57,15 @@ const Charges = ({ history }) => {
 
    await setCharges(user._id, token, values).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});        
       } else {
+        setNotify({isOpen:true, message:'Charge added successfully' , type:"success"});
         setValues({
           guestMorMealCharge: guestMorMealCharge,
           guestNigMealCharge: guestNigMealCharge,
           grandCharge: grandCharge,
           error: "",
-          success: true,
+          success: false,
         });
 
         setguestToggler(!guestToggler);
@@ -75,12 +79,13 @@ const Charges = ({ history }) => {
 
    await addAuditCharges(user._id, token, amount).then((data) => {
       if (data.error) {
-        setAmount({ ...amount, error: data.error, success: false });
+        setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
       } else {
+        setNotify({isOpen:true, message:'Audit Charge added successfully' , type:"success"});
         setAmount({
           amount: 0,
           error: "",
-          success: true,
+          success: false,
         });
         setauditToggler(!auditToggler);
       }
@@ -422,6 +427,7 @@ const Charges = ({ history }) => {
       >
         <div className="row text-box fadeUp animate">
           {JSON.stringify(amount)}
+          <Notification notify={notify} setNotify={setNotify} />
           {showSuccess()}
           {showError()}
           {chargeForm()}

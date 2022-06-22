@@ -3,10 +3,12 @@ import StuLayout from "./StuLayout";
 import { isAuthenticated } from "../../auth";
 import Footer from "../Footer";
 import { addGuest, read, deleteGuest } from "./stuApi";
+import Notification from "../Notification";
 
 const AddGuest = ({ history }) => {
   const { user, token } = isAuthenticated();
   const [stuData, setStuDate] = useState(user);
+  const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
   const [guest, setguest] = useState({ guestId: "" });
 
   const [values, setValues] = useState({
@@ -31,8 +33,9 @@ const AddGuest = ({ history }) => {
     setValues({ ...values, error: false });
    await addGuest(user._id, token, values).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
+        setNotify({isOpen:true, message:'Unable to add guest' , type:"error"});
       } else {
+        setNotify({isOpen:true, message:'Guest added successfully' , type:"success"});
         setValues({
           ...values,
           name: "",
@@ -42,7 +45,7 @@ const AddGuest = ({ history }) => {
           endDate: "",
           dob: "",
           error: "",
-          success: true,
+          success: false,
         });
       }
     });
@@ -50,8 +53,13 @@ const AddGuest = ({ history }) => {
 
   const deleteguest =  async (guestId) => {
   await  deleteGuest(stuData._id, token, { guestId: guestId }).then((data) => {
-      if (error) console.log(data.error);
-      else console.log(data.info);
+      if (error) {
+        setNotify({isOpen:true, message:'Unable to delete guest' , type:"error"});
+        }
+      else {
+        setNotify({isOpen:true, message:'Guest deleted successfully' , type:"success"});
+
+      }
     });
 
     setguest({
@@ -311,7 +319,7 @@ const AddGuest = ({ history }) => {
   return (
     <>
       <StuLayout history={history}>
-        {showSuccess()}
+        <Notification notify={notify} setNotify={setNotify} />
         {showError()}
         <div className="">{addGuestForm()}</div>
         <div className="text-box fadeUp animate">{getAllGuest()}</div>
