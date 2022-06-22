@@ -4,9 +4,13 @@ import { isAuthenticated } from "../../auth";
 import Footer from "../Footer";
 import { addGuest, read, deleteGuest } from "./stuApi";
 import Notification from "../Notification";
+import ConfimDialog from "../ConfimDialog";
+
 
 const AddGuest = ({ history }) => {
   const { user, token } = isAuthenticated();
+  const [confirmDialog , setConfirmDialog]= useState({isOpen:false , title:'', subTitle:''});
+ 
   const [stuData, setStuDate] = useState(user);
   const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
   const [guest, setguest] = useState({ guestId: "" });
@@ -31,6 +35,8 @@ const AddGuest = ({ history }) => {
   const clickSubmit = async (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
+
+   
    await addGuest(user._id, token, values).then((data) => {
       if (data.error) {
         setNotify({isOpen:true, message:'Unable to add guest' , type:"error"});
@@ -49,9 +55,11 @@ const AddGuest = ({ history }) => {
         });
       }
     });
+    
   };
-
+  
   const deleteguest =  async (guestId) => {
+    setConfirmDialog({...confirmDialog , isOpen:false});
   await  deleteGuest(stuData._id, token, { guestId: guestId }).then((data) => {
       if (error) {
         setNotify({isOpen:true, message:'Unable to delete guest' , type:"error"});
@@ -131,14 +139,29 @@ const AddGuest = ({ history }) => {
                               <button
                                 type="submit"
                                 className="button btn-sm btn-danger  "
-                                onClick={() => deleteguest(guest._id)}
+                                onClick={() => {                            
+                                  setConfirmDialog({
+                                    isOpen: true,
+                                    title : "Are you sure you want to delete?",
+                                    subTitle: "Remember! The action cannot be undone.",
+                                    onConfirm: ()=>{ deleteguest(guest._id)}
+                                  })
+                                 }}
+                               // onClick={() => deleteguest(guest._id)}
                               >
                                 Delete
                               </button>
                               <span>
                                 <i
                                   className="fa fa-trash-o text-danger border fa-lg pe-2 ps-2"
-                                  onClick={() => deleteguest(guest._id)}
+                                  onClick={() => {                            
+                                    setConfirmDialog({
+                                      isOpen: true,
+                                      title : "Are you sure you want to delete?",
+                                      subTitle: "Remember! The action cannot be undone.",
+                                      onConfirm: ()=>{ deleteguest(guest._id)}
+                                    })
+                                   }}
                                 ></i>
                               </span>
                             </th>
@@ -320,6 +343,8 @@ const AddGuest = ({ history }) => {
     <>
       <StuLayout history={history}>
         <Notification notify={notify} setNotify={setNotify} />
+        <ConfimDialog confirmDialog = {confirmDialog} setConfirmDialog = {setConfirmDialog} />
+         
         {showError()}
         <div className="">{addGuestForm()}</div>
         <div className="text-box fadeUp animate">{getAllGuest()}</div>

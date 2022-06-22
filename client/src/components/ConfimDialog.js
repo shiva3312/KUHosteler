@@ -8,19 +8,24 @@ function ConfimDialog(props) {
 
   return (
     <Dialog open= {confirmDialog.isOpen}>       
-        <div className="p-3">
-            <h5 variant="h6">
+        <div className="p-4">
+            <h5 variant=" pe-2">
                 {confirmDialog.title}
             </h5>
-            <p variant="subtitle2">
+            <div className="text-secondary fw-bold">
+                
+            
+            <p variant=" subtitle2">
                 {confirmDialog.subTitle}
             </p>
+            </div>
          </div>
-        <div>
-            <Button className=" text-dark" onClick={()=> setConfirmDialog({...confirmDialog , isOpen:false})}>No</Button>
-            <Button className="text-primary"  onClick={ confirmDialog.onConfirm}>Yes</Button>
+        <div className="text-end p-3 text-light bg-light">
+            <Button className="bg-secondary text-white" onClick={()=> setConfirmDialog({...confirmDialog , isOpen:false})}>No</Button>
+            <Button className="bg-primary ms-1 text-white"  onClick={ confirmDialog.onConfirm}>Yes</Button>
         </div>
     </Dialog>
+
 
   );
 }
