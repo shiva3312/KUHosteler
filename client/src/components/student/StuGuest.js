@@ -301,7 +301,7 @@ const AddGuest = ({ history }) => {
                 </button>
                 <button
                   type="button"
-                  className="btn btn-success"
+                  className="btn btn-success" data-bs-dismiss="modal"
                   onClick={clickSubmit}
                 >
                   Add

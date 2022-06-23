@@ -281,7 +281,7 @@ const AdminDashboard = ({ history }) => {
                     <td className="th1">
                       {student.fname} {student.lname}
                     </td>
-                    <td className="col-3 th1">{student.department}</td>
+                    <td className="col-3 th1">{student.education.department}</td>
                     <td className="th1 hidden">
                       {student.selfPhNo.slice(0, 13)}
                     </td>
