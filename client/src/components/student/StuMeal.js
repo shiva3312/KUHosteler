@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer";
 import { messActivity, read } from "./stuApi";
 import Notification from "../Notification";
+import ConfimDialog from "../ConfimDialog";
 
 const MealAcitvity = ({ history }) => {
   const { user, token } = isAuthenticated();
   var [mealStatus, setMealStatus] = useState(user.messStatus);
   const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
-
+  const [confirmDialog , setConfirmDialog]= useState({isOpen:false , title:'', subTitle:''});
+  
   useEffect(async () => {
     await read(user._id, token).then((data) => {    
       setMealStatus(data.messStatus);
@@ -19,6 +21,7 @@ const MealAcitvity = ({ history }) => {
 
   const submit = async (e) => {
     e.preventDefault();
+    setConfirmDialog({...confirmDialog , isOpen:false});
     // update with ? you should send category name otherwise what to update?
    await messActivity(user._id, token);
     if (mealStatus == 2) {
@@ -66,14 +69,28 @@ const MealAcitvity = ({ history }) => {
               <button
                 type="submit"
                 className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-off  "
-                onClick={submit}
+                onClick={() => {                            
+                  setConfirmDialog({
+                    isOpen: true,
+                    title : "Are you sure you want to delete?",
+                  
+                    onConfirm: ()=> {submit()}
+                  })
+                 }}
               ></button>
             ) : (
 
               <button
                 type="submit"
                 className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on "
-                onClick={submit}
+                onClick={() => {                            
+                  setConfirmDialog({
+                    isOpen: true,
+                    title : "Are you sure you want to delete?",
+                    
+                    onConfirm: ()=>{ submit()}
+                  })
+                 }}
               ></button>
 
               
@@ -137,6 +154,8 @@ const MealAcitvity = ({ history }) => {
       <StuLayout history={history}>
         {/* show your content in this div */}
         <Notification notify={notify} setNotify={setNotify} />
+        <ConfimDialog confirmDialog = {confirmDialog} setConfirmDialog = {setConfirmDialog} />
+         
         <div className="col mb-0 text-box fadeUp animate">{mealAcitvity()}</div>
       </StuLayout>
       <Footer />

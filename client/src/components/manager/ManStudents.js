@@ -205,13 +205,10 @@ const StudentListInfo = ({ history }) => {
                           <span
                             type="submit"
                             className="badge rounded-pill bg-info "
-                            onClick={() => {                            
-                              setConfirmDialog({
-                                isOpen: true,
-                                title : "Are you sure you want to change Membership status?",
-                              onConfirm: ()=>{ toggleMembership(student._id, 3)}
-                              })
-                             }}
+                            onClick={() =>                            
+                             { toggleMembership(student._id, 3)}
+                            
+                             }
                             >
                             {" "}
                             Border
@@ -225,12 +222,9 @@ const StudentListInfo = ({ history }) => {
                             type="submit"
                             className="badge rounded-pill bg-danger "
                             onClick={() => {                            
-                              setConfirmDialog({
-                                isOpen: true,
-                                title : "Are you sure you want to change Membership status?",
-                              onConfirm: ()=>{ toggleMembership(student._id, 2)}
-                              })
-                             }}
+                            toggleMembership(student._id, 2)}
+                              
+                             }
                             
                           >
                             {" "}
