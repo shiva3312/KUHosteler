@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 import CourseDb from "../db/KuCourseDB.json";
-
+import Notification from "../components/Notification"
 import "../css/global.css";
 import {
   signup,
@@ -12,6 +12,7 @@ import {
 
 const Signup = () => {
   const [isCodeverified, setIsCodeverified] = useState(0);
+  const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
   const [codes, setCodes] = useState([]);
   const [hostedHostels, setHostedHostels] = useState([]);
   const [mailOtpStatus, setMailOtpStatus] = useState({
@@ -134,6 +135,7 @@ const Signup = () => {
         if (data.error) {
           setValues({ ...values, error: data.error, success: false });
         } else {
+          setNotify({isOpen:true, message:'Registered successfully' , type:"success"});
           setValues({
             ...values,
             fname: "",
@@ -768,6 +770,7 @@ const Signup = () => {
   return (
     <div>
       {JSON.stringify(mailOtpStatus)}
+      <Notification notify={notify} setNotify={setNotify} />
       {showSuccess()}
       {showError()}
       {signUpForm()}
