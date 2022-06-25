@@ -205,10 +205,15 @@ const StudentListInfo = ({ history }) => {
                           <span
                             type="submit"
                             className="badge rounded-pill bg-info "
-                            onClick={() =>                            
-                             { toggleMembership(student._id, 3)}
-                            
-                             }
+                            onClick={() => {                            
+                              setConfirmDialog({
+                                isOpen: true,
+                                title : "Are you sure you , want make student Ex-Border ?",
+                                subTitle: "Remember! After this action student's membership will be deactivated ,student will be excluded from daily Meal-List and can't add any guest",
+                                onConfirm:() =>{ toggleMembership(student._id, 3)}
+                              })
+                             }}
+                           
                             >
                             {" "}
                             Border
@@ -222,11 +227,13 @@ const StudentListInfo = ({ history }) => {
                             type="submit"
                             className="badge rounded-pill bg-danger "
                             onClick={() => {                            
-                            toggleMembership(student._id, 2)}
-                              
-                             }
-                            
-                          >
+                              setConfirmDialog({
+                                isOpen: true,
+                                title : "Are you sure you , want make student Border ?",
+                                subTitle: "Remember! After this action student's membership will be Activated ,student will be included in daily Meal-List and able to add any guest",
+                                onConfirm:() => toggleMembership(student._id, 2)})
+                              }}                          
+                            >
                             {" "}
                             Ex-Border
                           </span>
@@ -244,6 +251,7 @@ const StudentListInfo = ({ history }) => {
                               setConfirmDialog({
                                 isOpen: true,
                                 title : "Are you sure you want to Turn off meal?",
+                                subTitle:"Remember! This will disable the Meal of student and sutdent will be excluded from daily Meal-List",
                               onConfirm: ()=>{ toggleMeal(student._id, 0)}
                               })
                              }}
@@ -262,7 +270,9 @@ const StudentListInfo = ({ history }) => {
                               setConfirmDialog({
                                 isOpen: true,
                                 title : "Are you sure you want to Turn on meal?",
-                              onConfirm: ()=>{ toggleMeal(student._id, 2)}
+                                subTitle:"Remember! This will Enable the Meal of student and sutdent will be included in daily Meal-List",
+
+                              onConfirm: ()=>{ toggleMeal(student._id, 3)}
                               })
                              }}
                           >
@@ -393,8 +403,8 @@ const StudentListInfo = ({ history }) => {
                                                   <h6 className="mb-0">
                                                     Meal status
                                                   </h6>
-                                                  {selectedUser.messStatus >
-                                                  0 ? (
+                                                  {selectedUser.messStatus <=
+                                                  1 ? (
                                                     <div>
                                                       <span
                                                         type="submit"

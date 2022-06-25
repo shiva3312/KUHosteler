@@ -3,9 +3,7 @@ import {Dialog, Button} from '@material-ui/core'
  
 
 function ConfimDialog(props) {
-
     const {confirmDialog, setConfirmDialog} = props;
-
   return (
     <Dialog open= {confirmDialog.isOpen}>       
         <div className="p-4">

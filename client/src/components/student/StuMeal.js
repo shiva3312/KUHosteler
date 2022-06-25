@@ -19,12 +19,11 @@ const MealAcitvity = ({ history }) => {
     });
   }, [mealStatus]);
 
-  const submit = async (e) => {
-    e.preventDefault();
+  const submit = async (e) => {   
     setConfirmDialog({...confirmDialog , isOpen:false});
     // update with ? you should send category name otherwise what to update?
    await messActivity(user._id, token);
-    if (mealStatus == 2) {
+    if (mealStatus === 2) {
       setMealStatus((mealStatus = 3));
       setNotify({isOpen:true, message:'Meal Turned-On successfully' , type:"success"});
     }
@@ -37,6 +36,9 @@ const MealAcitvity = ({ history }) => {
     return new Date(b.date) - new Date(a.date);
   });
   const mealAcitvity = () => {
+    var NofiyMsg = '';
+    if(mealStatus===2) NofiyMsg='Are you sure Want to Turn-On you meal ?'
+    else  NofiyMsg='Are you sure Want to Turn-Off you meal ?'
     return (
       <>
         {/* <div className="container"> */}
@@ -72,11 +74,12 @@ const MealAcitvity = ({ history }) => {
                 onClick={() => {                            
                   setConfirmDialog({
                     isOpen: true,
-                    title : "Are you sure you want to delete?",
-                  
-                    onConfirm: ()=> {submit()}
+                    title : NofiyMsg,
+                    subTitle: "Remember!  ",
+                    onConfirm:  ()=> {submit()}
                   })
                  }}
+               
               ></button>
             ) : (
 
@@ -86,15 +89,13 @@ const MealAcitvity = ({ history }) => {
                 onClick={() => {                            
                   setConfirmDialog({
                     isOpen: true,
-                    title : "Are you sure you want to delete?",
-                    
-                    onConfirm: ()=>{ submit()}
+                    title : NofiyMsg,
+                    subTitle: "Remember! ",
+                    onConfirm:  ()=> {submit()}
                   })
                  }}
               ></button>
-
-              
-            )}
+             )}
           </div>
 
           {/* <div className="col-3 th">

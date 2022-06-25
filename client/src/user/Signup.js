@@ -769,7 +769,7 @@ const Signup = () => {
 
   return (
     <div>
-      {JSON.stringify(mailOtpStatus)}
+     
       <Notification notify={notify} setNotify={setNotify} />
       {showSuccess()}
       {showError()}
