@@ -3,7 +3,7 @@
 ::selection{
   background: rgb(73, 16, 204);
   color: #fff;
-}
+}/*
 .accordion{
   display: flex;
   width: 100%;
@@ -117,7 +117,7 @@
     height: 360px;
     width: 300px;
     /* background: #7d2ae8; */
-    background:linear-gradient(to right,#388087,#6FB3B8);
+   /* background:linear-gradient(to right,#388087,#6FB3B8);
     width: 100%;
     border-radius: 25px;
     padding: 30px;

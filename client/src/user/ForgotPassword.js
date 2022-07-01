@@ -139,9 +139,9 @@ const UpdatePassword = () => {
       if (user && user.profileType === 1) {
         return <Redirect to="/manager/dashboard" />;
       } else if (user && user.profileType === 0) {
-        return <Redirect to="/student/home" />;
+        return <Redirect to="/student/profile" />;
       } else if (user && user.profileType === 2) {
-        return <Redirect to="/employee/home" />;
+        return <Redirect to="/employee/profile" />;
       }
     }
   };

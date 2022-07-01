@@ -3,6 +3,7 @@ import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
 import ShowImage from "../ShowImage";
 import Notification from "../Notification";
+import ConfimDialog from "../ConfimDialog";
 import {
   getStudentprofile,
   getAllstudents,
@@ -13,6 +14,7 @@ import {
 } from "./ManApi";
 
 const StudentListInfo = ({ history }) => {
+  const [confirmDialog , setConfirmDialog]= useState({isOpen:false , title:'', subTitle:''});
   const { user, token } = isAuthenticated();
   const [students, setStudents] = useState([]);
   const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
@@ -104,6 +106,7 @@ const StudentListInfo = ({ history }) => {
   };
 
   const toggleMembership = async (stuId, status) => {
+    setConfirmDialog({...confirmDialog , isOpen:false});
     await updateMembershipStatus(user._id, token, {
       memId: stuId,
       status: status,
@@ -121,9 +124,10 @@ const StudentListInfo = ({ history }) => {
   };
 
   const toggleMeal = async (stuId, status) => {
+    setConfirmDialog({...confirmDialog , isOpen:false});
     var notifyMsg = '';
     if(status<= 3) notifyMsg = "Meal status disabled successfully"
-    else notifyMsg = "Meal status activated successfully"
+    else notifyMsg = "Meal status enabled successfully"
     await fchangeMealStatus(user._id, token, {
       stuId: stuId,
       status: status,
@@ -201,8 +205,16 @@ const StudentListInfo = ({ history }) => {
                           <span
                             type="submit"
                             className="badge rounded-pill bg-info "
-                            onClick={() => toggleMembership(student._id, 3)}
-                          >
+                            onClick={() => {                            
+                              setConfirmDialog({
+                                isOpen: true,
+                                title : "Are you sure you , want make student Ex-Border ?",
+                                subTitle: "Remember! After this action student's membership will be deactivated ,student will be excluded from daily Meal-List and can't add any guest",
+                                onConfirm:() =>{ toggleMembership(student._id, 3)}
+                              })
+                             }}
+                           
+                            >
                             {" "}
                             Border
                           </span>
@@ -214,8 +226,14 @@ const StudentListInfo = ({ history }) => {
                           <span
                             type="submit"
                             className="badge rounded-pill bg-danger "
-                            onClick={() => toggleMembership(student._id, 2)}
-                          >
+                            onClick={() => {                            
+                              setConfirmDialog({
+                                isOpen: true,
+                                title : "Are you sure you , want make student Border ?",
+                                subTitle: "Remember! After this action student's membership will be Activated ,student will be included in daily Meal-List and able to add any guest",
+                                onConfirm:() => toggleMembership(student._id, 2)})
+                              }}                          
+                            >
                             {" "}
                             Ex-Border
                           </span>
@@ -229,7 +247,15 @@ const StudentListInfo = ({ history }) => {
                           <span
                             type="submit"
                             className="badge rounded-pill bg-danger "
-                            onClick={() => toggleMeal(student._id, 0)}
+                            onClick={() => {                            
+                              setConfirmDialog({
+                                isOpen: true,
+                                title : "Are you sure you want to Turn off meal?",
+                                subTitle:"Remember! This will disable the Meal of student and sutdent will be excluded from daily Meal-List",
+                              onConfirm: ()=>{ toggleMeal(student._id, 0)}
+                              })
+                             }}
+                           // onClick={() => toggleMeal(student._id, 0)}
                           >
                             Turn off
                           </span>
@@ -240,7 +266,15 @@ const StudentListInfo = ({ history }) => {
                         <span
                             type="submit"
                             className="badge rounded-pill bg-success "
-                            onClick={() => toggleMeal(student._id, 2)}
+                            onClick={() => {                            
+                              setConfirmDialog({
+                                isOpen: true,
+                                title : "Are you sure you want to Turn on meal?",
+                                subTitle:"Remember! This will Enable the Meal of student and sutdent will be included in daily Meal-List",
+
+                              onConfirm: ()=>{ toggleMeal(student._id, 3)}
+                              })
+                             }}
                           >
                             Turn on
                           </span>
@@ -369,8 +403,8 @@ const StudentListInfo = ({ history }) => {
                                                   <h6 className="mb-0">
                                                     Meal status
                                                   </h6>
-                                                  {selectedUser.messStatus >
-                                                  0 ? (
+                                                  {selectedUser.messStatus <=
+                                                  1 ? (
                                                     <div>
                                                       <span
                                                         type="submit"
@@ -667,7 +701,9 @@ const StudentListInfo = ({ history }) => {
         history={history}
       >
         <div>
+            <ConfimDialog confirmDialog = {confirmDialog} setConfirmDialog = {setConfirmDialog} />
         <Notification notify={notify} setNotify={setNotify} />
+       
           {showError()}
           {studentList()}
         </div>

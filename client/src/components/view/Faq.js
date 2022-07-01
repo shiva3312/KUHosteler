@@ -119,99 +119,115 @@ export default function Faq({ history }) {
           </div>
         </div>
       </nav>
-      <center>
-        <div className="accordion">
-          <div className="image-box">
-            <img src={imamain} />
-          </div>
-          <div className="accordion-text">
-            <div className="title">FAQ</div>
-            <ul className="faq-text">
-              <li>
-                <div className="question-arrow">
-                  <span className="question"> How to open a account?</span>
-                  <i className="bx bxs-chevron-down arrow"></i>
-                </div>
-                <p>
-                <p>
-                  There are three type of profile Manager , Student and Employee </p>
-                 <p>  1. To open account as manager </p>
-                 <p>     Requirment : User should have a code and some general information.</p>
-                 <p>     Procedure : 1. Go to SignUp page </p>
-                 <p>                 2. Select profile type as Manager </p>
-                 <p>                 3. Enter the code and varify</p>
-                 <p>                 4. Enter you email and varify </p>
-                 <p>                 5. Enter you required details </p>
-                 <p>                 6. Register</p>
-                 <p>             Great you created an account as Manager Now SignIn </p>
+      <div className="bg-white pt-2">
+        <div className="section-title  pt-3">
+          <img src ={imamain} height="200px"width="170px"/>
+            {/* "https://w7.pngwing.com/pngs/1015/947/png-transparent-question-quiz-test-faq-information-others-business-question-3-d-human.png" height="150px" width="150px" alt=""/> */}
+          <h2>FAQ</h2>
 
-                 <p>                   7. Goto to signIn page and Enter credential </p>
-                 <p>                   8. if you have not uploaded you pic then upload only one time</p>
+        </div>
+        <div className="row pb-5 mb-3">
+          <div className="col-1">
+            {/* <div className="card">
+              <img src={imamain} height="400px" width="300px" />
+              </div>*/}
+          </div> 
+          <div className="col-10">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    How to open an account?
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <p>
+                      There are three types of profile- Manager, Student and Employee </p>
+                    <p className="fw-bold">  Manager Profile: </p>
+                    <p>You must have a unique code  and some general information that should be provided by University.
+                      1.Go to Log In page 2.Click on Sign up option 3.Select profile type as Manager
+                      4.enter the unique code and verify 5.enter your email and verify 6.enter other details as required 7.click on Register
+                    </p>
 
-                 <p>                   after upload you will redirect to Manager dashboard ...</p>
+                    <p className="fw-bold text-secondary">Great! you have created an account as Manager. </p>
 
-                 <p>  2. To open account as Student/Employee </p>
-                 <p>   same process but you don't need any code to open account </p>
-                 <p>  If your hostel name is not in hostel list if mean your hostel is not hosted the service  </p>
-                 </p>             
-                            
-                
-                <span className="line"></span>
-              </li>
-              <li>
-                <div className="question-arrow">
-                  <span className="question"> How to add guest?</span>
-                  <i className="bx bxs-chevron-down arrow"></i>
+                    <p className="fw-lighter fst-italic">Go to the Log In page and Enter credential. Upload your profile photo.Now you are ready to go! You will be redirected to the manager dashboard page.</p>
+
+                    <p className="fw-bolder">  Student Profile: </p>
+                    <p>1.Go to Log In page 2.Click on Sign up option 3.Select profile type as Student.
+                      4.enter your email and verify 5.enter other details as required 6.click on Register
+                      <p className="fw-lighter fst-italic">Your request for opening new account has been sent to Manager of your hostel. Once it is approved go to Log In page and enter credential.Upload your profile photo.
+                      </p>
+                    </p>
+                    <p className="fw-bold text-secondary">Now You are Ready to Go!</p>
+                    <p className="fw-bolder">  Employee Profile: </p>
+                    <p>1.Go to Log In page 2.Click on Sign up option 3.Select profile type as Employee.
+                      4.enter your email and verify 6.enter other details as required 7.click on Register
+                      <p className="fw-lighter fst-italic">Your request for opening new account has been sent to Manager of your hostel. Once it is approved go to Log In page and enter credential.Upload your profile photo.
+                      </p></p>
+                    <p className="fw-bold text-secondary">Now You are Ready to Go!</p>
+                  </div>
                 </div>
-                <p>
-                <p>  1. Go to you Add Guest page  </p>
-                <p>   2. click on add guest  </p>
-                <p> 3. enter name and starting and ending date (Today and before is invalid date) </p>
-                <p>  4. click add button  </p>
-                <p>  5. Guest is listed and this will be activated when manager varify it</p>
-                </p>
-                <span className="line"></span>
-              </li>
-              <li>
-                <div className="question-arrow">
-                  <span className="question"> How to delete guest?</span>
-                  <i className="bx bxs-chevron-down arrow"></i>
+
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    How to add guest?
+                  </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body"> <p>
+                    1. Go to your Add Guest page   2. click on add guest  3. enter name and starting and ending date (Today and before toay is invalid date)   4. click on add button 5. Guest is listed and this will be activated when manager varify it
+                  </p></div>
                 </div>
-                <p>
-                <p>  1. Go to you Add Guest page  </p>
-                <p>   2. click on Delete button   </p>
-                </p>
-                <span className="line"></span>
-              </li>
-              <li>
-                <div className="question-arrow">
-                  <span className="question">
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    How to delete guest?
+                  </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <p>  1. Go to your Add Guest page 2. click on Delete button   </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                     What is the next step after sending request for account
                     opening?
-                  </span>
-                  <i className="bx bxs-chevron-down arrow"></i>
+                  </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body"><p>
+                    <p> If you have created account as Student / Employee then untill manager varify your account you can't become member of the corresponding hostel </p>
+                  </p></div>
                 </div>
-                <p>
-                <p> If you have created account as Student / Employee then untill manager varify your account you can't become member of the corresponding hostel </p>
-                </p>
-                <span className="line"></span>
-              </li>
-              <li>
-                <div className="question-arrow">
-                  <span className="question">
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFive">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
                     What happen if my account opening request will be rejected?
-                  </span>
-                  <i className="bx bxs-chevron-down arrow"></i>
+                  </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">Contact your manager.</div>
                 </div>
-                <p>
-                  Contact to your manager
-                </p>
-                <span className="line"></span>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </center>
+      </div>
+
+      <div className="accordion">
+
+      </div>
+
 
       <Footer />
     </>

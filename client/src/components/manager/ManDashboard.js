@@ -283,7 +283,7 @@ const AdminDashboard = ({ history }) => {
                     </td>
                     <td className="col-3 th1">{student.department}</td>
                     <td className="th1 hidden">
-                      {student.selfPhNo.slice(3, 13)}
+                      {student.selfPhNo.slice(0, 13)}
                     </td>
                     <td className="col-3">
                       {" "}
@@ -295,8 +295,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to accept the request?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(student._id, 2)}
                             })
                            }}
@@ -310,8 +310,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to accept the request?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(student._id, 2)}
                             })
                            }}
@@ -325,8 +325,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to accept as a guest?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(student._id, 1)}
                             })
                            }}
@@ -340,8 +340,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to accept as a guest?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(student._id, 1)}
                             })
                            }}
@@ -355,8 +355,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to reject the request?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(student._id, 4)}
                             })
                            }}
@@ -370,8 +370,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to reject the request?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(student._id, 4)}
                             })
                            }}
@@ -424,7 +424,7 @@ const AdminDashboard = ({ history }) => {
                     <td className="th1">
                       {emp.fname} {emp.lname}
                     </td>
-                    <td className="th1">{emp.selfPhNo.slice(3, 13)}</td>
+                    <td className="th1">{emp.selfPhNo.slice(0, 13)}</td>
                     <td className="col-2 th1">
                       {" "}
                       <span className="sm">
@@ -435,8 +435,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to accept the request?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(emp._id, 2)}
                             })
                            }}
@@ -451,8 +451,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to accept the request?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(emp._id, 2)}
                             })
                            }}
@@ -466,8 +466,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to reject the request?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(emp._id, 4)}
                             })
                            }}
@@ -481,8 +481,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to reject request?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ clickSubmit(emp._id, 4)}
                             })
                            }}
@@ -642,7 +642,7 @@ const AdminDashboard = ({ history }) => {
                     <td className="th1">{guest.holderName}</td>
                     <td className="th1">{guest.mealDate.slice(4, 15)}</td>
                     <td className="th1 hidden">
-                      {guest.holderMobNo.slice(3, 13)}
+                      {guest.holderMobNo.slice(0, 13)}
                     </td>
                     {/* <td className="th1">{guest.holderRoomNo}</td> */}
                     <td className="col-2 th1" colSpan={2}>
@@ -655,8 +655,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to accept?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ changeGuestMealStatus(guest._id, guest.holderId, 1)}
                             })
                            }}
@@ -671,8 +671,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to accept?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{  changeGuestMealStatus(guest._id, guest.holderId, 1)}
                             })
                            }}
@@ -687,8 +687,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to reject?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{  deleteGuest(guest._id, guest.holderId)}
                             })
                            }}
@@ -703,8 +703,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to reject?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ deleteGuest(guest._id, guest.holderId)}
                             })
                            }}
@@ -771,7 +771,7 @@ const AdminDashboard = ({ history }) => {
 
                     <td className="th1">{guest.holderName}</td>
                     <td className="th1">{guest.mealDate.slice(3, 15)}</td>
-                    <td className="th1">{guest.holderMobNo.slice(3, 13)}</td>
+                    <td className="th1">{guest.holderMobNo.slice(0, 13)}</td>
                     {/* <td className="th1">{guest.holderRoomNo}</td> */}
                     {/* <td> <button type="submit" className="btn btn-success "  onClick={()=>changeGuestMealStatus(guest._id, guest.holderId ,1)}>Accept</button></td> */}
                     <td className="th1">
@@ -784,8 +784,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to delete?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ deleteGuest(guest._id, guest.holderId)}
                             })
                            }}
@@ -800,8 +800,8 @@ const AdminDashboard = ({ history }) => {
                           onClick={() => {                            
                             setConfirmDialog({
                               isOpen: true,
-                              title : "Are you sure to continue",
-                              subTitle: "You can't undo this operation",
+                              title : "Are you sure you want to delete?",
+                              subTitle: "Remember! The action cannot be undone.",
                               onConfirm: ()=>{ deleteGuest(guest._id, guest.holderId)}
                             })
                            }}

@@ -5,35 +5,40 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer";
 import { messActivity, read } from "./stuApi";
 import Notification from "../Notification";
+import ConfimDialog from "../ConfimDialog";
 
 const MealAcitvity = ({ history }) => {
   const { user, token } = isAuthenticated();
   var [mealStatus, setMealStatus] = useState(user.messStatus);
   const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
-
+  const [confirmDialog , setConfirmDialog]= useState({isOpen:false , title:'', subTitle:''});
+  
   useEffect(async () => {
     await read(user._id, token).then((data) => {    
       setMealStatus(data.messStatus);
     });
   }, [mealStatus]);
 
-  const submit = async (e) => {
-    e.preventDefault();
+  const submit = async (e) => {   
+    setConfirmDialog({...confirmDialog , isOpen:false});
     // update with ? you should send category name otherwise what to update?
    await messActivity(user._id, token);
-    if (mealStatus == 2) {
+    if (mealStatus === 2) {
       setMealStatus((mealStatus = 3));
-      setNotify({isOpen:true, message:'Meal Turned-On successfylly' , type:"success"});
+      setNotify({isOpen:true, message:'Meal Turned-On successfully' , type:"success"});
     }
     else {
       setMealStatus((mealStatus = 2));
-      setNotify({isOpen:true, message:'Meal Turned-Off  successfylly ' , type:"warning"});
+      setNotify({isOpen:true, message:'Meal Turned-Off  successfully ' , type:"warning"});
     }
   };
   user.activity.sort(function (a, b) {
     return new Date(b.date) - new Date(a.date);
   });
   const mealAcitvity = () => {
+    var NofiyMsg = '';
+    if(mealStatus===2) NofiyMsg='Are you sure Want to Turn-On you meal ?'
+    else  NofiyMsg='Are you sure Want to Turn-Off you meal ?'
     return (
       <>
         {/* <div className="container"> */}
@@ -49,10 +54,10 @@ const MealAcitvity = ({ history }) => {
             {mealStatus <= 1 ? (
               <span className="pt-3 fw-bold  text-secondary">DISABLE</span>
             ) : mealStatus == 2 ? (
-              <span className="pt-3  fw-bold de">DEACTIVATED</span>
+              <span className="pt-3 de">DEACTIVATED</span>
               
             ) : (
-              <span className="pt-3 fw-bold  text-success">ACTIVATED</span>
+              <span className="pt-3 fw-bold text-success">ACTIVATED</span>
             )}
           </div>
 
@@ -66,18 +71,31 @@ const MealAcitvity = ({ history }) => {
               <button
                 type="submit"
                 className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-off  "
-                onClick={submit}
+                onClick={() => {                            
+                  setConfirmDialog({
+                    isOpen: true,
+                    title : NofiyMsg,
+                    subTitle: "Remember!  ",
+                    onConfirm:  ()=> {submit()}
+                  })
+                 }}
+               
               ></button>
             ) : (
 
               <button
                 type="submit"
                 className="bg-white check p-2 pt-3 fw-bold fa fa-lg fa-toggle-on "
-                onClick={submit}
+                onClick={() => {                            
+                  setConfirmDialog({
+                    isOpen: true,
+                    title : NofiyMsg,
+                    subTitle: "Remember! ",
+                    onConfirm:  ()=> {submit()}
+                  })
+                 }}
               ></button>
-
-              
-            )}
+             )}
           </div>
 
           {/* <div className="col-3 th">
@@ -137,6 +155,8 @@ const MealAcitvity = ({ history }) => {
       <StuLayout history={history}>
         {/* show your content in this div */}
         <Notification notify={notify} setNotify={setNotify} />
+        <ConfimDialog confirmDialog = {confirmDialog} setConfirmDialog = {setConfirmDialog} />
+         
         <div className="col mb-0 text-box fadeUp animate">{mealAcitvity()}</div>
       </StuLayout>
       <Footer />

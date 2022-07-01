@@ -26,7 +26,7 @@ const StuLayout = ({ className, children, history }) => {
               <span className="navbar-toggler-icon drkgrn"></span>
             </button>
 
-            <div className=" d-flex justify-content-end"></div>
+            
             <div
               className=" collapse navbar-collapse ps-2"
               id="navbarSupportedContent"
@@ -52,7 +52,7 @@ const StuLayout = ({ className, children, history }) => {
 
                 {isAuthenticated() && (
                   <Link
-                    className="nav-item ps-3 px-3 pt-1"
+                    className="nav-item pt-1"
                     to={"/"}
                     onClick={() =>
                       signout(() => {
