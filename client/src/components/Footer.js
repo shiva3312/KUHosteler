@@ -34,7 +34,7 @@ export default function Footer() {
               {/* if user is not isAuthenticated then show static about hostel page */}
             {!isAuthenticated() &&(  
               <li><i className="fa fa-angle-right fa-lg pe-1"></i>
-                <Link to="/user/staticAbouthoste" className="text-white text-decoration-none ">About Hostel</Link>
+                  <Link to="/user/staticAbouthostel" className="text-white text-decoration-none ">About Hostel</Link>
               </li>
             )}   
               <li><i className="fa fa-angle-right fa-lg pe-1"></i>
@@ -96,7 +96,7 @@ export default function Footer() {
               {/* if user is not isAuthenticated then show static about hostel page */}
             {!isAuthenticated() &&(  
               <li><i className="fa fa-angle-right fa-lg pe-1"></i>
-                <Link to="/user/staticAbouthoste" className="text-white text-decoration-none ">About Hostel</Link>
+                  <Link to="/user/staticAbouthostel" className="text-white text-decoration-none ">About Hostel</Link>
               </li>
             )}          
            

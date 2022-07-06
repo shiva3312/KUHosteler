@@ -13,7 +13,6 @@ export default function Developer({ history }) {
        <nav className=" navbar navbar-expand-lg navbar-light bg-dark ">
         <div className="container-fluid">
           <h2 className="ps-1 fs-1 text fw-bold">KuHosteler</h2>
-
           <button
             className=" navbar-toggler drkgrn"
             type="button"
@@ -118,7 +117,7 @@ export default function Developer({ history }) {
           <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div className="member">
               <div className="member-img">
-                <img src={shivam} className="img-fluid" alt=""/>
+                    <img src={shivam} className="img-fluid " alt="" />
                 <div className="social1">
                   <Link 
                     to={{ pathname: "https://www.facebook.com/kingcobra196" }} 
