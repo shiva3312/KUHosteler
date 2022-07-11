@@ -3,32 +3,56 @@ import React, { useState, useEffect } from "react";
 import StuLayout from "./StuLayout";
 import { isAuthenticated,resetPassword} from "../../auth";
 import Footer from "../Footer";
-import { read } from "./stuApi";
+import { read, editStuProfile } from "./stuApi";
+import Notification from "../Notification";
+import ConfimDialog from "../ConfimDialog";
 
 const StuEdit = ({ history }) => {
-  const { user,token } = isAuthenticated();
-  const [values, setValues] = useState({
-    fname:"",
-    lname:"",
-    roomno:"",
-    selfPhNo:"",
-    address:"",
-  });
-  const { fname,lname, roomno,selfPhNo,address} = values;
+  const { user, token } = isAuthenticated();
+  const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' });
+  const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' });
+  const [studData, setStuData] = useState(user);
 
-    useEffect(() => {
-      read(user._id, token).then((data) => {
-        setValues(data);
-      });
-    }, [values]);
+  useEffect(() => {
+    read(user._id, token).then((data) => {
+      setStuData(data);
+    });
+  }, []);
+
+
+  const currVal = {
+    fname: studData.fname,
+    lname: studData.lname,
+    roomNo: studData.roomNo,
+    selfPhNo: studData.selfPhNo,
+    address: studData.address,
+    hostelId: studData.hostelId,
+    dob: studData.dob,
+    semester: studData.semester,
+    gPhNo: studData.gPhNo,
+    bio: studData.bio
+  };
+
+  const [values, setValues] = useState(currVal);
+  const { fname, lname, roomNo, selfPhNo, address, hostelId, dob, semester, gPhNo, bio } = values;
+
     const handleChange = (name) => (event) => {
       setValues({ ...values,  [name]: event.target.value });
     };
-    const clickSubmit = async (event) => {
-      event.preventDefault();
-      setValues({ ...values,});
-      console.log("Fname:" +fname,"\n LastName:"+lname,"\nRoomNo:"+roomno,"\nselfno:"+selfPhNo,"\nAddress:"+address);
-      console.log(values);
+  const clickSubmit = async (event) => {
+    setConfirmDialog({ ...confirmDialog, isOpen: false });
+    await editStuProfile(user._id, token, values).then((data) => {
+      if (data.error) {
+        // show error with msg unable to update 
+        setNotify({ isOpen: true, message: 'Unable to update profile please try again..', type: "error" });
+      }
+      else {
+        // show success msg ... profile update successfully
+        setValues(values);
+        setNotify({ isOpen: true, message: 'Profile upadated successfully', type: "success" });
+      }
+    })
+    setValues({ ...values, });
 
 };
 const EditPro = () => {
@@ -48,6 +72,7 @@ const EditPro = () => {
             className=" bton"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
+            onClick={async () => { await setValues(currVal) }}
           >
             <span className="button__icon">
               <i className="fa fa-edit"></i>
@@ -111,11 +136,11 @@ const EditPro = () => {
                 <input
                   type="Number"
                   className="form-control"
-                  id="roomno"
+                  id="roomNo"
                   placeholder="Enter your Room No"
                   required
-                  onChange={handleChange("roomno")}
-                  value={roomno}
+                  onChange={handleChange("roomNo")}
+                  value={roomNo}
                 />
                 <label htmlFor="exampleFormControlInput1" className="form-label">
                   Phone No
@@ -156,7 +181,14 @@ const EditPro = () => {
               <button
                 type="button"
                 className="btn btn-success" data-bs-dismiss="modal"
-                onClick={clickSubmit}
+                onClick={() => {
+                  setConfirmDialog({
+                    isOpen: true,
+                    title: "Are you sure to update your profile?",
+                    subTitle: "Please check entered infomation is correct.",
+                    onConfirm: () => { clickSubmit() }
+                  })
+                }}
               >
                 Save
               </button>
@@ -170,9 +202,11 @@ const EditPro = () => {
 
 
 return (
-  <>
-  
+  <>  
     <StuLayout history={history}>
+      {/* {JSON.stringify(values)} */}
+      <Notification notify={notify} setNotify={setNotify} />
+      <ConfimDialog confirmDialog={confirmDialog} setConfirmDialog={setConfirmDialog} />
       <div className="">{EditPro()}</div>
     </StuLayout>
     <Footer />

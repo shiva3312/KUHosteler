@@ -1,11 +1,19 @@
 // manger Layout ..
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { signout, isAuthenticated } from "../../auth/index.js";
 import ShowImage from "../ShowImage.js";
+import { read } from "./stuApi.js"
 
 const StuLayout = ({ className, children, history }) => {
-  const { user } = isAuthenticated();
+  const { user, token } = isAuthenticated();
+  const [studData, setStuData] = useState(user);
+
+  useEffect(() => {
+    read(studData._id, token).then((data) => {
+      setStuData(data);
+    });
+  }, []);
 
   return (
     <>
@@ -37,15 +45,15 @@ const StuLayout = ({ className, children, history }) => {
                     Home
                   </Link>
                 </li>
-                {user.membership ===2 && (
+                {studData.membership === 2 && (
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/user/mealList">
+                    <Link className="nav-link text-white" to="/studData/mealList">
                     Meal List
                   </Link>
                 </li>)}
 
                 <li className="nav-item  ">
-                  <Link className="nav-link text-white" to="/user/blog">
+                  <Link className="nav-link text-white" to="/studData/blog">
                     Blog
                   </Link>
                 </li>
@@ -76,16 +84,16 @@ const StuLayout = ({ className, children, history }) => {
           <div className="ps-4 pt-4 pb-0 pe-4 cover">
             <div className="media align-items-end profile-head">
               <div className="profile ps-3 mr-5 mt-4 ">
-                <ShowImage user={user} ClassName="img mb-2 img-thumbnail" />
+                <ShowImage user={studData} ClassName="img mb-2 img-thumbnail" />
               </div>
             </div>
           </div>
           <div className=" bg-white pt-1 ">
             <div className="media-body mb-1 text-dark">
               <h4 className="media mt-0 mb-0">
-                {user.fname} {user.lname}
+                {studData.fname} {studData.lname}
               </h4>
-              <p className="small mb-4">{user.education.department}</p>
+              <p className="small mb-4">{studData.education.department}</p>
             </div>
           </div>
           <nav className="nav-link justify-content-center p-2 mt-5 navbar  fs-6">

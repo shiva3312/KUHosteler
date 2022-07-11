@@ -235,6 +235,40 @@ exports.addguest = (req, res) => {
   }
 };
 
+
+exports.editStuProfile = (req, res) => {
+
+  User.findById(req.profile._id, (err, user) => {
+    if (err || !user) {
+      return res.json({ error: "User Not found" });
+    }
+    else {
+
+      user.fname = req.body.fname;
+      user.lname = req.body.lname;
+      user.roomNo = req.body.roomNo;
+      user.selfPhNo = req.body.selfPhNo;
+      user.address = req.body.address;
+      user.hostelId = req.body.hostelId;
+      user.dob = req.body.dob;
+      user.bio = req.body.bio;
+      user.gPhNo = req.body.gPhNo;
+      user.education.semester = req.body.semester;
+
+      user.save((err, result) => {
+        if (err) {
+          return res.json({ error: "Something goes wrong on save" });
+        } else {
+         
+          res.json({ info: "successfully saved" });
+        }
+      })
+    }
+
+  })
+
+}
+
 exports.updateguest = (req, res) => {
   const guestId = req.body.record;
   var messTime = req.body.messactivity.toLowerCase(); // req.body.messActivity : (N) / (M) / (M/N)

@@ -13,7 +13,7 @@ const {
     messActivity,
     resendreq,
     helpdesk,
-    //editProfile,
+    editStuProfile,
     //abouthostel,
     //msgToManger,
     //socialpost,
@@ -41,7 +41,8 @@ router.get("/notice/:userId",notice);
 // router.post("/msgToManger/:userId", msgToManger);
 // router.post("/socialpost/:userId",socialpost);
 // router.post("/annonymouspost/:userId",annonymouspost);
-router.post("/addguest/:userId", addguest)
+router.post("/addguest/:userId", addguest);
+router.post("/editStuProfile/:userId", editStuProfile);
 
 // router.put("/editProfile/:userId",requireSignin,isAuth, editProfile);
 router.put("/meal/messActivity/:userId", messActivity);
