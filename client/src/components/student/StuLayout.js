@@ -129,6 +129,12 @@ const StuLayout = ({ className, children, history }) => {
                 <i className=" fa fa-money fa-md pe-2 ps-2"></i>
               </span>
             </Link>
+            <Link className="navbar-brand fs-6 pe-2 ps-2" to="/student/StuEdit/">
+              <span className="text1">EDIT PROFILE</span>
+              <span className="icon">
+                <i className=" fa fas fa-edit fa-md pe-2 ps-2"></i>
+              </span>
+            </Link>
             {/* <li className="nav-item ps-3">
                                 <Link className="nav-link fw-bold" to="#">Settings</Link>
                             </li>

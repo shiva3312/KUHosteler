@@ -33,7 +33,7 @@ import StuBasicInfo from "./components/student/StuBasicInfo";
 import StuGuest from "./components/student/StuGuest";
 import StuMeal from "./components/student/StuMeal";
 import StuRecords from "./components/student/StuRecords";
-
+import StuEdit from "./components/student/StuEdit";
 //employee route
 import EmpTodayMealList from "./components/employee/EmpMealList";
 import EmpBasicInfo from "./components/employee/EmpBasicInfo";
@@ -97,6 +97,7 @@ const Routes = () => {
         />
         <PrivateRoute path="/student/guest" exact component={StuGuest} />
         <PrivateRoute path="/student/meal" exact component={StuMeal} />
+        <PrivateRoute path="/student/StuEdit" exact component={StuEdit} />
         <PrivateRoute path="/student/records" exact component={StuRecords} />
 
         <PrivateRoute path="/employee/profile" exact component={EmpDashboard} />
