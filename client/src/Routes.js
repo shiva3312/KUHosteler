@@ -26,6 +26,7 @@ import ManMeal from "./components/manager/ManMeal";
 import ManNotice from "./components/manager/ManNotice";
 import ManStudents from "./components/manager/ManStudents";
 import AboutHostel from "./components/view/AboutHostel";
+import staticAbouthostel from "./components/view/staticAbouthostel";
 //student route
 import StuHome from "./components/student/StuHome";
 import StuBasicInfo from "./components/student/StuBasicInfo";
@@ -49,6 +50,8 @@ const Routes = () => {
         <Route path="/user/info" exact component={InfoPage} />
         <Route path="/user/Faq" exact component={Faq} />
         <Route path="/user/AboutHostel" exact component={AboutHostel} />
+        <Route path="/user/staticAbouthostel" exact component={staticAbouthostel} />
+
         <Route path="/user/HelpDesk" exact component={HelpDesk} />
         <Route path="/user/ReportBug" exact component={ReportBug} />
         <Route path="/user/Developer" exact component={Developer} />

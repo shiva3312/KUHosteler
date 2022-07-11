@@ -19,7 +19,9 @@ const Signup = () => {
     isOtpsend: false,
     sendOtp: "",
     verified: false,
+    inProcess: false
   });
+
   const [toggler, setToggler] = useState(0);
   const [values, setValues] = useState({
     fname: "",
@@ -88,12 +90,13 @@ const Signup = () => {
     }
   };
 
+
   const clickSubmit = (event) => {
     var isSignUpPossible = true;
     event.preventDefault();
     if (!isCodeverified && profileType == 1) {
       isSignUpPossible = false;
-      setValues({ ...values, error: "code not verified" });
+      setNotify({ isOpen: true, message: "code not verified", type: "error" });
     }
 
     // manger already exist for selected hostel...
@@ -101,7 +104,7 @@ const Signup = () => {
       hostedHostels.forEach((hostel) => {
         if (hostel.hostelName === hostelName) {
           isSignUpPossible = false;
-          setValues({ ...values, error: "Manger already exist" });
+          setNotify({ isOpen: true, message: "Manger already exist", type: "error" });
         }
       });
     }
@@ -117,23 +120,21 @@ const Signup = () => {
       });
       if (profileType != 1 && !isMnagerExist) {
         isSignUpPossible = false;
-        setValues({ ...values, error: "Manger doest exist" });
+        setNotify({ isOpen: true, message: "Manger doest exist", type: "error" });
+
       }
     }
 
     if (!mailOtpStatus.verified) {
       isSignUpPossible = false;
-      setValues({
-        ...values,
-        error: "Mail is not verified. please verify your mail",
-      });
+      setNotify({ isOpen: true, message: "Mail is not verified. please verify your mail", type: "error" });
     }
 
     if (isSignUpPossible) {
       setValues({ ...values, error: false });
       signup(values).then((data) => {
         if (data.error) {
-          setValues({ ...values, error: data.error, success: false });
+          setNotify({ isOpen: true, message: data.error, type: "error" });
         } else {
           setNotify({isOpen:true, message:'Registered successfully' , type:"success"});
           setValues({
@@ -171,34 +172,45 @@ const Signup = () => {
       if (code == savedCode.code) {
         setIsCodeverified(true);
         matchfound = true;
-        setValues({ ...values, success: "Code is applied" });
+        setNotify({ isOpen: true, message: "Code is applied successfully", type: "success" });
       }
     });
     if (matchfound === false) {
       setIsCodeverified(false);
-      setValues({ ...values, error: "Code is not correct" });
+      setNotify({ isOpen: true, message: "Code is not correct", type: "error" });
     }
   };
 
-  const { isOtpsend, sendOtp, verified } = mailOtpStatus;
+  const { isOtpsend, sendOtp, verified, inProcess } = mailOtpStatus;
 
-  const sentOtp = (event) => {
+  const sentOtp = async (event) => {
     event.preventDefault();
+
+    await setMailOtpStatus({
+      ...mailOtpStatus,
+      inProcess: true
+    });
     // write code to verify
     let newOTP = (Math.random() + 1).toString(36).substring(7);
-    setMailOtpStatus({
-      ...mailOtpStatus,
-      isOtpsend: !isOtpsend,
-      sendOtp: newOTP,
-    });
+
 
     // send the  newOTP to users mailId ...
-    verfyMail({ email, newOTP }).then((data) => {
+    await verfyMail({ email, newOTP }).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
-        console.log(data.error);
+        setMailOtpStatus({
+      ...mailOtpStatus,
+          inProcess: false
+    });
+
+        setNotify({ isOpen: true, message: data.error, type: "error" });
       } else {
         console.log(data.info);
+        setNotify({ isOpen: true, message: data.info, type: "success" });
+        setMailOtpStatus({
+          ...mailOtpStatus,
+          isOtpsend: !isOtpsend,
+          sendOtp: newOTP,
+        });
       }
     });
 
@@ -207,15 +219,16 @@ const Signup = () => {
 
   const verifyOTP = (event) => {
     event.preventDefault();
-    console.log("here is the otp".sendOtp, otp);
     if (sendOtp == otp) {
       setMailOtpStatus({
         ...mailOtpStatus,
         verified: true,
-        success: "OTP varyfied",
+        success: "OTP verified",
       });
+      setNotify({ isOpen: true, message: " OTP is Verified successfully", type: "success" });
+
     } else {
-      setValues({ ...values, error: "Entered OTP is not correct" });
+      setNotify({ isOpen: true, message: "Entered OTP is not corrent", type: "error" });
     }
   };
 
@@ -303,19 +316,14 @@ const Signup = () => {
                         }}
                       >
                         <button
-                          className="btn btn-outline-light btn-sm mt-3 "
+                        className="btn btn-outline-light btn-primary btn-sm mt-3 "
                           type="submit"
                           onClick={codeverification}
                         >
                           verify
                         </button>
                       </div>
-                      <div
-                        className="col-3 text-center pt-4"
-                        style={{ display: isCodeverified ? "" : "none" }}
-                      >
-                        <p className="text-success">Verfied</p>
-                      </div>
+
                     </div>
 
                     <div className="row">
@@ -339,24 +347,26 @@ const Signup = () => {
                         className="col-3 text-center pt-4"
                         style={{
                           display:
-                            email && !mailOtpStatus.isOtpsend ? "" : "none",
+                            email && !mailOtpStatus.isOtpsend && !mailOtpStatus.inProcess ? "" : "none",
                         }}
                       >
                         <button
-                          className="btn btn-outline-light btn-sm mt-3 btn-primary "
+                        className="btn btn-outline-light btn-sm mt-2 btn-primary "
                           type="submit"
                           onClick={sentOtp}
                         >
                           Send OTP
                         </button>
-                      </div>
+                    </div>
                       <div
                         className="col-3 text-center pt-4"
                         style={{
-                          display: mailOtpStatus.isOtpsend ? "" : "none",
+                          display: !mailOtpStatus.isOtpsend && mailOtpStatus.inProcess ? "" : "none",
                         }}
                       >
-                        <p className="text-dark">OTP sent</p>
+                      <div class="spinner-border text-primary float-start  mt-2" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
                       </div>
                     </div>
 
@@ -392,22 +402,13 @@ const Signup = () => {
                         }}
                       >
                         <button
-                          className="btn btn-outline-light btn-sm mt-3 "
+                        className="btn btn-outline-light btn-primary btn-sm mt-2 "
                           type="submit"
                           onClick={verifyOTP}
                         >
                           verify
                         </button>
-                      </div>
-
-                      <div
-                        className="col-3 text-center pt-4"
-                        style={{
-                          display: mailOtpStatus.verified ? "" : "none",
-                        }}
-                      >
-                        <p className="text-dark">Verfied</p>
-                      </div>
+                    </div>                    
                     </div>
 
                     {/* <div className="form-outline text-start form-white mb-4" >
@@ -769,10 +770,7 @@ const Signup = () => {
 
   return (
     <div>
-     
       <Notification notify={notify} setNotify={setNotify} />
-      {showSuccess()}
-      {showError()}
       {signUpForm()}
       {redirectUser()}
     </div>

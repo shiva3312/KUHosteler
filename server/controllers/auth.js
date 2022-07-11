@@ -425,12 +425,17 @@ exports.verfyMail = (req, res) => {
       // Step 3
       transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
-          return console.log("Error occurs", err);
+
+           console.log("Error occurs", err);
+          return res
+          .status(300)
+          .json({ error: err });
+     
         }
         console.log("Email sent!!!");
         return res
           .status(300)
-          .json({ info: "Code has been sent to you Please check your  Email" });
+          .json({ info: "A code has been sent to you Please check your  Email" });
       });
     }
   });

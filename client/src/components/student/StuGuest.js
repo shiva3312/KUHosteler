@@ -339,12 +339,13 @@ const AddGuest = ({ history }) => {
     </div>
   );
 
+
   return (
     <>
       <StuLayout history={history}>
         <Notification notify={notify} setNotify={setNotify} />
         <ConfimDialog confirmDialog = {confirmDialog} setConfirmDialog = {setConfirmDialog} />
-         
+               
         {showError()}
         <div className="">{addGuestForm()}</div>
         <div className="text-box fadeUp animate">{getAllGuest()}</div>

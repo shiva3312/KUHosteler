@@ -1,1 +1,0 @@
-// statich about Hostel page is for non authorized user 
