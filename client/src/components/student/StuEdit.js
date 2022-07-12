@@ -62,10 +62,10 @@ const EditPro = () => {
         <i className="fa fa-angle-double-right "></i>
         &nbsp;Edit Your Profile
       </h1>
-      <div className="status bg-white row th shadow-sm">
-        <div className="col-3 p-4 ps-4">
-          <i className=" fa fa-lg fa-user-plus text-secondary"></i>
-        </div>
+      <div >
+       {/* <div className="col-3 p-4 ps-4">
+          <i className=" fa fa-lg fa-edit text-secondary"></i>
+        </div>  */}
         <div className="col-9 p-3 ps-3  text-end">
           <button
             type="button"
@@ -75,14 +75,14 @@ const EditPro = () => {
             onClick={async () => { await setValues(currVal) }}
           >
             <span className="button__icon">
-              <i className="fa fa-edit"></i>
+              <i className="fa fa-refresh fa-spin "></i>
             </span>
-            <span className="button__text">EDIT</span>
+            <span className="button__text">Refresh</span>
           </button>
         </div>
       </div>
       
-      <div
+      {/* <div
         className="modal fade"
         id="exampleModal"
         tabIndex="-1"
@@ -195,7 +195,196 @@ const EditPro = () => {
             </div>
           </div>
         </div>
+      </div> */}
+
+
+
+
+
+
+
+
+<form class="was-validated">
+<div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+      <label htmlFor="exampleFormControlInput1" className="form-label">
+                 First Name
+                </label>
+                <input
+                  type="Name"
+                  className="form-control"
+                  id="fname"
+                  placeholder="Enter your Room No"
+                  required
+                  onChange={handleChange("fname")}
+                  value={fname}
+                />
       </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+      <label htmlFor="exampleFormControlInput1" className="form-label">
+                Last Name
+                </label>
+                <input
+                  type="Name"
+                  className="form-control"
+                  id="lname"
+                  placeholder="Enter your First Name"
+                  required
+                  onChange={handleChange("lname")}
+                  value={lname}
+                />
+      </div>
+    </div>
+   
+   
+    </div>
+ 
+
+  
+  <div class="form-outline mb-4">
+     <label htmlFor="exampleFormControlInput1" className="form-label">
+                  Room No.
+                </label>
+                <input
+                  type="Number"
+                  className="form-control"
+                  id="roomNo"
+                  placeholder="Enter your Last Name"
+                  required
+                  onChange={handleChange("roomNo")}
+                  value={roomNo}
+                />
+  </div>
+
+  <div class="row mb-4">
+    <div class="col">
+  <div class="form-outline mb-4">
+     <label htmlFor="exampleFormControlInput1" className="form-label">
+                  Your Phone No
+                </label>
+                <input
+                  type="Number"
+                  className="form-control"
+                  id="selfPhNo"
+                  placeholder="Enter your Room No"
+                  required
+                  onChange={handleChange("selfPhNo")}
+                  value={selfPhNo}
+                />
+  </div></div>
+    <div class="col">
+  <div class="form-outline mb-4">
+    <label htmlFor="exampleFormControlInput1" className="form-label">
+               Guardian Phone Number
+                </label>
+                <input
+                  type="Number"
+                  className="form-control"
+                  id="gphno"
+                  placeholder="Enter your Guardian no"
+                  required
+                  onChange={handleChange("gPhNo")}
+                  value={gPhNo}
+                />
+  </div></div>
+</div>
+ 
+  
+
+  <div class="row mb-4">
+    <div class="col">
+  <div class="form-outline mb-4">
+    <label htmlFor="exampleFormControlInput1" className="form-label">
+               HostelID
+                </label>
+                <input
+                  type="Number"
+                  className="form-control"
+                  id="hostelId"
+                  placeholder="Enter your HostelId"
+                  required
+                  onChange={handleChange("hostelId")}
+                  value={hostelId}
+                />
+  </div></div>
+    <div class="col">
+  <div class="form-outline mb-4">
+  <label htmlFor="exampleFormControlInput1" className="form-label">
+             D.O.B
+              </label>
+              <input
+                type="date"
+                className="form-control"
+                id="dob"
+                placeholder="Enter your D.O.B"
+                required
+                onChange={handleChange("dob")}
+                value={dob}
+              />
+</div></div></div>
+<div class="form-outline mb-4">
+     <label htmlFor="exampleFormControlInput1" className="form-label">
+                  Address
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  placeholder="Enter your Address"
+                  required
+                  onChange={handleChange("address")}
+                  value={address}
+                />
+  </div>
+{/* <div class="form-outline mb-4">
+    <label htmlFor="exampleFormControlInput1" className="form-label">
+               Semester
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="semester"
+                  placeholder="Enter your semester no"
+                  required
+                  onChange={handleChange("semester")}
+                  value={semester}
+                />
+  </div> */}
+ 
+ 
+  <div class="form-outline mb-4">
+     <label htmlFor="exampleFormControlInput1" className="form-label">
+               BIO
+                </label>
+    <textarea class="form-control" rows="4"
+    type="text"
+    className="form-control"
+    id="bio"
+    placeholder="Enter BIO"
+    required
+    onChange={handleChange("bio")}
+    value={bio}></textarea>
+  </div>
+  <div className="text-center">
+<button
+type="button"
+className=" btn btn-success btn btn-outline-light btn-lg px-4"
+ data-bs-dismiss="modal"
+onClick={() => {
+  setConfirmDialog({
+    isOpen: true,
+    title: "Are you sure to update your profile?",
+    subTitle: "Please check entered infomation is correct.",
+    onConfirm: () => { clickSubmit() }
+  })
+}}
+>
+Save
+</button></div>
+</form>
     </>
   );
 };
