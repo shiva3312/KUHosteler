@@ -340,6 +340,56 @@ const AddGuest = ({ history }) => {
   );
 
 
+  const allOldGuest = () => {
+    return (
+      <>
+        <h1 className="text-start ms-4 me-4 mb-4 border-bottom">
+          <i className="fa fa-angle-double-right"></i>
+          &nbsp;Old Guests
+        </h1>
+        <h3 className="">Details of active guests</h3>
+        <section className="p-1">
+          <div className="shadow tbl-header" id="guestlist">
+            <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-1">
+              <thead>
+                <tr>
+                  <th>SL</th>
+                  <th>Date</th>
+                  <th>Name </th>
+                  <th>Morning Charge </th>
+                  <th>Night charge</th>
+
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div className="shadow tbl-content">
+            <table cellPadding="0" cellSpacing="0" border="0">
+              <tbody>
+                {stuData.activity.map((day, i) => (                  
+                  day.this_day_guest.map((guest, i) => (                      
+                    <tr key={i}>
+                    
+                      <td>{day.date.slice(0, 15)} </td>
+                      <td>{guest.name}</td>
+                      <td>{guest.morning_charge}</td>
+                      <td>{guest.night_charge}</td>
+
+                    </tr>
+
+                  ))
+
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </>
+    );
+  };
+
+
+
   return (
     <>
       <StuLayout history={history}>
@@ -349,6 +399,8 @@ const AddGuest = ({ history }) => {
         {showError()}
         <div className="">{addGuestForm()}</div>
         <div className="text-box fadeUp animate">{getAllGuest()}</div>
+        <div className="text-box fadeUp animate">{allOldGuest()}</div>
+
       </StuLayout>
       <Footer />
     </>

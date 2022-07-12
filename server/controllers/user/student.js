@@ -144,7 +144,7 @@ exports.addguest = (req, res) => {
   // the day on which his membership is Deactivated
   // var leavingDate = new  Date(req.user.leavingDate);
   // let membershipaboutEnd =  (leavingDate >= startDate && leavingDate >= endDate) ;
-  let afterToday = currentDate < startDate && currentDate < endDate;
+  let afterToday = currentDate.getUTCDate() < startDate.getUTCDate() && currentDate < endDate;
 
   //creating a new guest from start date to end date
 
