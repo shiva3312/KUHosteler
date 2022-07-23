@@ -209,7 +209,7 @@ const StudentListInfo = ({ history }) => {
                               setConfirmDialog({
                                 isOpen: true,
                                 title : "Are you sure you , want make student Ex-Border ?",
-                                subTitle: "Remember! After this action student's membership will be deactivated ,student will be excluded from daily Meal-List and can't add any guest",
+                                subTitle: "Remember! After this action student's membership will be deactivated ,student will be excluded from daily Meal-List, all added guest will be removed and student can't add any guest ",
                                 onConfirm:() =>{ toggleMembership(student._id, 3)}
                               })
                              }}

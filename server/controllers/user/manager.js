@@ -450,12 +450,18 @@ exports.setstudetnHostelId = (req, res) => {
   );
 };
 
-exports.updateMembershipStatus =  (req, res) => {
+exports.updateMembershipStatus = async (req, res) => {
   const status = req.body.values.status;
   const userId = req.body.values.memId;
+
+  //If status is changed to Exboder(3) then remove all guest from active_guest_list 
+  if (status === 3) {
+    await User.updateOne({ _id: userId}, { $set: { 'active_guest_list': [] } })
+  }
+  //updating membership status
    User.findById({ _id: userId }, (err, user) => {
     if (err || !user) return res.json({ error: "Something went wrong" });
-    user.membership = status;
+     user.membership = status; 
     user.save((err, result) => {
       if (err) return res.json({ error: err });
       else return res.json({ info: "sucessfully Updated" });

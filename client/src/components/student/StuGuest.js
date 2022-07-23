@@ -85,6 +85,9 @@ const AddGuest = ({ history }) => {
   stuData.active_guest_list.sort(function (a, b) {
     return new Date(a.date) - new Date(b.date);
   });
+   stuData.activity.sort(function (a, b) {
+    return new Date(b.date) - new Date(a.date);
+  });
 
   const getAllGuest = () => {
     return (
@@ -347,7 +350,7 @@ const AddGuest = ({ history }) => {
           <i className="fa fa-angle-double-right"></i>
           &nbsp;Old Guests
         </h1>
-        <h3 className="">Details of active guests</h3>
+        <h3 className="">Details of guests</h3>
         <section className="p-1">
           <div className="shadow tbl-header" id="guestlist">
             <table cellPadding="0" cellSpacing="0" border="0" id="tableLevel-1">
@@ -367,16 +370,14 @@ const AddGuest = ({ history }) => {
             <table cellPadding="0" cellSpacing="0" border="0">
               <tbody>
                 {stuData.activity.map((day, i) => (                  
-                  day.this_day_guest.map((guest, i) => (                      
-                    <tr key={i}>
-                    
-                      <td>{day.date.slice(0, 15)} </td>
+                  day.this_day_guest.map((guest, j) => (
+                    <tr key={j}>
+                      <td>{i + j + 1} </td>
+                      {j > 0 ? <td>-</td>:<td>{day.date.slice(0, 15)} </td>}
                       <td>{guest.name}</td>
                       <td>{guest.morning_charge}</td>
                       <td>{guest.night_charge}</td>
-
                     </tr>
-
                   ))
 
                 ))}
