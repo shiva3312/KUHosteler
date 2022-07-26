@@ -240,64 +240,77 @@ exports.setCharges = (req, res) => {
 };
 
 //addAuditCharges
-exports.addAuditCharges = (req, res) => {
+exports.addAuditCharges = async (req, res) => {
+
+  // converting month-year in Date format ( Ex. 2022-06 to Fri Jun 01 2022 )
   const d = new Date(req.body.auditedDate);
-  const auditedDate =
-    d.toDateString().slice(4, 7) + " " + d.toDateString().slice(11, 15);
+  // converting date in month year using to string formate ( Ex. Fri Jun 01 2022 to  Jun 2022)
+  const auditedDate = d.toDateString().slice(4, 7) + " " + d.toDateString().slice(11, 15);
+  req.body.auditedDate = auditedDate;
 
-  User.findOne({ _id: req.profile._id }, (err, manager) => {
-    if (err || !manager) {
-      return res.json({
-        error: "Something went wrong",
-      });
-    } else {
-      var recId;
-      manager.mealInfoList.forEach((rec) => {
-        if (rec.auditedDate == auditedDate) {
-          recId = rec._id;
-        }
-      });
+  // calculating total charge ( total = sum of all money expenditure)
+  req.body.total = parseInt(req.body.gas) +
+    parseInt(req.body.vegitables) +
+    parseInt(req.body.groceryEggRice) +
+    parseInt(req.body.fish) +
+    parseInt(req.body.meat) +
+    parseInt(req.body.miscelleanous) +
+    parseInt(req.body.cable) +
+    parseInt(req.body.paper);
+  // Calculation of total Meal charge for the month ....
+  // (TotalMealChargeForTheMonth  =  effective money expenditure)
+  req.body.TotalMealChargeForTheMonth = req.body.total -
+    parseInt(req.body.less) -
+    parseInt(req.body.lessGuestCollection);
 
-      // set amount in manger mealInfoList ....
-      const auditDate = new Date(req.body.auditedDate).toDateString();
-      User.findOneAndUpdate(
-        { _id: manager._id, mealInfoList: { $elemMatch: { _id: recId } } },
-        {
-          $set: {
-            "mealInfoList.$.perheadCharge": req.body.auditAmount,
-            "mealInfoList.$.auditedDate": auditDate,
-          },
-        },
-        function (err, guestFound) {
-          if (err) {
-            return res.json({ error: "This month has not meal records" });
-          }
-        }
-      );
+  // claculation of perHead meal charge ...
+  req.body.mealChargePerBoarder = req.body.TotalMealChargeForTheMonth / parseInt(req.body.totalNumberOfBoarders);
+  // roundoff charge ...
+  req.body.RoundOffCharge = Math.ceil(parseInt(req.body.mealChargePerBoarder))
 
-      date = new Date().toDateString();
-      var newRec = {
-        auditDate: date,
-        auditAmount: req.body.auditAmount,
-      };
-      // push audited meal charge to every corresponding studetn
+  //check if the monthYeal exist in the mealInfoList
+  // if not exist the return unable to change... 
 
-      User.find(
-        { hostelName: req.profile.hostelName, profileType: 0 },
-        (err, students) => {
-          if (err) {
-            console.log(err);
-          } else {
-            students.forEach((student) => {
-              student.paymentRecord.push(newRec);
-              student.save();
-            });
-          }
-        }
-      );
-      return res.json({ info: "Audited meal Charge successfully added" });
+
+  //update record in the mealinfo list with MonthYear serarch
+  const isSuccess = await User.findOneAndUpdate({
+    _id: req.profile._id,
+    mealInfoList: { $elemMatch: { auditedDate } },
+  },
+    {
+      $set: {
+        "mealInfoList.$.auditedDate": auditedDate,
+        "mealInfoList.$.statementOfMealCharge": req.body,
+        "mealInfoList.$.perheadCharge": req.body.RoundOffCharge
+
+      }
     }
-  });
+  );
+
+  if (!isSuccess) {
+    return res.json({ error: "No match of monthYear" })
+  }
+
+  const date = new Date().toDateString();
+      var newRec = {
+        auditedMonthYear: auditedDate,
+        auditDate: date,
+        auditAmount: req.body.RoundOffCharge
+      };
+  let conditions = { hostelName: req.profile.hostelName, profileType: 0 };
+  let update = newRec;
+  let options = { multi: true, upsert: true };
+
+  // pull all matched records in corressponding hostel
+  await User.updateMany({ hostelName: req.profile.hostelName, profileType: 0, }, { $pull: { paymentRecord: { auditedMonthYear: auditedDate } } }, options);
+
+  //update perHead roundoff charge in every student of corresponding hostel 
+  await User.updateMany(conditions, { $push: { paymentRecord: update } }, options);
+
+
+  return res.json({ status: "success" });
+
+
 };
 
 //addFineOrDepositMoney
@@ -528,3 +541,5 @@ exports.theme = (req, res) => {
     }
   });
 };
+
+

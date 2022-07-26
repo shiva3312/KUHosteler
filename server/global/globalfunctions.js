@@ -18,13 +18,13 @@ exports.prepareMealList = async (hostelName) => {
   var countNormalGuestMeal = 0;
   var countOfficialGuestMeal = 0;
 
-  boundTime.findOne({ hostelName: hostelName }, (err, manager) => {
+  await boundTime.findOne({ hostelName: hostelName }, (err, manager) => {
     // free up borderMealList the meal list beforing saving new meal list
     manager.borderMealList.forEach((rec) => {
       boundTime.findOneAndUpdate(
         { hostelName: hostelName },
         { $pull: { borderMealList: { _id: rec._id } } },
-        function (err, guestFound) {}
+        function (err, guestFound) { }
       );
     });
     // free up guestMealList the meal list beforing saving new meal list
@@ -32,7 +32,7 @@ exports.prepareMealList = async (hostelName) => {
       boundTime.findOneAndUpdate(
         { hostelName: hostelName },
         { $pull: { guestMealList: { _id: rec._id } } },
-        function (err, guestFound) {}
+        function (err, guestFound) { }
       );
     });
 
@@ -90,12 +90,11 @@ exports.prepareMealList = async (hostelName) => {
           }
         });
 
-        // puht here all data
+        // pust here all data
         //save the border , normal guest and official guest count in mealInfoList
-
-        // couse records are pushing on the basis of only month and year....
+        // because records are pushing on the basis of only month and year....
         var monthYear =
-          current_date.toString().slice(3, 7) +
+          current_date.toString().slice(4, 7) +
           " " +
           current_date.toString().slice(11, 15);
         User.findOne(
@@ -103,7 +102,7 @@ exports.prepareMealList = async (hostelName) => {
           (err, manager) => {
             if (err) console.log(err);
             else {
-              // first search current month object exit or not
+              // first search current month object exist or not
               var isCurrentMonthRecExist = false;
               manager.mealInfoList.forEach((rec) => {
                 //if yesss
@@ -171,14 +170,15 @@ exports.prepareMealList = async (hostelName) => {
                         mealInfoList: { $elemMatch: { _id: rec._id } },
                       },
                       {
-                        $set: {
+                        $set:
+                        {
                           "mealInfoList.$.totalMeal": totalMeal,
                           "mealInfoList.$.mealCountList.borderNig": countBorder,
                           "mealInfoList.$.mealCountList.guestNig": countNguest,
                           "mealInfoList.$.mealCountList.totalNig": counTotal,
                         },
                       },
-                      function (err, guestFound) {}
+                      function (err, guestFound) { }
                     );
                   }
                 }
@@ -187,7 +187,9 @@ exports.prepareMealList = async (hostelName) => {
                 // if(not)
                 // create a new month object for moring only .....
                 var newMealInfoRec = {
+                  _id: mongoose.Types.ObjectId(),
                   auditedDate: monthYear,
+                  statementOfMealCharge: {},
                   perheadCharge: 0,
                   totalMeal:
                     countBorderMeal +
@@ -198,10 +200,7 @@ exports.prepareMealList = async (hostelName) => {
                     borderNig: 0,
                     guestMor: countNormalGuestMeal + countOfficialGuestMeal,
                     guestNig: 0,
-                    totalMor:
-                      countBorderMeal +
-                      countNormalGuestMeal +
-                      countOfficialGuestMeal,
+                    totalMor: countBorderMeal + countNormalGuestMeal + countOfficialGuestMeal,
                     totalNig: 0,
                   },
                 };
@@ -237,7 +236,7 @@ exports.pushMealRecords = async (
       var curr_date = current_date.toString();
       var push_date = curr_date.slice(0, 15);
       Allstudent.forEach(function (student) {
-        ///////////////////////////////////////////////// MORNING ////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////// MORNING ////////////////////////////////////////////////////////////
         if (shift === "morning") {
           //if current boarder has mess_status on then push morning charnge else set morning charge 0
           var morning_charge = 0;
@@ -296,7 +295,7 @@ exports.pushMealRecords = async (
                     },
                   },
                 },
-                function (err, guestFound) {}
+                function (err, guestFound) { }
               );
             } else if (guest.mealTime == "on" && guestDate == push_date) {
               //if guest.activity == 'on' then  update the guest details from manager.active_guest_list
@@ -310,7 +309,7 @@ exports.pushMealRecords = async (
                     "active_guest_list.$.mess_activity": "night",
                   },
                 },
-                function (err, guestFound) {}
+                function (err, guestFound) { }
               );
             }
           });
@@ -411,7 +410,7 @@ exports.pushMealRecords = async (
                   User.findOneAndUpdate(
                     { _id: student._id },
                     { $pull: { active_guest_list: { _id: guest._id } } },
-                    function (err, guestFound) {}
+                    function (err, guestFound) { }
                   );
                 }
               });
@@ -453,7 +452,7 @@ exports.pushMealRecords = async (
           User.findOneAndUpdate(
             { _id: student._id },
             { $pull: { activity: { date: push_date } } },
-            function (err, guestFound) {}
+            function (err, guestFound) { }
           );
           alltodayguest.forEach(function (guest) {
             newRecord.this_day_guest.push(guest);

@@ -101,12 +101,13 @@ const userSchema = new mongoose.Schema(
     //payment records
     paymentRecord: [
       {
+        auditedMonthYear: { type: String, default: "" }, 
         auditDate: String,
         auditAmount: { type: Number, default: 0 },
         totalFine: { type: Number, default: 0 },
         fineReason: String,
         paid: { type: Number, default: 0 },
-      },
+      }
     ],
 
     //committee member
@@ -130,6 +131,25 @@ const userSchema = new mongoose.Schema(
     mealInfoList: [
       {
         auditedDate: String,
+        statementOfMealCharge: {
+          auditedDate: { type: String, default: '' },
+          gas: { type: Number, default: 0 },
+          vegitables: { type: Number, default: 0 },
+          groceryEggRice: { type: Number, default: 0 },
+          fish: { type: Number, default: 0 },
+          meat: { type: Number, default: 0 },
+          miscelleanous: { type: Number, default: 0 },
+          cable: { type: Number, default: 0 },
+          paper: { type: Number, default: 0 },
+          manager: { type: Number, default: 0 },
+          total: { type: Number, default: 0 },
+          lessGuestCollection: { type: Number, default: 0 },
+          less: { type: Number, default: 0 },
+          TotalMealChargeForTheMonth: { type: Number, default: 0 },
+          totalNumberOfBoarders: { type: Number, default: 0 },
+          mealChargePerBoarder: { type: Number, default: 0 },
+          RoundOffCharge: { type: Number, default: 0 }
+        },
         perheadCharge: { type: Number, default: 0 },
         totalMeal: { type: Number, default: 0 },
         totalFine: { type: Number, default: 0 },

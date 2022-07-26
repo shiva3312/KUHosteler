@@ -11,23 +11,36 @@ import Notification from "../Notification";
 
 const Charges = ({ history }) => {
   const { user, token } = isAuthenticated();
-  const [manager, setmanager] = useState(user);
+  const [curManager, setmanager] = useState(user);
   const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
 
   const [amount, setAmount] = useState({
-    auditAmount: 0,
     auditedDate: "",
-    error: "",
-    success: "",
+    gas: 0,
+    vegitables: 0,
+    groceryEggRice: 0,
+    fish: 0,
+    meat: 0,
+    miscelleanous: 0,
+    cable: 0,
+    paper: 0,
+    manager: 0,
+    total: 0,
+    lessGuestCollection: 0,
+    less: 0,
+    TotalMealChargeForTheMonth: 0,
+    totalNumberOfBoarders: 0,
+    mealChargePerBoarder: 0,
+    RoundOffCharge: 0,
+
   });
+
   const [auditToggler, setauditToggler] = useState(false);
   const [guestToggler, setguestToggler] = useState(false);
   const [values, setValues] = useState({
-    guestMorMealCharge: manager.guestMorMealCharge,
-    guestNigMealCharge: manager.guestNigMealCharge,
-    grandCharge: manager.grandCharge,
-    error: "",
-    success: false,
+    guestMorMealCharge: curManager.guestMorMealCharge,
+    guestNigMealCharge: curManager.guestNigMealCharge,
+    grandCharge: curManager.grandCharge,
   });
 
   user.paymentRecord.sort(function (a, b) {
@@ -38,22 +51,58 @@ const Charges = ({ history }) => {
     guestMorMealCharge,
     guestNigMealCharge,
     grandCharge,
-    error,
-    success,
   } = values;
 
-  const { auditAmount, auditedDate } = amount;
+
+  const {
+    auditedDate,
+    gas,
+    vegitables,
+    groceryEggRice,
+    fish,
+    meat,
+    miscelleanous,
+    cable,
+    paper,
+    manager,
+    total,
+    lessGuestCollection,
+    less,
+    TotalMealChargeForTheMonth,
+    totalNumberOfBoarders,
+    mealChargePerBoarder,
+    RoundOffCharge,
+  } = amount;
+
+  const updateTotalCharge = (chargeType) => {
+    var totalCharge = parseInt(gas) + parseInt(vegitables) + parseInt(groceryEggRice) + parseInt(fish) + parseInt(meat) + parseInt(miscelleanous) + parseInt(cable) + parseInt(paper);
+    var totalChargeAfterRemovingSomeCollecton = totalCharge - parseInt(less) - parseInt(lessGuestCollection);
+    var perBoarderCharge = totalNumberOfBoarders === 0 || totalNumberOfBoarders === '' ? totalChargeAfterRemovingSomeCollecton : totalChargeAfterRemovingSomeCollecton / parseInt(totalNumberOfBoarders)
+
+    if (chargeType === 'total') {
+      return totalCharge;
+    }
+    else if (chargeType === 'TotalMealChargeForTheMonth') {
+      return totalChargeAfterRemovingSomeCollecton
+    }
+    else if (chargeType === 'mealChargePerBoarder') {
+      return perBoarderCharge
+    }
+    else if (chargeType === 'RoundOffCharge') {
+      return Math.ceil(perBoarderCharge)
+    }
+  }
 
   const handleChange = (name) => (event) => {
-    setValues({ ...values, error: false, [name]: event.target.value });
+    setValues({ ...values, [name]: event.target.value });
   };
   const handleAuditChange = (name) => (event) => {
-    setAmount({ ...amount, error: false, [name]: event.target.value });
+    setAmount({ ...amount, [name]: event.target.value });
   };
 
   const clickSubmit = async (event) => {
     event.preventDefault();
-    setValues({ ...values, error: false });
+    setValues({ ...values });
 
    await setCharges(user._id, token, values).then((data) => {
       if (data.error) {
@@ -64,8 +113,6 @@ const Charges = ({ history }) => {
           guestMorMealCharge: guestMorMealCharge,
           guestNigMealCharge: guestNigMealCharge,
           grandCharge: grandCharge,
-          error: "",
-          success: false,
         });
 
         setguestToggler(!guestToggler);
@@ -75,7 +122,7 @@ const Charges = ({ history }) => {
 
   const clickSubmitAduditCharge = async (event) => {
     event.preventDefault();
-    setAmount({ ...amount, error: false });
+    setAmount({ ...amount });
 
    await addAuditCharges(user._id, token, amount).then((data) => {
       if (data.error) {
@@ -83,9 +130,23 @@ const Charges = ({ history }) => {
       } else {
         setNotify({isOpen:true, message:'Audit Charge added successfully' , type:"success"});
         setAmount({
-          amount: 0,
-          error: "",
-          success: false,
+          auditedDate: "",
+          gas: 0,
+          vegitables: 0,
+          groceryEggRice: 0,
+          fish: 0,
+          meat: 0,
+          miscelleanous: 0,
+          cable: 0,
+          paper: 0,
+          manager: 0,
+          total: 0,
+          lessGuestCollection: 0,
+          less: 0,
+          TotalMealChargeForTheMonth: 0,
+          totalNumberOfBoarders: 0,
+          mealChargePerBoarder: 0,
+          RoundOffCharge: 0,
         });
         setauditToggler(!auditToggler);
       }
@@ -95,10 +156,6 @@ const Charges = ({ history }) => {
   const auditedChargeMealList = () => {
     return (
       <>
-        {/* <div className="text-end" style={{ display: !auditToggler ? '' : 'none' }}> 
-                    
-                    <button className="btn btn-primary" onClick={()=>setauditToggler(!auditToggler)}>Add Meal Charge</button>
-                </div> */}
         <div className="p-3">
           <div className="shadow tbl-header">
             <table cellPadding="0" cellSpacing="0" border="0">
@@ -107,7 +164,7 @@ const Charges = ({ history }) => {
                   <th className="col-1 ">SL no.</th>
                   <th>Date</th>
                   <th>Audit Amount</th>
-                  <th>Border Meal</th>
+                  <th>Boarder Meal</th>
                   <th>Guest Meal</th>
                   <th>Toatal Meal</th>
                 </tr>
@@ -117,7 +174,7 @@ const Charges = ({ history }) => {
           <div className="shadow tbl-content">
             <table cellPadding="0" cellSpacing="0" border="0">
               <tbody>
-                {manager.mealInfoList.map((rec, i) => (
+                {curManager.mealInfoList.map((rec, i) => (
                   <tr
                     style={{ display: rec.perheadCharge ? "" : "none" }}
                     key={i}
@@ -178,19 +235,184 @@ const Charges = ({ history }) => {
               value={auditedDate}
             />
           </div>
+
           <div className="col form-outline text-start form-white mb-4">
-            <label className="form-label " htmlFor="auditAmount">
-              Meal Charge
+            <label className="form-label " htmlFor="gas">
+              Gas
             </label>
             <input
               type="Number"
               className="form-control"
-              name="auditAmount"
+              name="gas"
               required=""
-              onChange={handleAuditChange("auditAmount")}
-              value={auditAmount}
+              onChange={handleAuditChange("gas")}
+              value={gas}
             />
           </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="vegitables">
+              Vegitables
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="vegitables"
+              required=""
+              onChange={handleAuditChange("vegitables")}
+              value={vegitables}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="groceryEggRice">
+              Grocery + Egg + Rice
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="groceryEggRice"
+              required=""
+              onChange={handleAuditChange("groceryEggRice")}
+              value={groceryEggRice}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="fish">
+              Fish
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="fish"
+              required=""
+              onChange={handleAuditChange("fish")}
+              value={fish}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="meat">
+              Meat <i>( Cash expenditure )</i>
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="meat"
+              required=""
+              onChange={handleAuditChange("meat")}
+              value={meat}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="miscelleanous">
+              Miscelleanous <i>( Cash expenditure )</i>
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="miscelleanous"
+              required=""
+              onChange={handleAuditChange("miscelleanous")}
+              value={miscelleanous}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="cable">
+              Cable <i>( Cash expenditure )</i>
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="cable"
+              required=""
+              onChange={handleAuditChange("cable")}
+              value={cable}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="paper">
+              Paper <i>( Cash expenditure )</i>
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="paper"
+              required=""
+              onChange={handleAuditChange("paper")}
+              value={paper}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="manager">
+              Manager <i>( Cash expenditure )</i>
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="manager"
+              required=""
+              onChange={handleAuditChange("manager")}
+              value={manager}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="lessGuestCollection">
+              Less Guest Collection <i>( Cash expenditure )</i>
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="lessGuestCollection"
+              required=""
+              onChange={handleAuditChange("lessGuestCollection")}
+              value={lessGuestCollection}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="less">
+              Less  <i>( Cash expenditure )</i>
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="less"
+              required=""
+              onChange={handleAuditChange("less")}
+              value={less}
+            />
+          </div>
+
+          <div className="col form-outline text-start form-white mb-4">
+            <label className="form-label " htmlFor="totalNumberOfBoarders">
+              Total number of Boarders 
+            </label>
+            <input
+              type="Number"
+              className="form-control"
+              name="totalNumberOfBoarders"
+              required=""
+              onChange={handleAuditChange("totalNumberOfBoarders")}
+              value={totalNumberOfBoarders}
+            />
+          </div>
+
+          <div className="col mb-4">
+
+            <p>Total : {updateTotalCharge('total')}</p>
+            <p>Total Meal charge of the Month: {updateTotalCharge('TotalMealChargeForTheMonth')}</p>
+            <p>Total Meal charge of the Month: {updateTotalCharge('mealChargePerBoarder')}</p>
+            <p> Final Roundoff Charge :  {updateTotalCharge('RoundOffCharge')}</p>
+            <p></p>
+          </div>
+
           <div className="row">
             <div className="col">
               <button
@@ -218,30 +440,17 @@ const Charges = ({ history }) => {
             aria-expanded="false"
             aria-controls="collapseExample"
           >
-            Cancel
-           
+                Cancel           
           </button>
             </div>
           </div>
         </div>
       </div>
-
-      {/* <form style={{ display: auditToggler ? '' : 'none' }}>  */}
-
-      {/* <h4 className="shadow card-head pt-2 pb-2 gradiant text-light text-center">Add Meal Charge</h4> */}
-      
-
-      {/* </form> */}
     </>
   );
 
   const showCharges = () => (
     <>
-      {/* <div style={{ display: !guestToggler ? '' : 'none' }}> */}
-
-      {/* <div className="text-end"> 
-            <button className="btn btn-primary" onClick={()=>setguestToggler(!guestToggler)}>Update</button>
-        </div> */}
         <div className="p-2">
       <ul className="list-group m-2">
         <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -258,7 +467,6 @@ const Charges = ({ history }) => {
         </li>
       </ul>
       </div>
-      {/* </div> */}
     </>
   );
 
@@ -354,60 +562,6 @@ const Charges = ({ history }) => {
           </div>{" "}
         </div>
       </div>
-
-      {/* <form style={{ display: guestToggler ? '' : 'none' }}>               
-      
-        </form> */}
-    </>
-  );
-
-  const showError = () => (
-    <>
-      <div
-        className="alert alert-danger alert-dismissible fade show"
-        role="alert"
-        style={{ display: error || amount.error ? "" : "none" }}
-      >
-        {error}
-        <button
-          type="button"
-          className="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-    </>
-  );
-
-  const showSuccess = () => (
-    <>
-      <div
-        className="alert alert-info alert-dismissible fade show"
-        role="alert"
-        style={{ display: success ? "" : "none" }}
-      >
-        Charge updated Successfully
-        <button
-          type="button"
-          className="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-     
-      <div
-        className="alert alert-info alert-dismissible fade show"
-        role="alert"
-        style={{ display: amount.success ? "" : "none" }}
-      >
-        Charge added Successfully
-        <button
-          type="button"
-          className="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
     </>
   );
 
@@ -426,13 +580,9 @@ const Charges = ({ history }) => {
         history={history}
       >
         <div className="row text-box fadeUp animate">
-          {JSON.stringify(amount)}
           <Notification notify={notify} setNotify={setNotify} />
-          {showSuccess()}
-          {showError()}
           {chargeForm()}
           {showCharges()}
-
           {auditMealChargeForm()}
           {auditedChargeMealList()}
         </div>
