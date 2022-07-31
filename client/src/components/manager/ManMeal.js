@@ -112,12 +112,8 @@ const TodayMealList = ({ history }) => {
                     <td>{i + 1}</td>
                     <td className="th1">
                       {" "}
-                      <ShowImage
-                        user={student}
-                        Width="50px"
-                        Height="50px"
-                        ClassName=" img1  img-thumbnail"
-                      />{" "}
+                      <ShowImage user={student} ClassName="img2 " />
+                      {" "}
                     </td>
                     <td>
                       {student.fname} {student.lname}

@@ -7,6 +7,8 @@ import EmpLayout from "./EmpLayout";
 import { isAuthenticated } from "../../auth";
 import Footer from "../Footer"
 import { getPreparedMealList } from "../employee/EmpApi"; 
+import ShowImage from "../ShowImage";
+
 var d = new Date();
 var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
 // current_date is of 24h system .....
@@ -100,7 +102,7 @@ const EmpTodayMealList = () => {
                    {  mealList.borderMealList.map((student , i)=>(                      
                         <tr className="" key={i}>                       
                             <td className="text-center align-middle ">{i+1}</td>
-                            <td className="text-center align-middle"> <img className="img mb-2 img-thumbnail" src={student.avatar} alt="..." width="75" /></td>
+                            <td className="text-center align-middle">  <ShowImage user={student} ClassName="img2 " /></td>
                             <td className="text-center align-middle">{student.fname} {student.lname}</td>
                             <td className="text-center align-middle">{student.department}</td>   
                             <td className="text-center align-middle">{student.roomNo}</td>                               

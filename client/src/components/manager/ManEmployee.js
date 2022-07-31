@@ -1,19 +1,17 @@
 import React, { useDebugValue, useEffect, useState } from "react";
 import ManLayout from "./ManLayout";
 import { isAuthenticated } from "../../auth";
+import ShowImage from "../ShowImage";
 import Notification from "../Notification";
 import {
   getAllemployees,
   updateMembershipStatus,
-  fchangeMealStatus,
 } from "./ManApi";
 
 const EmployeeListInfo = ({ history }) => {
   const { user, token } = isAuthenticated();
   const [employees, setEmployees] = useState([]);
-  const [notify , setNotify]= useState({isOpen:false , message:'', type:''});
-
-
+  const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' });
   const [reRender, setReRender] = useState(false);
 
   const loadUsers = () => {
@@ -22,23 +20,24 @@ const EmployeeListInfo = ({ history }) => {
     });
   };
 
-  const toggleMembership = (empId, status) => {
-    updateMembershipStatus(user._id, token, {
+  const toggleMembership = async (empId, status) => {
+    await updateMembershipStatus(user._id, token, {
       memId: empId,
       status: status,
     }).then((data) => {
       if (data.error) {
         setNotify({isOpen:true, message:'Unable to perform action' , type:"error"});
         console.log(data.error);
-      } else {
+      } else {        
         setNotify({isOpen:true, message:'Successfully changed membership' , type:"success"});
         console.log(data.info);
+        setReRender(!reRender);
       }
     });
-    setReRender(!reRender);
+   
   };
 
-  const viewDetails = (stuId) => {
+  const viewDetails = (employee) => {
     return <></>;
   };
 
@@ -73,7 +72,9 @@ const EmployeeListInfo = ({ history }) => {
               {employees.map((employee, i) => (
                 <tr key={i}>
                   <td>{i + 1}</td>
-                  <td> </td>
+                  <td>
+                    <ShowImage user={employee} ClassName="img2 " />
+                  </td>
                   <td>
                     {employee.fname} {employee.lname}
                   </td>

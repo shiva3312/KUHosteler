@@ -23,7 +23,7 @@ exports.userSignupValidator = (req, res, next) => {
     req.check('department', 'Department Name is required').notEmpty();
     req.check('hostelName', 'Hostel Name is required').notEmpty();
     req.check('selfPhNo', 'Mobile Number is required').notEmpty();
-    req.check('session', 'Session Name is required').notEmpty();
+
 
     req.check('address', 'Address is required').notEmpty();
     req.check('dob', 'Date of Birth is required').notEmpty();

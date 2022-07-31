@@ -55,13 +55,13 @@ const userSchema = new mongoose.Schema(
     profileType: { type: Number, default: 0 }, // 0 student , 1 manager , 2 employee , 3 admin
 
     //Meal
-    mealPreference: [
-      {
-        day: String,
-        morning: [{ choice: String }],
-        night: [{ choice: String }],
-      },
-    ],
+    mealPreference: {
+      // veg / nonVeg
+      mealType: String,
+      // veg-{ curd , bhujia , misti ... etc }; 
+      // nonVeg-{egg , meat , fist , all};
+      option: [String]
+    },
 
     //each day activity of student
     activity: [

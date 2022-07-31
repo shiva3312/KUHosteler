@@ -10,7 +10,6 @@ var utc = d.getTime() + d.getTimezoneOffset() * 60000;
 var current_date = new Date(utc + 3600000 * +5.5);
 // current_date12 is 12h system
 var current_date12 = current_date.toLocaleString();
-
 const isMorning = current_date.getHours() >= 1 && current_date.getHours() <= 11;
 
 exports.prepareMealList = async (hostelName) => {
@@ -41,7 +40,7 @@ exports.prepareMealList = async (hostelName) => {
       User.find({ hostelName: hostelName }, (err, students) => {
         if (err) console.log(err);
         else {
-          // if messStatus is on (3)   and student is member of the hostel (membership = 2) then push data
+          // if messStatus is on (3)  and student is member of the hostel (membership = 2) then push data
           students.forEach((student) => {
             if (
               student.messStatus == 3 &&
@@ -49,12 +48,13 @@ exports.prepareMealList = async (hostelName) => {
               student.profileType == 0
             ) {
               let rec = {
-                _id: new mongoose.Types.ObjectId(),
+                _id: student._id,
                 fname: student.fname,
                 lname: student.lname,
                 avatar: student.avatar,
                 department: student.department,
                 roomNo: student.roomNo,
+                mealPreference: student.mealPreference
               };
               manager.borderMealList.push(rec);
               countBorderMeal++;
@@ -112,24 +112,12 @@ exports.prepareMealList = async (hostelName) => {
                   // if(morning)
 
                   // total meal night + morning
-                  const totalMeal =
-                    rec.totalMeal +
-                    countBorderMeal +
-                    countNormalGuestMeal +
-                    countOfficialGuestMeal;
+                  const totalMeal = rec.totalMeal + countBorderMeal + countNormalGuestMeal + countOfficialGuestMeal;
 
                   if (isMorning) {
-                    let countBorder =
-                      rec.mealCountList.borderMor + countBorderMeal;
-                    let countNguest =
-                      rec.mealCountList.guestMor +
-                      countNormalGuestMeal +
-                      countOfficialGuestMeal;
-                    let counTotal =
-                      rec.mealCountList.totalMor +
-                      countBorderMeal +
-                      countNormalGuestMeal +
-                      countOfficialGuestMeal;
+                    let countBorder = rec.mealCountList.borderMor + countBorderMeal;
+                    let countNguest = rec.mealCountList.guestMor + countNormalGuestMeal + countOfficialGuestMeal;
+                    let counTotal = rec.mealCountList.totalMor + countBorderMeal + countNormalGuestMeal + countOfficialGuestMeal;
                     User.findOneAndUpdate(
                       {
                         _id: manager._id,
@@ -152,17 +140,9 @@ exports.prepareMealList = async (hostelName) => {
                   }
                   // if(night)
                   else {
-                    let countBorder =
-                      rec.mealCountList.borderNig + countBorderMeal;
-                    let countNguest =
-                      rec.mealCountList.guestNig +
-                      countNormalGuestMeal +
-                      countOfficialGuestMeal;
-                    let counTotal =
-                      rec.mealCountList.totalNig +
-                      countBorderMeal +
-                      countNormalGuestMeal +
-                      countOfficialGuestMeal;
+                    let countBorder = rec.mealCountList.borderNig + countBorderMeal;
+                    let countNguest = rec.mealCountList.guestNig + countNormalGuestMeal + countOfficialGuestMeal;
+                    let counTotal = rec.mealCountList.totalNig + countBorderMeal + countNormalGuestMeal + countOfficialGuestMeal;
 
                     User.findOneAndUpdate(
                       {
@@ -191,10 +171,7 @@ exports.prepareMealList = async (hostelName) => {
                   auditedDate: monthYear,
                   statementOfMealCharge: {},
                   perheadCharge: 0,
-                  totalMeal:
-                    countBorderMeal +
-                    countNormalGuestMeal +
-                    countOfficialGuestMeal,
+                  totalMeal: countBorderMeal + countNormalGuestMeal + countOfficialGuestMeal,
                   mealCountList: {
                     borderMor: countBorderMeal,
                     borderNig: 0,
@@ -262,11 +239,8 @@ exports.pushMealRecords = async (
           // searching  today  guest for corresponding student if( guest.guestHolderId == student._id) then
           student.active_guest_list.forEach(function (guest) {
             var date = new Date(guest.date);
-            var dateValidation =
-              current_date.getDate() == date.getDate() &&
-              current_date.getMonth() == date.getMonth();
-            var mealshiftValidation =
-              guest.mealTime == "morning" || guest.mealTime == "on";
+            var dateValidation = current_date.getDate() == date.getDate() && current_date.getMonth() == date.getMonth();
+            var mealshiftValidation = guest.mealTime == "morning" || guest.mealTime == "on";
 
             if (dateValidation && mealshiftValidation) {
               var guestName = guest.name;
@@ -284,8 +258,7 @@ exports.pushMealRecords = async (
             var guestDate = guest.date.slice(0, 15);
             if (guest.mealTime == "morning" && guestDate == push_date) {
               // if guest.activity == 'morning' then pull the guest from manager.active_guest_list
-              User.findOneAndUpdate(
-                {
+              User.findOneAndUpdate({
                   _id: student._id,
                 },
                 {
@@ -296,7 +269,7 @@ exports.pushMealRecords = async (
                   },
                 },
                 function (err, guestFound) { }
-              );
+              );     
             } else if (guest.mealTime == "on" && guestDate == push_date) {
               //if guest.activity == 'on' then  update the guest details from manager.active_guest_list
               User.findOneAndUpdate(
